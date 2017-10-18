@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Bienvenid@s
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Usted está participando en un estudio sobre toma de decisiones económicas. Por favor lea las instrucciones cuidadosamente porque en ellas se le explicará la forma de ganar puntos en el juego.</br></br>
+        El objetivo de cada participante es ganar la mayor cantidad de puntos, que dependen tanto de sus decisiones como de las decisiones de los demás participantes. En este sentido no considere que existen respuestas incorrectas ni piense que esperamos un comportamiento concreto de su parte. Usted es libre de tomar sus decisiones.</br></br>
+        El objetivo de cada participante es ganar la mayor cantidad de puntos, que dependen tanto de sus decisiones como de las decisiones de los demás participantes. En este sentido no considere que existen respuestas incorrectas ni piense que esperamos un comportamiento concreto de su parte. Usted es libre de tomar sus decisiones.</br></br>
+        Su participación en el estudio es anónima. Esto quiere decir que su identidad no le será revelada a los demás, ni tampoco la identidad de los demás le será revelada a usted. Para asegurar el anonimato y la confidencialidad se ha asignado un código al azar (Ubicado al final de la pagina).</br></br>
+        A continuacion, marque la casilla “Mujer” u “Hombre” según corresponda en su caso. Al finalizar cada periodo se conocerán los puntos promedio que obtuvieron las mujeres y los hombres. </br>
+    </p>
+
+    {% formfield player.genre with label="Selecciona tu genero:" %}
+
+    {% next_button %}
+
+{% endblock %}
