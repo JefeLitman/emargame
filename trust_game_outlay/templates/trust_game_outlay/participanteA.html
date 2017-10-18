@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Bienvenid@, Participante A
+{% endblock %}
+
+{% block content %}
+
+    Tu genero es: {{ player.genre }}
+
+
+    {% next_button %}
+
+{% endblock %}
