@@ -25,8 +25,13 @@ class enviocon(Page):
         return self.player.id_in_group == 1 and self.round_number > Constants.num_rounds / 2
 
     def vars_for_template(self):
+        p2=self.group.get_player_by_id(2)
+        if p2.genre == 1:
+            genero='Mujer'
+        else:
+            genero='Hombre'
         return{
-            'genrep2':self.group.get_player_by_id(2).genre
+            'genrep2':genero
         }
 
 class retornosin(Page):
@@ -56,9 +61,14 @@ class retornocon(Page):
         return self.player.id_in_group == 2 and self.round_number > Constants.num_rounds / 2
 
     def vars_for_template(self):
+        p1=self.group.get_player_by_id(1)
+        if p1.genre == 1:
+            genero='Mujer'
+        else:
+            genero='Hombre'
         return {
             'tripled_amount': self.group.sent_amount*Constants.multiplication_factor,
-            'genrep1':self.group.get_player_by_id(1).genre
+            'genrep1':genero
         }
 
     def sent_back_amount_choices(self):
@@ -83,7 +93,7 @@ class waitforP2(WaitPage):
         self.group.set_payoffs()
         p1=self.group.get_player_by_id(1)
         p2=self.group.get_player_by_id(2)
-        p1.gananciajugador=p1.gananciajugador+p1.payoff
+        p1.gananciajugador = p1.gananciajugador + p1.payoff
         p2.gananciajugador = p2.gananciajugador + p2.payoff
 
 class waitforallgroups(WaitPage):

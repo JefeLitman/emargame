@@ -42,6 +42,7 @@ class Player(BasePlayer):
         choices=[
             [1,'Mujer'],
             [2, 'Hombre'],
-        ]
+        ],
+        initial=0
     )
     gananciajugador=models.CurrencyField(initial=c(0))
