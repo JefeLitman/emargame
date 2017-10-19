@@ -14,7 +14,7 @@ Los juegos de negociación son un ejercicio pedagógico que aumenta el interés 
 class Constants(BaseConstants):
     name_in_url = 'trust_game_outlay'
     players_per_group = 2
-    num_rounds = 2
+    num_rounds = 1
 
     endowment = c(1000)
     multiplication_factor = 3
@@ -27,9 +27,12 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     sent_amount = models.CurrencyField(
-        choices=currency_range(0,Constants.endowment,c(1))
+        choices=currency_range(0,Constants.endowment,c(1)),
+        initial=c(0)
     )
-    sent_back_amount = models.CurrencyField()
+    sent_back_amount = models.CurrencyField(
+        initial=c(0)
+    )
 
     def set_payoffs(self):
         p1 = self.get_player_by_id(1)
