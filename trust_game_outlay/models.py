@@ -52,3 +52,9 @@ class Player(BasePlayer):
 
     def get_genre(self):
         return self.genre
+
+    def get_gananciajugador(self):
+        return self.gananciajugador
+
+    def set_gananciajugador(self,pago):
+        self.gananciajugador=self.get_gananciajugador()+pago

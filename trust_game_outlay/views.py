@@ -107,8 +107,8 @@ class waitforallgroups(WaitPage):
         self.group.set_payoffs()
         p1 = self.group.get_player_by_id(1)
         p2 = self.group.get_player_by_id(2)
-        p1.gananciajugador = p1.gananciajugador + p1.payoff
-        p2.gananciajugador = p2.gananciajugador + p2.payoff
+        p1.set_gananciajugador(p1.payoff)
+        p2.set_gananciajugador(p2.payoff)
 
 page_sequence = [
     welcome,
