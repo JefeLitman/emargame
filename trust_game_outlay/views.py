@@ -74,11 +74,16 @@ class waitforP1(WaitPage):
     pass
 
 class waitforP2(WaitPage):
-    pass
+    def after_all_players_arrive(self):
+        self.group.set_payoffs()
 
 class waitforallgroups(WaitPage):
+
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+
     def after_all_players_arrive(self):
-        pass
+        self.group.set_payoffs()
 
 page_sequence = [
     welcome,
