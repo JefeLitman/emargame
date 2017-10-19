@@ -31,6 +31,11 @@ class retornosin(Page):
     def is_displayed(self):
         return self.player.id_in_group == 2
 
+    def vars_for_template(self):
+        return {
+            'tripled_amount': self.group.sent_amount*Constants.multiplication_factor
+        }
+
     def sent_back_amount_choices(self):
         return currency_range(
             c(0),
@@ -44,6 +49,11 @@ class retornocon(Page):
 
     def is_displayed(self):
         return False
+
+    def vars_for_template(self):
+        return {
+            'tripled_amount': self.group.sent_amount*Constants.multiplication_factor
+        }
 
     def sent_back_amount_choices(self):
         return currency_range(
