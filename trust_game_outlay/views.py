@@ -89,7 +89,6 @@ class waitforP1(WaitPage):
     pass
 
 class waitforP2(WaitPage):
-    wait_for_all_groups = True
     def after_all_players_arrive(self):
         self.group.set_payoffs()
         gananciatotalp1=sum([p1.payoff for p1 in self.group.get_player_by_id(1).in_all_rounds()])
@@ -108,6 +107,9 @@ class waitforP2(WaitPage):
         self.subsession.set_ganancias(mujeres,hombres)
 
 class waitforallgroups(WaitPage):
+    wait_for_all_groups = True
+
+class waitfinal(WaitPage):
 
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
@@ -126,8 +128,9 @@ page_sequence = [
     waitforP1,
     retornosin,
     retornocon,
+    waitforallgroups,
     waitforP2,
     gananciaindividual,
-    waitforallgroups,
+    waitfinal,
     gananciatotal,
 ]
