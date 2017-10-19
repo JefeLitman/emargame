@@ -46,3 +46,6 @@ class Player(BasePlayer):
         initial=0
     )
     gananciajugador=models.CurrencyField(initial=c(0))
+
+    def get_genre(self):
+        return self.genre
