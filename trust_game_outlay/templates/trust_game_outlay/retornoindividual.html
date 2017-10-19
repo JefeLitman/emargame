@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Ganancias Individuales
+{% endblock %}
+
+{% block content %}
+
+    {% if player.id_in_group == 1 %}
+        <p>
+          Usted es el participante A</br>
+          Su ganancia en este periodo es: {{player.payoff}}</br>
+          La ganancia promedio de los hombres fue: {{Definir variable promedio}}</br>
+          La ganancia promedio de las mujeres fue: {{Definir variable promedio}}
+        </p>
+    {% else %}
+        <p>
+          Usted es el participante B</br>
+          Su ganancia en este periodo es: {{player.payoff}}</br>
+          La ganancia promedio de los hombres fue: {{Definir variable promedio}}</br>
+          La ganancia promedio de las mujeres fue: {{Definir variable promedio}}
+        </p>
+
+    {% next_button %}
+
+{% endblock %}

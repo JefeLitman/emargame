@@ -15,7 +15,7 @@ class Constants(BaseConstants):
     name_in_url = 'trust_game_outlay'
     players_per_group = 2
     num_rounds = 1
-    
+
     endowment = c(1000)
     multiplication_factor = 3
 
@@ -25,7 +25,9 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    sent_amount = models.CurrencyField()
+    sent_amount = models.CurrencyField(
+        choices=currency_range(0,Constants.endowment,c(1)
+    )
     sent_back_amount = models.CurrencyField()
 
     def set_payoffs(self):
@@ -33,7 +35,7 @@ class Group(BaseGroup):
         p2 = self.get_player_by_id(2)
         p1.payoff = Constants.endowment - self.sent_amount + self.sent_back_amount
         p2.payoff = self.sent_amount * Constants.multiplication_factor - self.sent_back_amount
-        
+
 class Player(BasePlayer):
     genre=models.PositiveIntegerField(
         choices=[
