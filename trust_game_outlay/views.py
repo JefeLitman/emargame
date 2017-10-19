@@ -25,7 +25,7 @@ class enviocon(Page):
         return self.player.id_in_group == 1 and self.round_number > Constants.num_rounds / 2
 
     def vars_for_template(self):
-        p2=self.group.get_player_by_id(2)
+        p2=self.group.in_round(1).get_player_by_id(2)
         if p2.get_genre() == 1:
             genero='Mujer'
         else:
@@ -62,7 +62,7 @@ class retornocon(Page):
         return self.player.id_in_group == 2 and self.round_number > Constants.num_rounds / 2
 
     def vars_for_template(self):
-        p1=self.group.get_player_by_id(1)
+        p1=self.group.in_round(1).get_player_by_id(1)
         if p1.get_genre() == 1:
             genero='Mujer'
         else:
