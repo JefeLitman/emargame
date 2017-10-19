@@ -24,9 +24,11 @@ class Subsession(BaseSubsession):
     gananciamujeres=models.CurrencyField(initial=c(0))
     gananciahombres=models.CurrencyField(initial=c(0))
 
-    def set_ganmujer(self):
-        
-
+    def set_ganancias(self,mujeres,hombres):
+        if len(mujeres) != 0:
+            self.gananciamujeres = sum([p.payoff for p in mujeres])/len(mujeres)
+        if len(hombres) != 0:
+            self.gananciahombres = sum([p.payoff for p in hombres])/len(hombres)
 
 class Group(BaseGroup):
     sent_amount = models.CurrencyField(
