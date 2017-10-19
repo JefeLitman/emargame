@@ -44,4 +44,4 @@ class Player(BasePlayer):
             [2, 'Hombre'],
         ]
     )
-    gananciajugador=models.PositiveIntegerField(initial=0)
+    gananciajugador=0
