@@ -93,10 +93,10 @@ class waitforP1(WaitPage):
 class waitforP2(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_payoffs()
-        p1=self.group.get_player_by_id(1)
-        p2=self.group.get_player_by_id(2)
-        p1.set_gananciajugador(p1.payoff)
-        p2.set_gananciajugador(p2.payoff)
+        gananciatotalp1=sum([p1.payoff for p1 in self.group.get_player_by_id(1).in_all_rounds()])
+        gananciatotalp2 = sum([p2.payoff for p2 in self.group.get_player_by_id(2).in_all_rounds()])
+        self.group.get_player_by_id(1).set_gananciajugador(gananciatotalp1)
+        self.group.get_player_by_id(2).set_gananciajugador(gananciatotalp2)
 
 class waitforallgroups(WaitPage):
 
@@ -105,10 +105,10 @@ class waitforallgroups(WaitPage):
 
     def after_all_players_arrive(self):
         self.group.set_payoffs()
-        p1 = self.group.get_player_by_id(1)
-        p2 = self.group.get_player_by_id(2)
-        p1.set_gananciajugador(p1.payoff)
-        p2.set_gananciajugador(p2.payoff)
+        gananciatotalp1 = sum([p1.payoff for p1 in self.group.get_player_by_id(1).in_all_rounds()])
+        gananciatotalp2 = sum([p2.payoff for p2 in self.group.get_player_by_id(2).in_all_rounds()])
+        self.group.get_player_by_id(1).set_gananciajugador(gananciatotalp1)
+        self.group.get_player_by_id(2).set_gananciajugador(gananciatotalp2)
 
 page_sequence = [
     welcome,
