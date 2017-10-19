@@ -44,4 +44,4 @@ class Player(BasePlayer):
             [2, 'Hombre'],
         ]
     )
-    gananciajugador=0
+    gananciajugador=models.CurrencyField()
