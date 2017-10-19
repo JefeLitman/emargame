@@ -31,7 +31,8 @@ class enviocon(Page):
         else:
             genero='Hombre'
         return{
-            'genrep2':genero
+            'genrep2':genero,
+            'p2':p2.genre
         }
 
 class retornosin(Page):
@@ -68,7 +69,8 @@ class retornocon(Page):
             genero='Hombre'
         return {
             'tripled_amount': self.group.sent_amount*Constants.multiplication_factor,
-            'genrep1':genero
+            'genrep1':genero,
+            'p1':p1.genre
         }
 
     def sent_back_amount_choices(self):
