@@ -89,6 +89,7 @@ class waitforP1(WaitPage):
     pass
 
 class waitforP2(WaitPage):
+    wait_for_all_groups = True
     def after_all_players_arrive(self):
         self.group.set_payoffs()
         gananciatotalp1=sum([p1.payoff for p1 in self.group.get_player_by_id(1).in_all_rounds()])
