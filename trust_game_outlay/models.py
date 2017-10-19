@@ -27,7 +27,7 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     sent_amount = models.CurrencyField(
-        choices=currency_range(0,Constants.endowment,c(1)
+        choices=currency_range(0,Constants.endowment,c(1))
     )
     sent_back_amount = models.CurrencyField()
 
