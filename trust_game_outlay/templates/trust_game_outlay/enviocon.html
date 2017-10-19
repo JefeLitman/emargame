@@ -8,7 +8,12 @@
 {% block content %}
 
     <p>
-        El participante B es: {{player.genre}} </br>
+        El participante B es:
+        {% if player.genre == 1 %}
+          Mujer
+        {% else %}
+          Hombre
+        </br>
         Su dotacion inicial es de {{Constants.endowment}}
     </p>
 

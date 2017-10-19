@@ -8,7 +8,12 @@
 {% block content %}
 
     <p>
-        El participante A es {{player.genre}} </br>
+        El participante A es
+        {% if player.genre == 1 %}
+          Mujer
+        {% else %}
+          Hombre
+        </br>
         Usted recibio {{group.sent_amount*3}}
     </p>
 
