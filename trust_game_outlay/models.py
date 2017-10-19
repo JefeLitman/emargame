@@ -43,3 +43,4 @@ class Player(BasePlayer):
             [2, 'Hombre'],
         ]
     )
+    acumulado=models.PositiveIntegerField()
