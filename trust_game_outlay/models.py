@@ -14,14 +14,15 @@ Los juegos de negociación son un ejercicio pedagógico que aumenta el interés 
 class Constants(BaseConstants):
     name_in_url = 'trust_game_outlay'
     players_per_group = 2
-    num_rounds = 1
+    num_rounds = 3
 
     endowment = c(1000)
     multiplication_factor = 3
 
 
 class Subsession(BaseSubsession):
-    pass
+    gananciamujeres=models.PositiveIntegerField(initial=0)
+    gananciahombres=models.PositiveIntegerField(initial=0)
 
 
 class Group(BaseGroup):
@@ -43,4 +44,4 @@ class Player(BasePlayer):
             [2, 'Hombre'],
         ]
     )
-    acumulado=models.PositiveIntegerField()
+    gananciajugador=models.PositiveIntegerField(initial=0)

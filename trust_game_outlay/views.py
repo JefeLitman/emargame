@@ -6,10 +6,78 @@ from .models import Constants
 class welcome(Page):
     form_model=models.Player
     form_fields=['genre']
+
     def is_displayed(self):
         return self.round_number == 1
 
+class enviosin(Page):
+    form_model = models.Group
+    form_fields = ['sent_amount']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
+
+class enviocon(Page):
+    form_model = models.Group
+    form_fields = ['sent_amount']
+
+    def is_displayed(self):
+        return False
+
+class retornosin(Page):
+    form_model = models.Group
+    form_fields = ['sent_back_amount']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 2
+
+    def sent_back_amount_choices(self):
+        return currency_range(
+            c(0),
+            self.group.sent_amount * Constants.multiplication_factor,
+            c(1)
+        )
+
+class retornocon(Page):
+    form_model = models.Group
+    form_fields = ['sent_back_amount']
+
+    def is_displayed(self):
+        return False
+
+    def sent_back_amount_choices(self):
+        return currency_range(
+            c(0),
+            self.group.sent_amount * Constants.multiplication_factor,
+            c(1)
+        )
+
+class gananciaindividual(Page):
+    pass
+
+class gananciatotal(Page):
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+
+class waitforP1(WaitPage):
+    pass
+
+class waitforP2(WaitPage):
+    pass
+
+class waitforallgroups(WaitPage):
+    def after_all_players_arrive(self):
+        pass
 
 page_sequence = [
-    welcome
+    welcome,
+    enviosin,
+    enviocon,
+    waitforP1,
+    retornosin,
+    retornocon,
+    waitforP2,
+    gananciaindividual,
+    waitforallgroups,
+    gananciatotal,
 ]
