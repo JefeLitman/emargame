@@ -21,8 +21,11 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    gananciamujeres=models.PositiveIntegerField(initial=0)
-    gananciahombres=models.PositiveIntegerField(initial=0)
+    gananciamujeres=models.CurrencyField(initial=c(0))
+    gananciahombres=models.CurrencyField(initial=c(0))
+
+    def set_ganmujer(self):
+        
 
 
 class Group(BaseGroup):

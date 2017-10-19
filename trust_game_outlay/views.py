@@ -96,6 +96,7 @@ class waitforP2(WaitPage):
         self.group.get_player_by_id(1).set_gananciajugador(gananciatotalp1)
         self.group.get_player_by_id(2).set_gananciajugador(gananciatotalp2)
 
+
 class waitforallgroups(WaitPage):
 
     def is_displayed(self):
