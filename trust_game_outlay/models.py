@@ -30,6 +30,9 @@ class Subsession(BaseSubsession):
         if len(hombres) != 0:
             self.gananciahombres = sum([p.payoff for p in hombres])/len(hombres)
 
+    def creating_session(self):
+        self.group_randomly()
+
 class Group(BaseGroup):
     sent_amount = models.CurrencyField(
         choices=currency_range(0,Constants.endowment,c(1)),
