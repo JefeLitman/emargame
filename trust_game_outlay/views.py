@@ -24,6 +24,11 @@ class enviocon(Page):
     def is_displayed(self):
         return self.player.id_in_group == 1 and self.round_number > Constants.num_rounds / 2
 
+    def vars_for_template(self):
+        return{
+            'genrep2':self.group.get_player_by_id(2).genre
+        }
+
 class retornosin(Page):
     form_model = models.Group
     form_fields = ['sent_back_amount']
@@ -52,7 +57,8 @@ class retornocon(Page):
 
     def vars_for_template(self):
         return {
-            'tripled_amount': self.group.sent_amount*Constants.multiplication_factor
+            'tripled_amount': self.group.sent_amount*Constants.multiplication_factor,
+            'genrep1':self.group.get_player_by_id(1).genre
         }
 
     def sent_back_amount_choices(self):
