@@ -63,7 +63,8 @@ class retornocon(Page):
         )
 
 class gananciaindividual(Page):
-    pass
+    def ganancia_jugador(self):
+        self.player.gananciajugador=self.player.gananciajugador + self.player.payoff
 
 class gananciatotal(Page):
     def is_displayed(self):
