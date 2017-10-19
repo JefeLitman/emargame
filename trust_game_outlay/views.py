@@ -63,8 +63,7 @@ class retornocon(Page):
         )
 
 class gananciaindividual(Page):
-    def ganancia_jugador(self):
-        self.player.gananciajugador=self.player.gananciajugador+self.player.payoff
+    pass
 
 class gananciatotal(Page):
     def is_displayed(self):
@@ -76,6 +75,10 @@ class waitforP1(WaitPage):
 class waitforP2(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_payoffs()
+        p1=self.group.get_player_by_id(1)
+        p2=self.group.get_player_by_id(2)
+        p1.gananciajugador=p1.gananciajugador+p1.payoff
+        p2.gananciajugador = p2.gananciajugador + p2.payoff
 
 class waitforallgroups(WaitPage):
 
