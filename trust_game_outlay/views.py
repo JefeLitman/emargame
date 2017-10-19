@@ -15,21 +15,21 @@ class enviosin(Page):
     form_fields = ['sent_amount']
 
     def is_displayed(self):
-        return self.player.id_in_group == 1
+        return self.player.id_in_group == 1 and self.round_number<=Constants.num_rounds/2
 
 class enviocon(Page):
     form_model = models.Group
     form_fields = ['sent_amount']
 
     def is_displayed(self):
-        return False
+        return self.player.id_in_group == 1 and self.round_number >= Constants.num_rounds / 2
 
 class retornosin(Page):
     form_model = models.Group
     form_fields = ['sent_back_amount']
 
     def is_displayed(self):
-        return self.player.id_in_group == 2
+        return self.player.id_in_group == 2 and self.round_number<=Constants.num_rounds/2
 
     def vars_for_template(self):
         return {
@@ -48,7 +48,7 @@ class retornocon(Page):
     form_fields = ['sent_back_amount']
 
     def is_displayed(self):
-        return False
+        return self.player.id_in_group == 2 and self.round_number >= Constants.num_rounds / 2
 
     def vars_for_template(self):
         return {
