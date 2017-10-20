@@ -24,22 +24,11 @@ class Subsession(BaseSubsession):
     gananciamujeres=models.CurrencyField(initial=c(0))
     gananciahombres=models.CurrencyField(initial=c(0))
 
-<<<<<<< HEAD
-    def set_ganmujer(self):
-        matrix_jugadores=self.get_group_matrix()
-        filas=len(matrix_jugadores)
-        mujeres=[]
-        hombres=[]
-        for i in range(0,filas,1):
-            for j in range(0,len(matrix_jugadores[filas]),1):
-                if matrix_jugadores[i][j].
-=======
     def set_ganancias(self,mujeres,hombres):
         if len(mujeres) != 0:
             self.gananciamujeres = sum([p.payoff for p in mujeres])/len(mujeres)
         if len(hombres) != 0:
             self.gananciahombres = sum([p.payoff for p in hombres])/len(hombres)
->>>>>>> 16133155b16c864e3c919d686932bf4cda1f0b46
 
     def creating_session(self):
         self.group_randomly()
