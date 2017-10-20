@@ -95,10 +95,22 @@ class waitforP2(WaitPage):
         gananciatotalp2 = sum([p2.payoff for p2 in self.group.get_player_by_id(2).in_all_rounds()])
         self.group.get_player_by_id(1).set_gananciajugador(gananciatotalp1)
         self.group.get_player_by_id(2).set_gananciajugador(gananciatotalp2)
-
+        matrix_jugadores=self.subsession.get_group_matrix()
+        mujeres=[]
+        hombres=[]
+        for i in range(0,len(matrix_jugadores),1):
+            for j in range(0,len(matrix_jugadores[i]),1):
+                if matrix_jugadores[i][j].in_round(1).get_genre() == 1:
+                    mujeres.append(matrix_jugadores[i][j])
+                else:
+                    hombres.append(matrix_jugadores[i][j])
+        self.subsession.set_ganancias(mujeres,hombres)
 
 
 class waitforallgroups(WaitPage):
+    wait_for_all_groups = True
+
+class waitfinal(WaitPage):
 
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
@@ -121,8 +133,9 @@ page_sequence = [
     waitforP1,
     retornosin,
     retornocon,
+    waitforallgroups,
     waitforP2,
     gananciaindividual,
-    waitforallgroups,
+    waitfinal,
     gananciatotal,
 ]
