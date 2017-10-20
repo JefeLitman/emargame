@@ -25,7 +25,13 @@ class Subsession(BaseSubsession):
     gananciahombres=models.CurrencyField(initial=c(0))
 
     def set_ganmujer(self):
-        
+        matrix_jugadores=self.get_group_matrix()
+        filas=len(matrix_jugadores)
+        mujeres=[]
+        hombres=[]
+        for i in range(0,filas,1):
+            for j in range(0,len(matrix_jugadores[filas]),1):
+                if matrix_jugadores[i][j].
 
 
 class Group(BaseGroup):

@@ -97,6 +97,7 @@ class waitforP2(WaitPage):
         self.group.get_player_by_id(2).set_gananciajugador(gananciatotalp2)
 
 
+
 class waitforallgroups(WaitPage):
 
     def is_displayed(self):
@@ -106,8 +107,12 @@ class waitforallgroups(WaitPage):
         self.group.set_payoffs()
         gananciatotalp1 = sum([p1.payoff for p1 in self.group.get_player_by_id(1).in_all_rounds()])
         gananciatotalp2 = sum([p2.payoff for p2 in self.group.get_player_by_id(2).in_all_rounds()])
-        self.group.get_player_by_id(1).set_gananciajugador(gananciatotalp1)
-        self.group.get_player_by_id(2).set_gananciajugador(gananciatotalp2)
+        pA=self.group.get_player_by_id(1)
+        pB=self.group.get_player_by_id(2)
+        pA.set_gananciajugador(gananciatotalp1)
+        pB.set_gananciajugador(gananciatotalp2)
+        matrix_jugadores = self.session.get_participants()
+
 
 page_sequence = [
     welcome,
