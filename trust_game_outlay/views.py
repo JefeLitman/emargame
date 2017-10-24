@@ -106,7 +106,6 @@ class waitforP2(WaitPage):
                     hombres.append(matrix_jugadores[i][j])
         self.subsession.set_ganancias(mujeres,hombres)
 
-
 class waitforallgroups(WaitPage):
     wait_for_all_groups = True
 
@@ -119,12 +118,8 @@ class waitfinal(WaitPage):
         self.group.set_payoffs()
         gananciatotalp1 = sum([p1.payoff for p1 in self.group.get_player_by_id(1).in_all_rounds()])
         gananciatotalp2 = sum([p2.payoff for p2 in self.group.get_player_by_id(2).in_all_rounds()])
-        pA=self.group.get_player_by_id(1)
-        pB=self.group.get_player_by_id(2)
-        pA.set_gananciajugador(gananciatotalp1)
-        pB.set_gananciajugador(gananciatotalp2)
-        matrix_jugadores = self.session.get_participants()
-
+        self.group.get_player_by_id(1).set_gananciajugador(gananciatotalp1)
+        self.group.get_player_by_id(2).set_gananciajugador(gananciatotalp2)
 
 page_sequence = [
     welcome,
