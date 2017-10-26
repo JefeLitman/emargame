@@ -118,7 +118,7 @@ SESSION_CONFIGS = [
     {
         'name':'desfile_belleza',
         'display_name':'Papazito Rico',
-        'num_demo_participants': 30,
+        'num_demo_participants': 2,
         'app_sequence':['desfile_belleza'],
     }
 ]
