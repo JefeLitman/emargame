@@ -30,10 +30,12 @@ class Group(BaseGroup):
             media=media+jugadores[i].elegido
         media=media/len(jugadores)
         ganador=(media*2)/3
-        dif=[]
+        menor=100
         for i in range (0,len(jugadores),1):
-            dif.append( jugadores[i].elegido-ganador)
-
+            if (abs(jugadores[i].elegido - ganador) < menor):
+                menor = abs(jugadores[i].elegido - ganador)
+                indice_ganador = i
+        self.winner=jugadores[indice_ganador].nombre_elegido
 
 
 class Player(BasePlayer):

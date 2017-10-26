@@ -2,10 +2,15 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    Page title
+    Bienvenidos, al juego de "Keynes's beauty contest"
 {% endblock %}
 
 {% block content %}
+
+    <p> Este juego consiste en que un grupo de personas selecciona un número de 1-100, gana la persona que se encuentre a 2/3 de la media del grupo o más cercana a ella </p>
+
+    {% formfield player.nombre_elegido with label="Por favor ingrese su nombre:" %}
+    {% formfield player.elegido with label="Escoga un número:" %}
 
     {% next_button %}
 

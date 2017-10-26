@@ -12,6 +12,7 @@ class ResultsWaitPage(WaitPage):
 
     def after_all_players_arrive(self):
         matrix_jugadores = self.subsession.get_group_matrix()
+        self.group.set_winner(matrix_jugadores)
 
 
 class Results(Page):
