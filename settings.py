@@ -114,8 +114,7 @@ SESSION_CONFIGS = [
         'display_name': 'Juego de Negociacion: Inversion',
         'num_demo_participants': 2,
         'app_sequence': ['trust_game_outlay'],
-    }
-
+    },
     {
         'name':'desfile_belleza',
         'display_name':'Papazito Rico',
