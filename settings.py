@@ -99,6 +99,9 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 
+
+# anything you put after the below line will override
+# oTree's default settings. Use with caution.
 SESSION_CONFIGS = [
     # {
     #     'name': '...',
@@ -112,8 +115,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         'app_sequence': ['trust_game_outlay'],
     }
-]
 
-# anything you put after the below line will override
-# oTree's default settings. Use with caution.
+    {
+        'name':'desfile_belleza',
+        'display_name':'Papazito Rico',
+        'num_demo_participants': 30,
+        'app_sequence':['desfile_belleza'],
+    }
+]
 otree.settings.augment_settings(globals())
