@@ -117,7 +117,7 @@ SESSION_CONFIGS = [
     },
     {
         'name':'desfile_belleza',
-        'display_name':'Papazito Rico',
+        'display_name':'Concurso de Belleza de Keyne',
         'num_demo_participants': 2,
         'app_sequence':['desfile_belleza'],
     }
