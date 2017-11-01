@@ -14,7 +14,7 @@ Escoge el ganador que este a 2/3 de la media-
 class Constants(BaseConstants):
     name_in_url = 'desfile_belleza'
     players_per_group = None
-    num_rounds = 1
+    num_rounds = 5
 
 
 class Subsession(BaseSubsession):

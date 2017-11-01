@@ -1,4 +1,4 @@
-from otree.api import (
+﻿from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
@@ -14,7 +14,7 @@ Los juegos de negociación son un ejercicio pedagógico que aumenta el interés 
 class Constants(BaseConstants):
     name_in_url = 'trust_game_outlay'
     players_per_group = 2
-    num_rounds = 2
+    num_rounds = 10
 
     endowment = c(1000)
     multiplication_factor = 3
