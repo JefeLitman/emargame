@@ -124,4 +124,8 @@ SESSION_CONFIGS = [
         'app_sequence':['desfile_belleza'],
     }
 ]
+
+#Configuracion del servicio de sentry de oTree (Es gratuito); SENTRY_DSN
+SENTRY_DSN = 'http://63bf6d0246c949bcbdda573922c8ce46:b4cfda43a85943b78a8b2aebd4f3e797@sentry.otree.org/224'
+
 otree.settings.augment_settings(globals())
