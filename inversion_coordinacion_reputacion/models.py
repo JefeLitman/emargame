@@ -14,7 +14,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'inversion_coordinacion_reputacion'
     players_per_group = 2
-    num_rounds = 1
+    num_rounds = 2
 
     pago=c(1000)
 
@@ -36,5 +36,5 @@ class Player(BasePlayer):
     def set_payoff(self,ganancia):
         self.payoff=Constants.pago-self.inversion+ganancia
 
-    def obtener_inversion(self):
-        return self.inversion
+    def set_calificacion(self,nota):
+        self.calificacion=nota
