@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
 
-</body>
-</html>
+{% block title %}
+    Califica a tu otro compañer@
+{% endblock %}
+
+{% block content %}
+
+    <p>Ahora es el turno de calificar a tu compañer@ de 1 a 5 segun lo que te parezca</p>
+
+    {% formfield otro.calificacion with label = "Califique de 1 a 5 al otro participante:" %}
+
+    {% next_button %}
+
+{% endblock %}
+

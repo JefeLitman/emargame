@@ -32,9 +32,13 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     inversion=models.CurrencyField(initial=c(0),min=c(0),max=c(0))
     calificacion=models.IntegerField(initial=0, min=0, max=5)
+    calificacion_promedio=models.FloatField(initial=0,min=0,max=5)
+    ganancia_total = models.CurrencyField(initial=c(0))
 
     def set_payoff(self,ganancia):
         self.payoff=Constants.pago-self.inversion+ganancia
 
-    def set_calificacion(self,nota):
-        self.calificacion=nota
+    def get_calificacion(self,nota):
+        return self.calificacion
+    def get_ganancias(self):
+        return self.ganancia_total

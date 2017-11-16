@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
 
-</body>
-</html>
+{% block title %}
+    Decide cuanto invertir
+{% endblock %}
+
+{% block content %}
+    
+    <p>Su dotacion inicial es de {{Constants.endowment}}</p>
+
+    {% formfield player.inversion with label = "Digite los puntos que desea enviar al otro participante:" %}
+
+    {% next_button %}
+
+{% endblock %}
