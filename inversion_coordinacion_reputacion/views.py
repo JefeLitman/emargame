@@ -81,13 +81,18 @@ page_sequence = [
     bienvenida,
     esperagrupos,
     enviasin,
+    esperagrupos,
     califica,
     esperagrupos,
     calculos,
+    esperagrupos,
     enviacon,
+    esperagrupos,
     califica,
     esperagrupos,
     calculos,
+    esperagrupos,
     gananciasindividuales,
+    esperagrupos,
     gananciastotales
 ]
