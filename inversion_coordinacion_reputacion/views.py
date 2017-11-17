@@ -25,7 +25,7 @@ class enviacon(Page):
 
     def vars_for_template(self):
         if (self.round_number -1 != 0):
-            otro_jugador = self.player.in_round(self.round_number-1).get_others_in_group().calificacion_promedio
+            otro_jugador = self.player.in_round(self.round_number-1).get_companero().calificacion_promedio
             return {
                 'calificacionpromedio':otro_jugador
             }
@@ -35,8 +35,9 @@ class enviacon(Page):
             }
 
 class califica(Page):
-    form_model = models.Player
+    form_model = models.Player.get_companero()
     form_fields = ['calificacion']
+
 
 class gananciastotales(Page):
 
