@@ -35,9 +35,8 @@ class enviacon(Page):
             }
 
 class califica(Page):
-    form_model = models.Player.get_companero()
+    form_model =models.Player
     form_fields = ['calificacion']
-
 
 class gananciastotales(Page):
 
@@ -68,7 +67,11 @@ class calculos(WaitPage):
         p2ganancia = sum([j2.payoff for j2 in p2.in_all_rounds()])
         p1.ganancia_total=p1ganancia
         p2.ganancia_total=p2ganancia
-        #Calculando la calificacion promedio
+        #Colocando en orden las calificaciones de los jugadores
+        calificacionp1=p2.calificacion
+        p2.calificacion=p1.calificacion
+        p1.calificacion=calificacionp1
+        # Calculando la calificacion promedio
         p1.calificacion_promedio=sum([j1.calificacion for j1 in p1.in_all_rounds()])/self.round_number
         p2.calificacion_promedio=sum([j2.calificacion for j2 in p2.in_all_rounds()])/self.round_number
 
