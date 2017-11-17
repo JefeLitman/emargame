@@ -51,22 +51,29 @@ class gananciasindividuales(Page):
 class esperagrupos(WaitPage):
     wait_for_all_groups = True
 
-class calculos(WaitPage):
+class calculoganancia(WaitPage):
+
+    def after_all_players_arrive(self):
+        # Obteniendo los jugadores por grupo
+        p1 = self.group.get_player_by_id(1)
+        p2 = self.group.get_player_by_id(2)
+        # Calculando la ganancia generada por la inversion de ambos
+        ganancia = self.group.calcular_gananancia(p1.inversion, p2.inversion)
+        # calculando los pagos de cada jugador despues de la inversion
+        p1.set_payoff(ganancia)
+        p2.set_payoff(ganancia)
+        # Calculo de ganancias totales por ronda
+        p1ganancia = sum([j1.payoff for j1 in p1.in_all_rounds()])
+        p2ganancia = sum([j2.payoff for j2 in p2.in_all_rounds()])
+        p1.ganancia_total = p1ganancia
+        p2.ganancia_total = p2ganancia
+
+class calculocalificacion(WaitPage):
 
     def after_all_players_arrive(self):
         #Obteniendo los jugadores por grupo
         p1=self.group.get_player_by_id(1)
         p2=self.group.get_player_by_id(2)
-        #Calculando la ganancia generada por la inversion de ambos
-        ganancia=self.group.calcular_gananancia(p1.inversion,p2.inversion)
-        #calculando los pagos de cada jugador despues de la inversion
-        p1.set_payoff(ganancia)
-        p2.set_payoff(ganancia)
-        #Calculo de ganancias totales por ronda
-        p1ganancia=sum([j1.payoff for j1 in p1.in_all_rounds()])
-        p2ganancia = sum([j2.payoff for j2 in p2.in_all_rounds()])
-        p1.ganancia_total=p1ganancia
-        p2.ganancia_total=p2ganancia
         #Colocando en orden las calificaciones de los jugadores
         calificacionp1=p2.calificacion
         p2.calificacion=p1.calificacion
@@ -81,11 +88,11 @@ page_sequence = [
     enviasin,
     enviacon,
     esperagrupos,
-    calculos,
-    esperagrupos,
+    calculoganancia,
     gananciasindividuales,
     esperagrupos,
     califica,
     esperagrupos,
+    calculocalificacion,
     gananciastotales
 ]
