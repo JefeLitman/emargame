@@ -42,3 +42,5 @@ class Player(BasePlayer):
         return self.calificacion
     def get_ganancias(self):
         return self.ganancia_total
+    def get_companero(self):
+        return self.get_others_in_group()

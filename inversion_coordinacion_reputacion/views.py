@@ -38,12 +38,6 @@ class califica(Page):
     form_model = models.Player
     form_fields = ['calificacion']
 
-    def vars_for_template(self):
-        otro_jugador = self.player.get_others_in_group()
-        return {
-            'otro':otro_jugador
-        }
-
 class gananciastotales(Page):
 
     def is_displayed(self):
