@@ -2,11 +2,16 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Page title
+    Ganancias en esta ronda
 {% endblock %}
 
 {% block content %}
 
+    <p>
+        Su ganancia en este periodo es: {{player.payoff}}
+    </p>
+
+    {% next_button %}
 
 {% endblock %}
 

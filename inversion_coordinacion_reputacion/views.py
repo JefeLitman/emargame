@@ -44,10 +44,13 @@ class califica(Page):
             'otro':otro_jugador
         }
 
-class ganancias(Page):
+class gananciastotales(Page):
 
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
+
+class gananciasindividuales(Page):
+    pass
 
 #Declaracion de paginas de espera
 
@@ -66,8 +69,8 @@ class calculos(WaitPage):
         p1.set_payoff(ganancia)
         p2.set_payoff(ganancia)
         #Calculo de ganancias totales por ronda
-        p1ganancia=sum([p1.payoff for p1 in p1.in_all_rounds()])
-        p2ganancia = sum([p2.payoff for p2 in p2.in_all_rounds()])
+        p1ganancia=sum([j1.payoff for j1 in p1.in_all_rounds()])
+        p2ganancia = sum([j2.payoff for j2 in p2.in_all_rounds()])
         p1.ganancia_total=p1ganancia
         p2.ganancia_total=p2ganancia
         #Calculando la calificacion promedio
@@ -85,5 +88,6 @@ page_sequence = [
     califica,
     esperagrupos,
     calculos,
-    ganancias
+    gananciasindividuales,
+    gananciastotales
 ]
