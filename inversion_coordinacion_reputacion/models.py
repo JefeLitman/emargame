@@ -30,7 +30,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    inversion=models.CurrencyField(initial=c(0),min=c(0),max=c(0))
+    inversion=models.CurrencyField(initial=c(0),choices=currency_range(0,Constants.pago,c(1)))
     calificacion=models.IntegerField(initial=0, min=0, max=5)
     calificacion_promedio=models.FloatField(initial=0,min=0,max=5)
     ganancia_total = models.CurrencyField(initial=c(0))
