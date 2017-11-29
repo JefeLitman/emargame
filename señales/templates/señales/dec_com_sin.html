@@ -1,10 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Bienvenid@s
+{% endblock %}
+
+{% block content %}
+
+    <style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border: 1px solid black;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+</style>
+<div align="center">
+<table class="tg">
+  <tr>
+    <th class="tg-amwm">Calidad</th>
+    <th class="tg-amwm">1</th>
+    <th class="tg-amwm">2</th>
+    <th class="tg-amwm">3</th>
+    <th class="tg-amwm">4</th>
+    <th class="tg-amwm">5</th>
+  </tr>
+  <tr>
+    <td class="tg-amwm">Costo</td>
+    <td class="tg-baqh">100</td>
+    <td class="tg-baqh">200</td>
+    <td class="tg-baqh">300</td>
+    <td class="tg-baqh">400</td>
+    <td class="tg-baqh">500</td>
+  </tr>
+  <tr>
+    <td class="tg-amwm">Valor</td>
+    <td class="tg-baqh">500</td>
+    <td class="tg-baqh">1000</td>
+    <td class="tg-baqh">1500</td>
+    <td class="tg-baqh">2000</td>
+    <td class="tg-baqh">2500</td>
+  </tr>
+</table>
+    </div>
+
+    <b>
+        Usted es el comprador.<br/>
+    </b>
+    <p>
+        Mensaje El vendedor está ofreciendo un producto de calidad: {{variable}}<br>
+        El precio de venta es {{variable}}:<br/>
+    </p>
+
+    {{%formfield player.compro with label="¿Desea comprar el bien?"%}}
+
+    {% next_button %}
+
+{% endblock %}

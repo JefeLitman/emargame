@@ -14,11 +14,12 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'señales'
     players_per_group = None
-    num_rounds = 1
+    num_rounds = 20
 
 
 class Subsession(BaseSubsession):
-    pass
+    def creating_session(self):
+        self.group_randomly()
 
 
 class Group(BaseGroup):
@@ -26,4 +27,6 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
+
+    def role(self):
+        pass
