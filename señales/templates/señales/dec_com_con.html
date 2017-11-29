@@ -43,6 +43,27 @@
 </table>
     </div>
 
+    <b>
+        Usted es el comprador.<br/>
+    </b>
+    {% if respuesta_vendedor %}
+
+    <p>
+        Mensaje El vendedor le asegura que está ofreciendo un producto de calidad {{variable}}<br/>
+        El precio de venta es {{variable}}:<br/>
+    </p>
+
+    {% else %}
+
+    <p>
+        Mensaje El vendedor está ofreciendo un producto de calidad {{variable}}<br/>
+        El precio de venta es {{variable}}<br/>
+    </p>
+
+    {% endif %}
+
+    {%formfield campodecomprador with label="¿Desea comprar el bien?"%}
+
     {% next_button %}
 
 {% endblock %}

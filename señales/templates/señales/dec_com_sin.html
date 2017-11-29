@@ -47,11 +47,11 @@
         Usted es el comprador.<br/>
     </b>
     <p>
-        Mensaje El vendedor está ofreciendo un producto de calidad: {{variable}}<br>
-        El precio de venta es {{variable}}:<br/>
+        Mensaje El vendedor está ofreciendo un producto de calidad {{variable}}<br/>
+        El precio de venta es {{variable}}<br/>
     </p>
 
-    {{%formfield player.compro with label="¿Desea comprar el bien?"%}}
+    {%formfield campodecomprador with label="¿Desea comprar el bien?"%}
 
     {% next_button %}
 

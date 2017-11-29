@@ -43,6 +43,20 @@
 </table>
     </div>
 
+    <b>
+        Usted es el vendedor.<br/>
+    </b>
+
+    {%formfield campocalidad with label="Debe decidir la calidad del producto:"%}
+
+    {%formfield campodecomprador with label="Debe decidir el mensaje sobre la calidad del producto:"%}
+
+    {%formfield campodecomprador with label="Debe decidir el precio de venta:"%}
+
+    <p></p>
+
+    {%formfield respuestavendedor with label="¿Desea invertir 500 puntos para que el comprador esté seguro de la calidad ofrecida?"%}
+
     {% next_button %}
 
 {% endblock %}
