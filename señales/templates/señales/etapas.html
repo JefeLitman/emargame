@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Etapas del juego
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        El estudio constará de 20 periodos: 10 periodos iniciales y 10 periodos finales. Los
+        participantes serán emparejados al azar al inicio de cada periodo con alguien que se
+        encuentra dentro de la sala. Por consiguiente, la probabilidad de jugar varias veces con la
+        misma persona es muy baja.<br/>
+        En el estudio existen dos tipos de jugadores: Vendedores y Compradores. Al inicio de cada
+        periodo se informará si usted juega como vendedor o como comprador. El computador
+        asignará al azar estos roles.<br/>
+        El juego consta de dos etapas:<br/>
+        <ul>
+            <li>Etapa 1: Decisiones.</li>
+            <li>Etapa 2: Ganancias.</li>
+        </ul>
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

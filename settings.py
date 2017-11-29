@@ -123,6 +123,12 @@ SESSION_CONFIGS = [
         'display_name': 'Inversión: Coordinación y reputación',
         'num_demo_participants':2,
         'app_sequence': ['inversion_coordinacion_reputacion'],
+    },
+    {
+        'name':'señales',
+        'display_name': 'Señales',
+        'num_demo_participants':2,
+        'app_sequence': ['señales'],
     }
 ]
 
