@@ -47,16 +47,16 @@
         Usted es el vendedor.<br/>
     </b>
 
-    {%formfield campocalidad with label="Debe decidir la calidad del producto:"%}
+    {%formfield group.calidad_real with label="Debe decidir la calidad del producto:"%}
 
-    {%formfield campodecomprador with label="Debe decidir el mensaje sobre la calidad del producto:"%}
+    {%formfield group.calidad_ofrecida with label="Debe decidir el mensaje sobre la calidad del producto:"%}
 
-    {%formfield campodecomprador with label="Debe decidir el precio de venta:"%}
+    {%formfield group.precio_vendedor with label="Debe decidir el precio de venta:"%}
 
     <p>Si la calidad del producto coincide con el  mensaje, usted puede invertir 500 puntos para asegurar la calidad.
     <br> <small> En caso de que no coincida responda: NO </small> </p>
 
-    {%formfield respuestavendedor with label="¿Desea invertir 500 puntos para que el comprador esté seguro de la calidad ofrecida?"%}
+    {%formfield group.decision_vendedor with label="¿Desea invertir 500 puntos para que el comprador esté seguro de la calidad ofrecida?"%}
 
     {% next_button %}
 

@@ -2,7 +2,7 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Ganancias
+    Ganancias Individuales
 {% endblock %}
 
 {% block content %}
@@ -10,10 +10,10 @@
  {% if player.role==vendedor %}
 
 <p> <b>Usted es el vendedor</b>  <br>
-    La calidad del producto es:{{}} <br>
-    El precio de venta es: {{}} <br/>
+    La calidad del producto es:{{group.calidad_real}} <br>
+    El precio de venta es: {{group.precio_vendedor}} <br/>
 
-        {% if respuestavendedor == True }
+        {% if group.decision_comprador == True }
 
          Se realizó la transacción </p>
 
@@ -23,15 +23,15 @@
 
         {% endif %}
 
-    <p>Su ganancia en este periodo es: {{}} </p>
+    <p>Su ganancia en este periodo es: {{player.payoff}} </p>
 
  {% else %}
 
 <p> <b>Usted es el comprador</b>  <br>
-    La calidad del producto es:{{}} <br>
-    El precio de venta es: {{}} <br/>
+    La calidad del producto es:{{group.calidad_real}} <br>
+    El precio de venta es: {{group.precio_vendedor}} <br/>
 
-        {% if respuestavendedor == True }
+        {% if group.decision_comprador == True }
 
          Se realizó la transacción </p>
 
@@ -41,7 +41,7 @@
 
         {% endif %}
 
-    <p>Su ganancia en este periodo es: {{}} </p>
+    <p>Su ganancia en este periodo es: {{player.payoff}} </p>
 
     {% endif %}
 

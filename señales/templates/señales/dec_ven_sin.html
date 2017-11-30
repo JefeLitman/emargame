@@ -47,11 +47,11 @@
         Usted es el vendedor.<br/>
     </b>
 
-    {%formfield campocalidad with label="Debe decidir la calidad del producto:"%}
+    {%formfield group.calidad_real with label="Debe decidir la calidad del producto:"%}
 
-    {%formfield campodecomprador with label="Debe decidir el mensaje sobre la calidad del producto:"%}
+    {%formfield group.calidad_ofrecida with label="Debe decidir el mensaje sobre la calidad del producto:"%}
 
-    {%formfield campodecomprador with label="Debe decidir el precio de venta:"%}
+    {%formfield group.precio_vendedor with label="Debe decidir el precio de venta:"%}
 
     {% next_button %}
 
