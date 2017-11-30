@@ -1,0 +1,50 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Ganancias Individuales
+{% endblock %}
+
+{% block content %}
+
+ {% if player.role== "Vendedor" %}
+
+<p> <b>Usted es el vendedor</b>  <br>
+    La calidad del producto es:{{group.calidad_real}} <br>
+    El precio de venta es: {{group.precio_vendedor}} <br/>
+
+        {% if group.decision_comprador == True %}
+
+         Se realizó la transacción </p>
+
+        {% else %}
+
+         No se realizó la transacción</p>
+
+        {% endif %}
+
+    <p>Su ganancia en este periodo es: {{player.payoff}} </p>
+
+ {% else %}
+
+<p> <b>Usted es el comprador</b>  <br>
+    La calidad del producto es:{{group.calidad_real}} <br>
+    El precio de venta es: {{group.precio_vendedor}} <br/>
+
+        {% if group.decision_comprador == True %}
+
+         Se realizó la transacción </p>
+
+        {% else %}
+
+         No se realizó la transacción</p>
+
+        {% endif %}
+
+    <p>Su ganancia en este periodo es: {{player.payoff}} </p>
+
+    {% endif %}
+
+    {% next_button %}
+
+{% endblock %}
