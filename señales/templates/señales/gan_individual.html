@@ -9,17 +9,17 @@
 
  {% if player.role==vendedor %}
 
-    <p> Usted es el vendedor </p> <br>
+<p> <b>Usted es el vendedor</b>  <br>
     La calidad del producto es:{{}} <br>
-    El precio de venta es: {{}}
+    El precio de venta es: {{}} <br/>
 
         {% if respuestavendedor == True }
 
-         <p>Se realizó la transacción </p>
+         Se realizó la transacción </p>
 
         {% else %}
 
-        <p> No se realizó la transacción</p>
+         No se realizó la transacción</p>
 
         {% endif %}
 
@@ -27,21 +27,24 @@
 
  {% else %}
 
-    <p> Usted es el comprador </p> <br>
-    El precio de venta es: {{}}
+<p> <b>Usted es el comprador</b>  <br>
+    La calidad del producto es:{{}} <br>
+    El precio de venta es: {{}} <br/>
 
         {% if respuestavendedor == True }
 
-         <p>Se realizó la transacción </p>
+         Se realizó la transacción </p>
 
         {% else %}
 
-        <p> No se realizó la transacción</p>
+         No se realizó la transacción</p>
 
         {% endif %}
 
     <p>Su ganancia en este periodo es: {{}} </p>
 
     {% endif %}
+
+    {% next_button %}
 
 {% endblock %}
