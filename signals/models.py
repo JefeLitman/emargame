@@ -12,7 +12,7 @@ Your app description
 
 
 class Constants(BaseConstants):
-    name_in_url = 'señales'
+    name_in_url = 'signals'
     players_per_group = None
     num_rounds = 2
 
