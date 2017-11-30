@@ -7,27 +7,6 @@
 
 {% block content %}
 
-    {% if player.id_in_group == 1 %}
-
-        <p> <b>Usted es el vendedor</b>  <br>
-        La calidad del producto es:{{group.calidad_real}} <br>
-        El precio de venta es: {{group.precio_vendedor}} <br/>
-        </p>
-
-        {% if group.decision_comprador==True }
-
-            <p>Se realizó la transacción </p>
-
-        {% else %}
-
-            <p>No se realizó la transacción</p>
-
-        {% endif %}
-
-        <p>Su ganancia en este periodo es: {{player.payoff}} </p>
-
-    {% else %}
-
         <p> <b>Usted es el comprador</b>  <br>
         La calidad del producto es:{{group.calidad_real}} <br>
         El precio de venta es: {{group.precio_vendedor}} <br/></p>
@@ -43,8 +22,6 @@
         {% endif %}
 
         <p>Su ganancia en este periodo es: {{player.payoff}} </p>
-
-    {% endif %}
 
     {% next_button %}
 

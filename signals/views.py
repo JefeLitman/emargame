@@ -37,8 +37,13 @@ class etapas(Page):
     def is_displayed(self):
         return self.round_number == 1
 
-class gan_individual(Page):
-    pass
+class gan_ven_individual(Page):
+    def is_displayed(self):
+        return self.player.role=='Vendedor'
+
+class gan_com_individual(Page):
+    def is_displayed(self):
+        return self.player.role=='Comprador'
 
 class gan_totales(Page):
     def is_displayed(self):
@@ -62,6 +67,7 @@ page_sequence = [
     dec_com_con,
     esperagrupos,
     calculos,
-    gan_individual,
+    gan_ven_individual,
+    gan_com_individual,
     gan_totales
 ]
