@@ -13,7 +13,7 @@ Your app description
 
 class Constants(BaseConstants):
     name_in_url = 'signals'
-    players_per_group = None
+    players_per_group = 2
     num_rounds = 20
     valor = [c(500), c(1000), c(1500), c(2000), c(2500)]
     costo = [c(100), c(200), c(300), c(400), c(500)]
