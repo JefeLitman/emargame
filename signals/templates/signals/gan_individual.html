@@ -7,7 +7,7 @@
 
 {% block content %}
 
- {% if player.role== "Vendedor" %}
+ {% if player.id_in_group == 1 %}
 
 <p> <b>Usted es el vendedor</b>  <br>
     La calidad del producto es:{{group.calidad_real}} <br>

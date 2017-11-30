@@ -13,25 +13,25 @@ class dec_com_con(Page):
     form_model = models.Group
     form_fields = ['decision_comprador']
     def is_displayed(self):
-        return self.player.role=='Comprador' and self.round_number > Constants.num_rounds/2
+        return self.player.role()=='Comprador' and self.round_number > Constants.num_rounds/2
 
 class dec_com_sin(Page):
     form_model = models.Group
     form_fields = ['decision_comprador']
     def is_displayed(self):
-        return self.player.role=='Comprador' and self.round_number <= Constants.num_rounds/2
+        return self.player.role()=='Comprador' and self.round_number <= Constants.num_rounds/2
 
 class dec_ven_con(Page):
     form_model = models.Group
     form_fields = ['calidad_real','calidad_ofrecida','precio_vendedor','decision_vendedor']
     def is_displayed(self):
-        return self.player.role=='Vendedor' and self.round_number > Constants.num_rounds/2
+        return self.player.role()=='Vendedor' and self.round_number > Constants.num_rounds/2
 
 class dec_ven_sin(Page):
     form_model = models.Group
     form_fields = ['calidad_real','calidad_ofrecida','precio_vendedor']
     def is_displayed(self):
-        return self.player.role=='Vendedor' and self.round_number <= Constants.num_rounds/2
+        return self.player.role()=='Vendedor' and self.round_number <= Constants.num_rounds/2
 
 class etapas(Page):
     def is_displayed(self):
