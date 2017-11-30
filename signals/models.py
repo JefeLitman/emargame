@@ -14,7 +14,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'signals'
     players_per_group = None
-    num_rounds = 2
+    num_rounds = 20
     valor = [c(500), c(1000), c(1500), c(2000), c(2500)]
     costo = [c(100), c(200), c(300), c(400), c(500)]
 
@@ -25,8 +25,8 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    calidad_real=models.IntegerField(initial=0,min=1,max=5)
-    calidad_ofrecida=models.IntegerField(initial=0,min=1,max=5)
+    calidad_real=models.IntegerField(initial=1,min=1,max=5)
+    calidad_ofrecida=models.IntegerField(initial=1,min=1,max=5)
     precio_vendedor=models.CurrencyField(initial=c(0))
     decision_comprador=models.BooleanField(initial=False,choices=[
         [True,'Si'],
