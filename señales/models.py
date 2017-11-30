@@ -23,7 +23,33 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    pass
+    calidad_real=models.IntegerField(initial=0,min=1,max=5)
+    calidad_ofrecida=models.IntegerField(initial=0,min=1,max=5)
+    precio_vendedor=models.CurrencyField(initial=c(0))
+    decision_comprador=models.BooleanField(initial=False,choices=[
+        [True,'Si'],
+        [False,'No']
+    ])
+    decision_vendedor = models.BooleanField(initial=False, choices=[
+        [True, 'Si'],
+        [False, 'No']
+    ])
+    valor=[c(500),c(1000),c(1500),c(2000),c(2500)]
+    costo=[c(100),c(200),c(300),c(400),c(500)]
+
+    def set_payoffs(self):
+        vendedor=self.get_player_by_id(1)
+        comprador=self.get_player_by_id(2)
+        if(self.decision_comprador):
+            comprador.payoff=self.valor[self.calidad_real-1]-self.precio_vendedor
+            if(self.decision_vendedor):
+                vendedor.payoff=self.precio_vendedor-self.costo[self.calidad_real-1]-c(500)
+            else:
+                vendedor.payoff = self.precio_vendedor - self.costo[self.calidad_real - 1]
+        else:
+            vendedor.payoff=c(0)
+            comprador.payoff=c(0)
+
 
 
 class Player(BasePlayer):
