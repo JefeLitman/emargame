@@ -29,4 +29,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
 
     def role(self):
-        pass
+        if self.id_in_group == 1:
+            return 'Vendedor'
+        if self.id_in_group == 2:
+            return 'Comprador'
