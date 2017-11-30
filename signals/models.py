@@ -53,6 +53,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    ganancias_totales=models.CurrencyField(initial=c(0))
 
     def role(self):
         if self.id_in_group == 1:

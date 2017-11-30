@@ -50,6 +50,10 @@ class esperagrupos(WaitPage):
 class calculos(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_payoffs()
+        p1=self.group.get_player_by_id(1)
+        p2=self.group.get_player_by_id(2)
+        p1.ganancias_totales=sum([p.payoff for p in self.group.get_player_by_id(1).in_all_rounds()])
+        p2.ganancias_totales = sum([p.payoff for p in self.group.get_player_by_id(2).in_all_rounds()])
 
 page_sequence = [
     bienvenida,
