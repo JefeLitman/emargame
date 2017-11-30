@@ -15,6 +15,8 @@ class Constants(BaseConstants):
     name_in_url = 'signals'
     players_per_group = None
     num_rounds = 2
+    valor = [c(500), c(1000), c(1500), c(2000), c(2500)]
+    costo = [c(100), c(200), c(300), c(400), c(500)]
 
 
 class Subsession(BaseSubsession):
@@ -34,18 +36,16 @@ class Group(BaseGroup):
         [True, 'Si'],
         [False, 'No']
     ])
-    valor=[c(500),c(1000),c(1500),c(2000),c(2500)]
-    costo=[c(100),c(200),c(300),c(400),c(500)]
 
     def set_payoffs(self):
         vendedor=self.get_player_by_id(1)
         comprador=self.get_player_by_id(2)
         if(self.decision_comprador):
-            comprador.payoff=self.valor[self.calidad_real-1]-self.precio_vendedor
+            comprador.payoff=Constants.valor[self.calidad_real-1]-self.precio_vendedor
             if(self.decision_vendedor):
-                vendedor.payoff=self.precio_vendedor-self.costo[self.calidad_real-1]-c(500)
+                vendedor.payoff=self.precio_vendedor-Constants.costo[self.calidad_real-1]-c(500)
             else:
-                vendedor.payoff = self.precio_vendedor - self.costo[self.calidad_real - 1]
+                vendedor.payoff = self.precio_vendedor - Constants.costo[self.calidad_real - 1]
         else:
             vendedor.payoff=c(0)
             comprador.payoff=c(0)
