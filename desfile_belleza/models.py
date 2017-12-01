@@ -33,7 +33,7 @@ class Group(BaseGroup):
         menor=100
         for i in range (0,len(jugadores),1):
             if (abs(jugadores[i].elegido - ganador) < menor):
-                menor = abs(jugadores[i].elegido - ganador)
+                menor = abs(jugadores[i].elegido - ganador)+random.random()
                 indice_ganador = i
         self.winner=jugadores[indice_ganador].nombre_elegido
 
