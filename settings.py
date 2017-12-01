@@ -49,7 +49,7 @@ DATABASES = {
 # to DEMO. This will allow people to play in demo mode, but not access
 # the full admin interface.
 
-#environ.__setitem__('OTREE_AUTH_LEVEL','STUDY')
+environ.__setitem__('OTREE_AUTH_LEVEL','STUDY')
 AUTH_LEVEL = environ.get('OTREE_AUTH_LEVEL')
 
 # setting for integration with AWS Mturk

@@ -2,6 +2,7 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
+import random as ran
 
 
 author = 'Your name here'
@@ -14,7 +15,7 @@ Escoge el ganador que este a 2/3 de la media-
 class Constants(BaseConstants):
     name_in_url = 'desfile_belleza'
     players_per_group = None
-    num_rounds = 1
+    num_rounds = 3
 
 
 class Subsession(BaseSubsession):
@@ -33,7 +34,7 @@ class Group(BaseGroup):
         menor=100
         for i in range (0,len(jugadores),1):
             if (abs(jugadores[i].elegido - ganador) < menor):
-                menor = abs(jugadores[i].elegido - ganador)+random.random()
+                menor = abs(jugadores[i].elegido - ganador)+ran.random()
                 indice_ganador = i
         self.winner=jugadores[indice_ganador].nombre_elegido
 
