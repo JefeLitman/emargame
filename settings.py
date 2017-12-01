@@ -124,14 +124,12 @@ SESSION_CONFIGS = [
         'num_demo_participants':2,
         'app_sequence': ['inversion_coordinacion_reputacion'],
     },
-
-	{
-        'name':'keyne_beauty_context',
-        'display_name': 'Keyne Beauty Context',
-        'num_demo_participants':6,
-        'app_sequence': ['keyne_beauty_context'],
+    {
+        'name':'signals',
+        'display_name': 'Señales',
+        'num_demo_participants':2,
+        'app_sequence': ['signals'],
     }
-
 ]
 
 #Configuracion del servicio de sentry de oTree (Es gratuito); SENTRY_DSN
