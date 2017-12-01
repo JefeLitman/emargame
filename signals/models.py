@@ -27,7 +27,7 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     calidad_real=models.IntegerField(initial=1,min=1,max=5)
     calidad_ofrecida=models.IntegerField(initial=1,min=1,max=5)
-    precio_vendedor=models.CurrencyField(initial=c(0))
+    precio_vendedor=models.CurrencyField(initial=c(0)) #Valor(precio)
     decision_comprador=models.BooleanField(initial=False,choices=[
         [True,'Si'],
         [False,'No']
@@ -40,9 +40,9 @@ class Group(BaseGroup):
     def set_payoffs(self):
         vendedor=self.get_player_by_id(1)
         comprador=self.get_player_by_id(2)
-        if(self.decision_comprador):
+        if(self.decision_comprador): #(si lo compra, el comprador?)
             comprador.payoff=Constants.valor[self.calidad_real-1]-self.precio_vendedor
-            if(self.decision_vendedor):
+            if(self.decision_vendedor): #(si el vendedor toma la decision de invertir los 500 pts)
                 vendedor.payoff=self.precio_vendedor-Constants.costo[self.calidad_real-1]-c(500)
             else:
                 vendedor.payoff = self.precio_vendedor - Constants.costo[self.calidad_real - 1]
