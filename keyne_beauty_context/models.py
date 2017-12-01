@@ -38,7 +38,7 @@ class Group(BaseGroup):
         for i in range (0,n,1):
             resta=abs(jugadores[i].input_player - valor_elegido)
             resta=resta+random.random()
-            if (resta <= menor)
+            if (resta <= menor):
                 menor = resta
                 indice_ganador=i
 
