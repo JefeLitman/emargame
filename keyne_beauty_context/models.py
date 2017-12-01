@@ -37,14 +37,14 @@ class Group(BaseGroup):
         menor=100
         for i in range (0,n,1):
             resta=abs(jugadores[i].input_player - valor_elegido)
-            resta=resta+rand(0,1)
+            resta=resta+random.random()
             if (resta <= menor)
                 menor = resta
                 indice_ganador=i
 
         self.winner=jugadores[indice_ganador].name_player
-        
-        
+
+
 class Player(BasePlayer):
     input_player = models.PositiveIntegerField(initial=0,min=0,max=100)
     name_player = models.CharField()
