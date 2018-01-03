@@ -26,8 +26,18 @@ class Group(BaseGroup):
     x=randint(0,500)
     y=randint(500,1500)
     matrix=[[1000,1000,x,y],[y,x,250,250]]
-    opcion_azul = models.IntegerField(choices=[[0,'A1'],[1,'A2']])
-    opcion_verde = models.IntegerField(choices=[[0,'V1'],[2,'V2']])
+    opcion_azul = models.IntegerField(
+        choices=[
+            [0,'A1'],
+            [1,'A2'],
+        ]
+    )
+    opcion_verde = models.IntegerField(
+        choices=[
+            [0,'V1'],
+            [2,'V2'],
+        ]
+    )
 
     def set_payoffs(self):
         jugador_azul=self.get_player_by_id(1)

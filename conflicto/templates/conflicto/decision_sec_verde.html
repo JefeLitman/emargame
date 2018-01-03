@@ -35,7 +35,7 @@
 <p> <b>Usted es el participante Verde</b>  <br>
     Ahora debes tomar tú decisión.<br>
     El participante Azul eligió {{group.opcion_azul}}
-    Yo elijo: {{group.opcion_verde}} <br/>
+    {% formfield group.opcion_verde with label="Yo elijo:" %} <br/>
 
     {% next_button %}
 

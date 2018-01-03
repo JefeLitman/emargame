@@ -23,11 +23,11 @@
   <tr>
     <td class="tg-7fgq">A1</td>
     <td class="tg-kt89">1000,1000</td>
-    <td class="tg-kt89">X,Y</td>
+    <td class="tg-kt89">{{group.x}},{{group.y}}</td>
   </tr>
   <tr>
     <td class="tg-7fgq">A2</td>
-    <td class="tg-kt89">Y,X</td>
+    <td class="tg-kt89">{{group.y}},{{group.x}}</td>
     <td class="tg-kt89">250,250</td>
   </tr>
 </table></div>
@@ -36,13 +36,13 @@
 
 <p> <b>Usted es el participante Azul</b>  <br>
     Ahora debes tomar tú decisión.<br>
-    Yo elijo: {{group.opcion_azul}} <br/>
+    {% formfield group.opcion_azul with label="Yo elijo:" %} <br/>
 
  {% else %}
 
 <p> <b>Usted es el participante Verde</b>  <br>
     Ahora debes tomar tú decisión.<br>
-    Yo elijo: {{group.opcion_verde}} <br/>
+    {% formfield group.opcion_verde with label="Yo elijo:" %} <br/>
 
     {% endif %}
 
