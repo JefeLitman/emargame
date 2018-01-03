@@ -129,6 +129,12 @@ SESSION_CONFIGS = [
         'display_name': 'Señales',
         'num_demo_participants':2,
         'app_sequence': ['signals'],
+    },
+    {
+        'name':'conflicto',
+        'display_name': 'Conflicto',
+        'num_demo_participants':2,
+        'app_sequence': ['conflicto'],
     }
 ]
 

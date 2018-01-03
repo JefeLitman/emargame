@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Ganancias Individuales
+{% endblock %}
+
+{% block content %}
+
+ {% if player.id_in_group == 1 %}
+
+<p> <b>Usted es el participante Azul</b>  <br>
+    Usted eligio: {{group.opcion_azul}} <br>
+    El participante Verde eligio: {{group.opcion_verde}} <br/>
+
+    <p>Su ganancia en este periodo es: {{player.payoff}} </p>
+
+ {% else %}
+
+<p> <b>Usted es el participante Verde</b>  <br>
+    Usted eligio: {{group.opcion_verde}} <br>
+    El participante Azul eligio: {{group.opcion_azul}} <br/>
+
+    <p>Su ganancia en este periodo es: {{player.payoff}} </p>
+
+    {% endif %}
+
+    {% next_button %}
+
+{% endblock %}
