@@ -23,9 +23,9 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    x=randint(0,500)
-    y=randint(500,1500)
-    matrix=[[1000,1000,x,y],[y,x,250,250]]
+    x=models.IntegerField(initial= randint(0,500))
+    y=models.IntegerField(initial= randint(500,1500))
+
     opcion_azul = models.IntegerField(
         choices=[
             [0,'A1'],
@@ -42,8 +42,9 @@ class Group(BaseGroup):
     def set_payoffs(self):
         jugador_azul=self.get_player_by_id(1)
         jugador_verde=self.get_player_by_id(2)
-        jugador_azul.payoff=self.matrix[self.opcion_azul][self.opcion_verde]
-        jugador_verde.payoff = self.matrix[self.opcion_azul][self.opcion_verde+1]
+        matrix=[[1000,1000,x,y],[y,x,250,250]]
+        jugador_azul.payoff=matrix[self.opcion_azul][self.opcion_verde]
+        jugador_verde.payoff = matrix[self.opcion_azul][self.opcion_verde+1]
 
 class Player(BasePlayer):
     ganancias_totales = models.CurrencyField(initial=c(0))
