@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles otree %}
 
 {% block title %}
     Bienvenid@s
@@ -15,7 +15,7 @@
         A continuacion, marque la casilla “Mujer” u “Hombre” según corresponda en su caso. Al finalizar cada periodo se conocerán los puntos promedio que obtuvieron las mujeres y los hombres. </br>
     </p>
 
-    {% formfield player.genre with label="Selecciona tu genero:" %}
+    {% formfield player.genre label="Selecciona tu genero:" %}
 
     {% next_button %}
 

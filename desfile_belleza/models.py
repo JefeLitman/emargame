@@ -23,7 +23,7 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    winner = models.CharField()
+    winner = models.StringField()
 
     def set_winner(self,jugadores):
         media = 0
@@ -41,4 +41,4 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     elegido = models.PositiveIntegerField(initial=0,min=0,max=100)
-    nombre_elegido = models.CharField()
+    nombre_elegido = models.StringField()

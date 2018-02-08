@@ -10,14 +10,14 @@ class bienvenida(Page):
         return self.round_number == 1
 
 class enviasin(Page):
-    form_model = models.Player
+    form_model = 'player'
     form_fields = ['inversion']
 
     def is_displayed(self):
         return self.round_number <= Constants.num_rounds/2
 
 class enviacon(Page):
-    form_model = models.Player
+    form_model = 'player'
     form_fields = ['inversion']
 
     def is_displayed(self):

@@ -2,13 +2,11 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Ganador
+    Page title
 {% endblock %}
 
 {% block content %}
 
-    <p style="color:green;">Felicitaciones!  </p> {{group.winner}} has ganado el desfile de belleza.
+    {% next_button %}
 
 {% endblock %}
-
-

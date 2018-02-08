@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles otree %}
 
 {% block title %}
     Eres el participante B
@@ -12,7 +12,7 @@
         Usted recibio {{tripled_amount}}
     </p>
 
-    {% formfield group.sent_back_amount with label="Cuantos puntos desea retornar al participante B:" %}
+    {% formfield group.sent_back_amount label="Cuantos puntos desea retornar al participante B:" %}
 
     {% next_button %}
 

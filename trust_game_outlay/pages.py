@@ -11,14 +11,14 @@ class welcome(Page):
         return self.round_number == 1
 
 class enviosin(Page):
-    form_model = models.Group
+    form_model = 'group'
     form_fields = ['sent_amount']
 
     def is_displayed(self):
         return self.player.id_in_group == 1 and self.round_number<=Constants.num_rounds/2
 
 class enviocon(Page):
-    form_model = models.Group
+    form_model = 'group'
     form_fields = ['sent_amount']
 
     def is_displayed(self):
@@ -35,7 +35,7 @@ class enviocon(Page):
         }
 
 class retornosin(Page):
-    form_model = models.Group
+    form_model = 'group'
     form_fields = ['sent_back_amount']
 
     def is_displayed(self):
@@ -54,7 +54,7 @@ class retornosin(Page):
         )
 
 class retornocon(Page):
-    form_model = models.Group
+    form_model = 'group'
     form_fields = ['sent_back_amount']
 
     def is_displayed(self):

@@ -5,13 +5,14 @@ from .models import Constants
 
 
 class MyPage(Page):
-    pass
-
+    form_model = 'player'
+    form_fields = ['elegido','nombre_elegido']
 
 class ResultsWaitPage(WaitPage):
 
     def after_all_players_arrive(self):
-        pass
+        matrix_jugadores = self.subsession.get_group_matrix()
+        self.group.set_winner(matrix_jugadores[0])
 
 
 class Results(Page):
