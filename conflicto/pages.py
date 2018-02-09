@@ -9,14 +9,14 @@ class bienvenida(Page):
         return self.round_number == 1
 
 class decision_sim(Page):
-    form_model = 'group'
+    form_model = models.Group
     form_fields = ['opcion_azul','opcion_verde']
 
     def is_displayed(self):
         return (self.round_number <= Constants.num_rounds/2 and (self.player.role()=='Azul' or self.player.role()=='Verde')) or (self.round_number > Constants.num_rounds/2 and self.player.role()=='Azul')
 
 class decision_sec_verde(Page):
-    form_model = 'group'
+    form_model = models.Group
     form_fields = ['opcion_verde']
 
     def is_displayed(self):

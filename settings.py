@@ -132,10 +132,16 @@ SESSION_CONFIGS = [
     },
     {
         'name':'conflicto',
-        'display_name': 'Conflicto',
+        'display_name': 'Conflicto 2x2',
         'num_demo_participants':2,
         'app_sequence': ['conflicto'],
-    }
+    },
+    {
+        'name':'mercados_prohibidos',
+        'display_name':'Mercados Prohibidos',
+        'num_demo_participants':2,
+        'app_sequence': ['mercados_prohibidos'],
+    },
 ]
 
 #Configuracion del servicio de sentry de oTree (Es gratuito); SENTRY_DSN

@@ -5,10 +5,12 @@ from .models import Constants
 
 
 class welcome(Page):
-    pass
+    def is_displayed(self):
+        return self.round_number == 1
 
 class decision(Page):
-    pass
+    form_model = models.Group
+    form_fields = ['precio_vendedor','valoracion_comprador']
 
 class ganancias_sin(Page):
     pass
