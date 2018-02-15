@@ -30,16 +30,14 @@ class Group(BaseGroup):
             [0, 'A1'],
             [1, 'A2'],
         ],
-        initial=1,
-        blank=True
+        initial=1
     )
     opcion_verde = models.IntegerField(
         choices=[
             [0, 'V1'],
             [2, 'V2'],
         ],
-        initial=2,
-        blank=True
+        initial=2
     )
 
     def set_payoffs(self):

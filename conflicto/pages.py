@@ -8,19 +8,26 @@ class bienvenida(Page):
     def is_displayed(self):
         return self.round_number == 1
 
-class decision_sim(Page):
+class decision_sim_azul(Page):
     form_model = models.Group
-    form_fields = ['opcion_azul','opcion_verde']
+    form_fields = ['opcion_azul']
 
     def is_displayed(self):
-        return (self.round_number <= Constants.num_rounds/2 and (self.player.role()=='Azul' or self.player.role()=='Verde')) or (self.round_number > Constants.num_rounds/2 and self.player.role()=='Azul')
+        return self.player.role()=='Azul'
+
+class decision_sim_verde(Page):
+    form_model = models.Group
+    form_fields = ['opcion_verde']
+
+    def is_displayed(self):
+        return self.player.role() == 'Verde' and self.round_number <= Constants.num_rounds/2
 
 class decision_sec_verde(Page):
     form_model = models.Group
     form_fields = ['opcion_verde']
 
     def is_displayed(self):
-        return self.round_number > Constants.num_rounds/2 and self.player.role()=='Verde'
+        return self.player.role() == 'Verde' and self.round_number >  Constants.num_rounds/2
 
 class gan_individual(Page):
     pass
@@ -44,7 +51,8 @@ class calculos(WaitPage):
 page_sequence = [
     bienvenida,
     esperagrupos,
-    decision_sim,
+    decision_sim_azul,
+    decision_sim_verde,
     esperagrupos,
     decision_sec_verde,
     esperagrupos,
