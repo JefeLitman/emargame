@@ -58,3 +58,4 @@ class Player(BasePlayer):
             return 'Vendedor'
         else:
             return 'Comprador'
+

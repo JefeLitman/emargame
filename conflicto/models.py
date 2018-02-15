@@ -23,21 +23,23 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     from random import randint
-    x=models.IntegerField(initial=randint(0, 500),blank=True)
-    y=models.IntegerField(initial=randint(500, 1500),blank=True)
+    x=models.IntegerField(initial=randint(0, 500))
+    y=models.IntegerField(initial=randint(500, 1500))
     opcion_azul = models.IntegerField(
         choices=[
             [0, 'A1'],
             [1, 'A2'],
         ],
-        initial=0
+        initial=1,
+        blank=True
     )
     opcion_verde = models.IntegerField(
         choices=[
             [0, 'V1'],
             [2, 'V2'],
         ],
-        initial=0
+        initial=2,
+        blank=True
     )
 
     def set_payoffs(self):
