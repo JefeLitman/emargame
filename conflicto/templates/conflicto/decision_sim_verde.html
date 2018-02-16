@@ -32,19 +32,9 @@
   </tr>
 </table></div>
 
-    {% if player.id_in_group == 1 %}
-
-<p> <b>Usted es el participante Azul</b>  <br>
-    Ahora debes tomar tú decisión.<br>
-    {% formfield group.opcion_azul label="Yo elijo:" %} <br/>
-
- {% else %}
-
 <p> <b>Usted es el participante Verde</b>  <br>
     Ahora debes tomar tú decisión.<br>
     {% formfield group.opcion_verde label="Yo elijo:" %} <br/>
-
-    {% endif %}
 
     {% next_button %}
 

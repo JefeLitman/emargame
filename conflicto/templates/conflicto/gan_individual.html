@@ -10,16 +10,52 @@
  {% if player.id_in_group == 1 %}
 
 <p> <b>Usted es el participante Azul</b>  <br>
-    Usted eligio: {{group.opcion_azul}} <br>
-    El participante Verde eligio: {{group.opcion_verde}} <br/>
+
+    {% if group.opcion_azul == 0 %}
+
+    Usted eligio: A1 <br>
+
+    {% else %}
+
+    Usted eligio: A2 <br>
+
+    {% endif %}
+
+    {% if group.opcion_verde == 0 %}
+
+    El participante Verde eligió: V1 <br>
+
+    {% else %}
+
+    El participante Verde eligió: V2 <br>
+
+    {% endif %}
 
     <p>Su ganancia en este periodo es: {{player.payoff}} </p>
 
  {% else %}
 
 <p> <b>Usted es el participante Verde</b>  <br>
-    Usted eligio: {{group.opcion_verde}} <br>
-    El participante Azul eligio: {{group.opcion_azul}} <br/>
+
+    {% if group.opcion_verde == 0 %}
+
+    Usted eligio: V1 <br>
+
+    {% else %}
+
+    Usted eligio: V2 <br>
+
+    {% endif %}
+
+    {% if group.opcion_azul == 0 %}
+
+    El participante Azul eligió: A1 <br>
+
+    {% else %}
+
+    El participante Azul eligió: A2 <br>
+
+    {% endif %}
 
     <p>Su ganancia en este periodo es: {{player.payoff}} </p>
 

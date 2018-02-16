@@ -8,19 +8,32 @@ class bienvenida(Page):
     def is_displayed(self):
         return self.round_number == 1
 
+<<<<<<< HEAD
 class decision_sim(Page):
     form_model = 'group'
     form_fields = ['opcion_azul','opcion_verde']
+=======
+class decision_sim_azul(Page):
+    form_model = models.Group
+    form_fields = ['opcion_azul']
+>>>>>>> 62657a692fe57ed16de5f2410586b700ccc01e49
 
     def is_displayed(self):
-        return (self.round_number <= Constants.num_rounds/2 and (self.player.role()=='Azul' or self.player.role()=='Verde')) or (self.round_number > Constants.num_rounds/2 and self.player.role()=='Azul')
+        return self.player.role()=='Azul'
+
+class decision_sim_verde(Page):
+    form_model = models.Group
+    form_fields = ['opcion_verde']
+
+    def is_displayed(self):
+        return self.player.role() == 'Verde' and self.round_number <= Constants.num_rounds/2
 
 class decision_sec_verde(Page):
     form_model = 'group'
     form_fields = ['opcion_verde']
 
     def is_displayed(self):
-        return self.round_number > Constants.num_rounds/2 and self.player.role()=='Verde'
+        return self.player.role() == 'Verde' and self.round_number > Constants.num_rounds/2
 
 class gan_individual(Page):
     pass
@@ -31,6 +44,11 @@ class gan_totales(Page):
 
 class esperagrupos(WaitPage):
     wait_for_all_groups = True
+
+class precalculos(WaitPage):
+
+    def after_all_players_arrive(self):
+        self.group.set_random_variables()
 
 class calculos(WaitPage):
 
@@ -44,7 +62,9 @@ class calculos(WaitPage):
 page_sequence = [
     bienvenida,
     esperagrupos,
-    decision_sim,
+    precalculos,
+    decision_sim_azul,
+    decision_sim_verde,
     esperagrupos,
     decision_sec_verde,
     esperagrupos,

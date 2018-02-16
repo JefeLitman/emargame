@@ -2,7 +2,7 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
-
+from random import randint
 author = 'Your name here'
 
 doc = """
@@ -22,24 +22,21 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    from random import randint
-    x=models.IntegerField(initial=randint(0, 500))
-    y=models.IntegerField(initial=randint(500, 1500))
+    x=models.IntegerField()
+    y=models.IntegerField()
     opcion_azul = models.IntegerField(
         choices=[
             [0, 'A1'],
             [1, 'A2'],
         ],
-        initial=1,
-        blank=True
+        initial=1
     )
     opcion_verde = models.IntegerField(
         choices=[
             [0, 'V1'],
             [2, 'V2'],
         ],
-        initial=2,
-        blank=True
+        initial=2
     )
 
     def set_payoffs(self):
@@ -48,6 +45,10 @@ class Group(BaseGroup):
         matrix=[[c(1000),c(1000),c(self.x),c(self.y)],[c(self.y),c(self.x),c(250),c(250)]]
         jugador_azul.payoff=matrix[self.opcion_azul][self.opcion_verde]
         jugador_verde.payoff = matrix[self.opcion_azul][self.opcion_verde+1]
+
+    def set_random_variables(self):
+        self.x=randint(0, 500)
+        self.y=randint(500, 1500)
 
 class Player(BasePlayer):
     ganancias_totales = models.CurrencyField(initial=c(0))

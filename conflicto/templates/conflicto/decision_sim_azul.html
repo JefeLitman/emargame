@@ -32,21 +32,9 @@
   </tr>
 </table></div>
 
-<p> <b>Usted es el participante Verde</b>  <br>
+<p> <b>Usted es el participante Azul</b>  <br>
     Ahora debes tomar tú decisión.<br>
-
-
-    {% if group.opcion_azul == 0 %}
-
-    El participante Azul eligió: A1 <br>
-
-    {% else %}
-
-    El participante Azul eligió: A2 <br>
-
-    {% endif %}
-
-    {% formfield group.opcion_verde label="Yo elijo:" %} <br/>
+    {% formfield group.opcion_azul label="Yo elijo:" %} <br/>
 
     {% next_button %}
 
