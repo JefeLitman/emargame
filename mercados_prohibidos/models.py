@@ -22,18 +22,10 @@ class Subsession(BaseSubsession):
         self.group_randomly()
 
 class Group(BaseGroup):
-    costo_producto=models.CurrencyField(initial=randint(0,1000))
-    valoracion_cpu=models.CurrencyField(initial=randint(1000,2000))
-    precio_vendedor=models.CurrencyField(
-        min=costo_producto,
-        max=c(2000),
-        initial=costo_producto
-    )
-    valoracion_comprador=models.CurrencyField(
-        min=c(0),
-        max=valoracion_cpu,
-        initial=c(0)
-    )
+    costo_producto=models.CurrencyField()
+    valoracion_cpu=models.CurrencyField()
+    precio_vendedor=models.CurrencyField()
+    valoracion_comprador=models.CurrencyField()
     revision=models.IntegerField(initial=randint(1,100),blank=True)
 
     def set_payoff(self,transaccion):
@@ -48,6 +40,10 @@ class Group(BaseGroup):
         else:
             vendedor.payoff = c(0)
             comprador.payoff = c(0)
+
+    def set_random_variables(self):
+        self.costo_producto=c(randint(0,1000))
+        self.valoracion_cpu=c(randint(1000,2000))
 
 class Player(BasePlayer):
     ganancias_totales= models.CurrencyField(initial=c(0))

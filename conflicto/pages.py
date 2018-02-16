@@ -39,6 +39,11 @@ class gan_totales(Page):
 class esperagrupos(WaitPage):
     wait_for_all_groups = True
 
+class precalculos(WaitPage):
+
+    def after_all_players_arrive(self):
+        self.group.set_random_variables()
+
 class calculos(WaitPage):
 
     def after_all_players_arrive(self):
@@ -51,6 +56,7 @@ class calculos(WaitPage):
 page_sequence = [
     bienvenida,
     esperagrupos,
+    precalculos,
     decision_sim_azul,
     decision_sim_verde,
     esperagrupos,

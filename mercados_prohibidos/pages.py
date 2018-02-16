@@ -12,12 +12,24 @@ class decision_vendedor(Page):
     form_model = models.Group
     form_fields = ['precio_vendedor']
 
+    def precio_vendedor_max(self):
+        return c(2000)
+
+    def precio_vendedor_min(self):
+            return self.group.costo_producto
+
     def is_displayed(self):
         return self.player.role()=='Vendedor'
 
 class decision_comprador(Page):
     form_model = models.Group
     form_fields = ['valoracion_comprador']
+
+    def valoracion_comprador_max(self):
+        return self.group.valoracion_cpu
+
+    def valoracion_comprador_min(self):
+        return c(0)
 
     def is_displayed(self):
         return self.player.role()=='Comprador'
@@ -39,6 +51,11 @@ class ganancias_totales(Page):
 class espera_grupos(WaitPage):
     wait_for_all_groups = True
 
+class precalculos(WaitPage):
+
+    def after_all_players_arrive(self):
+        self.group.set_random_variables()
+
 class calculos(WaitPage):
 
     def after_all_players_arrive(self):
@@ -59,6 +76,7 @@ class calculos(WaitPage):
 page_sequence = [
     welcome,
     espera_grupos,
+    precalculos,
     decision_vendedor,
     decision_comprador,
     espera_grupos,
