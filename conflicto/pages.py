@@ -8,15 +8,13 @@ class bienvenida(Page):
     def is_displayed(self):
         return self.round_number == 1
 
-<<<<<<< HEAD
 class decision_sim(Page):
     form_model = 'group'
     form_fields = ['opcion_azul','opcion_verde']
-=======
+
 class decision_sim_azul(Page):
     form_model = models.Group
     form_fields = ['opcion_azul']
->>>>>>> 62657a692fe57ed16de5f2410586b700ccc01e49
 
     def is_displayed(self):
         return self.player.role()=='Azul'

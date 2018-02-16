@@ -8,11 +8,11 @@ class welcome(Page):
     def is_displayed(self):
         return self.round_number == 1
 
-<<<<<<< HEAD
+
 class decision(Page):
     form_model = 'group'
     form_fields = ['precio_vendedor','valoracion_comprador']
-=======
+
 class decision_vendedor(Page):
     form_model = models.Group
     form_fields = ['precio_vendedor']
@@ -38,7 +38,7 @@ class decision_comprador(Page):
 
     def is_displayed(self):
         return self.player.role()=='Comprador'
->>>>>>> 62657a692fe57ed16de5f2410586b700ccc01e49
+
 
 class ganancias_sin(Page):
 

@@ -9,7 +9,6 @@ doc = """
 Your app description
 """
 
-
 class Constants(BaseConstants):
     name_in_url = 'conflicto'
     players_per_group = 2
