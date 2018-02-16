@@ -9,7 +9,7 @@ class welcome(Page):
         return self.round_number == 1
 
 class decision(Page):
-    form_model = models.Group
+    form_model = 'group'
     form_fields = ['precio_vendedor','valoracion_comprador']
 
 class ganancias_sin(Page):
