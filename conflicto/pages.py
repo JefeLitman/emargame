@@ -27,7 +27,7 @@ class decision_sec_verde(Page):
     form_fields = ['opcion_verde']
 
     def is_displayed(self):
-        return self.player.role() == 'Verde' and self.round_number >  Constants.num_rounds/2
+        return self.player.role() == 'Verde' and self.round_number > Constants.num_rounds/2
 
 class gan_individual(Page):
     pass

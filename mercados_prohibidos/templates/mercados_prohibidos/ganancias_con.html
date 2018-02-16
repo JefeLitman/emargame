@@ -24,6 +24,16 @@
 
     {% endif %}
 
+    {% if group.revision > 20 %}
+
+    El computador elige el número {{group.revision}}, por lo tanto se realiza la revisión.<br>
+
+    {% else %}
+
+    El computador elige el número {{group.revision}}, por lo tanto no se realiza la revisión.<br>
+
+    {% endif %}
+
  {% else %}
 
 <p> <b>Usted es el comprador</b>  <br>
@@ -39,6 +49,16 @@
     {% else %}
 
     No se realizo la transaccion.<br>
+
+    {% endif %}
+
+    {% if group.revision > 20 %}
+
+    El computador elige el número {{group.revision}}, por lo tanto se realiza la revisión.<br>
+
+    {% else %}
+
+    El computador elige el número {{group.revision}}, por lo tanto no se realiza la revisión.<br>
 
     {% endif %}
 

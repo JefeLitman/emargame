@@ -2,7 +2,7 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
-
+from random import randint
 
 author = 'Your name here'
 
@@ -14,7 +14,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'mercados_prohibidos'
     players_per_group = 2
-    num_rounds = 1
+    num_rounds = 2
 
 
 class Subsession(BaseSubsession):
@@ -22,18 +22,17 @@ class Subsession(BaseSubsession):
         self.group_randomly()
 
 class Group(BaseGroup):
-    from random import randint
-    costo_producto=models.IntegerField(initial=randint(0,1000),blank=True)
-    valoracion_cpu=models.IntegerField(initial=randint(1000,2000),blank=True)
-    precio_vendedor=models.IntegerField(
+    costo_producto=models.CurrencyField(initial=randint(0,1000))
+    valoracion_cpu=models.CurrencyField(initial=randint(1000,2000))
+    precio_vendedor=models.CurrencyField(
         min=costo_producto,
-        max=2000,
+        max=c(2000),
         initial=costo_producto
     )
-    valoracion_comprador=models.IntegerField(
-        min=0,
+    valoracion_comprador=models.CurrencyField(
+        min=c(0),
         max=valoracion_cpu,
-        initial=0
+        initial=c(0)
     )
     revision=models.IntegerField(initial=randint(1,100),blank=True)
 
@@ -41,10 +40,10 @@ class Group(BaseGroup):
         vendedor = self.get_player_by_id(1)
         comprador = self.get_player_by_id(2)
         if (transaccion == 1):
-            vendedor.payoff=c(self.precio_vendedor-self.costo_producto)
-            comprador.payoff=c(self.valoracion_cpu-self.precio_vendedor)
+            vendedor.payoff=self.precio_vendedor-self.costo_producto
+            comprador.payoff=self.valoracion_cpu-self.precio_vendedor
         elif (transaccion==2):
-            vendedor.payoff=c(self.costo_producto*(-1))
+            vendedor.payoff=self.costo_producto*(-1)
             comprador.payoff = c(0)
         else:
             vendedor.payoff = c(0)
