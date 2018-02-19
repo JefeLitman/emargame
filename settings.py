@@ -25,6 +25,7 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 # don't share this with anybody.
 SECRET_KEY = '6b%cfzhh9ab%=-!&l#miwv$oa%q@m9j%7nanw!laq4u*q$mlzz'
 
+environ.__setitem__('DATABASE_URL','postgres://emar:123456@localhost/emar_db')
 DATABASES = {
     'default': dj_database_url.config(
         # Rather than hardcoding the DB parameters here,
