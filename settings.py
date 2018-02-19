@@ -107,7 +107,7 @@ SESSION_CONFIG_DEFAULTS = {
 # oTree's default settings. Use with caution.
 SESSION_CONFIGS = [
     {
-        'name': 'trust_game_outlay',
+        'name':'trust_game_outlay',
         'display_name': 'Juego de Negociacion: Inversion',
         'num_demo_participants': 2,
         'app_sequence': ['trust_game_outlay'],
