@@ -14,6 +14,7 @@ from django.apps import apps as django_apps
 for config in django_apps.get_app_configs():
     app_path = config.module.__path__
     print('print(app_path)', app_path)
+    print('print(app_path)', type(app_path))
 
 class Constants(BaseConstants):
     name_in_url = 'trust_game_outlay'
