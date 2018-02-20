@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Eres el participante A
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Su dotacion inicial es de {{Constants.endowment}}
+    </p>
+
+    {% formfield group.sent_amount label="Cuantos puntos desea enviar al participante B:" %}
+
+    {% next_button %}
+
+{% endblock %}

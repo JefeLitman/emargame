@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Eres el participante B
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        El participante A es {{genrep1}}</br>
+        Usted recibio {{tripled_amount}}
+    </p>
+
+    {% formfield group.sent_back_amount label="Cuantos puntos desea retornar al participante B:" %}
+
+    {% next_button %}
+
+{% endblock %}
