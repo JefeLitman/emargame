@@ -50,4 +50,5 @@ class Player(BasePlayer):
 
     def set_cal_promedio(self,ronda):
         if ronda >= Constants.num_rounds :
+            print("Entro!")
             self.calificacion_promedio=sum([j.calificacion for j in self.in_rounds(Constants.num_rounds/2,ronda)])/(ronda-Constants.num_rounds/2 + 1)
