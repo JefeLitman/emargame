@@ -38,6 +38,9 @@ class califica(Page):
     form_model =models.Player
     form_fields = ['calificacion']
 
+    def is_displayed(self):
+        return self.round_number > Constants.num_rounds/2
+
 class gananciastotales(Page):
 
     def is_displayed(self):
@@ -79,8 +82,8 @@ class calculocalificacion(WaitPage):
         p2.calificacion=p1.calificacion
         p1.calificacion=calificacionp1
         # Calculando la calificacion promedio
-        p1.calificacion_promedio=sum([j1.calificacion for j1 in p1.in_all_rounds()])/self.round_number
-        p2.calificacion_promedio=sum([j2.calificacion for j2 in p2.in_all_rounds()])/self.round_number
+        p1.calificacion_promedio=sum([j1.calificacion for j1 in p1.in_rounds(Constants.num_rounds/2+1,Constants.num_rounds)])/self.round_number
+        p2.calificacion_promedio=sum([j2.calificacion for j2 in p2.in_rounds(Constants.num_rounds/2+1,Constants.num_rounds)])/self.round_number
 
 page_sequence = [
     bienvenida,
