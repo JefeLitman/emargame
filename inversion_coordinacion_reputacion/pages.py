@@ -31,7 +31,7 @@ class enviacon(Page):
             }
         else:
             return {
-                'calificacionpromedio':0
+                'calificacionpromedio':1.0
             }
 
 class califica(Page):
