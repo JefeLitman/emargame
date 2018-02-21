@@ -41,7 +41,13 @@ class Player(BasePlayer):
 
     def get_calificacion(self,nota):
         return self.calificacion
+
     def get_ganancias(self):
         return self.ganancia_total
+
     def get_companero(self):
         return self.get_others_in_group()[0]
+
+    def set_cal_promedio(self,ronda):
+        if ronda >= Constants.num_rounds :
+            self.calificacion_promedio=sum([j.calificacion for j in self.in_rounds(Constants.num_rounds/2,ronda)])/(ronda-Constants.num_rounds/2 + 1)
