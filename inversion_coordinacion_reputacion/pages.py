@@ -14,14 +14,14 @@ class enviasin(Page):
     form_fields = ['inversion']
 
     def is_displayed(self):
-        return self.round_number <= Constants.num_rounds/2
+        return self.round_number <= Constants.num_rounds/2 +2
 
 class enviacon(Page):
     form_model = 'player'
     form_fields = ['inversion']
 
     def is_displayed(self):
-        return self.round_number > Constants.num_rounds/2
+        return self.round_number > Constants.num_rounds/2 +1
 
     def vars_for_template(self):
         if (self.round_number -1 != 0):
