@@ -14,17 +14,17 @@ class enviasin(Page):
     form_fields = ['inversion']
 
     def is_displayed(self):
-        return self.round_number <= Constants.num_rounds/2 +2
+        return self.round_number <= Constants.num_rounds/2
 
 class enviacon(Page):
     form_model = 'player'
     form_fields = ['inversion']
 
     def is_displayed(self):
-        return self.round_number > Constants.num_rounds/2 +1
+        return self.round_number > Constants.num_rounds/2
 
     def vars_for_template(self):
-        if (self.round_number -1 != 0):
+        if (self.round_number - 1 != 0):
             otro_jugador = self.player.in_round(self.round_number-1).get_companero().calificacion_promedio
             return {
                 'calificacionpromedio':otro_jugador
@@ -39,7 +39,7 @@ class califica(Page):
     form_fields = ['calificacion']
 
     def is_displayed(self):
-        return self.round_number > Constants.num_rounds/2
+        return self.round_number >= Constants.num_rounds/2
 
 class gananciastotales(Page):
 
@@ -82,8 +82,10 @@ class calculocalificacion(WaitPage):
         p2.calificacion=p1.calificacion
         p1.calificacion=calificacionp1
         # Calculando la calificacion promedio
-        p1.calificacion_promedio=sum([j1.calificacion for j1 in p1.in_rounds(Constants.num_rounds/2+1,self.round_number)])/(Constants.num_rounds-self.round_number)
-        p2.calificacion_promedio=sum([j2.calificacion for j2 in p2.in_rounds(Constants.num_rounds/2+1,self.round_number)])/(Constants.num_rounds-self.round_number)
+        if self.round_number >= Constants.num_rounds :
+            p1.calificacion_promedio=sum([j1.calificacion for j1 in p1.in_rounds(Constants.num_rounds/2,self.round_number)])/(self.round_number-Constants.num_rounds/2 + 1)
+            p2.calificacion_promedio=sum([j2.calificacion for j2 in p2.in_rounds(Constants.num_rounds/2,self.round_number)])/(self.round_number-Constants.num_rounds/2 + 1)
+
 
 page_sequence = [
     bienvenida,
