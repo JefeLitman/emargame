@@ -24,19 +24,22 @@ class enviacon(Page):
         return self.round_number > Constants.num_rounds/2
 
     def vars_for_template(self):
-        if (self.round_number -1 != 0):
+        if (self.round_number - 1 != 0):
             otro_jugador = self.player.in_round(self.round_number-1).get_companero().calificacion_promedio
             return {
                 'calificacionpromedio':otro_jugador
             }
         else:
             return {
-                'calificacionpromedio':0
+                'calificacionpromedio':1.0
             }
 
 class califica(Page):
     form_model =models.Player
     form_fields = ['calificacion']
+
+    def is_displayed(self):
+        return self.round_number >= Constants.num_rounds/2
 
 class gananciastotales(Page):
 
@@ -79,8 +82,17 @@ class calculocalificacion(WaitPage):
         p2.calificacion=p1.calificacion
         p1.calificacion=calificacionp1
         # Calculando la calificacion promedio
-        p1.calificacion_promedio=sum([j1.calificacion for j1 in p1.in_all_rounds()])/self.round_number
-        p2.calificacion_promedio=sum([j2.calificacion for j2 in p2.in_all_rounds()])/self.round_number
+        acumuladop1=0
+        acumuladop2=0
+        for i in range(Constants.num_rounds/2,self.round_number+1,1):
+            acumuladop1=acumuladop1+p1.in_round(i).calificacion
+            acumuladop2=acumuladop2+p2.in_round(i).calificacion
+        p1.calificacion_promedio=acumuladop1/(self.round_number-Constants.num_rounds/2+1)
+        p2.calificacion_promedio = acumuladop2 / (self.round_number - Constants.num_rounds / 2 + 1)
+        #if self.round_number >= Constants.num_rounds :
+            #p1.calificacion_promedio=sum([j1.calificacion for j1 in p1.in_rounds(Constants.num_rounds/2,self.round_number)])/(self.round_number-Constants.num_rounds/2 + 1)
+            #p2.calificacion_promedio=sum([j2.calificacion for j2 in p2.in_rounds(Constants.num_rounds/2,self.round_number)])/(self.round_number-Constants.num_rounds/2 + 1)
+
 
 page_sequence = [
     bienvenida,
