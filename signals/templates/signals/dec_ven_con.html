@@ -2,50 +2,76 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Vendedor
+    Usted es el Vendedor
 {% endblock %}
 
 {% block content %}
 
-    <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;border: 1px solid black;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg .tg-baqh{text-align:center;vertical-align:top}
-.tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+   <style type="text/css">
+
+    th.tg{
+      color: #009846;
+      text-align: center;
+      border-collapse:collapse;
+      border-spacing:0;
+      border: 1px solid black;
+    }
+
+    td.ta{
+      color: blue;
+      border-collapse:collapse;
+      border-spacing:0;
+      border: 1px solid black;
+    }
+
+    td.tg-baqh{
+      text-align: center;
+      border-collapse:collapse;
+      border-spacing:0;
+      border: 1px solid black;
+    }
+
+    h2{
+      color: #05257f;
+    }
+
+    table.table{
+      border-collapse:collapse;
+      border-spacing:0;
+      border: 1px solid black;
+    }
 </style>
+
 <div align="center">
-<table class="tg">
-  <tr>
-    <th class="tg-amwm">Calidad</th>
-    <th class="tg-amwm">1</th>
-    <th class="tg-amwm">2</th>
-    <th class="tg-amwm">3</th>
-    <th class="tg-amwm">4</th>
-    <th class="tg-amwm">5</th>
-  </tr>
-  <tr>
-    <td class="tg-amwm">Costo</td>
-    <td class="tg-baqh">100</td>
-    <td class="tg-baqh">200</td>
-    <td class="tg-baqh">300</td>
-    <td class="tg-baqh">400</td>
-    <td class="tg-baqh">500</td>
-  </tr>
-  <tr>
-    <td class="tg-amwm">Valor</td>
-    <td class="tg-baqh">500</td>
-    <td class="tg-baqh">1000</td>
-    <td class="tg-baqh">1500</td>
-    <td class="tg-baqh">2000</td>
-    <td class="tg-baqh">2500</td>
-  </tr>
-</table>
-    </div>
+    <table class="table">
+      <tr>
+        <th class="tg">Calidad</th>
+        <th class="tg">1</th>
+        <th class="tg">2</th>
+        <th class="tg">3</th>
+        <th class="tg">4</th>
+        <th class="tg">5</th>
+      </tr>
+      <tr>
+        <td class="ta">Costo</td>
+        <td class="tg-baqh">100</td>
+        <td class="tg-baqh">200</td>
+        <td class="tg-baqh">300</td>
+        <td class="tg-baqh">400</td>
+        <td class="tg-baqh">500</td>
+      </tr>
+      <tr>
+        <td class="ta">Valor</td>
+        <td class="tg-baqh">500</td>
+        <td class="tg-baqh">1000</td>
+        <td class="tg-baqh">1500</td>
+        <td class="tg-baqh">2000</td>
+        <td class="tg-baqh">2500</td>
+      </tr>
+    </table>
+</div>
+
 <br/>
-    <b>
-        Usted es el vendedor.<br/><br/>
-    </b>
 
     {%formfield group.calidad_real label="Debe decidir la calidad del producto:"%}
 

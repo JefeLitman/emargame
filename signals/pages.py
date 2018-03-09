@@ -9,6 +9,14 @@ class bienvenida(Page):
     def is_displayed(self):
         return self.round_number == 1
 
+class sin(Page):
+        def is_displayed(self):
+            return  self.round_number ==1
+
+class con_(Page):
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds / 2
+
 class dec_com_con(Page):
     form_model = 'group'
     form_fields = ['decision_comprador']
@@ -33,9 +41,7 @@ class dec_ven_sin(Page):
     def is_displayed(self):
         return self.player.role()=='Vendedor' and self.round_number <= Constants.num_rounds/2
 
-class etapas(Page):
-    def is_displayed(self):
-        return self.round_number == 1
+
 
 class gan_individual(Page):
     pass
@@ -57,7 +63,7 @@ class calculos(WaitPage):
 
 page_sequence = [
     bienvenida,
-    etapas,
+    sin,
     esperagrupos,
     dec_ven_sin,
     dec_ven_con,
@@ -67,5 +73,6 @@ page_sequence = [
     esperagrupos,
     calculos,
     gan_individual,
+    con_,
     gan_totales
 ]

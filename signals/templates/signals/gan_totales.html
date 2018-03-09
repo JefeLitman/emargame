@@ -7,8 +7,14 @@
 
 {% block content %}
 
+<style>
+    p.pts{
+    font-weight: bold;
+    }
+</style>
+
     <p> El estudio ha terminado </p>  <br>
 
-    Sus puntos acumulados son: {{player.ganancias_totales}}
+Sus puntos acumulados son: <p class="pts"> {{player.ganancias_totales}} </p>
 
 {% endblock %}
