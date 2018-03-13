@@ -34,14 +34,22 @@ class dec_ven_con(Page):
     form_fields = ['calidad_real','calidad_ofrecida','precio_vendedor','decision_vendedor']
     def is_displayed(self):
         return self.player.role()=='Vendedor' and self.round_number > Constants.num_rounds/2
+    def precio_vendedor_min(self):
+        return Constants.costo[self.group.calidad_real-1] #Aqui hice la validacion
+    def decision_vendedor_error_message(self,values): # Con esta funcion hago validaciones dinamicas de cualquier tipo para cualquier campo
+        #Solo es colocar el nombre del campo y seguido viene el error message
+        if (values["calidad_real"] != values["calidad_ofrecida"] and values["decision_vendedor"]):
+            return 'Las calidades deben ser iguales para asegurar la calidad' #Listo
 
 class dec_ven_sin(Page):
     form_model = 'group'
     form_fields = ['calidad_real','calidad_ofrecida','precio_vendedor']
     def is_displayed(self):
         return self.player.role()=='Vendedor' and self.round_number <= Constants.num_rounds/2
+    def precio_vendedor_min(self):
+        return Constants.costo[self.group.calidad_real-1] #Aqui hice la validacion
 
-
+#VAmos a hacer la validacion de que sean iguales en pages, es decir, aqui mismo
 
 class gan_individual(Page):
     pass
