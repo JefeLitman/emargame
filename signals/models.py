@@ -31,11 +31,13 @@ class Group(BaseGroup):
     decision_comprador=models.BooleanField(initial=False,choices=[
         [True,'Si'],
         [False,'No']
-    ])
+
+    ],widget=widgets.RadioSelect)
+
     decision_vendedor = models.BooleanField(initial=False, choices=[
         [True, 'Si'],
         [False, 'No']
-    ])
+    ],widget=widgets.RadioSelect)
 
     def set_payoffs(self):
         vendedor=self.get_player_by_id(1)
