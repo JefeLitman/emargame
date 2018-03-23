@@ -16,7 +16,8 @@ class tratamiento(Page):
 
     def vars_for_template(self):
         return{
-            'numeroronda':self.round_number
+            'numeroronda':self.round_number,
+            'rondastotales':Constants.num_rounds/2+1
         }
 
 class enviosin(Page):
