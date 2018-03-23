@@ -77,14 +77,14 @@
     {% if group.decision_vendedor == True %}
 
     <p>
-        Mensaje El vendedor le asegura que está ofreciendo un producto de calidad {{group.calidad_real}}<br/>
+        Mensaje: El vendedor <b>LE ASEGURA</b> que está ofreciendo un producto de calidad {{group.calidad_real}}<br/>
         El precio de venta es {{group.precio_vendedor}}:<br/>
     </p>
 
     {% else %}
 
     <p>
-        Mensaje El vendedor está ofreciendo un producto de calidad {{group.calidad_ofrecida}}<br/>
+        Mensaje: El vendedor está ofreciendo un producto de calidad {{group.calidad_ofrecida}}<br/>
         El precio de venta es {{group.precio_vendedor}}<br/>
     </p>
 
