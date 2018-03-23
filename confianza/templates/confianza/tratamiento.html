@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Tipo de tratamiento
+{% endblock %}
+
+{% block content %}
+
+    {% if numeroronda == Constants.num_rounds/2+1 %}
+        <h1 align="center">
+            Periodos finales
+        </h1> </br>
+        En los siguientes periodos, en la etapa de decisiones se podrá observar si se esta interactuando con un Inventor o con Inversor
+    {% else %}
+        <h1 align="center">
+            Periodos iniciales
+        </h1>
+
+
+    {% endif %}
+
+    {% next_button %}
+
+{% endblock %}

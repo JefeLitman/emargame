@@ -34,7 +34,7 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     sent_amount = models.CurrencyField(
-        choices=currency_range(0,Constants.endowment,c(1)),
+        min=c(0),max=c(1000),
         initial=c(0)
     )
     sent_back_amount = models.CurrencyField(
@@ -50,8 +50,8 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     genre=models.PositiveIntegerField(
         choices=[
-            [1,'Mujer'],
-            [2, 'Hombre'],
+            [1,'Inventor'],
+            [2, 'Inversor'],
         ],
         initial=0
     )

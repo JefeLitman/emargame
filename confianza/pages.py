@@ -10,6 +10,15 @@ class welcome(Page):
     def is_displayed(self):
         return self.round_number == 1
 
+class tratamiento(Page):
+    def is_displayed(self):
+        return self.round_number == 1 or self.round_number == Constants.num_rounds/2+1
+
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number
+        }
+
 class enviosin(Page):
     form_model = 'group'
     form_fields = ['sent_amount']
@@ -27,9 +36,9 @@ class enviocon(Page):
     def vars_for_template(self):
         p2=self.group.in_round(1).get_player_by_id(2)
         if p2.get_genre() == 1:
-            genero='Mujer'
+            genero='Inventor'
         else:
-            genero='Hombre'
+            genero='Inversor'
         return{
             'genrep2':genero
         }
@@ -46,12 +55,11 @@ class retornosin(Page):
             'tripled_amount': self.group.sent_amount*Constants.multiplication_factor
         }
 
-    def sent_back_amount_choices(self):
-        return currency_range(
-            c(0),
-            self.group.sent_amount * Constants.multiplication_factor,
-            c(1)
-        )
+    def sent_back_amount_min(self):
+        return c(0)
+
+    def sent_back_amount_max(self):
+        return self.group.sent_amount*Constants.multiplication_factor
 
 class retornocon(Page):
     form_model = 'group'
@@ -63,20 +71,19 @@ class retornocon(Page):
     def vars_for_template(self):
         p1=self.group.in_round(1).get_player_by_id(1)
         if p1.get_genre() == 1:
-            genero='Mujer'
+            genero='Inventor'
         else:
-            genero='Hombre'
+            genero='Inversor'
         return {
             'tripled_amount': self.group.sent_amount*Constants.multiplication_factor,
             'genrep1':genero
         }
 
-    def sent_back_amount_choices(self):
-        return currency_range(
-            c(0),
-            self.group.sent_amount * Constants.multiplication_factor,
-            c(1)
-        )
+    def sent_back_amount_min(self):
+        return c(0)
+
+    def sent_back_amount_max(self):
+        return self.group.sent_amount * Constants.multiplication_factor
 
 class gananciaindividual(Page):
     pass
@@ -123,6 +130,7 @@ class waitfinal(WaitPage):
 
 page_sequence = [
     welcome,
+    tratamiento,
     enviosin,
     enviocon,
     waitforP1,
