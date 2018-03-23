@@ -41,8 +41,6 @@ class dec_ven_sin(Page):
     def is_displayed(self):
         return self.player.role()=='Vendedor' and self.round_number <= Constants.num_rounds/2
 
-
-
 class gan_individual(Page):
     pass
 
