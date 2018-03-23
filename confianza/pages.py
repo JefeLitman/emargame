@@ -93,9 +93,6 @@ class gananciatotal(Page):
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
 
-class waitforP1(WaitPage):
-    pass
-
 class waitforP2(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_payoffs()
@@ -108,7 +105,7 @@ class waitforP2(WaitPage):
         hombres=[]
         for i in range(0,len(matrix_jugadores),1):
             for j in range(0,len(matrix_jugadores[i]),1):
-                if matrix_jugadores[i][j].in_round(1).get_genre() == 1:
+                if matrix_jugadores[i][j].role() == 'Inventor':
                     mujeres.append(matrix_jugadores[i][j])
                 else:
                     hombres.append(matrix_jugadores[i][j])

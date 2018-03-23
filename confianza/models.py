@@ -48,12 +48,11 @@ class Group(BaseGroup):
         p2.payoff = self.sent_amount * Constants.multiplication_factor - self.sent_back_amount
 
 class Player(BasePlayer):
-    genre=models.PositiveIntegerField(
+    genre=models.StringField(
         choices=[
-            [1,'Inventor'],
-            [2, 'Inversor'],
-        ],
-        initial=0
+            'Inventor',
+            'Inversor',
+        ]
     )
     gananciajugador=models.CurrencyField(initial=c(0))
 
@@ -62,3 +61,6 @@ class Player(BasePlayer):
 
     def set_gananciajugador(self,valor):
         self.gananciajugador=valor
+
+    def role(self):
+        return self.in_round(1).genre
