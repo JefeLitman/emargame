@@ -132,9 +132,10 @@ class waitfinal(WaitPage):
 page_sequence = [
     welcome,
     tratamiento,
+    waitforallgroups,
     enviosin,
     enviocon,
-    waitforP1,
+    waitforallgroups,
     retornosin,
     retornocon,
     waitforallgroups,
