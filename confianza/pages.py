@@ -35,13 +35,8 @@ class enviocon(Page):
         return self.player.id_in_group == 1 and self.round_number > Constants.num_rounds / 2
 
     def vars_for_template(self):
-        p2=self.group.in_round(1).get_player_by_id(2)
-        if p2.get_genre() == 1:
-            genero='Inventor'
-        else:
-            genero='Inversor'
         return{
-            'genrep2':genero
+            'genrep2':self.group.get_player_by_id(2).role()
         }
 
 class retornosin(Page):
@@ -70,14 +65,9 @@ class retornocon(Page):
         return self.player.id_in_group == 2 and self.round_number > Constants.num_rounds / 2
 
     def vars_for_template(self):
-        p1=self.group.in_round(1).get_player_by_id(1)
-        if p1.get_genre() == 1:
-            genero='Inventor'
-        else:
-            genero='Inversor'
         return {
             'tripled_amount': self.group.sent_amount*Constants.multiplication_factor,
-            'genrep1':genero
+            'genrep1':self.group.get_player_by_id(1).role()
         }
 
     def sent_back_amount_min(self):
@@ -93,7 +83,8 @@ class gananciatotal(Page):
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
 
-class waitforP2(WaitPage):
+class calculos(WaitPage):
+
     def after_all_players_arrive(self):
         self.group.set_payoffs()
         gananciatotalp1=sum([p1.payoff for p1 in self.group.get_player_by_id(1).in_all_rounds()])
@@ -114,17 +105,6 @@ class waitforP2(WaitPage):
 class waitforallgroups(WaitPage):
     wait_for_all_groups = True
 
-class waitfinal(WaitPage):
-
-    def is_displayed(self):
-        return self.round_number == Constants.num_rounds
-
-    def after_all_players_arrive(self):
-        self.group.set_payoffs()
-        gananciatotalp1 = sum([p1.payoff for p1 in self.group.get_player_by_id(1).in_all_rounds()])
-        gananciatotalp2 = sum([p2.payoff for p2 in self.group.get_player_by_id(2).in_all_rounds()])
-        self.group.get_player_by_id(1).set_gananciajugador(gananciatotalp1)
-        self.group.get_player_by_id(2).set_gananciajugador(gananciatotalp2)
 
 page_sequence = [
     welcome,
@@ -136,8 +116,7 @@ page_sequence = [
     retornosin,
     retornocon,
     waitforallgroups,
-    waitforP2,
+    calculos,
     gananciaindividual,
-    waitfinal,
     gananciatotal,
 ]
