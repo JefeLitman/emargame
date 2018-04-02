@@ -91,9 +91,13 @@ class calculos(WaitPage):
         gananciatotalp2 = sum([p2.payoff for p2 in self.group.get_player_by_id(2).in_all_rounds()])
         self.group.get_player_by_id(1).set_gananciajugador(gananciatotalp1)
         self.group.get_player_by_id(2).set_gananciajugador(gananciatotalp2)
-        matrix_jugadores=self.subsession.get_group_matrix()
-        mujeres=[]
-        hombres=[]
+
+class calculos_ganancias_promedios(WaitPage):
+
+    def after_all_players_arrive(self):
+        matrix_jugadores = self.subsession.get_group_matrix()
+        mujeres = []
+        hombres = []
         for i in range(0,len(matrix_jugadores),1):
             for j in range(0,len(matrix_jugadores[i]),1):
                 if matrix_jugadores[i][j].role() == 'Inventor':
@@ -117,6 +121,8 @@ page_sequence = [
     retornocon,
     waitforallgroups,
     calculos,
+    waitforallgroups,
+    calculos_ganancias_promedios,
     gananciaindividual,
     gananciatotal,
 ]
