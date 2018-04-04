@@ -13,7 +13,7 @@ Los juegos de negociación son un ejercicio pedagógico que aumenta el interés 
 class Constants(BaseConstants):
     name_in_url = 'trust_game_outlay'
     players_per_group = 2
-    num_rounds=4
+    num_rounds=14
 
     endowment = c(1000)
     multiplication_factor = 3
