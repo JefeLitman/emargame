@@ -42,7 +42,7 @@ Por otro lado los contenidos de la página del EMAR LAB están bajo **Creative C
 |  Juegos  |  Modelo Conceptual  |  Desarrollado  |  Testeado  |  Mejoras  |
 |  ------------  |  ------------  |  ------------  |  ------------  |  ------------  |
 |  Buscadores de Renta  |  Si  |  No  |  No  |  N/A  |
-|  Concurso de belleza  |  Si  |  Si  |  Si  |  N/A  |
+|  Concurso de belleza  |  Si  |  Si  |  Si  |  (1) (2)  |
 |  Confianza  |  Si  |  Si  |  Si  |  (1) (2)  |
 |  Conflicto 2x2  |  Si  |  Si  |  No  |  N/A  |
 |  Coordinación y reputación  |  Si  |  Si  |  Si  |  (2)  |
