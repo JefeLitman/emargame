@@ -8,6 +8,9 @@ class MyPage(Page):
     form_model = 'player'
     form_fields = ['elegido','nombre_elegido']
 
+    def is_displayed(self):
+        return self.round_number <= self.session.config["rondas"]
+
 class ResultsWaitPage(WaitPage):
 
     def after_all_players_arrive(self):
@@ -16,7 +19,14 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(Page):
-    pass
+    def vars_for_template(self):
+        return {
+            'rondas':self.session.config["rondas"],
+            'ronda':self.round_number
+        }
+
+    def is_displayed(self):
+        return self.round_number <= self.session.config["rondas"]
 
 
 page_sequence = [
