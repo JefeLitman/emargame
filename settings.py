@@ -149,33 +149,31 @@ SESSION_CONFIGS = [
 ]
 
 #oTree ROOMS
-ROOM_DEFAULTS = {}
+ROOM_DEFAULTS = {
+    'participant_label_file':'labels.txt',
+    'use_secure_urls': True
+}
 
 ROOMS = [
     {
         'name': 'emar1',
         'display_name': 'Sala 1 del EMAR LAB',
-        'use_secure_urls': False
     },
     {
         'name': 'emar2',
-        'display_name': 'Sala 2 del EMAR LAB',
-        'use_secure_urls': False
+        'display_name': 'Sala 2 del EMAR LAB'
     },
     {
         'name': 'emar3',
-        'display_name': 'Sala 3 del EMAR LAB',
-        'use_secure_urls': False
+        'display_name': 'Sala 3 del EMAR LAB'
     },
     {
         'name': 'emar4',
-        'display_name': 'Sala 4 del EMAR LAB',
-        'use_secure_urls': False
+        'display_name': 'Sala 4 del EMAR LAB'
     },
     {
         'name': 'emar5',
-        'display_name': 'Sala 5 del EMAR LAB',
-        'use_secure_urls': False
+        'display_name': 'Sala 5 del EMAR LAB'
     }
 ]
 
