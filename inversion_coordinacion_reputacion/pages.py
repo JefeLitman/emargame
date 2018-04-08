@@ -14,14 +14,14 @@ class enviasin(Page):
     form_fields = ['inversion']
 
     def is_displayed(self):
-        return self.round_number <= Constants.num_rounds/2
+        return self.round_number <= self.session.config["rondas"]/2
 
 class enviacon(Page):
     form_model = 'player'
     form_fields = ['inversion']
 
     def is_displayed(self):
-        return self.round_number > Constants.num_rounds/2
+        return self.round_number > self.session.config["rondas"]/2
 
     def vars_for_template(self):
         if (self.round_number - 1 != 0):
@@ -31,7 +31,7 @@ class enviacon(Page):
             }
         else:
             return {
-                'calificacionpromedio':1.0
+                'calificacionpromedio':0
             }
 
 class califica(Page):
@@ -39,12 +39,12 @@ class califica(Page):
     form_fields = ['calificacion']
 
     def is_displayed(self):
-        return self.round_number >= Constants.num_rounds/2
+        return self.round_number > self.session.config["rondas"]/2
 
 class gananciastotales(Page):
 
     def is_displayed(self):
-        return self.round_number == Constants.num_rounds
+        return self.round_number == self.session.config["rondas"]
 
 class gananciasindividuales(Page):
     pass
@@ -81,18 +81,17 @@ class calculocalificacion(WaitPage):
         calificacionp1=p2.calificacion
         p2.calificacion=p1.calificacion
         p1.calificacion=calificacionp1
-        # Calculando la calificacion promedio
-        acumuladop1=0
-        acumuladop2=0
-        for i in range(Constants.num_rounds/2,self.round_number+1,1):
-            acumuladop1=acumuladop1+p1.in_round(i).calificacion
-            acumuladop2=acumuladop2+p2.in_round(i).calificacion
-        p1.calificacion_promedio=acumuladop1/(self.round_number-Constants.num_rounds/2+1)
-        p2.calificacion_promedio = acumuladop2 / (self.round_number - Constants.num_rounds / 2 + 1)
-        #if self.round_number >= Constants.num_rounds :
-            #p1.calificacion_promedio=sum([j1.calificacion for j1 in p1.in_rounds(Constants.num_rounds/2,self.round_number)])/(self.round_number-Constants.num_rounds/2 + 1)
-            #p2.calificacion_promedio=sum([j2.calificacion for j2 in p2.in_rounds(Constants.num_rounds/2,self.round_number)])/(self.round_number-Constants.num_rounds/2 + 1)
 
+class calculospromediocalificacion(WaitPage):
+    def after_all_players_arrive(self):
+        if(self.round_number > self.session.config["rondas"]/2):
+            # Calculando la calificacion promedio
+            p1 = self.group.get_player_by_id(1)
+            p2 = self.group.get_player_by_id(2)
+            acumuladop1 = 0
+            acumuladop2 = 0
+            p1.calificacion_promedio = sum([j.calificacion for j in p1.in_rounds(self.session.config["rondas"] / 2 + 1, self.round_number)]) / (self.round_number - self.session.config["rondas"] / 2)
+            p2.calificacion_promedio = sum([j.calificacion for j in p2.in_rounds(self.session.config["rondas"] / 2 + 1, self.round_number)]) / (self.round_number - self.session.config["rondas"] / 2)
 
 page_sequence = [
     bienvenida,
@@ -106,5 +105,7 @@ page_sequence = [
     califica,
     esperagrupos,
     calculocalificacion,
+    esperagrupos,
+    calculospromediocalificacion,
     gananciastotales
 ]

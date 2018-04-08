@@ -14,7 +14,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'inversion_coordinacion_reputacion'
     players_per_group = 2
-    num_rounds = 4
+    num_rounds = 20
 
     pago=c(1000)
 

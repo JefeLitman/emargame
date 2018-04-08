@@ -116,8 +116,8 @@ SESSION_CONFIGS = [
         'tratamiento':False,
         'doc':"""
         El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
-        El parametro de tratamiento corresponde a 'False' si el tratamiento va de SIN a CON, de lo contrario
-        en 'True' el tratamiento sera de CON a SIN.
+        El parametro de tratamiento al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
+        al estar chuleado sera de CON a SIN.
         """
     },
     {
@@ -125,30 +125,65 @@ SESSION_CONFIGS = [
         'display_name':'Concurso de Belleza de Keyne',
         'num_demo_participants': 2,
         'app_sequence':['desfile_belleza'],
+        'rondas':2,
+        'tratamiento':False,
+        'doc':"""
+        El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
+        El parametro de tratamiento al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
+        al estar chuleado sera de CON a SIN.
+        """
     },
     {
         'name':'inversion_coordinacion_reputacion',
         'display_name': 'Inversión: Coordinación y reputación',
         'num_demo_participants':2,
         'app_sequence': ['inversion_coordinacion_reputacion'],
+        'rondas':2,
+        'tratamiento':False,
+        'doc':"""
+        El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
+        El parametro de tratamiento al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
+        al estar chuleado sera de CON a SIN.
+        """
     },
     {
         'name':'signals',
         'display_name': 'Señales',
         'num_demo_participants':2,
         'app_sequence': ['signals'],
+        'rondas':2,
+        'tratamiento':False,
+        'doc':"""
+        El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
+        El parametro de tratamiento al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
+        al estar chuleado sera de CON a SIN.
+        """
     },
     {
         'name':'conflicto',
         'display_name': 'Conflicto 2x2',
         'num_demo_participants':2,
         'app_sequence': ['conflicto'],
+        'rondas':2,
+        'tratamiento':False,
+        'doc':"""
+        El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
+        El parametro de tratamiento al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
+        al estar chuleado sera de CON a SIN.
+        """
     },
     {
         'name':'mercados_prohibidos',
         'display_name':'Mercados Prohibidos',
         'num_demo_participants':2,
         'app_sequence': ['mercados_prohibidos'],
+        'rondas':2,
+        'tratamiento':False,
+        'doc':"""
+        El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
+        El parametro de tratamiento al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
+        al estar chuleado sera de CON a SIN.
+        """
     },
 ]
 
