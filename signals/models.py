@@ -32,7 +32,6 @@ class Group(BaseGroup):
     decision_comprador=models.BooleanField(initial=False,choices=[
         [True,'Si'],
         [False,'No']
-
     ],widget=widgets.RadioSelect)
 
     decision_vendedor = models.BooleanField(initial=False, choices=[
@@ -52,8 +51,6 @@ class Group(BaseGroup):
         else:
             vendedor.payoff=c(0)
             comprador.payoff=c(0)
-
-
 
 class Player(BasePlayer):
     ganancias_totales=models.CurrencyField(initial=c(0))

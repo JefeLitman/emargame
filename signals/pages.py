@@ -9,44 +9,59 @@ class bienvenida(Page):
     def is_displayed(self):
         return self.round_number == 1
 
-class sin(Page):
-        def is_displayed(self):
-            return  self.round_number ==1
-
-class con_(Page):
+class tratamientos(Page):
     def is_displayed(self):
-        return self.round_number == Constants.num_rounds / 2
+        return self.round_number == 1 or self.round_number == self.session.config["rondas"]/2 +1
+
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["rondas"]/2 +1,
+            'tratamiento':self.session.config["tratamiento"]
+        }
 
 class dec_com_con(Page):
     form_model = 'group'
     form_fields = ['decision_comprador']
     def is_displayed(self):
-        return self.player.role()=='Comprador' and self.round_number > Constants.num_rounds/2
+        if(self.session.config["tratamiento"]):
+            return self.player.role() == 'Comprador' and self.round_number <= self.session.config["rondas"] / 2
+        else:
+            return self.player.role()=='Comprador' and self.round_number > self.session.config["rondas"] / 2
 
 class dec_com_sin(Page):
     form_model = 'group'
     form_fields = ['decision_comprador']
     def is_displayed(self):
-        return self.player.role()=='Comprador' and self.round_number <= Constants.num_rounds/2
+        if (self.session.config["tratamiento"]):
+            return self.player.role() == 'Comprador' and self.round_number > self.session.config["rondas"] / 2
+        else:
+            return self.player.role()=='Comprador' and self.round_number <= self.session.config["rondas"] / 2
 
 class dec_ven_con(Page):
     form_model = 'group'
     form_fields = ['calidad_real','calidad_ofrecida','precio_vendedor','decision_vendedor']
     def is_displayed(self):
-        return self.player.role()=='Vendedor' and self.round_number > Constants.num_rounds/2
+        if(self.session.config["tratamiento"]):
+            return self.player.role() == 'Vendedor' and self.round_number <= self.session.config["rondas"] / 2
+        else:
+            return self.player.role()=='Vendedor' and self.round_number > self.session.config["rondas"] / 2
 
 class dec_ven_sin(Page):
     form_model = 'group'
     form_fields = ['calidad_real','calidad_ofrecida','precio_vendedor']
     def is_displayed(self):
-        return self.player.role()=='Vendedor' and self.round_number <= Constants.num_rounds/2
+        if(self.session.config["tratamiento"]):
+            return self.player.role() == 'Vendedor' and self.round_number > self.session.config["rondas"] / 2
+        else:
+            return self.player.role()=='Vendedor' and self.round_number <= self.session.config["rondas"] / 2
 
 class gan_individual(Page):
     pass
 
 class gan_totales(Page):
     def is_displayed(self):
-        return self.round_number == Constants.num_rounds
+        return self.round_number == self.session.config["rondas"]
 
 class esperagrupos(WaitPage):
     wait_for_all_groups = True
@@ -61,7 +76,7 @@ class calculos(WaitPage):
 
 page_sequence = [
     bienvenida,
-    sin,
+    tratamientos,
     esperagrupos,
     dec_ven_sin,
     dec_ven_con,
@@ -71,6 +86,5 @@ page_sequence = [
     esperagrupos,
     calculos,
     gan_individual,
-    con_,
     gan_totales
 ]
