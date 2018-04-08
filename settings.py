@@ -153,8 +153,28 @@ ROOM_DEFAULTS = {}
 
 ROOMS = [
     {
-        'name': 'EMAR_LAB',
-        'display_name': 'Sala del EMAR LAB',
+        'name': 'emar1',
+        'display_name': 'Sala 1 del EMAR LAB',
+        'use_secure_urls': False
+    },
+    {
+        'name': 'emar2',
+        'display_name': 'Sala 2 del EMAR LAB',
+        'use_secure_urls': False
+    },
+    {
+        'name': 'emar3',
+        'display_name': 'Sala 3 del EMAR LAB',
+        'use_secure_urls': False
+    },
+    {
+        'name': 'emar4',
+        'display_name': 'Sala 4 del EMAR LAB',
+        'use_secure_urls': False
+    },
+    {
+        'name': 'emar5',
+        'display_name': 'Sala 5 del EMAR LAB',
         'use_secure_urls': False
     }
 ]
