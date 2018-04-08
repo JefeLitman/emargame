@@ -155,7 +155,7 @@ ROOMS = [
     {
         'name': 'EMAR_LAB',
         'display_name': 'Sala del EMAR LAB',
-        'use_secure_urls': True
+        'use_secure_urls': False
     }
 ]
 
