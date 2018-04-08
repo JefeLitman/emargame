@@ -151,7 +151,7 @@ SESSION_CONFIGS = [
 #oTree ROOMS
 ROOM_DEFAULTS = {
     'participant_label_file':'labels.txt',
-    'use_secure_urls': True
+    'use_secure_urls': False
 }
 
 ROOMS = [
