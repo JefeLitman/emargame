@@ -7,17 +7,30 @@
 
 {% block content %}
 
-    {% if numeroronda == rondastotales %}
-        <h1 align="center">
-            Periodos finales
-        </h1> </br>
+    {% if tratamiento %}
+        {% if numeroronda == rondastotales %}
+            <h1 align="center">
+                Periodos finales
+            </h1> </br>
+        En los siguientes periodos, en la etapa de decisiones no se podrá observar si se esta interactuando con un Inventor o con Inversor
+        {% else %}
+            <h1 align="center">
+                Periodos iniciales
+            </h1> </br>
         En los siguientes periodos, en la etapa de decisiones se podrá observar si se esta interactuando con un Inventor o con Inversor
+        {% endif %}
     {% else %}
-        <h1 align="center">
-            Periodos iniciales
-        </h1>
-
-
+        {% if numeroronda == rondastotales %}
+            <h1 align="center">
+                Periodos finales
+            </h1> </br>
+        En los siguientes periodos, en la etapa de decisiones se podrá observar si se esta interactuando con un Inventor o con Inversor
+        {% else %}
+            <h1 align="center">
+                Periodos iniciales
+            </h1> </br>
+        En los siguientes periodos, en la etapa de decisiones no se podrá observar si se esta interactuando con un Inventor o con Inversor
+        {% endif %}
     {% endif %}
 
     {% next_button %}

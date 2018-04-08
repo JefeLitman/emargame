@@ -112,6 +112,13 @@ SESSION_CONFIGS = [
         'display_name': 'Confianza',
         'num_demo_participants': 2,
         'app_sequence': ['confianza'],
+        'rondas':2,
+        'tratamiento':False,
+        'doc':"""
+        El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
+        El parametro de tratamiento corresponde a 'False' si el tratamiento va de SIN a CON, de lo contrario
+        en 'True' el tratamiento sera de CON a SIN.
+        """
     },
     {
         'name':'desfile_belleza',

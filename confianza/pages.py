@@ -12,12 +12,13 @@ class welcome(Page):
 
 class tratamiento(Page):
     def is_displayed(self):
-        return self.round_number == 1 or self.round_number == Constants.num_rounds/2+1
+        return self.round_number == 1 or self.round_number == self.session.config["rondas"]/2 +1
 
     def vars_for_template(self):
         return{
             'numeroronda':self.round_number,
-            'rondastotales':Constants.num_rounds/2+1
+            'rondastotales':self.session.config["rondas"]/2 +1,
+            'tratamiento':self.session.config["tratamiento"]
         }
 
 class enviosin(Page):
@@ -25,14 +26,20 @@ class enviosin(Page):
     form_fields = ['sent_amount']
 
     def is_displayed(self):
-        return self.player.id_in_group == 1 and self.round_number<=Constants.num_rounds/2
+        if(self.session.config["tratamiento"]):
+            return self.player.id_in_group == 1 and self.round_number > self.session.config["rondas"] / 2
+        else:
+            return self.player.id_in_group == 1 and self.round_number <= self.session.config["rondas"]/2
 
 class enviocon(Page):
     form_model = 'group'
     form_fields = ['sent_amount']
 
     def is_displayed(self):
-        return self.player.id_in_group == 1 and self.round_number > Constants.num_rounds / 2
+        if (self.session.config["tratamiento"]):
+            return self.player.id_in_group == 1 and self.round_number <= self.session.config["rondas"]/2
+        else:
+            return self.player.id_in_group == 1 and self.round_number > self.session.config["rondas"] / 2
 
     def vars_for_template(self):
         return{
@@ -44,7 +51,10 @@ class retornosin(Page):
     form_fields = ['sent_back_amount']
 
     def is_displayed(self):
-        return self.player.id_in_group == 2 and self.round_number<=Constants.num_rounds/2
+        if(self.session.config["tratamiento"]):
+            return self.player.id_in_group == 2 and self.round_number > self.session.config["rondas"] / 2
+        else:
+            return self.player.id_in_group == 2 and self.round_number<=self.session.config["rondas"]/2
 
     def vars_for_template(self):
         return {
@@ -62,7 +72,10 @@ class retornocon(Page):
     form_fields = ['sent_back_amount']
 
     def is_displayed(self):
-        return self.player.id_in_group == 2 and self.round_number > Constants.num_rounds / 2
+        if(self.session.config["tratamiento"]):
+            return self.player.id_in_group == 2 and self.round_number <= self.session.config["rondas"] / 2
+        else:
+            return self.player.id_in_group == 2 and self.round_number > self.session.config["rondas"]/2
 
     def vars_for_template(self):
         return {
@@ -81,7 +94,7 @@ class gananciaindividual(Page):
 
 class gananciatotal(Page):
     def is_displayed(self):
-        return self.round_number == Constants.num_rounds
+        return self.round_number == self.session.config["rondas"]
 
 class calculos(WaitPage):
 
