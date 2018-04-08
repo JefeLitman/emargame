@@ -73,7 +73,7 @@ INSTALLED_APPS = ['otree']
 # SENTRY_DSN = ''
 
 DEMO_PAGE_INTRO_TEXT = """
-oTree games
+Juegos EMAR LAB
 """
 
 mturk_hit_settings = {
@@ -98,12 +98,15 @@ mturk_hit_settings = {
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 0.000,
     'participation_fee': 0.00,
-    'doc': "",
     'mturk_hit_settings': mturk_hit_settings,
+    'rondas':2,
+    'tratamiento':False,
+    'doc':"""
+    El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
+    El parametro de tratamiento al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
+    al estar chuleado sera de CON a SIN.
+    """
 }
-
-
-
 # anything you put after the below line will override
 # oTree's default settings. Use with caution.
 SESSION_CONFIGS = [
@@ -112,79 +115,48 @@ SESSION_CONFIGS = [
         'display_name': 'Confianza',
         'num_demo_participants': 2,
         'app_sequence': ['confianza'],
-        'rondas':2,
-        'tratamiento':False,
-        'doc':"""
-        El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
-        El parametro de tratamiento al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
-        al estar chuleado sera de CON a SIN.
-        """
     },
     {
         'name':'desfile_belleza',
         'display_name':'Concurso de Belleza de Keyne',
         'num_demo_participants': 2,
         'app_sequence':['desfile_belleza'],
-        'rondas':2,
-        'tratamiento':False,
-        'doc':"""
-        El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
-        El parametro de tratamiento al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
-        al estar chuleado sera de CON a SIN.
-        """
     },
     {
         'name':'inversion_coordinacion_reputacion',
         'display_name': 'Inversión: Coordinación y reputación',
         'num_demo_participants':2,
         'app_sequence': ['inversion_coordinacion_reputacion'],
-        'rondas':2,
-        'tratamiento':False,
-        'doc':"""
-        El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
-        El parametro de tratamiento al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
-        al estar chuleado sera de CON a SIN.
-        """
     },
     {
         'name':'signals',
         'display_name': 'Señales',
         'num_demo_participants':2,
         'app_sequence': ['signals'],
-        'rondas':2,
-        'tratamiento':False,
-        'doc':"""
-        El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
-        El parametro de tratamiento al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
-        al estar chuleado sera de CON a SIN.
-        """
     },
     {
         'name':'conflicto',
         'display_name': 'Conflicto 2x2',
         'num_demo_participants':2,
         'app_sequence': ['conflicto'],
-        'rondas':2,
-        'tratamiento':False,
-        'doc':"""
-        El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
-        El parametro de tratamiento al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
-        al estar chuleado sera de CON a SIN.
-        """
     },
     {
         'name':'mercados_prohibidos',
         'display_name':'Mercados Prohibidos',
         'num_demo_participants':2,
         'app_sequence': ['mercados_prohibidos'],
-        'rondas':2,
-        'tratamiento':False,
-        'doc':"""
-        El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
-        El parametro de tratamiento al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
-        al estar chuleado sera de CON a SIN.
-        """
     },
+]
+
+#oTree ROOMS
+ROOM_DEFAULTS = {}
+
+ROOMS = [
+    {
+        'name': 'EMAR_LAB',
+        'display_name': 'Sala del EMAR LAB',
+        'use_secure_urls': True
+    }
 ]
 
 #Configuracion del servicio de sentry de oTree (Es gratuito); SENTRY_DSN

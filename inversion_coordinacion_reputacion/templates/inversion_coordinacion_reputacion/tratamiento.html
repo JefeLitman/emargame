@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Tipo de tratamiento
+{% endblock %}
+
+{% block content %}
+
+    {% if tratamiento %}
+        {% if numeroronda == rondastotales %}
+            <h1 align="center">
+                Periodos finales
+            </h1> </br>
+        En los siguientes periodos, en la etapa de decisiones no se podrá observar la calificacion promedio del otro jugador
+        {% else %}
+            <h1 align="center">
+                Periodos iniciales
+            </h1> </br>
+        En los siguientes periodos, en la etapa de decisiones se podrá observar la calificacion promedio del otro jugador
+        {% endif %}
+    {% else %}
+        {% if numeroronda == rondastotales %}
+            <h1 align="center">
+                Periodos finales
+            </h1> </br>
+        En los siguientes periodos, en la etapa de decisiones se podrá observar la calificacion promedio del otro jugador
+        {% else %}
+            <h1 align="center">
+                Periodos iniciales
+            </h1> </br>
+        En los siguientes periodos, en la etapa de decisiones no se podrá observar la calificacion promedio del otro jugador
+        {% endif %}
+    {% endif %}
+
+    {% next_button %}
+
+{% endblock %}
