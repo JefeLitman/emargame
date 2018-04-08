@@ -14,6 +14,7 @@ Si desea conocer más acerca del laboratorio y el grupo EMAR, puede dar click en
 - [Facebook EMAR LAB](https://www.facebook.com/EMARLAB/)
 
 **Equipo de trabajo**
+
 El laboratorio de Economía Experimental (EMAR) está conformado actualmente por un equipo multidisciplinario de trabajo que ayuda a la creación, diseño e implementación de los juegos de negociación. Actualmente algunos de sus integrantes son:
 - PhD. Alexandra Cortés Aguilar - Profesora UIS afiliada a la Escuela de Economía de la Universidad Industrial de Santander (Actualmente es una de los líderes).
 - PhD. Luis Alejandro Palacio García - Profesor UIS afiliado a la Escuela de Economía de la Universidad Industrial de Santander (Actualmente es uno de los líderes).
