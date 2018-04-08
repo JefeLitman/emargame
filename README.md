@@ -24,6 +24,7 @@ El laboratorio de Economía Experimental (EMAR) está conformado actualmente por
 
 
 **Licencias de Uso del Software y contenido del EMAR LAB**
+
 Actualmente los juegos y su desarrollo tiene la **licencia MIT** para su distribución libre siempre y cuando mencionen la fuente de donde obtuvieron el software.
 Por otro lado los contenidos de la página del EMAR LAB están bajo **Creative Commons de Atribución**, es decir, que pueden tomar todo el contenido y realizar lo que deseen con el siempre y cuando mencionen la fuente de donde obtuvieron el contenido.
 
