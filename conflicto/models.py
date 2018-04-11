@@ -12,7 +12,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'conflicto'
     players_per_group = 2
-    num_rounds = 2
+    num_rounds = 30
 
 
 class Subsession(BaseSubsession):

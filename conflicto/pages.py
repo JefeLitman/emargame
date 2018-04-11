@@ -8,9 +8,16 @@ class bienvenida(Page):
     def is_displayed(self):
         return self.round_number == 1
 
-class decision_sim(Page):
-    form_model = 'group'
-    form_fields = ['opcion_azul','opcion_verde']
+class tratamiento(Page):
+    def is_displayed(self):
+        return self.round_number == 1 or self.round_number == self.session.config["rondas"] / 2 + 1
+
+    def vars_for_template(self):
+        return {
+            'numeroronda': self.round_number,
+            'rondastotales': self.session.config["rondas"] / 2 + 1,
+            'tratamiento': self.session.config["tratamiento"]
+        }
 
 class decision_sim_azul(Page):
     form_model = models.Group
@@ -24,21 +31,27 @@ class decision_sim_verde(Page):
     form_fields = ['opcion_verde']
 
     def is_displayed(self):
-        return self.player.role() == 'Verde' and self.round_number <= Constants.num_rounds/2
+        if (self.session.config["tratamiento"]):
+            return self.player.role() == 'Verde' and self.round_number > self.session.config["rondas"] / 2
+        else:
+            return self.player.role() == 'Verde' and self.round_number <= self.session.config["rondas"] / 2
 
 class decision_sec_verde(Page):
     form_model = 'group'
     form_fields = ['opcion_verde']
 
     def is_displayed(self):
-        return self.player.role() == 'Verde' and self.round_number > Constants.num_rounds/2
+        if(self.session.config["tratamiento"]):
+            return self.player.role() == 'Verde' and self.round_number <= self.session.config["rondas"] / 2
+        else:
+            return self.player.role() == 'Verde' and self.round_number > self.session.config["rondas"] / 2
 
 class gan_individual(Page):
     pass
 
 class gan_totales(Page):
     def is_displayed(self):
-        return self.round_number == Constants.num_rounds
+        return self.round_number == self.session.config["rondas"]
 
 class esperagrupos(WaitPage):
     wait_for_all_groups = True
@@ -59,6 +72,7 @@ class calculos(WaitPage):
 
 page_sequence = [
     bienvenida,
+    tratamiento,
     esperagrupos,
     precalculos,
     decision_sim_azul,
