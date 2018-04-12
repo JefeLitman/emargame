@@ -34,8 +34,10 @@
 
 <p> <b>Usted es el participante Verde</b>  <br>
     Ahora debes tomar tú decisión.<br>
-    {% formfield group.opcion_verde label="Yo elijo:" %} <br/>
-
-    {% next_button %}
+    <p>Yo elijo:</p><br/>
+    <div>
+        <button name="opcion_verde" value="0" class="btn btn-primary btn-large">V1</button>
+        <button name="opcion_verde" value="2" class="btn btn-primary btn-large">V2</button>
+    </div>
 
 {% endblock %}

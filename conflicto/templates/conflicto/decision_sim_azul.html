@@ -34,8 +34,10 @@
 
 <p> <b>Usted es el participante Azul</b>  <br>
     Ahora debes tomar tú decisión.<br>
-    {% formfield group.opcion_azul label="Yo elijo:" %} <br/>
-
-    {% next_button %}
+    <p>Yo elijo:</p><br/>
+    <div>
+        <button name="opcion_azul" value="0" class="btn btn-primary btn-large">A1</button>
+        <button name="opcion_azul" value="1" class="btn btn-primary btn-large">A2</button>
+    </div>
 
 {% endblock %}
