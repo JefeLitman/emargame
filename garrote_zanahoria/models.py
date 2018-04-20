@@ -22,6 +22,9 @@ class Subsession(BaseSubsession):
     c_publica = models.CurrencyField(initial=c(0))
     rentabilidad= models.CurrencyField(initial=c(0))
 
+    def creating_session(self):
+        self.group_randomly()
+
     def calc_rent(self):
         players=self.get_players()
         long = len(players)
