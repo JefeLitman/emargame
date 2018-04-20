@@ -38,6 +38,8 @@ class Group(BaseGroup):
         p2 = self.get_player_by_id(2)
         p1.cal_c_privada(garrote,p2.da_inc,rentabilidad)
         p2.cal_c_privada(garrote,p1.da_inc,rentabilidad)
+        p1.cal_gan_totales()
+        p2.cal_gan_totales()
 
 class Player(BasePlayer):
     c_privada=models.CurrencyField(initial=c(0))
