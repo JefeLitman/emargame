@@ -39,14 +39,14 @@ class calculos(WaitPage):
         self.subsession.rentabilidad=self.subsession.calc_rent()
         if self.session.config["tratamiento"]==False:
             if self.round_number <= self.session.config["rondas"]/2:
-                self.group.cal_incentivo_corres(garrote="garrote")
+                self.group.cal_incentivo_corres(garrote="garrote",rentabilidad=self.subsession.rentabilidad)
             else:
-                self.group.cal_incentivo_corres(garrote="zanahoria")
+                self.group.cal_incentivo_corres(garrote="zanahoria",rentabilidad=self.subsession.rentabilidad)
         else:
             if self.round_number <= self.session.config["rondas"]/2:
-                self.group.cal_incentivo_corres(garrote="zanahoria")
+                self.group.cal_incentivo_corres(garrote="zanahoria",rentabilidad=self.subsession.rentabilidad)
             else:
-                self.group.cal_incentivo_corres(garrote="garrote")
+                self.group.cal_incentivo_corres(garrote="garrote",rentabilidad=self.subsession.rentabilidad)
 
 class gan_individual(Page):
     pass

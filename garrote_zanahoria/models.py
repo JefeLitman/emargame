@@ -33,11 +33,11 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    def cal_incentivo_corres(self,garrote):
+    def cal_incentivo_corres(self,garrote,rentabilidad):
         p1=self.get_player_by_id(1)
         p2 = self.get_player_by_id(2)
-        p1.cal_c_privada(garrote,p2.da_inc)
-        p2.cal_c_privada(garrote,p1.da_inc)
+        p1.cal_c_privada(garrote,p2.da_inc,rentabilidad)
+        p2.cal_c_privada(garrote,p1.da_inc,rentabilidad)
 
 class Player(BasePlayer):
     c_privada=models.CurrencyField(initial=c(0))
@@ -48,8 +48,8 @@ class Player(BasePlayer):
     def cal_gan_totales(self):
          self.ganacias_totales = sum([p.c_privada for p in self.player.in_all_rounds()])
 
-    def cal_c_privada(self,garrote,da_inc_otro):
+    def cal_c_privada(self,garrote,da_inc_otro,rentabilidad):
         if garrote == "garrote":
-            self.c_privada=Constants.dotacion-(self.da_inc+self.da_c_pub)+Subsession.rentabilidad-c(3)*da_inc_otro
+            self.c_privada= Constants.dotacion-(self.da_inc+self.da_c_pub)+rentabilidad-3*da_inc_otro
         else:
-            self.c_privada = Constants.dotacion - (self.da_inc + self.da_c_pub) + Subsession.rentabilidad+c(3)*da_inc_otro
+            self.c_privada = Constants.dotacion - (self.da_inc + self.da_c_pub) + rentabilidad+3*da_inc_otro
