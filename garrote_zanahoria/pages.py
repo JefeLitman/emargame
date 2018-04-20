@@ -27,7 +27,7 @@ class incentivo(Page):
     form_fields = ['da_inc']
 
     def vars_for_template(self):
-        otro_jugador = self.player.get_others_in_group()
+        otro_jugador = self.player.get_others_in_group()[0]
         return {'contri_otro_jugador':otro_jugador.da_c_pub}
 
 class espera_grupos(WaitPage):
