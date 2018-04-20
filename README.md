@@ -41,13 +41,13 @@ Por otro lado los contenidos de la página del EMAR LAB están bajo **Creative C
 
 |  Juegos  |  Modelo Conceptual  |  Desarrollado  |  Testeado  |  Mejoras  |
 |  ------------  |  ------------  |  ------------  |  ------------  |  ------------  |
-|  Buscadores de Renta  |  Si  |  No  |  No  |  N/A  |
+|  Buscadores de Renta  |  No  |  No  |  No  |  N/A  |
 |  Concurso de belleza  |  Si  |  Si  |  Si  |  (1) (2)  |
 |  Confianza  |  Si  |  Si  |  Si  |  (1) (2)  |
 |  Conflicto 2x2  |  Si  |  Si  |  No  |  (1) (2)  |
 |  Coordinación y reputación  |  Si  |  Si  |  Si  |  (1) (2)  |
-|  Garrote y Zanahoria  |  Si  |  Si  |  No  |  (2)  |
-|  Mercado de los limones  |  Si  |  No  |  No  |  N/A  |
+|  Garrote y Zanahoria  |  Si  |  Si  |  No  |  (1) (2)  |
+|  Mercado de los limones  |  No  |  No  |  No  |  N/A  |
 |  Mercados Prohibidos  |Si  |  Si  |  Si  |  N/A  |
 |  Señales  |  Si  |  Si  |  Si  |  (1) (2)  |
 
