@@ -146,6 +146,13 @@ SESSION_CONFIGS = [
         'num_demo_participants':2,
         'app_sequence': ['mercados_prohibidos'],
     },
+
+    {
+        'name' : 'garrote_zanahoria',
+        'display_name' : 'Garrote & Zanahoria',
+        'num_demo_participants':2,
+        'app_sequence': ['garrote_zanahoria'],
+    }
 ]
 
 #oTree ROOMS
