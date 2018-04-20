@@ -62,7 +62,7 @@ page_sequence = [
     contribucion,
     incentivo,
     espera_grupos,
-    calculos
+    calculos,
     gan_individual,
     gan_totales
 ]
