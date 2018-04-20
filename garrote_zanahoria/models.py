@@ -25,7 +25,7 @@ class Subsession(BaseSubsession):
     def calc_rent(self):
         players=self.get_players()
         long = len(players)
-        return (self.c_publica*3)/long
+        return (self.c_publica*c(3))/long
 
     def calc_pub(self):
         players = self.get_players()
@@ -50,6 +50,6 @@ class Player(BasePlayer):
 
     def cal_c_privada(self,garrote,da_inc_otro):
         if garrote == "garrote":
-            self.c_privada=Constants.dotacion-(self.da_inc+self.da_c_pub)+Subsession.rentabilidad-3*da_inc_otro
+            self.c_privada=Constants.dotacion-(self.da_inc+self.da_c_pub)+Subsession.rentabilidad-c(3)*da_inc_otro
         else:
-            self.c_privada = Constants.dotacion - (self.da_inc + self.da_c_pub) + Subsession.rentabilidad+3*da_inc_otro
+            self.c_privada = Constants.dotacion - (self.da_inc + self.da_c_pub) + Subsession.rentabilidad+c(3)*da_inc_otro
