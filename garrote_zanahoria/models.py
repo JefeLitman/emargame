@@ -28,7 +28,7 @@ class Subsession(BaseSubsession):
     def calc_rent(self):
         players=self.get_players()
         long = len(players)
-        return (self.c_publica*c(3))/long
+        return round((self.c_publica*3)/long)
 
     def calc_pub(self):
         players = self.get_players()
