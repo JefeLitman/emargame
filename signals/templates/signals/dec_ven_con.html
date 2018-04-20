@@ -80,9 +80,7 @@
     {%formfield group.precio_vendedor label="Debe decidir el precio de venta:"%}
 
     <p>Si la calidad del producto coincide con el  mensaje, usted puede invertir 500 puntos para asegurar la calidad.
-    <br> <small> En caso de que no coincida responda: NO </small> </p>
-
-    {%formfield group.decision_vendedor label="¿Desea invertir 500 puntos para que el comprador esté seguro de la calidad ofrecida?"%}
+    <br> <small> En caso de que no coincida responda: NO </small> </p><br>
     <p><b>¿Desea invertir 500 puntos para que el comprador esté seguro de la calidad ofrecida?</b></p>
     <div>
         <button id="si" name="decision_vendedor" value="True" class="btn btn-primary btn-large">Si</button>
@@ -102,15 +100,12 @@
                 return true;
             }
         }
-        var next_buttons = document.getElementsByClassName("next-button"); // Obtengo todos los botones con clase next-button
-        next_buttons[0].onclick = displayDate;
 
-        var boton_si = document.getElementById("si");
-        boton_si.onclick = displayDate;
+        var boton_si = document.getElementById("si").addEventListener("click", displayDate);
 
         function displayDate() {
+          console.log("Hola");
           alert("hola");
-            //document.getElementById("demo").innerHTML = Date();
         }
 
     </script>
