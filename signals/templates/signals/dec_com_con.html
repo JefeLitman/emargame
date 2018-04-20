@@ -90,8 +90,10 @@
 
     {% endif %}
 
-    {%formfield group.decision_comprador label="¿Desea comprar el bien?"%}
-
-    {% next_button %}
+    <p><b>¿Desea comprar el bien?</b></p>
+    <div>
+        <button id="si" name="decision_comprador" value="True" class="btn btn-primary btn-large">Si</button>
+        <button id="no" name="decision_comprador" value="False" class="btn btn-primary btn-large">No</button>
+    </div>
 
 {% endblock %}

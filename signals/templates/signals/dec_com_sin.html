@@ -73,14 +73,15 @@
 
 <br/>
 
-
     <p>
         Mensaje El vendedor está ofreciendo un producto de calidad {{group.calidad_ofrecida}}<br/>
         El precio de venta es {{group.precio_vendedor}}<br/>
     </p>
 
-    {%formfield group.decision_comprador label="¿Desea comprar el bien?"%}
-
-    {% next_button %}
+    <p><b>¿Desea comprar el bien?</b></p>
+    <div>
+        <button id="si" name="decision_comprador" value="True" class="btn btn-primary btn-large">Si</button>
+        <button id="no" name="decision_comprador" value="False" class="btn btn-primary btn-large">No</button>
+    </div>
 
 {% endblock %}
