@@ -99,11 +99,18 @@
             }
         }
         var next_buttons = document.getElementsByClassName("next-button"); // Obtengo todos los botones con clase next-button
+        next_buttons[0].onclick = displayDate;
+
+        function displayDate() {
+          alert("hola");
+            //document.getElementById("demo").innerHTML = Date();
+        }
+
         // de la pagina actual en la que estamos
-        var next_button = next_buttons[0] //Como el documento solo tiene un next button entonces se coloca el indice 0
+        //var next_button = next_buttons[0] //Como el documento solo tiene un next button entonces se coloca el indice 0
         //y obtenemos el boton con todas sus caracteristicas
-        var comportamiento = next_buttons[0].onclick // guardo la funcion que hacia el boton al darle onclick
-        next_button.onclick =
+        //var comportamiento = next_buttons[0].onclick // guardo la funcion que hacia el boton al darle onclick
+        //next_button.onclick =
 
     </script>
 
