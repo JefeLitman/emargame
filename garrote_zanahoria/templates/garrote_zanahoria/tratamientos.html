@@ -12,27 +12,27 @@
             <h1 align="center">
                 Periodos finales - <font color="#736252">Garrote</font>
             </h1> </br>
-        En los siguientes periodos, el incentivo se restará a su cuenta privada.
+        En los siguientes periodos, el incentivo se restará a su cuenta privada.</br>
         {% else %}
             <h1 align="center">
                 Periodos iniciales - <font color=" #ff8000">Zanahoria</font>
             </h1> </br>
-        En los siguientes periodos, el incentivo se sumará a su cuenta privada.
+        En los siguientes periodos, el incentivo se sumará a su cuenta privada.</br>
         {% endif %}
     {% else %}
         {% if numeroronda == rondastotales %}
             <h1 align="center">
                 Periodos finales - <font color=" #ff8000">Zanahoria</font>
             </h1> </br>
-       En los siguientes periodos, el incentivo se sumará a su cuenta privada.
+       En los siguientes periodos, el incentivo se sumará a su cuenta privada.</br>
         {% else %}
             <h1 align="center">
                 Periodos iniciales - <font color="#736252">Garrote</font>
             </h1> </br>
-         En los siguientes periodos, el incentivo se restará a su cuenta privada.
+         En los siguientes periodos, el incentivo se restará a su cuenta privada.</br>
         {% endif %}
     {% endif %}
-    <br>
+
     {% next_button %}
 
 {% endblock %}

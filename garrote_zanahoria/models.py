@@ -51,7 +51,7 @@ class Player(BasePlayer):
     ganacias_totales=models.CurrencyField(initial=c(0)) #sum de todas las rondas
 
     def cal_gan_totales(self):
-         self.ganacias_totales = sum([p.c_privada for p in self.player.in_all_rounds()])
+         self.ganacias_totales = sum([p.c_privada for p in self.in_all_rounds()])
 
     def cal_c_privada(self,garrote,da_inc_otro,rentabilidad):
         if garrote == "garrote":
