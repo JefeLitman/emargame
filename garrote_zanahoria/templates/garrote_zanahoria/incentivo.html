@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Incentivos
+{% endblock %}
+
+{% block content %}
+
+    El monto contribuido por su pareja fue: {{contri_otro_jugador}}
+
+    {% formfield player.da_inc label="¿Cuánto desea dar de incentivo?" %}
+
+    {% next_button %}
+
+{% endblock %}

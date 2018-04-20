@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Ganancias Individuales
+{% endblock %}
+
+{% block content %}
+
+    La rentabilidad fue de: {{subsession.rentabilidad}} puntos. <br>
+
+    Su ganacia en este periodo fue de: {{player.c_privada}} puntos.
+
+    {% next_button %}
+
+{% endblock %}

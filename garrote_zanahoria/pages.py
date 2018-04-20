@@ -26,6 +26,10 @@ class incentivo(Page):
     form_model = 'player'
     form_fields = ['da_inc']
 
+    def vars_for_template(self):
+        otro_jugador = self.player.get_others_in_group()
+        return {'contri_otro_jugador':otro_jugador.da_c_pub}
+
 class espera_grupos(WaitPage):
     wait_for_all_groups = True
 
@@ -44,6 +48,21 @@ class calculos(WaitPage):
             else:
                 self.group.cal_incentivo_corres(garrote="garrote")
 
-page_sequence = [
+class gan_individual(Page):
+    pass
 
+class gan_totales(Page):
+    def is_displayed(self):
+        return self.round_number == self.session.config["rondas"]
+
+page_sequence = [
+    bienvenida,
+    tratamientos,
+    espera_grupos,
+    contribucion,
+    incentivo,
+    espera_grupos,
+    calculos
+    gan_individual,
+    gan_totales
 ]
