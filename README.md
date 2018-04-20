@@ -46,7 +46,7 @@ Por otro lado los contenidos de la página del EMAR LAB están bajo **Creative C
 |  Confianza  |  Si  |  Si  |  Si  |  (1) (2)  |
 |  Conflicto 2x2  |  Si  |  Si  |  No  |  (1) (2)  |
 |  Coordinación y reputación  |  Si  |  Si  |  Si  |  (1) (2)  |
-|  Garrote y Zanahoria  |  Si  |  Si  |  No  |  N/A  |
+|  Garrote y Zanahoria  |  Si  |  Si  |  No  |  (2)  |
 |  Mercado de los limones  |  Si  |  No  |  No  |  N/A  |
 |  Mercados Prohibidos  |Si  |  Si  |  Si  |  N/A  |
 |  Señales  |  Si  |  Si  |  Si  |  (1) (2)  |
