@@ -29,7 +29,7 @@ class Subsession(BaseSubsession):
 
     def calc_pub(self):
         players = self.get_players()
-        return sum(players.da_c_pub)
+        return sum([p.da_c_pub for p in players])
 
 
 class Group(BaseGroup):
