@@ -60,6 +60,7 @@ page_sequence = [
     tratamientos,
     espera_grupos,
     contribucion,
+    espera_grupos,
     incentivo,
     espera_grupos,
     calculos,
