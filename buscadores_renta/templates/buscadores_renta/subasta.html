@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Decide cuanto invertir
+{% endblock %}
+
+{% block content %}
+
+    <p>Su dotacion inicial es de {{Constants.dotacion}}</p><br/>
+    <p>El valor que usted le da al producto es de {{player.valor_producto}}</p><br/>
+    <p>El producto sera entregado al participante que realize la inversion mas alta.
+    Si varios participantes realizan la inversion mas alta, el computador entregara
+    el producto al azar entre los que estan empatados.</p><br/>
+    {% formfield player.da_invertir label="Digite el valor que desea invertir en la subasta:" %}
+
+    {% next_button %}
+
+{% endblock %}
