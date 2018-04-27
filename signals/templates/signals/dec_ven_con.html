@@ -83,14 +83,17 @@
     <br> <small> En caso de que no coincida responda: NO </small> </p><br>
     <p><b>¿Desea invertir 500 puntos para que el comprador esté seguro de la calidad ofrecida?</b></p>
     <div>
-        <button id="si" name="decision_vendedor" value="True" class="btn btn-primary btn-large">Si</button>
+        <div style="display: none;">
+          <button id="si" name="decision_vendedor" value="True" class="btn btn-primary btn-large">Si</button>
+        </div>
+        <button type="button" id="boton_si" class="btn btn-primary btn-large">Si</button>
         <button id="no" name="decision_vendedor" value="False" class="btn btn-primary btn-large">No</button>
     </div>
     <script>
         function validar()
         {
-            var calidad = document.getElementById({{group.calidad_real.id_for_label}}).value;
-            var mensaje = document.getElementById({{group.calidad_ofrecida.id_for_label}}).value;
+            var calidad = document.getElementById("id_calidad_real").value;
+            var mensaje = document.getElementById("id_calidad_ofrecida").value;
             if (calidad != mensaje)
             {
                 return false;
@@ -100,14 +103,18 @@
                 return true;
             }
         }
-
-        var boton_si = document.getElementById("si").addEventListener("click", displayDate);
-
-        function displayDate() {
+        function enviar() {
           console.log(validar());
-          alert("hola");
+          if(validar())
+          {
+            document.getElementById("si").click();
+          }
+          else
+          {
+            alert("Porfavor, asegurese que la calidad \nreal y ofrecida sean iguales")
+          }
         }
-
+        document.getElementById("boton_si").onclick=enviar;
     </script>
 
 {% endblock %}
