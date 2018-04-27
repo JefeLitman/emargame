@@ -87,7 +87,7 @@
         <button id="no" name="decision_vendedor" value="False" class="btn btn-primary btn-large">No</button>
     </div>
     <script>
-        function validar(comportamiento)
+        function validar()
         {
             var calidad = document.getElementById({{group.calidad_real.if_for_label}}).value;
             var mensaje = document.getElementById({{group.calidad_ofrecida.if_for_label}}).value;
@@ -104,7 +104,7 @@
         var boton_si = document.getElementById("si").addEventListener("click", displayDate);
 
         function displayDate() {
-          console.log("Hola");
+          console.log(validar());
           alert("hola");
         }
 
