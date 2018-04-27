@@ -89,8 +89,8 @@
     <script>
         function validar()
         {
-            var calidad = document.getElementById({{group.calidad_real.if_for_label}}).value;
-            var mensaje = document.getElementById({{group.calidad_ofrecida.if_for_label}}).value;
+            var calidad = document.getElementById({{group.calidad_real.id_for_label}}).value;
+            var mensaje = document.getElementById({{group.calidad_ofrecida.id_for_label}}).value;
             if (calidad != mensaje)
             {
                 return false;
