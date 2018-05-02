@@ -82,15 +82,15 @@
     <p>Si la calidad del producto coincide con el  mensaje, usted puede invertir 500 puntos para asegurar la calidad.
     <br> <small> En caso de que no coincida responda: NO </small> </p><br>
     <p><b>¿Desea invertir 500 puntos para que el comprador esté seguro de la calidad ofrecida?</b></p>
-    <div id="warning" class="alert alert-warning" style="display:none;">
+    <div id="warning" class="alert alert-warning" style="visibility: hidden;">
         <strong>Error!</strong> Porfavor, asegurese que la calidad real y ofrecida sean iguales.
     </div>
     <div>
+        <button type="button" id="boton_si" class="btn btn-primary btn-large">Si</button>
+        <button id="no" name="decision_vendedor" value="False" class="btn btn-primary btn-large">No</button>
         <div style="visibility: hidden;">
           <button id="si" name="decision_vendedor" value="True" class="btn btn-primary btn-large">Si</button>
         </div>
-        <button type="button" id="boton_si" class="btn btn-primary btn-large">Si</button>
-        <button id="no" name="decision_vendedor" value="False" class="btn btn-primary btn-large">No</button>
     </div>
     <script>
         function validar()
