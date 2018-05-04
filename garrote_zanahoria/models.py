@@ -64,11 +64,11 @@ class Player(BasePlayer):
         else:
             self.c_privada = Constants.dotacion - (self.da_inc + self.da_c_pub) + rentabilidad+3*da_inc_otro
 
-    def cal_gan_c_privada(self,garrote,da_inc_otro,rentabilidad):
-        if garrote == "garrote":
-            self.gan_c_privada= rentabilidad-3*da_inc_otro
-        else:
-            self.gan_c__privada= rentabilidad+3*da_inc_otro
+    #def cal_gan_c_privada(self,garrote,da_inc_otro,rentabilidad):
+     #   if garrote == "garrote":
+      #      self.gan_c_privada= rentabilidad-3*da_inc_otro
+       # else:
+        #    self.gan_c__privada= rentabilidad+3*da_inc_otro
 
     #def get_da_inc(self):
      #   da_inc_g=self.da_inc
