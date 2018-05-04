@@ -7,9 +7,59 @@
 
 {% block content %}
 
-    La rentabilidad fue de: {{subsession.rentabilidad}}. <br>
+    <style>
+    div.relative {
+    position: relative;
+    top: 75px;
+    left: 90px;
+    width: 50%;
+    background-color:#242a92;
+    color: white;
+    }
+    h1{
+    position: relative;
+    left: 10px;
+    }
+    div.datos{
+	position: relative;
+    left: 90px;
+    top: 85px;
+    }
+    div.tabla{
+	position: relative;
+    left: 250px;
+    top: 130px;
+    }
+    </style>
 
-    Su ganacia en este periodo fue de: {{player.c_privada}} puntos.
+<div class="relative">
+<h1>
+ Ganancias
+</h1>
+</div>
+
+<div class="datos">
+Contribución del grupo a la Cuenta Pública:
+</br> </br>
+Su contribución a la cuenta publica:{{player.da_c_pub}}
+</br> </br>
+Ganancia en la Cuenta Pública: {{subsession.rentabilidad}}
+</br> </br>
+Ganancia en la Cuenta Privada: {{player.gan_c_privada}}
+</br> </br>
+Inversión en el incentivo de la pareja: {{da_inc}}
+</br> </br>
+Incentivo recibido:
+</div>
+
+<div class="tabla">
+<table>
+  <tr>
+    <th>Ganancia del periodo:</th>
+    <th>Ganancia acumulada:</th>
+  </tr>
+</table>
+</div>
 
     {% next_button %}
 

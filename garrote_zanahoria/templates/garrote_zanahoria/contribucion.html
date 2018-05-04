@@ -2,12 +2,48 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Contribución
+
 {% endblock %}
 
 {% block content %}
 
-    {% formfield player.da_c_pub label="Por favor ingrese el monto a contribuir en la Cuenta Pública:" %}
+    <style>
+    div.relative {
+    position: relative;
+    top: 75px;
+    left: 90px;
+    width: 50%;
+    background-color:#242a92;
+    color: white;
+    }
+    h1{
+    position: relative;
+    left: 10px;
+    }
+    div.puntos{
+	position: relative;
+    left: 90px;
+    top: 60px;
+    }
+    div.CP{
+	position: relative;
+    left: 260px;
+    top: 100px;
+    }
+    </style>
+
+    <div class="relative">
+    <h1>
+        Contribución
+    </h1>
+    </div>
+
+    <div class="puntos">
+    1000 puntos disponibles
+    </div>
+    <div class="CP">
+    {% formfield player.da_c_pub label="Su contribución a la Cuenta Pública:" %}
+    </div>
 
     {% next_button %}
 

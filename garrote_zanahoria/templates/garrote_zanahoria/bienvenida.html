@@ -2,11 +2,17 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    ¡Bienvenid@s!
+
 {% endblock %}
 
 {% block content %}
-
+<style media="screen">
+    img{
+      width: 100%;
+      height: 80%;
+    }
+</style>
     {% next_button %}
+    <img src="imagenesG&Z/bienvenido.png">
 
 {% endblock %}
