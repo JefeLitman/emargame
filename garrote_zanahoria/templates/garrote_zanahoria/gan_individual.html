@@ -2,7 +2,7 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Ganancias Individuales
+
 {% endblock %}
 
 {% block content %}
@@ -30,11 +30,15 @@
     left: 250px;
     top: 130px;
     }
+    div.boton{
+    position: relative;
+    left: 250px;
+    }
     </style>
 
 <div class="relative">
 <h1>
- Ganancias
+ Ganancias Individuales
 </h1>
 </div>
 
@@ -61,6 +65,9 @@ Incentivo recibido:
 </table>
 </div>
 
-    {% next_button %}
+<div class="boton">
+     {% next_button %}
+</div>
+
 
 {% endblock %}

@@ -10,8 +10,8 @@
     <style>
     div.relative {
     position: relative;
-    top: 75px;
-    left: 90px;
+    top: 10px;
+    left: 20px;
     width: 50%;
     background-color:#242a92;
     color: white;
@@ -21,30 +21,23 @@
     left: 10px;
     }
     div.puntos{
-	position: relative;
-    left: 90px;
-    top: 60px;
-    }
-    div.CP{
-	position: relative;
-    left: 260px;
-    top: 100px;
+    top: 80px;
+    position: relative;
+    left: 10px;
     }
     </style>
 
     <div class="relative">
-    <h1>
-        Contribución
-    </h1>
+    <h1> Contribución </h1>
     </div>
+
+    </br> </br>
 
     <div class="puntos">
     1000 puntos disponibles
-    </div>
-    <div class="CP">
+    </br> </br>
     {% formfield player.da_c_pub label="Su contribución a la Cuenta Pública:" %}
-    </div>
-
+    </br> </br>
     {% next_button %}
-
+    </div>
 {% endblock %}
