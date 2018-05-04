@@ -53,7 +53,7 @@ class Player(BasePlayer):
     da_c_pub = models.CurrencyField(initial=c(0),min=c(0),max=c(1000))
     da_inc = models.CurrencyField(initial=c(0),min=c(0),max=c(200))
     ganacias_totales=models.CurrencyField(initial=c(0)) #sum de todas las rondas
-    gan_c_privada=models.CurrencyField(initial=c(0))
+    #gan_c_privada=models.CurrencyField(initial=c(0))
 
     def cal_gan_totales(self):
          self.ganacias_totales = sum([p.c_privada for p in self.in_all_rounds()])
