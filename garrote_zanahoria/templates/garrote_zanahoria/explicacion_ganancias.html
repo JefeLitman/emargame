@@ -1,5 +1,6 @@
 {% extends "global/Page.html" %}
 {% load staticfiles otree %}
+{% load static %}
 
 {% block title %}
 
@@ -17,5 +18,5 @@
     }
 </style>
 <div class="boton"> {% next_button %} </div>
-<img src="ganancias_explicacion.png">
+<img  src = "{%static"garrote_zanahoria/explicacion_ganancias.png"%}"/>
 {% endblock %}

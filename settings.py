@@ -25,7 +25,7 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 # don't share this with anybody.
 SECRET_KEY = '6b%cfzhh9ab%=-!&l#miwv$oa%q@m9j%7nanw!laq4u*q$mlzz'
 
-environ.__setitem__('DATABASE_URL','postgres://emar:123456@localhost/emar_db')###################
+#environ.__setitem__('DATABASE_URL','postgres://emar:123456@localhost/emar_db')###################
 DATABASES = {
     'default': dj_database_url.config(
         # Rather than hardcoding the DB parameters here,
@@ -37,7 +37,7 @@ DATABASES = {
         # export DATABASE_URL=mysql://USER:PASSWORD@HOST:PORT/NAME
 
         # fall back to SQLite if the DATABASE_URL env var is missing
-        #default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')########################3
+        default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')########################3
     )
 }
 
