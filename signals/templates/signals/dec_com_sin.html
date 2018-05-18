@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 <style type="text/css">
 
     th.tg{
@@ -80,8 +80,46 @@
 
     <p><b>¿Desea comprar el bien?</b></p>
     <div>
-        <button id="si" name="decision_comprador" value="True" class="btn btn-primary btn-large">Si</button>
-        <button id="no" name="decision_comprador" value="False" class="btn btn-primary btn-large">No</button>
+        <button type="button" id="boton_si" class="btn btn-primary btn-large">Si</button>
+        <button id="no" name="decision_vendedor" value="False" class="btn btn-primary btn-large">No</button>
+        <div id="warning" class="alert alert-danger" style="visibility: hidden;">
+            <strong>Error!</strong> Porfavor, asegurese que la calidad real y ofrecida sean iguales.
+        </div>
+        <div style="visibility: hidden;">
+          <button id="si" name="decision_vendedor" value="True" class="btn btn-primary btn-large">Si</button>
+        </div>
     </div>
+    <script>
+        function validar()
+        {
+            var calidad = parseInt(document.getElementById("id_calidad_real").value);
+            var mensaje = parseInt(document.getElementById("id_calidad_ofrecida").value);
+            var precio_vendedor = parseInt(document.getElementById("id_precio_vendedor").value);
+            if (precio_vendedor >= 500*calidad)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        function mostrar()
+        {
+            document.getElementById("warning").style.visibility="hidden";
+        }
+        function enviar() {
+          if(validar())
+          {
+            document.getElementById("si").click();
+          }
+          else
+          {
+            document.getElementById("warning").style.visibility="visible";
+            window.setTimeout(mostrar, 3000);
+          }
+        }
+        document.getElementById("boton_si").onclick=enviar;
+    </script>
 
 {% endblock %}

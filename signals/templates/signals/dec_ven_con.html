@@ -95,15 +95,16 @@
     <script>
         function validar()
         {
-            var calidad = document.getElementById("id_calidad_real").value;
-            var mensaje = document.getElementById("id_calidad_ofrecida").value;
-            if (calidad != mensaje)
+            var calidad = parseInt(document.getElementById("id_calidad_real").value);
+            var mensaje = parseInt(document.getElementById("id_calidad_ofrecida").value);
+            var precio_vendedor = parseInt(document.getElementById("id_precio_vendedor").value);
+            if (calidad == mensaje && precio_vendedor >= 500*calidad)
             {
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
         function mostrar()
