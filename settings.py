@@ -16,30 +16,29 @@ if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
 else:
     DEBUG = True
 
-ADMIN_USERNAME = 'admin'
-
-# for security, best to set admin password in an environment variable
-environ.__setitem__('OTREE_ADMIN_PASSWORD','123456') #############
+if(environ.get('OTREE_ADMIN_PASSWORD')==None):
+    ADMIN_USERNAME = 'admin'
+    environ.__setitem__('OTREE_ADMIN_PASSWORD','123456')
+else:
+    ADMIN_USERNAME = 'EmarLab'
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 # don't share this with anybody.
 SECRET_KEY = '6b%cfzhh9ab%=-!&l#miwv$oa%q@m9j%7nanw!laq4u*q$mlzz'
 
-environ.__setitem__('DATABASE_URL','postgres://emar:123456@localhost/emar_db')###################
-DATABASES = {
-    'default': dj_database_url.config(
-        # Rather than hardcoding the DB parameters here,
-        # it's recommended to set the DATABASE_URL environment variable.
-        # This will allow you to use SQLite locally, and postgres/mysql
-        # on the server
-        # Examples:
-        # export DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME
-        # export DATABASE_URL=mysql://USER:PASSWORD@HOST:PORT/NAME
-
-        # fall back to SQLite if the DATABASE_URL env var is missing
-        #default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')########################3
-    )
-}
+if(environ.get('OTREE_SYSTEM')!=None):
+    environ.__setitem__('DATABASE_URL','postgres://emar:123456@localhost/emar_db')
+    DATABASES = {
+        'default': dj_database_url.config(
+            #default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')########################
+        )
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')########################3
+        )
+    }
 
 # AUTH_LEVEL:
 # If you are launching a study and want visitors to only be able to
@@ -50,7 +49,7 @@ DATABASES = {
 # to DEMO. This will allow people to play in demo mode, but not access
 # the full admin interface.
 
-environ.__setitem__('OTREE_AUTH_LEVEL','STUDY') ###########
+environ.__setitem__('OTREE_AUTH_LEVEL','DEMO') ###########
 AUTH_LEVEL = environ.get('OTREE_AUTH_LEVEL')
 
 # setting for integration with AWS Mturk
