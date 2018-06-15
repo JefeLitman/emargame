@@ -23,15 +23,15 @@
 
 {% if tratamiento %}
         {% if numeroronda == rondastotales %}
-            <img  src = "{%static"garrote_zanahoria/periodos_finales_garrote.png"%}"/>
+            <img  src = "{% static 'garrote_zanahoria/periodos_finales_garrote.png' %}"/>
         {% else %}
-            <img  src = "{%static"garrote_zanahoria/periodos_iniciales_zanahoria.png"%}"/>
+            <img  src = "{% static 'garrote_zanahoria/periodos_iniciales_zanahoria.png' %}"/>
         {% endif %}
     {% else %}
         {% if numeroronda == rondastotales %}
-                <img  src = "{%static"garrote_zanahoria/periodos_finales_zanahoria.png"%}"/>
+                <img  src = "{% static 'garrote_zanahoria/periodos_finales_zanahoria.png' %}"/>
         {% else %}
-                <img src="{%static"garrote_zanahoria/periodos_iniciales_garrote.png"%}"/>
+                <img src="{% static 'garrote_zanahoria/periodos_iniciales_garrote.png' %}"/>
         {% endif %}
     {% endif %}
 
