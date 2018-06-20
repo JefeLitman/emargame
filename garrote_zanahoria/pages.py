@@ -4,6 +4,7 @@ from .models import Constants
 
 
 class bienvenida(Page):
+    timeout_seconds = 20
     def is_displayed(self):
         return self.round_number == 1
 
