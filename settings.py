@@ -75,34 +75,19 @@ DEMO_PAGE_INTRO_TEXT = """
 Juegos EMAR LAB
 """
 
-mturk_hit_settings = {
-    'keywords': ['easy', 'bonus', 'choice', 'study'],
-    'title': 'Title for your experiment',
-    'description': 'Description for your experiment',
-    'frame_height': 500,
-    'preview_template': 'global/MTurkPreview.html',
-    'minutes_allotted_per_assignment': 60,
-    'expiration_hours': 7*24,  # 7 days
-    # 'grant_qualification_id': 'YOUR_QUALIFICATION_ID_HERE',# to prevent retakes
-    # to use qualification requirements, you need to uncomment the 'qualification' import
-    # at the top of this file.
-    'qualification_requirements': [],
-}
-
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
 # in SESSION_CONFIGS, except those that explicitly override it.
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = {
-    'real_world_currency_per_point': 0.000,
     'participation_fee': 0.00,
-    'mturk_hit_settings': mturk_hit_settings,
-    'rondas':2,
-    'tratamiento':False,
+    'real_world_currency_per_point': 0.000,
+    'Rounds':20,
+    'ConSin':False,
     'doc':"""
-    El parametro de rondas definira la cantidad de rondas que el usuario va escoger.
-    El parametro de tratamiento al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
+    El parametro de Rounds definira la cantidad de rondas que el usuario va escoger.
+    El parametro de ConSin al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
     al estar chuleado sera de CON a SIN.
     """
 }
@@ -110,47 +95,52 @@ SESSION_CONFIG_DEFAULTS = {
 # oTree's default settings. Use with caution.
 SESSION_CONFIGS = [
     {
-        'name':'confianza',
-        'display_name': 'Confianza',
-        'num_demo_participants': 2,
-        'app_sequence': ['confianza'],
-    },
-    {
-        'name':'desfile_belleza',
-        'display_name':'Concurso de Belleza de Keyne',
-        'num_demo_participants': 2,
-        'app_sequence':['desfile_belleza'],
-    },
-    {
-        'name':'inversion_coordinacion_reputacion',
-        'display_name': 'Inversión: Coordinación y reputación',
+        'name':'mercados_prohibidos',
+        'display_name':'1. Mercados Prohibidos: Regulación y disuasión.',
         'num_demo_participants':2,
-        'app_sequence': ['inversion_coordinacion_reputacion'],
+        'app_sequence': ['mercados_prohibidos']
+    },
+    {
+        'name': 'garrote_zanahoria',
+        'display_name': '2. Garrote & Zanahoria: Normas sociales y mecanismos de cumplimiento.',
+        'num_demo_participants': 2,
+        'app_sequence': ['garrote_zanahoria']
+    },
+    {
+        'name': 'inversion_coordinacion_reputacion',
+        'display_name': '3. Inversión: Coordinación y reputación.',
+        'num_demo_participants': 2,
+        'app_sequence': ['inversion_coordinacion_reputacion']
+    },
+    {
+        'name':'confianza',
+        'display_name': '4. Confianza: Identidad de grupo y cooperación.',
+        'num_demo_participants': 2,
+        'app_sequence': ['confianza']
+    },
+    {
+        'name': 'conflicto',
+        'display_name': '5. Conflicto 2x2: Negociar como halcón o como paloma.',
+        'num_demo_participants': 2,
+        'app_sequence': ['conflicto']
     },
     {
         'name':'signals',
-        'display_name': 'Señales',
+        'display_name': '6. Señales: Interpretación y manipulación de la información.',
         'num_demo_participants':2,
-        'app_sequence': ['signals'],
+        'app_sequence': ['signals']
     },
     {
-        'name':'conflicto',
-        'display_name': 'Conflicto 2x2',
+        'name':'buscadores_renta',
+        'display_name': '7. Buscadores de rentas: Competencia y pérdidas de eficiencia.',
         'num_demo_participants':2,
-        'app_sequence': ['conflicto'],
+        'app_sequence': ['buscadores_renta']
     },
     {
-        'name':'mercados_prohibidos',
-        'display_name':'Mercados Prohibidos',
-        'num_demo_participants':2,
-        'app_sequence': ['mercados_prohibidos'],
-    },
-
-    {
-        'name' : 'garrote_zanahoria',
-        'display_name' : 'Garrote & Zanahoria',
-        'num_demo_participants':2,
-        'app_sequence': ['garrote_zanahoria'],
+        'name':'corrupcion',
+        'display_name': 'Contratación Pública',
+        'num_demo_participants':4,
+        'app_sequence': ['corrupcion']
     }
 ]
 

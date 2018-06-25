@@ -4,10 +4,10 @@ from otree.api import (
 )
 from random import randint
 
-author = 'Your name here'
+author = 'Luis Alejandro Palacio García & Daniel Felipe Parra Carreño'
 
 doc = """
-Your app description
+Falta generar una documentación resumida del juego para mostrar en la pagina del otree
 """
 
 class Constants(BaseConstants):

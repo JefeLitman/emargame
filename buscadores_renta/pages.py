@@ -73,7 +73,7 @@ page_sequence = [
     precalculos,
     bienvenida,
     tratamientos,
-    espera_grupos
+    espera_grupos,
     subasta,
     loteria,
     espera_grupos,

@@ -47,7 +47,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     da_invertir=models.CurrencyField(initial=c(0),min=c(0),max=c(500))
     valor_producto=models.IntegerField(initial=0)
-    ganancias_totales=models.CurrencyField(intial=c(0))
+    ganancias_totales=models.CurrencyField(initial=c(0))
     gano=models.BooleanField(initial=False)
 
     def calcular_valor_producto(self):
