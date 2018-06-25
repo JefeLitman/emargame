@@ -17,7 +17,6 @@ class Constants(BaseConstants):
     num_rounds = 20
 
 class Subsession(BaseSubsession):
-    Round_number=models.IntegerField(initial=0)
     Reinicio=models.BooleanField(initial=False)
     TSIN=models.BooleanField(initial=False)
     def creating_session(self):
