@@ -138,7 +138,7 @@ SESSION_CONFIGS = [
     },
     {
         'name':'corrupcion',
-        'display_name': 'Contratación Pública',
+        'display_name': 'Experimento',
         'num_demo_participants':4,
         'app_sequence': ['corrupcion']
     }
