@@ -6,5 +6,5 @@ staticfiles
 *~
 *.sqlite3
 _coverage_results/
-
+.vscode
 __temp*

@@ -1,0 +1,63 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Usted es un participante
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <p>
+        El dinero destinado total que puede invertir en todo es de {{Constants.cdp}}
+    </p>
+
+    {%formfield player.cuenta_publica label="Por favor decida cuántos puntos va a enviar a la cuenta pública:"%}
+
+    {%formfield player.cuenta_privada label="Por favor decida cuántos puntos va a dejar en su cuenta:"%}
+
+    {%formfield player.soborno label="Por favor decida cuántos puntos va a dejar en la cuenta del Administrador:"%}
+
+    <div>
+        <button type="button" id="siguiente" class="btn btn-primary btn-large">Siguiente</button>
+        <div id="warning" class="alert alert-danger" style="visibility: hidden;">
+            <strong>Error!</strong> Porfavor, asegurese que la suma de los elementos sea 50000.
+        </div>
+        <div style="visibility: hidden;">
+          <button id="next" name="decision_vendedor" class="btn btn-primary btn-large">Si</button>
+        </div>
+    </div>
+
+    <script>
+        function validar()
+        {
+            var cpub = parseInt(document.getElementById("id_cuenta_publica").value);
+            var cpri = parseInt(document.getElementById("id_cuenta_privada").value);
+            var soborno = parseInt(document.getElementById("id_soborno").value);
+            if (cpub + cpri + soborno == 50000)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        function mostrar()
+        {
+            document.getElementById("warning").style.visibility="hidden";
+        }
+        function enviar() {
+          if(validar())
+          {
+            document.getElementById("next").click();
+          }
+          else
+          {
+            document.getElementById("warning").style.visibility="visible";
+            window.setTimeout(mostrar, 3000);
+          }
+        }
+        document.getElementById("siguiente").onclick=enviar;
+    </script>
+
+{% endblock %}

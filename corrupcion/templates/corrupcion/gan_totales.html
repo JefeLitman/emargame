@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Ganancias Totales
+{% endblock %}
+
+{% block content %}
+
+    <style>
+    p.pts{
+    font-weight: bold;
+    }
+    </style>
+
+    <p> El estudio ha terminado </p>  <br>
+    La ronda seleccionada al azar fue: <p class="pts">{{ronda}}</p>
+    Su ganancia en esa ronda fue de: <p class="pts"> {{player.ganancias_totales}} </p>
+
+{% endblock %}
