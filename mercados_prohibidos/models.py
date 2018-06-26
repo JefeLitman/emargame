@@ -19,39 +19,60 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     Reinicio=models.BooleanField(initial=False)
     TSIN=models.BooleanField(initial=False)
+    def set_variables_subsesion(self,ronda,rondas_totales,consin):
+        #Definiendo la variable de reinicio
+        self.Reinicio = ronda > rondas_totales / 2
+        # Definiendo la variable de TSIN
+        if (consin):
+            if (ronda <= rondas_totales):
+                self.TSIN=False
+            else:
+                self.TSIN = True
+        else:
+            if (ronda <= rondas_totales):
+                self.TSIN = True
+            else:
+                self.TSIN = False
     def creating_session(self):
         self.group_randomly()
 
 class Group(BaseGroup):
-    costo_producto=models.CurrencyField()
-    valoracion_cpu=models.CurrencyField()
-    precio_vendedor=models.CurrencyField()
-    valoracion_comprador=models.CurrencyField()
-    revision=models.IntegerField(initial=randint(1,100),blank=True)
+    Costo=models.CurrencyField()
+    Valor=models.CurrencyField()
+    Precio=models.CurrencyField()
+    MPDA=models.CurrencyField()
+    RRevision=models.IntegerField(initial=0)
+    Revision=models.BooleanField(initial=False)
 
-    def set_payoff(self,transaccion):
+    def set_pagos(self,transaccion):
         vendedor = self.get_player_by_id(1)
         comprador = self.get_player_by_id(2)
-        if (transaccion == 1):
-            vendedor.payoff=self.precio_vendedor-self.costo_producto
-            comprador.payoff=self.valoracion_cpu-self.precio_vendedor
-        elif (transaccion==2):
-            vendedor.payoff=self.costo_producto*(-1)
-            comprador.payoff = c(0)
-        else:
-            vendedor.payoff = c(0)
-            comprador.payoff = c(0)
+        if (transaccion == 1): #1 corresponde a que se realizo la transaccion sin revisarlo
+            vendedor.Pagos=self.Precio-self.Costo
+            comprador.Pagos=self.Valor-self.Precio
+        elif (transaccion==2):#2 corresponde a que no se realizo la transaccion porque se reviso
+            self.Revision=True
+            vendedor.Pagos=self.Costo*(-1)
+            comprador.Pagos = c(0)
+        else: #Este seria el caso 3 donde no se realizo la transaccion porque no cumplio
+            vendedor.Pagos = c(0)
+            comprador.Pagos = c(0)
 
-    def set_random_variables(self):
-        self.costo_producto=c(randint(0,1000))
-        self.valoracion_cpu=c(randint(1000,2000))
+    def set_variables_azar(self):
+        self.RRevision=randint(1,100)
+        self.Costo=c(randint(0,1000))
+        self.Valor=c(randint(1000,2000))
 
 class Player(BasePlayer):
-    ganancias_totales= models.CurrencyField(initial=c(0))
+    Pagos=models.CurrencyField(initial=c(0))
+    TotalPagos= models.CurrencyField(initial=c(0))
+    Vendedor=models.BooleanField()
 
-    def role(self):
+    def set_vendedor(self):
         if self.id_in_group == 1:
-            return 'Vendedor'
+            self.Vendedor=True
         else:
-            return 'Comprador'
+            self.Vendedor=False
 
+    def set_totalpagos(self):
+        self.TotalPagos=sum([p.Pagos for p in self.in_all_rounds()])

@@ -86,9 +86,8 @@ SESSION_CONFIG_DEFAULTS = {
     'Rounds':20,
     'ConSin':False,
     'doc':"""
-    El parametro de Rounds definira la cantidad de rondas que el usuario va escoger.
-    El parametro de ConSin al no estar chuleado el tratamiento ira de SIN a CON, de lo contrario
-    al estar chuleado sera de CON a SIN.
+    Rounds: Número total de periodos que se jugarán. Por defecto en 20*.<br/>
+    ConSin: Tomará el valor de 1 cuando los periodos iniciales son tratamiento con revisión y los periodos finales sin revisión. En caso contrario será 0. Por defecto 0 (Sin marcar).
     """
 }
 # anything you put after the below line will override

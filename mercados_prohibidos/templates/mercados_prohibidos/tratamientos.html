@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Tipo de tratamiento
+{% endblock %}
+
+{% block content %}
+
+    {% if tratamiento %}
+        {% if numeroronda == rondastotales %}
+            <h1 align="center">
+                Periodos finales
+            </h1> </br>
+        En los siguientes periodos, el computador no revisara la transaccion realizada entre el comprador y vendedor.
+        {% else %}
+            <h1 align="center">
+                Periodos iniciales
+            </h1> </br>
+        En los siguientes periodos, el computador probablemente revisara la transaccion realizada entre el comprador y vendedor.
+        {% endif %}
+    {% else %}
+        {% if numeroronda == rondastotales %}
+            <h1 align="center">
+                Periodos finales
+            </h1> </br>
+        En los siguientes periodos, el computador probablemente revisara la transaccion realizada entre el comprador y vendedor.
+        {% else %}
+            <h1 align="center">
+                Periodos iniciales
+            </h1> </br>
+        En los siguientes periodos, el computador no revisara la transaccion realizada entre el comprador y vendedor.
+        {% endif %}
+    {% endif %}
+
+    {% next_button %}
+
+{% endblock %}

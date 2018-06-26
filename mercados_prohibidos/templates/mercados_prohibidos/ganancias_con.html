@@ -11,10 +11,10 @@
 
 <p> <b>Usted es el vendedor</b>  <br>
 
-    Su costo de producción es: {{group.costo_producto}} <br>
-    Usted decidio que el precio es: {{group.precio_vendedor}} <br>
+    Su costo de producción es: {{group.Costo}} <br>
+    Usted decidio que el precio es: {{group.Precio}} <br>
 
-    {% if group.precio_vendedor <= group.valoracion_comprador %}
+    {% if group.Precio <= group.MPDA %}
 
     Se realizó la transacción.<br>
 
@@ -24,13 +24,13 @@
 
     {% endif %}
 
-    {% if group.revision > 20 %}
+    {% if group.RRevision < 21 %}
 
-    El computador elige el número {{group.revision}}, por lo tanto se realiza la revisión.<br>
+    El computador elige el número {{group.RRevision}}, por lo tanto se realiza la revisión.<br>
 
     {% else %}
 
-    El computador elige el número {{group.revision}}, por lo tanto no se realiza la revisión.<br>
+    El computador elige el número {{group.RRevision}}, por lo tanto no se realiza la revisión.<br>
 
     {% endif %}
 
@@ -38,11 +38,11 @@
 
 <p> <b>Usted es el comprador</b>  <br>
 
-    El valor que usted le da al producto es: {{group.valoracion_cpu}} <br>
-    El máximo precio que usted está dispuesto a aceptar es: {{group.valoracion_comprador}} <br>
-    El vendedor decidió que el precio es: {{group.precio_vendedor}}<br>
+    El valor que usted le da al producto es: {{group.Valor}} <br>
+    El máximo precio que usted está dispuesto a aceptar es: {{group.MPDA}} <br>
+    El vendedor decidió que el precio es: {{group.Precio}}<br>
 
-    {% if group.precio_vendedor <= group.valoracion_comprador %}
+    {% if group.Precio <= group.MPDA %}
 
     Se realizó la transacción.<br>
 
@@ -52,19 +52,19 @@
 
     {% endif %}
 
-    {% if group.revision > 20 %}
+    {% if group.RRevision < 21 %}
 
-    El computador elige el número {{group.revision}}, por lo tanto se realiza la revisión.<br>
+    El computador elige el número {{group.RRevision}}, por lo tanto se realiza la revisión.<br>
 
     {% else %}
 
-    El computador elige el número {{group.revision}}, por lo tanto no se realiza la revisión.<br>
+    El computador elige el número {{group.RRevision}}, por lo tanto no se realiza la revisión.<br>
 
     {% endif %}
 
     {% endif %}
 
-    Su ganancia en este periodo es: {{player.payoff}}
+    Su ganancia en este periodo es: {{player.Pagos}}
 
     {% next_button %}
 

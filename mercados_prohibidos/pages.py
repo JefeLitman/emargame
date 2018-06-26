@@ -8,51 +8,62 @@ class welcome(Page):
     def is_displayed(self):
         return self.round_number == 1
 
+class tratamientos(Page):
+    def is_displayed(self):
+        return self.round_number == 1 or self.round_number == self.session.config["Rounds"]/2 +1
 
-class decision(Page):
-    form_model = 'group'
-    form_fields = ['precio_vendedor','valoracion_comprador']
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
 
 class decision_vendedor(Page):
     form_model = models.Group
-    form_fields = ['precio_vendedor']
+    form_fields = ['Precio']
 
-    def precio_vendedor_max(self):
+    def Precio_max(self):
         return c(2000)
 
-    def precio_vendedor_min(self):
-            return self.group.costo_producto
+    def Precio_min(self):
+        return self.group.Costo
 
     def is_displayed(self):
-        return self.player.role()=='Vendedor'
+        return self.player.Vendedor==True
 
 class decision_comprador(Page):
     form_model = models.Group
-    form_fields = ['valoracion_comprador']
+    form_fields = ['MPDA']
 
-    def valoracion_comprador_max(self):
-        return self.group.valoracion_cpu
+    def MPDA_max(self):
+        return self.group.Valor
 
-    def valoracion_comprador_min(self):
+    def MPDA_min(self):
         return c(0)
 
     def is_displayed(self):
-        return self.player.role()=='Comprador'
-
+        return self.player.Vendedor==False
 
 class ganancias_sin(Page):
 
     def is_displayed(self):
-        return self.round_number <= Constants.num_rounds/2
+        if(self.session.config["ConSin"]):
+            return self.round_number>self.session.config["Rounds"]/2
+        else:
+            return self.round_number<=self.session.config["Rounds"]/2
 
 class ganancias_con(Page):
 
     def is_displayed(self):
-        return self.round_number > Constants.num_rounds/2
+        if(self.session.config["ConSin"]):
+            return self.round_number<=self.session.config["Rounds"]/2
+        else:
+            return self.round_number>self.session.config["Rounds"]/2
 
 class ganancias_totales(Page):
     def is_displayed(self):
-        return self.round_number == Constants.num_rounds
+        return self.round_number == self.session.config["Rounds"]
 
 class espera_grupos(WaitPage):
     wait_for_all_groups = True
@@ -60,27 +71,51 @@ class espera_grupos(WaitPage):
 class precalculos(WaitPage):
 
     def after_all_players_arrive(self):
-        self.group.set_random_variables()
+        #Definiendo las variables de la subsesion
+        self.subsession.set_variables_subsesion(self.round_number,self.session.config["Rounds"],self.session.config["ConSin"])
+        # Definiendo las variables del grupo
+        self.group.set_variables_azar()
+        # Definiendo las variables del jugador
+        for j in self.group.get_players():
+            j.set_vendedor()
 
 class calculos(WaitPage):
 
     def after_all_players_arrive(self):
-        if (self.round_number <= Constants.num_rounds and self.group.precio_vendedor <= self.group.valoracion_comprador):
-            self.group.set_payoff(1)
-        elif (self.round_number > Constants.num_rounds and self.group.precio_vendedor <= self.group.valoracion_comprador):
-            if (self.group.revision > 20):
-                self.group.set_payoff(1)
+        if(self.session.config["ConSin"]):
+            if(self.round_number <= self.session.config["Rounds"]):
+                if(self.group.Precio <= self.group.MPDA):
+                    if(self.group.RRevision<=20):#Se revisa la transaccion
+                        self.group.set_pagos(2)
+                    else:
+                        self.group.set_pagos(1)
+                else:
+                    self.group.set_pagos(3)
             else:
-                self.group.set_payoff(2)
+                if(self.group.Precio <= self.group.MPDA):
+                    self.group.set_pagos(1)
+                else:
+                    self.group.set_pagos(3)
         else:
-            self.group.set_payoff(3)
-        p1 = self.group.get_player_by_id(1)
-        p2 = self.group.get_player_by_id(2)
-        p1.ganancias_totales = sum([p.payoff for p in self.group.get_player_by_id(1).in_all_rounds()])
-        p2.ganancias_totales = sum([p.payoff for p in self.group.get_player_by_id(2).in_all_rounds()])
+            if(self.round_number <= self.session.config["Rounds"]):
+                if(self.group.Precio <= self.group.MPDA):
+                    self.group.set_pagos(1)
+                else:
+                    self.group.set_pagos(3)
+            else:
+                if(self.group.Precio <= self.group.MPDA):
+                    if(self.group.RRevision<=20):#Se revisa la transaccion
+                        self.group.set_pagos(2)
+                    else:
+                        self.group.set_pagos(1)
+                else:
+                    self.group.set_pagos(3)
+        p1 = self.group.get_player_by_id(1).set_totalpagos()
+        p2 = self.group.get_player_by_id(2).set_totalpagos()
 
 page_sequence = [
     welcome,
+    tratamientos,
     espera_grupos,
     precalculos,
     decision_vendedor,
