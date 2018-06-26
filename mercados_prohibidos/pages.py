@@ -5,10 +5,12 @@ from .models import Constants
 
 
 class welcome(Page):
+    timeout_seconds = 30
     def is_displayed(self):
         return self.round_number == 1
 
 class tratamientos(Page):
+    timeout_seconds = 30
     def is_displayed(self):
         return self.round_number == 1 or self.round_number == self.session.config["Rounds"]/2 +1
 
@@ -20,6 +22,7 @@ class tratamientos(Page):
         }
 
 class decision_vendedor(Page):
+    timeout_seconds = 60
     form_model = models.Group
     form_fields = ['Precio']
 
@@ -33,6 +36,7 @@ class decision_vendedor(Page):
         return self.player.Vendedor==True
 
 class decision_comprador(Page):
+    timeout_seconds = 60
     form_model = models.Group
     form_fields = ['MPDA']
 
@@ -46,7 +50,7 @@ class decision_comprador(Page):
         return self.player.Vendedor==False
 
 class ganancias_sin(Page):
-
+    timeout_seconds = 30
     def is_displayed(self):
         if(self.session.config["ConSin"]):
             return self.round_number>self.session.config["Rounds"]/2
@@ -54,7 +58,7 @@ class ganancias_sin(Page):
             return self.round_number<=self.session.config["Rounds"]/2
 
 class ganancias_con(Page):
-
+    timeout_seconds = 30
     def is_displayed(self):
         if(self.session.config["ConSin"]):
             return self.round_number<=self.session.config["Rounds"]/2
