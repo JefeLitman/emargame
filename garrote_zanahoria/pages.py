@@ -10,13 +10,13 @@ class bienvenida(Page):
 
 class tratamientos(Page):
     def is_displayed(self):
-        return self.round_number == 1 or self.round_number == self.session.config["rondas"]/2 +1
+        return self.round_number == 1 or self.round_number == self.session.config["Rounds"]/2 +1
 
     def vars_for_template(self):
         return{
             'numeroronda':self.round_number,
-            'rondastotales':self.session.config["rondas"]/2 +1,
-            'tratamiento':self.session.config["tratamiento"]
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
         }
 
 class contribucion(Page):
@@ -38,13 +38,13 @@ class calculos(WaitPage):
     def after_all_players_arrive(self):
         self.subsession.c_publica=self.subsession.calc_pub()
         self.subsession.rentabilidad=self.subsession.calc_rent()
-        if self.session.config["tratamiento"]==False:
-            if self.round_number <= self.session.config["rondas"]/2:
+        if self.session.config["ConSin"]==False:
+            if self.round_number <= self.session.config["Rounds"]/2:
                 self.group.cal_incentivo_corres(garrote="garrote",rentabilidad=self.subsession.rentabilidad)
             else:
                 self.group.cal_incentivo_corres(garrote="zanahoria",rentabilidad=self.subsession.rentabilidad)
         else:
-            if self.round_number <= self.session.config["rondas"]/2:
+            if self.round_number <= self.session.config["Rounds"]/2:
                 self.group.cal_incentivo_corres(garrote="zanahoria",rentabilidad=self.subsession.rentabilidad)
             else:
                 self.group.cal_incentivo_corres(garrote="garrote",rentabilidad=self.subsession.rentabilidad)
@@ -54,7 +54,7 @@ class gan_individual(Page):
 
 class gan_totales(Page):
     def is_displayed(self):
-        return self.round_number == self.session.config["rondas"]
+        return self.round_number == self.session.config["Rounds"]
 
 page_sequence = [
     bienvenida,

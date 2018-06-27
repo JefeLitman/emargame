@@ -4,17 +4,19 @@ from otree.api import (
 )
 
 
-author = 'Your name here'
+author = 'Luis Alejandro Palacio García & Ferley Rincon'
 
 doc = """
-Your app description
+Tomando como inspiración la literatura relacionada con los castigos antisociales expuesta en Herrmann, Thöni, y Gächter (2008), este juego permite analizar, entender y discutir si la posibilidad de recibir premios o castigos afecta la contribución a un bien público. La pregunta de investigación es: ¿Cómo afecta la decisión de contribuir a la cuenta pública el hecho de estar expuesto a recibir premios o castigos? ¿Los participantes están dispuestos a invertir sus puntos para incentivar a la pareja? ¿Se premiará al que contribuye y se castigará al que no lo haga? Se espera que tener información sobre la contribución de la pareja cree un mecanismo presión social sobre la decisión de contribuir al bien público. En este sentido, no es claro si la contribución promedio será mayor bajo el incentivo de castigo que cuando se puede dar un premio.
+<br/><br/>
+Herrmann, B., Thöni, C., & Gächter, S. (2008). Antisocial punishment across societies. Science, 319(5868), 1362–1367.
 """
 
 
 class Constants(BaseConstants):
     name_in_url = 'garrote_zanahoria'
     players_per_group = 2
-    num_rounds = 30
+    num_rounds = 20
     dotacion= c(1200)
 
 
