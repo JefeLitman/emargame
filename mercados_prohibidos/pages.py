@@ -66,6 +66,11 @@ class CONGanancias(Page):
             return self.round_number>self.session.config["Rounds"]/2
 
 class GananciaTotal(Page):
+    timeout_seconds = 30
+    def is_displayed(self):
+        return self.round_number == self.session.config["Rounds"]
+
+class gracias(Page):
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
 
@@ -114,8 +119,8 @@ class calculos(WaitPage):
                         self.group.set_pagos(1)
                 else:
                     self.group.set_pagos(3)
-        p1 = self.group.get_player_by_id(1).set_totalpagos()
-        p2 = self.group.get_player_by_id(2).set_totalpagos()
+        self.group.get_player_by_id(1).set_totalpagos()
+        self.group.get_player_by_id(2).set_totalpagos()
 
 page_sequence = [
     presentacion,
@@ -128,5 +133,6 @@ page_sequence = [
     calculos,
     SINGanancia,
     CONGanancias,
-    GananciaTotal
+    GananciaTotal,
+    gracias
 ]
