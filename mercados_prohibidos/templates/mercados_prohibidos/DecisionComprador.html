@@ -15,29 +15,25 @@
          color: white;
          font-family: 'Cabin', sans-serif;
          border: none;
-         font-size: 16px;
+         font-size: 20px;
          padding: 8px 20px;
          float: right;
        }
 
-       div {
+       div.encabezado{
 	    color: white;
         background-color:#243e92;
         font-family: 'Cabin', sans-serif;
         text-align: center;
+        padding: 0.008px 5px;
       }
 
-      p {
+       p {
       font-family: 'Cabin', sans-serif;
+      font-size: 20px;
       }
 <<<<<<< HEAD
 
-      div.center
-      {
-        margin: auto;
-        padding: 10px;
-
-      }
 
 =======
       
@@ -47,13 +43,11 @@
 >>>>>>> 547c1dbbdef64e02ba69693480bca86d87298bac
    </style>
 
-    <div><h2>Decisiones</h2></div>
+    <div class="encabezado"><h2>Decisiones</h2></div>
 
     <p> <b>Usted es el comprador</b> </p> <br>
     <p>El valor que usted le da al producto es: {{group.Valor}}</p><br>
-    <div class="center">
     <p>{% formfield group.MPDA label="Debe decidir el máximo precio que está dispuesto a aceptar:" %} </p><br/>
-    </div>
 
 
     <button>
