@@ -24,12 +24,12 @@ class Subsession(BaseSubsession):
         self.Reinicio = ronda > rondas_totales / 2
         # Definiendo la variable de TSIN
         if (consin):
-            if (ronda <= rondas_totales):
-                self.TSIN=False
+            if (ronda <= rondas_totales/2):
+                self.TSIN= False
             else:
                 self.TSIN = True
         else:
-            if (ronda <= rondas_totales):
+            if (ronda <= rondas_totales/2):
                 self.TSIN = True
             else:
                 self.TSIN = False
@@ -50,7 +50,7 @@ class Group(BaseGroup):
         if (transaccion == 1): #1 corresponde a que se realizo la transaccion sin revisarlo
             vendedor.Pagos=self.Precio-self.Costo
             comprador.Pagos=self.Valor-self.Precio
-        elif (transaccion==2):#2 corresponde a que no se realizo la transaccion porque se reviso
+        elif (transaccion == 2):#2 corresponde a que no se realizo la transaccion porque se reviso
             self.Revision=True
             vendedor.Pagos=self.Costo*(-1)
             comprador.Pagos = c(0)

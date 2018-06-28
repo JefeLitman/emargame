@@ -2,7 +2,7 @@ from otree.api import Currency as c, currency_range
 from . import models
 from ._builtin import Page, WaitPage
 from .models import Constants
-
+from random import randint
 
 class presentacion(Page):
     timeout_seconds = 30
@@ -91,8 +91,13 @@ class precalculos(WaitPage):
 class calculos(WaitPage):
 
     def after_all_players_arrive(self):
+        #Definiendo aleatoriamente las variables si el jugador no alcanza a llenarlas
+        if(self.group.Precio==0):
+            self.group.Precio=randint(self.group.Costo,2001)
+        if(self.group.MPDA==0):
+            self.group.MPDA=randint(0,self.group.Valor+1)
         if(self.session.config["ConSin"]):
-            if(self.round_number <= self.session.config["Rounds"]):
+            if(self.round_number <= self.session.config["Rounds"]/2):
                 if(self.group.Precio <= self.group.MPDA):
                     if(self.group.RRevision<=20):#Se revisa la transaccion
                         self.group.set_pagos(2)
@@ -106,7 +111,7 @@ class calculos(WaitPage):
                 else:
                     self.group.set_pagos(3)
         else:
-            if(self.round_number <= self.session.config["Rounds"]):
+            if(self.round_number <= self.session.config["Rounds"]/2):
                 if(self.group.Precio <= self.group.MPDA):
                     self.group.set_pagos(1)
                 else:
