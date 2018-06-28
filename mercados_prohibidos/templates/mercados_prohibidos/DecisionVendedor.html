@@ -15,12 +15,12 @@
          color: white;
          font-family: 'Cabin', sans-serif;
          border: none;
-         font-size: 16px;
+         font-size: 20px;
          padding: 8px 20px;
          float: right;
        }
 
-       div {
+       div.encabezado{
 	    color: white;
         background-color:#243e92;
         padding: 0.008px 5px;
@@ -30,25 +30,23 @@
 
       p {
       font-family: 'Cabin', sans-serif;
+      font-size: 20px;
       }
 
-      div.center
-      {
-        margin: auto;
-        padding: 10px;
-
+<<<<<<< HEAD
+=======
+      .otree-timer.alert.alert-warning{
+        display: none;
       }
-
+      
+>>>>>>> 547c1dbbdef64e02ba69693480bca86d87298bac
    </style>
 
-    <div><h2>Decisiones</h2></div>
+    <div class="encabezado"><h2>Decisiones</h2></div>
 
     <p> <b> Usted es el vendedor </b> </p> <br>
     <p> Su costo de produccion es: {{group.Costo}}</p> <br>
-    <div>
     <p> {% formfield group.Precio label="Debe decidir el precio al que quiere ofrecer el producto:" %} </p> <br/>
-    </div>
-
 
     <button>
           <b>Siguiente</b>
