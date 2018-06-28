@@ -32,13 +32,23 @@
       font-family: 'Cabin', sans-serif;
       }
 
+      div.center
+      {
+        margin: auto;
+        padding: 10px;
+
+      }
+
    </style>
 
     <div><h2>Decisiones</h2></div>
 
     <p> <b> Usted es el vendedor </b> </p> <br>
     <p> Su costo de produccion es: {{group.Costo}}</p> <br>
+    <div>
     <p> {% formfield group.Precio label="Debe decidir el precio al que quiere ofrecer el producto:" %} </p> <br/>
+    </div>
+
 
     <button>
           <b>Siguiente</b>
