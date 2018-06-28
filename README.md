@@ -48,8 +48,8 @@ Por otro lado los contenidos de la página del EMAR LAB están bajo **Creative C
 |  Coordinación y reputación  |  Si  |  Si  |  Si  |  (1) (2)  |
 |  Experimento  |  Si  |  Si  |  Si  |  (2)  |
 |  Garrote y Zanahoria  |  Si  |  Si  |  No  |  (2) (4) |
-|  Mercado de los limones  |  No  |  No  |  No  |  N/A  |
-|  Mercados Prohibidos  |Si  |  Si  |  Si  |  (1)(2)(3)  |
+|  Mercado de los limones  |  Si  |  No  |  No  |  N/A  |
+|  Mercados Prohibidos  |Si  |  Si  |  Si  |  (1)(2)(3)(4)  |
 |  Señales  |  Si  |  Si  |  Si  |  (1) (2)  |
 
 **Mejoras**
