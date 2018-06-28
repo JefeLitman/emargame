@@ -7,7 +7,7 @@
 
 {% block content %}
 
-   <style media="screen">
+    <style media="screen">
       @import url('https://fonts.googleapis.com/css?family=Cabin');
        img{
            width: 100%;
@@ -25,19 +25,7 @@
        }
    </style>
 
-    {% if tratamiento %}
-        {% if numeroronda == rondastotales %}
-            <img  src = "{% static 'mercados_prohibidos/final_mercado.png' %}"/>
-        {% else %}
-            <img  src = "{% static 'mercados_prohibidos/inicial_prohibicion.png' %}"/>
-        {% endif %}
-    {% else %}
-        {% if numeroronda == rondastotales %}
-           <img  src = "{% static 'mercados_prohibidos/final_prohibicion.png' %}"/>
-        {% else %}
-            <img  src = "{% static 'mercados_prohibidos/inicial_mercado.png' %}"/>
-        {% endif %}
-    {% endif %}
+    <img  src = "{% static 'mercados_prohibidos/presentacion_mp.png' %}"/>
 
     <button>
         Siguiente

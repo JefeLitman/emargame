@@ -1,0 +1,102 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+<style media="screen">
+      @import url('https://fonts.googleapis.com/css?family=Cabin');
+
+       button{
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 16px;
+         padding: 8px 20px;
+         float: right;
+       }
+
+       div {
+	    color: white;
+        background-color:#243e92;
+        padding: 0.008px 5px;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+      }
+
+      p {
+      font-family: 'Cabin', sans-serif;
+      }
+
+</style>
+
+<div><h2>Ganancias</h2></div>
+
+ {% if player.id_in_group == 1 %}
+
+    <p><b>Usted es el vendedor</b></p>  <br>
+
+    <p>Su costo de producción es: {{group.Costo}}</p> <br>
+    <p>Usted decidió que el precio es: {{group.Precio}}</p> <br>
+
+    {% if group.Precio <= group.MPDA %}
+
+    <p>Se realizó la transacción.</p><br>
+
+    {% else %}
+
+    </p>No se realizó la transacción.</p><br>
+
+    {% endif %}
+
+    {% if group.RRevision < 21 %}
+
+<p> <b> El computador elige el número {{group.RRevision}}, por lo tanto se realiza la revisión.</b> </p><br>
+
+    {% else %}
+
+    <p>El computador elige el número {{group.RRevision}}, por lo tanto no se realiza la revisión.</p><br>
+
+    {% endif %}
+
+ {% else %}
+
+     <p> <b>Usted es el comprador</b> </p> <br>
+
+    <p> El valor que usted le da al producto es: {{group.Valor}} </p><br>
+    <p> El máximo precio que usted está dispuesto a aceptar es: {{group.MPDA}}</p> <br>
+    <p> El vendedor decidió que el precio es: {{group.Precio}}</p> <br>
+
+    {% if group.Precio <= group.MPDA %}
+
+    <p>Se realizó la transacción.</p><br>
+
+    {% else %}
+
+    <p>No se realizó la transacción.</p><br>
+
+    {% endif %}
+
+    {% if group.RRevision < 21 %}
+
+    <b><p>El computador elige el número {{group.RRevision}}, por lo tanto se realiza la revisión.</p></b><br>
+
+    {% else %}
+
+    <p>El computador elige el número {{group.RRevision}}, por lo tanto no se realiza la revisión.</p><br>
+
+    {% endif %}
+
+    {% endif %}
+
+    <p>Su ganancia en este periodo es: {{player.Pagos}}</p>
+
+    <button>
+          <b>Siguiente</b>
+    </button>
+
+{% endblock %}
