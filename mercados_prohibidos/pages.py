@@ -57,7 +57,7 @@ class SINGanancia(Page):
         else:
             return self.round_number<=self.session.config["Rounds"]/2
 
-class CONGanancias(Page):
+class CONGanancia(Page):
     timeout_seconds = 30
     def is_displayed(self):
         if(self.session.config["ConSin"]):
@@ -132,7 +132,7 @@ page_sequence = [
     espera_grupos,
     calculos,
     SINGanancia,
-    CONGanancias,
+    CONGanancia,
     GananciaTotal,
     gracias
 ]
