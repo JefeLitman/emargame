@@ -32,22 +32,24 @@
       font-family: 'Cabin', sans-serif;
       font-size: 20px;
       }
-<<<<<<< HEAD
 
-
-=======
-      
       .otree-timer.alert.alert-warning{
         display: none;
       }
->>>>>>> 547c1dbbdef64e02ba69693480bca86d87298bac
+
+      .col-form-label
+      {
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      }
+
    </style>
 
     <div class="encabezado"><h2>Decisiones</h2></div>
 
-    <p> <b>Usted es el comprador</b> </p> <br>
-    <p>El valor que usted le da al producto es: {{group.Valor}}</p><br>
-    <p>{% formfield group.MPDA label="Debe decidir el máximo precio que está dispuesto a aceptar:" %} </p><br/>
+    <p> <b>Usted es el comprador</b> </p>
+    <p>El valor que usted le da al producto es: {{group.Valor}}</p>
+    {% formfield group.MPDA label="Debe decidir el máximo precio que está dispuesto a aceptar:" %}
 
 
     <button>

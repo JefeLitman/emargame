@@ -36,67 +36,68 @@
         display: none;
       }
 
+
 </style>
 
 <div class="encabezado"><h2>Ganancias</h2></div>
 
  {% if player.id_in_group == 1 %}
 
-        <p><b>Usted es el vendedor</b></p>  <br>
-        <p>Su costo de producción es: {{group.Costo}}</p> <br>
-        <p>Usted decidió que el precio es: {{group.Precio}}</p> <br>
+        <p><b>Usted es el vendedor</b></p>
+        <p>Su costo de producción es: {{group.Costo}}</p>
+        <p>Usted decidió que el precio es: {{group.Precio}}</p>
 
     {% if group.Precio <= group.MPDA %}
 
-        <p>Se realizó la transacción.</p><br>
+        <p>Se realizó la transacción.</p>
 
     {% else %}
 
-        <p>No se realizó la transacción.</p><br>
+        <p>No se realizó la transacción.</p>
 
     {% endif %}
 
     {% if group.RRevision < 21 %}
 
-        <p><b> El computador elige el número {{group.RRevision}}, por lo tanto se realiza la revisión.</b> </p><br>
+        <p><b> El computador elige el número {{group.RRevision}}, por lo tanto se realiza la revisión.</b> </p>
 
     {% else %}
 
-        <p>El computador elige el número {{group.RRevision}}, por lo tanto no se realiza la revisión.</p><br>
+        <p>El computador elige el número {{group.RRevision}}, por lo tanto no se realiza la revisión.</p>
 
     {% endif %}
 
  {% else %}
 
-        <p> <b>Usted es el comprador</b> </p> <br>
+        <p> <b>Usted es el comprador</b> </p>
 
-        <p> El valor que usted le da al producto es: {{group.Valor}} </p><br>
-        <p> El máximo precio que usted está dispuesto a aceptar es: {{group.MPDA}}</p> <br>
-        <p> El vendedor decidió que el precio es: {{group.Precio}}</p> <br>
+        <p> El valor que usted le da al producto es: {{group.Valor}} </p>
+        <p> El máximo precio que usted está dispuesto a aceptar es: {{group.MPDA}}</p>
+        <p> El vendedor decidió que el precio es: {{group.Precio}}</p>
 
     {% if group.Precio <= group.MPDA %}
 
-        <p>Se realizó la transacción.</p><br>
+        <p>Se realizó la transacción.</p>
 
     {% else %}
 
-        <p>No se realizó la transacción.</p><br>
+        <p>No se realizó la transacción.</p>
 
     {% endif %}
 
     {% if group.RRevision < 21 %}
 
-        <b><p>El computador elige el número {{group.RRevision}}, por lo tanto se realiza la revisión.</p></b><br>
+        <b><p>El computador elige el número {{group.RRevision}}, por lo tanto se realiza la revisión.</p></b>
 
     {% else %}
 
-        <p>El computador elige el número {{group.RRevision}}, por lo tanto no se realiza la revisión.</p><br>
+        <p>El computador elige el número {{group.RRevision}}, por lo tanto no se realiza la revisión.</p>
 
     {% endif %}
 
     {% endif %}
 
-        <p>Su ganancia en este periodo es: {{player.Pagos}}</p>
+        <p>Su ganancia en este periodo es: {{player.Pagos}}</p> </br>
 
     <button>
           <b>Siguiente</b>

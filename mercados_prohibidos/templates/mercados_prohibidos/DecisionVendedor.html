@@ -34,20 +34,22 @@
       font-size: 20px;
       }
 
-<<<<<<< HEAD
-=======
       .otree-timer.alert.alert-warning{
         display: none;
       }
-      
->>>>>>> 547c1dbbdef64e02ba69693480bca86d87298bac
+
+      .col-form-label
+      {
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      }
    </style>
 
     <div class="encabezado"><h2>Decisiones</h2></div>
 
-    <p> <b> Usted es el vendedor </b> </p> <br>
-    <p> Su costo de produccion es: {{group.Costo}}</p> <br>
-    <p> {% formfield group.Precio label="Debe decidir el precio al que quiere ofrecer el producto:" %} </p> <br/>
+    <p> <b> Usted es el vendedor </b> </p>
+    <p> Su costo de produccion es: {{group.Costo}} </p>
+    {% formfield group.Precio label="Debe decidir el precio al que quiere ofrecer el producto:" %}
 
     <button>
           <b>Siguiente</b>
