@@ -36,7 +36,7 @@ class decision_burocrata(Page):
             'cpc1': self.group.get_player_by_id(2).cuenta_privada,
             'cpc2': self.group.get_player_by_id(3).cuenta_privada,
             'cpc3': self.group.get_player_by_id(4).cuenta_privada,
-            'tratamiento':self.session.config["tratamiento"]
+            'tratamiento':self.session.config["ConSin"]
         }
 
 class definir_ganador(WaitPage):
@@ -53,10 +53,10 @@ class gan_periodo(Page):
 
 class gan_totales(Page):
     def is_displayed(self):
-        return self.round_number == self.session.config["rondas"]
+        return self.round_number == self.session.config["Rounds"]
     def vars_for_template(self):
         return {
-            'ronda':self.player.set_ganancias_totales(self.session.config["rondas"])
+            'ronda':self.player.set_ganancias_totales(self.session.config["Rounds"])
         }
 
 page_sequence = [

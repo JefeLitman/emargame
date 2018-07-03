@@ -140,13 +140,11 @@ SESSION_CONFIGS = [
         'display_name': 'Experimento',
         'num_demo_participants':4,
         'app_sequence': ['corrupcion'],
-        'rondas':2,
-        'tratamiento':1,
+        'Rounds':2,
+        'ConSin':1,
         'doc':"""
-        El parametro de rondas definira la cantidad de rondas que el usuario va escoger.<br/>
-        El parametro de tratamiento sera un numero entre 1 y 4 donde cada numero tiene un
-        tratamiento diferente.<br/>
-        Los parametros de ConSin y Rounds no tienen ninguna funcion o utilidad en este juego.
+        Rounds: Número total de periodos que se jugarán. Por defecto en 2.<br/>
+        ConSin: Tomará un valor entre 1 y 4 para los diferentes tipos de tratamiento.
         """
     }
 ]
