@@ -11,13 +11,13 @@ class bienvenida(Page):
 
 class tratamiento(Page):
     def is_displayed(self):
-        return self.round_number == 1 or self.round_number == self.session.config["rondas"]/2 +1
+        return self.round_number == 1 or self.round_number == self.session.config["Rounds"]/2 +1
 
     def vars_for_template(self):
         return{
             'numeroronda':self.round_number,
-            'rondastotales':self.session.config["rondas"]/2 +1,
-            'tratamiento':self.session.config["tratamiento"]
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
         }
 
 class enviasin(Page):
@@ -25,20 +25,20 @@ class enviasin(Page):
     form_fields = ['inversion']
 
     def is_displayed(self):
-        if(self.session.config["tratamiento"]):
-            return self.round_number > self.session.config["rondas"] / 2
+        if(self.session.config["ConSin"]):
+            return self.round_number > self.session.config["Rounds"] / 2
         else:
-            return self.round_number <= self.session.config["rondas"]/2
+            return self.round_number <= self.session.config["Rounds"]/2
 
 class enviacon(Page):
     form_model = 'player'
     form_fields = ['inversion']
 
     def is_displayed(self):
-        if(self.session.config["tratamiento"]):
-            return self.round_number <= self.session.config["rondas"] / 2
+        if(self.session.config["ConSin"]):
+            return self.round_number <= self.session.config["Rounds"] / 2
         else:
-            return self.round_number > self.session.config["rondas"]/2
+            return self.round_number > self.session.config["Rounds"]/2
 
     def vars_for_template(self):
         if (self.round_number - 1 != 0):
@@ -56,15 +56,15 @@ class califica(Page):
     form_fields = ['calificacion']
 
     def is_displayed(self):
-        if(self.session.config["tratamiento"]):
-            return self.round_number <= self.session.config["rondas"] / 2
+        if(self.session.config["ConSin"]):
+            return self.round_number <= self.session.config["Rounds"] / 2
         else:
-            return self.round_number > self.session.config["rondas"]/2
+            return self.round_number > self.session.config["Rounds"]/2
 
 class gananciastotales(Page):
 
     def is_displayed(self):
-        return self.round_number == self.session.config["rondas"]
+        return self.round_number == self.session.config["Rounds"]
 
 class gananciasindividuales(Page):
     pass
@@ -104,20 +104,20 @@ class calculocalificacion(WaitPage):
 
 class calculospromediocalificacion(WaitPage):
     def after_all_players_arrive(self):
-        if(self.session.config["tratamiento"]):
-            if (self.round_number <= self.session.config["rondas"] / 2):
+        if(self.session.config["ConSin"]):
+            if (self.round_number <= self.session.config["Rounds"] / 2):
                 # Calculando la calificacion promedio
                 p1 = self.group.get_player_by_id(1)
                 p2 = self.group.get_player_by_id(2)
                 p1.calificacion_promedio = sum([j.calificacion for j in p1.in_rounds(1,self.round_number)]) / (self.round_number)
                 p2.calificacion_promedio = sum([j.calificacion for j in p2.in_rounds(1,self.round_number)]) / (self.round_number)
         else:
-            if(self.round_number > self.session.config["rondas"]/2):
+            if(self.round_number > self.session.config["Rounds"]/2):
                 # Calculando la calificacion promedio
                 p1 = self.group.get_player_by_id(1)
                 p2 = self.group.get_player_by_id(2)
-                p1.calificacion_promedio = sum([j.calificacion for j in p1.in_rounds(self.session.config["rondas"] / 2 + 1, self.round_number)]) / (self.round_number - self.session.config["rondas"] / 2)
-                p2.calificacion_promedio = sum([j.calificacion for j in p2.in_rounds(self.session.config["rondas"] / 2 + 1, self.round_number)]) / (self.round_number - self.session.config["rondas"] / 2)
+                p1.calificacion_promedio = sum([j.calificacion for j in p1.in_rounds(self.session.config["Rounds"] / 2 + 1, self.round_number)]) / (self.round_number - self.session.config["Rounds"] / 2)
+                p2.calificacion_promedio = sum([j.calificacion for j in p2.in_rounds(self.session.config["Rounds"] / 2 + 1, self.round_number)]) / (self.round_number - self.session.config["Rounds"] / 2)
 
 page_sequence = [
     bienvenida,

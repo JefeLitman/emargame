@@ -4,10 +4,18 @@ from otree.api import (
 )
 from random import randint,random
 
-author = 'Your name here'
+author = 'Luis Alejandro Palacio García & Bryan Snehider Díaz & Álvaro Javier Vargas Villamizar'
 
 doc = """
-Your app description
+Adaptando el protocolo propuesto por Goeree y Holt (1999), este juego permite analizar, entender 
+y discutir la pérdida de recursos asociada a la competencia por alcanzar un premio, bajo dos 
+mecanismos, subasta y lotería. La pregunta de investigación es:<br>
+<br>¿Cómo afecta el mecanismo de asignación del ganador del premio la pérdida social de recursos?
+<br>Se muestra como los jugadores compiten invirtiendo recursos por ganar un único premio. 
+Todos los recursos invertidos en la competencia son una pérdida social, que incluso puede superar 
+el valor del premio.
+<br><br>Goeree, J., & Holt, C. (1999). Classroom games: Rent-seeking and the inefficiency 
+of non-market allocations. Journal of Economic Perspectives, 13(3), 217–226.
 """
 
 

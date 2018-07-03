@@ -11,57 +11,57 @@ class bienvenida(Page):
 
 class tratamientos(Page):
     def is_displayed(self):
-        return self.round_number == 1 or self.round_number == self.session.config["rondas"]/2 +1
+        return self.round_number == 1 or self.round_number == self.session.config["Rounds"]/2 +1
 
     def vars_for_template(self):
         return{
             'numeroronda':self.round_number,
-            'rondastotales':self.session.config["rondas"]/2 +1,
-            'tratamiento':self.session.config["tratamiento"]
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
         }
 
 class dec_com_con(Page):
     form_model = 'group'
     form_fields = ['decision_comprador']
     def is_displayed(self):
-        if(self.session.config["tratamiento"]):
-            return self.player.role() == 'Comprador' and self.round_number <= self.session.config["rondas"] / 2
+        if(self.session.config["ConSin"]):
+            return self.player.role() == 'Comprador' and self.round_number <= self.session.config["Rounds"] / 2
         else:
-            return self.player.role()=='Comprador' and self.round_number > self.session.config["rondas"] / 2
+            return self.player.role()=='Comprador' and self.round_number > self.session.config["Rounds"] / 2
 
 class dec_com_sin(Page):
     form_model = 'group'
     form_fields = ['decision_comprador']
     def is_displayed(self):
-        if (self.session.config["tratamiento"]):
-            return self.player.role() == 'Comprador' and self.round_number > self.session.config["rondas"] / 2
+        if (self.session.config["ConSin"]):
+            return self.player.role() == 'Comprador' and self.round_number > self.session.config["Rounds"] / 2
         else:
-            return self.player.role()=='Comprador' and self.round_number <= self.session.config["rondas"] / 2
+            return self.player.role()=='Comprador' and self.round_number <= self.session.config["Rounds"] / 2
 
 class dec_ven_con(Page):
     form_model = 'group'
     form_fields = ['calidad_real','calidad_ofrecida','precio_vendedor','decision_vendedor']
     def is_displayed(self):
-        if(self.session.config["tratamiento"]):
-            return self.player.role() == 'Vendedor' and self.round_number <= self.session.config["rondas"] / 2
+        if(self.session.config["ConSin"]):
+            return self.player.role() == 'Vendedor' and self.round_number <= self.session.config["Rounds"] / 2
         else:
-            return self.player.role()=='Vendedor' and self.round_number > self.session.config["rondas"] / 2
+            return self.player.role()=='Vendedor' and self.round_number > self.session.config["Rounds"] / 2
 
 class dec_ven_sin(Page):
     form_model = 'group'
     form_fields = ['calidad_real','calidad_ofrecida','precio_vendedor']
     def is_displayed(self):
-        if(self.session.config["tratamiento"]):
-            return self.player.role() == 'Vendedor' and self.round_number > self.session.config["rondas"] / 2
+        if(self.session.config["ConSin"]):
+            return self.player.role() == 'Vendedor' and self.round_number > self.session.config["Rounds"] / 2
         else:
-            return self.player.role()=='Vendedor' and self.round_number <= self.session.config["rondas"] / 2
+            return self.player.role()=='Vendedor' and self.round_number <= self.session.config["Rounds"] / 2
 
 class gan_individual(Page):
     pass
 
 class gan_totales(Page):
     def is_displayed(self):
-        return self.round_number == self.session.config["rondas"]
+        return self.round_number == self.session.config["Rounds"]
 
 class esperagrupos(WaitPage):
     wait_for_all_groups = True

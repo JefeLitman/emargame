@@ -7,8 +7,14 @@ from random import randint
 author = 'Luis Alejandro Palacio García & Daniel Felipe Parra Carreño'
 
 doc = """
-Tomando como referencia el diseño propuesto por Bergstrom y Miller (2000), este juego permite analizar, entender y discutir los efectos de la intervención del gobierno cuando prohíbe una transacción de mercado. La pregunta de investigación es: ¿Cómo afecta la prohibición de una transacción las decisiones de los compradores y los vendedores? Se evidencia cómo la prohibición por parte del gobierno de una transacción mutuamente beneficiosa lleva a los vendedores a aumentar el precio de mercado, disminuyendo el bienestar de los implicados.
-<br/><br/>Bergstrom, T., & Miller, J. (2000). Experimentos con los principios económicos. Madrid: Antoni Bosh Editor.
+Tomando como referencia el diseño propuesto por Bergstrom y Miller (2000), 
+este juego permite analizar, entender y discutir los efectos de la intervención del gobierno 
+cuando prohíbe una transacción de mercado. La pregunta de investigación es:<br>
+<br>¿Cómo afecta la prohibición de una transacción las decisiones de los compradores y los vendedores?
+<br>Se evidencia cómo la prohibición por parte del gobierno de una transacción mutuamente beneficiosa 
+lleva a los vendedores a aumentar el precio de mercado, disminuyendo el bienestar de los implicados.
+<br/><br/>Bergstrom, T., & Miller, J. (2000). Experimentos con los principios económicos. 
+Madrid: Antoni Bosh Editor.
 """
 
 class Constants(BaseConstants):

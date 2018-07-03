@@ -9,13 +9,13 @@ class bienvenida(Page):
 
 class tratamientos(Page):
     def is_displayed(self):
-        return self.round_number == 1 or self.round_number == self.session.config["rondas"]/2 +1
+        return self.round_number == 1 or self.round_number == self.session.config["Rounds"]/2 +1
 
     def vars_for_template(self):
         return{
             'numeroronda':self.round_number,
-            'rondastotales':self.session.config["rondas"]/2 +1,
-            'tratamiento':self.session.config["tratamiento"]
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
         }
 
 class subasta(Page):
@@ -23,40 +23,40 @@ class subasta(Page):
     form_fields = ['da_invertir']
 
     def is_displayed(self):
-        if(self.session.config["tratamiento"]):
-            return self.round_number > self.session.config["rondas"]/2
+        if(self.session.config["ConSin"]):
+            return self.round_number > self.session.config["Rounds"]/2
         else:
-            return self.round_number <= self.session.config["rondas"]/2
+            return self.round_number <= self.session.config["Rounds"]/2
 
 class loteria(Page):
     form_model = 'player'
     form_fields = ['da_invertir']
 
     def is_displayed(self):
-        if (self.session.config["tratamiento"]):
-            return self.round_number <= self.session.config["rondas"] / 2
+        if (self.session.config["ConSin"]):
+            return self.round_number <= self.session.config["Rounds"] / 2
         else:
-            return self.round_number > self.session.config["rondas"] / 2
+            return self.round_number > self.session.config["Rounds"] / 2
 
 class ganancias_individuales(Page):
     pass
 
 class ganancias_totales(Page):
     def is_displayed(self):
-        return self.round_number == self.session.config["rondas"]
+        return self.round_number == self.session.config["Rounds"]
 
 class espera_grupos(WaitPage):
     wait_for_all_groups = True
 
 class calculos(WaitPage):
     def after_all_players_arrive(self):
-        if (self.session.config["tratamiento"]):
-            if(self.round_number<= self.session.config["rondas"]):
+        if (self.session.config["ConSin"]):
+            if(self.round_number<= self.session.config["Rounds"]):
                 self.subsession.seleccionar_ganador_loteria()
             else:
                 self.subsession.seleccionar_ganador_subasta()
         else:
-            if (self.round_number <= self.session.config["rondas"]):
+            if (self.round_number <= self.session.config["Rounds"]):
                 self.subsession.seleccionar_ganador_subasta()
             else:
                 self.subsession.seleccionar_ganador_loteria()

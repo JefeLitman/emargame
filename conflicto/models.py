@@ -3,10 +3,20 @@ from otree.api import (
     Currency as c, currency_range
 )
 from random import randint
-author = 'Your name here'
+author = 'Luis Alejandro Palacio García & Ismael Estrada Cañas & Carolina Andrea Estévez Fiallo'
 
 doc = """
-Your app description
+Adaptando el modelo propuesto por Palacio, Cortés y Muñoz-Herrera (2015), este juego permite analizar, 
+entender y discutir el efecto del nivel de conflicto y los mensajes vinculantes sobre la decisión 
+de cooperar en juegos 2×2. Las preguntas de investigación son:<br>
+<br>¿Los participantes están más dispuestos a cooperar dependiendo del nivel de conflicto al 
+que se enfrenten?
+<br>¿El hecho de jugar de forma secuencial lleva a cooperar más que cuando se juega simultáneamente?
+<br>Se espera que el nivel de conflicto afecte la decisión de cooperar. Entre mayor sea el conflicto, 
+mayores incentivos tienen los participantes para actuar agresivamente. Con respecto al comportamiento 
+del líder o del seguidor, no se espera cambios significativos con respecto al juego simultáneo.
+<br><br>Palacio, L., Cortés, A., & Muñoz-Herrera, M. (2015). The strategic role of nonbinding 
+communication. Applied Mathematics, 2015, 11.
 """
 
 class Constants(BaseConstants):

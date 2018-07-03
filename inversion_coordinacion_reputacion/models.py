@@ -4,10 +4,19 @@ from otree.api import (
 )
 
 
-author = 'Your name here'
+author = 'Luis Alejandro Palacio García & Laura Milena Prada Medina'
 
 doc = """
-Your app description
+Inspirados en el problema de alcanzar la eficiencia en juegos de coordinación abordado por Cooper, 
+et al (1992), este juego permite analizar, entender y discutir el efecto de la reputación sobre 
+una decisión de inversión en un contexto de negociación bilateral. 
+Las preguntas que se busca discutir son:<br>
+<br>¿Cómo afecta la reputación las decisiones de inversión que requieren de coordinación?
+<br>¿El mecanismo de calificación es una señal efectiva?
+<br>Se espera que los estudiantes discutan si el mecanismo de calificación permite señalizar 
+el comportamiento prosocial, mejorando la coordinación y por la tanto la eficiencia.
+<br><br>Cooper, R., DeJong, D., Forsythe, R., y Ross, T. (1992). Communication in coordination games. 
+Quarterly Journal of Economics, 107(2), 739–771.
 """
 
 

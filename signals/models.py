@@ -4,10 +4,20 @@ from otree.api import (
 )
 
 
-author = 'Your name here'
+author = 'Luis Alejandro Palacio García & Ismael Estrada Cañas & Bryan Snehider Díaz'
 
 doc = """
-Your app description
+Como una ampliación del juego propuesto por Palacio, Saravia y Vesga (2017), este juego permite 
+analizar, entender y discutir hasta qué punto los bienes de buena calidad pueden ser expulsados 
+del mercado cuando los vendedores no logran transmitir de forma creíble su información privada. 
+Las preguntas de investigación son:<br>
+<br>¿Los vendedores están dispuestos a invertir recursos para comunicar la calidad del bien a transar?
+<br>¿El mecanismo de señales permite solucionar el problema de selección adversa?
+<br>Se espera que en ausencia de compromiso los participantes tengan incentivos a mentir, lo que 
+lleva al colapso del mercado. En cambio, cuando se puede invertir recursos para comunicar la 
+verdadera calidad, las señales vinculantes ayudan a alcanzar un equilibrio socialmente deseable.
+<br><br>Palacio, L., Saravia, I., & Vesga, M. (2017). Juegos en el salón de clase: 
+El mercado de los limones. Revista de Economia Institucional, 19(36), 291–311.354
 """
 
 
