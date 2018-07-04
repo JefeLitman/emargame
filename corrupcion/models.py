@@ -80,6 +80,6 @@ class Player(BasePlayer):
 
     def set_ganancias_totales(self,max_rondas):
         ronda_aleatoria=randint(1,max_rondas)
-        self.ganancias_totales=self.in_round(ronda_aleatoria).payoff
+        self.ganancias_totales=self.in_round(ronda_aleatoria).pagos
         self.payoff=self.ganancias_totales
         return ronda_aleatoria
