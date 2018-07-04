@@ -62,6 +62,7 @@ class Player(BasePlayer):
     ganador=models.BooleanField(initial=False)
     soborno=models.CurrencyField(initial=c(0))
     ganancias_totales=models.CurrencyField(initial=c(0))
+    pagos=models.CurrencyField()
 
     def role(self):
         if(self.id_in_group == 1):
@@ -71,13 +72,14 @@ class Player(BasePlayer):
 
     def set_payoff(self,nivelxcp):
         if (self.role()=="Burocrata"):
-            self.payoff=self.cuenta_privada+nivelxcp
+            self.pagos=self.cuenta_privada+nivelxcp
         elif(self.ganador==True):
-            self.payoff = self.cuenta_privada + nivelxcp
+            self.pagos = self.cuenta_privada + nivelxcp
         else:
-            self.payoff = nivelxcp
+            self.pagos = nivelxcp
 
     def set_ganancias_totales(self,max_rondas):
         ronda_aleatoria=randint(1,max_rondas)
         self.ganancias_totales=self.in_round(ronda_aleatoria).payoff
+        self.payoff=self.ganancias_totales
         return ronda_aleatoria
