@@ -85,6 +85,7 @@ class Player(BasePlayer):
             self.Pagos= Constants.dotacion-(self.Inversion+self.Contribucion)+rentabilidad-self.Incentivo
         else:
             self.Pagos= Constants.dotacion-(self.Inversion+self.Contribucion)+rentabilidad+self.Incentivo
+        self.payoff=self.Pagos
 
     def set_totalpagos(self):
          self.TotalPagos = sum([p.Pagos for p in self.in_all_rounds()])
