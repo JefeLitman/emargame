@@ -47,7 +47,7 @@ class Group(BaseGroup):
     def set_niveles_tecnologia(self):
         contratistas=self.get_player_by_role("Burocrata").get_others_in_group()
         for i in contratistas:
-            i.nivel_tecnologia=randint(1,2)+random()
+            i.nivel_tecnologia=round(randint(1,2)+random(),4)
 
     def set_aceptaciones(self):
         self.get_player_by_id(2).aceptado = self.aceptaC1
