@@ -63,6 +63,8 @@ class Group(BaseGroup):
         else: #Este seria el caso 3 donde no se realizo la transaccion porque no cumplio
             vendedor.Pagos = c(0)
             comprador.Pagos = c(0)
+        vendedor.payoff=vendedor.Pagos
+        comprador.payoff=comprador.Pagos
 
     def set_variables_azar(self):
         self.RRevision=randint(1,100)
