@@ -78,6 +78,6 @@ class Player(BasePlayer):
             self.payoff = nivelxcp
 
     def set_ganancias_totales(self,max_rondas):
-        ronda_aleatoria=random(1,max_rondas)
+        ronda_aleatoria=randint(1,max_rondas)
         self.ganancias_totales=self.in_round(ronda_aleatoria).payoff
         return ronda_aleatoria

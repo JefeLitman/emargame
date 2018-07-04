@@ -103,7 +103,13 @@ SESSION_CONFIGS = [
         'name': 'garrote_zanahoria',
         'display_name': '2. Garrote & Zanahoria: Normas sociales y mecanismos de cumplimiento.',
         'num_demo_participants': 2,
-        'app_sequence': ['garrote_zanahoria']
+        'app_sequence': ['garrote_zanahoria'],
+        'ConSin':None,
+        'MasMenos':False,
+        'doc':"""
+        Rounds: Número total de periodos que se jugarán. Por defecto en 20*.<br/>
+        MasMenos: Tomará el valor de 1 cuando los periodos iniciales son tratamiento zanahoria y los periodos finales garrote. En caso contrario será 0. Por defecto 0 (Sin marcar).
+        """
     },
     {
         'name': 'inversion_coordinacion_reputacion',

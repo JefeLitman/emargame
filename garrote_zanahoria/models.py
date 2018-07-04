@@ -2,7 +2,7 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
-
+from random import randint
 
 author = 'Luis Alejandro Palacio García & Ferley Rincon'
 
@@ -30,57 +30,67 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    c_publica = models.CurrencyField(initial=c(0))
-    rentabilidad= models.CurrencyField(initial=c(0))
+    ContribucionTotal = models.CurrencyField(initial=c(0))
+    Rentabilidad= models.CurrencyField(initial=c(0))
+    Reinicio=models.BooleanField(initial=False)
+    TMAS=models.BooleanField(initial=False)
+
+    def set_variables_subsesion(self,ronda,rondas_totales,masmenos):
+        #Definiendo la variable de reinicio
+        self.Reinicio = ronda > rondas_totales / 2
+        # Definiendo la variable de TMAS
+        if (masmenos):
+            if (ronda <= rondas_totales/2):
+                self.TMAS= True
+            else:
+                self.TMAS = False
+        else:
+            if (ronda <= rondas_totales/2):
+                self.TMAS = False
+            else:
+                self.TMAS = True
 
     def creating_session(self):
         self.group_randomly()
 
-    def calc_rent(self):
+    def set_rentabilidad(self):
         players=self.get_players()
-        long = len(players)
-        return round((self.c_publica*3)/long)
+        longitud_jugadores = len(players)
+        self.Rentabilidad=round((self.ContribucionTotal*3)/longitud_jugadores)
 
-    def calc_pub(self):
+    def set_contribuciontotal(self):
         players = self.get_players()
-        return sum([p.da_c_pub for p in players])
+        self.ContribucionTotal=sum([p.Contribucion for p in players])
 
 
 class Group(BaseGroup):
     def cal_incentivo_corres(self,garrote,rentabilidad):
-        p1=self.get_player_by_id(1)
+        p1 = self.get_player_by_id(1)
         p2 = self.get_player_by_id(2)
-        p1.cal_c_privada(garrote,p2.da_inc,rentabilidad)
-        p2.cal_c_privada(garrote,p1.da_inc,rentabilidad)
-        p1.cal_gan_totales()
-        p2.cal_gan_totales()
-    #def cal_cont_grupo_cp(self):
-     #   p1.get_da_inc()
-    #  p2.get_da_inc()
-
+        p1.set_pagos(garrote,p2.Inversion,rentabilidad)
+        p2.set_pagos(garrote,p1.Inversion,rentabilidad)
+        p1.set_totalpagos()
+        p2.set_totalpagos()
 
 class Player(BasePlayer):
-    c_privada=models.CurrencyField(initial=c(0))
-    da_c_pub = models.CurrencyField(initial=c(0),min=c(0),max=c(1000))
-    da_inc = models.CurrencyField(initial=c(0),min=c(0),max=c(200))
-    ganacias_totales=models.CurrencyField(initial=c(0)) #sum de todas las rondas
-    #gan_c_privada=models.CurrencyField(initial=c(0))
+    Pagos=models.CurrencyField(initial=c(0))
+    TotalPagos=models.CurrencyField(initial=c(0))
+    Contribucion = models.CurrencyField(initial=c(0),min=c(0),max=c(1000))
+    Inversion = models.CurrencyField(initial=c(0),min=c(0),max=c(200))
+    Incentivo = models.CurrencyField(initial=c(0)) 
 
-    def cal_gan_totales(self):
-         self.ganacias_totales = sum([p.c_privada for p in self.in_all_rounds()])
-
-    def cal_c_privada(self,garrote,da_inc_otro,rentabilidad):
+    def set_pagos(self,garrote,inversion_otro,rentabilidad):
+        self.Incentivo=3*inversion_otro
         if garrote == "garrote":
-            self.c_privada= Constants.dotacion-(self.da_inc+self.da_c_pub)+rentabilidad-3*da_inc_otro
+            self.Pagos= Constants.dotacion-(self.Inversion+self.Contribucion)+rentabilidad-self.Incentivo
         else:
-            self.c_privada = Constants.dotacion - (self.da_inc + self.da_c_pub) + rentabilidad+3*da_inc_otro
+            self.Pagos= Constants.dotacion-(self.Inversion+self.Contribucion)+rentabilidad+self.Incentivo
 
-    #def cal_gan_c_privada(self,garrote,da_inc_otro,rentabilidad):
-     #   if garrote == "garrote":
-      #      self.gan_c_privada= rentabilidad-3*da_inc_otro
-       # else:
-        #    self.gan_c__privada= rentabilidad+3*da_inc_otro
+    def set_totalpagos(self):
+         self.TotalPagos = sum([p.Pagos for p in self.in_all_rounds()])
 
-    #def get_da_inc(self):
-     #   da_inc_g=self.da_inc
+    def set_contribucion_azar(self):
+        self.Contribucion=randint(0,1001)
 
+    def set_inversion_azar(self):
+        self.Inversion=randint(0,201)
