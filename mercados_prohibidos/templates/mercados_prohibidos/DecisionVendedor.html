@@ -43,6 +43,16 @@
       font-family: 'Cabin', sans-serif;
       font-size: 20px;
       }
+
+      .imagen{
+      display:block;
+      margin:auto;
+      }
+
+       .input-group-text{
+       font-family: 'Cabin', sans-serif;
+       font-size: 20px;
+      }
    </style>
 
     <div class="encabezado"><h2>Decisiones</h2></div>
@@ -50,6 +60,20 @@
     <p> <b> Usted es el vendedor </b> </p>
     <p> Su costo de produccion es: {{group.Costo}} </p>
     {% formfield group.Precio label="Debe decidir el precio al que quiere ofrecer el producto:" %}
+
+        {% if tratamiento %}
+        {% if numeroronda > rondastotales %}
+            <img  class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_fondo.png' %}"/>
+        {% else %}
+            <img  class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_prohibidito_fondo.png' %}"/>
+        {% endif %}
+    {% else %}
+        {% if numeroronda > rondastotales %}
+           <img  class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_prohibidito_fondo.png' %}"/>
+        {% else %}
+            <img class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_fondo.png' %}"/>
+        {% endif %}
+    {% endif %}
 
     <button>
           <b>Siguiente</b>

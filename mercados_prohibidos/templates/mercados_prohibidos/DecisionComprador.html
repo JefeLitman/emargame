@@ -37,10 +37,15 @@
         display: none;
       }
 
-      .col-form-label
+      .col-form-label /*El tecxto del formulario donde dice DEsea...*/
       {
       font-family: 'Cabin', sans-serif;
       font-size: 20px;
+      }
+
+      .input-group-text{
+       font-family: 'Cabin', sans-serif;
+       font-size: 20px;
       }
 
    </style>
@@ -51,6 +56,20 @@
     <p>El valor que usted le da al producto es: {{group.Valor}}</p>
     {% formfield group.MPDA label="Debe decidir el máximo precio que está dispuesto a aceptar:" %}
 
+
+    {% if tratamiento %}
+        {% if numeroronda > rondastotales %}
+            <img  class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_fondo.png' %}"/>
+        {% else %}
+            <img  class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_prohibidito_fondo.png' %}"/>
+        {% endif %}
+    {% else %}
+        {% if numeroronda > rondastotales %}
+           <img  class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_prohibidito_fondo.png' %}"/>
+        {% else %}
+            <img class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_fondo.png' %}"/>
+        {% endif %}
+    {% endif %}
 
     <button>
           <b>Siguiente</b>
