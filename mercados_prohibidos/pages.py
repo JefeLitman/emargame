@@ -35,6 +35,13 @@ class DecisionVendedor(Page):
     def is_displayed(self):
         return self.player.Vendedor==True
 
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
+
 class DecisionComprador(Page):
     timeout_seconds = 60
     form_model = models.Group
@@ -49,6 +56,13 @@ class DecisionComprador(Page):
     def is_displayed(self):
         return self.player.Vendedor==False
 
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
+
 class SINGanancia(Page):
     timeout_seconds = 30
     def is_displayed(self):
@@ -57,6 +71,13 @@ class SINGanancia(Page):
         else:
             return self.round_number<=self.session.config["Rounds"]/2
 
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
+
 class CONGanancia(Page):
     timeout_seconds = 30
     def is_displayed(self):
@@ -64,6 +85,13 @@ class CONGanancia(Page):
             return self.round_number<=self.session.config["Rounds"]/2
         else:
             return self.round_number>self.session.config["Rounds"]/2
+
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
 
 class GananciaTotal(Page):
     timeout_seconds = 30

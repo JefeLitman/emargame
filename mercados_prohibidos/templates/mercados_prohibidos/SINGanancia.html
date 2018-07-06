@@ -86,13 +86,13 @@
 <p> Su ganancia en este periodo es: {{player.Pagos}} </p> </br>
 
     {% if tratamiento %}
-        {% if numeroronda > rondastotales %}
+        {% if numeroronda >= rondastotales %}
             <img  class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_fondo.png' %}"/>
         {% else %}
             <img  class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_prohibidito_fondo.png' %}"/>
         {% endif %}
     {% else %}
-        {% if numeroronda > rondastotales %}
+        {% if numeroronda >= rondastotales %}
            <img  class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_prohibidito_fondo.png' %}"/>
         {% else %}
             <img class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_fondo.png' %}"/>
