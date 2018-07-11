@@ -3,12 +3,11 @@
 {% load static %}
 
 {% block title %}
-
 {% endblock %}
 
 {% block content %}
 
-    <style media="screen">
+<style media="screen">
       @import url('https://fonts.googleapis.com/css?family=Cabin');
 
        button{
@@ -31,8 +30,8 @@
       }
 
        p {
-      font-family: 'Cabin', sans-serif;
-      font-size: 20px;
+        font-family: 'Cabin', sans-serif;
+        font-size: 20px;
       }
 
       .otree-timer.alert.alert-warning{
@@ -41,8 +40,8 @@
 
       .col-form-label /*El tecxto del formulario donde dice DEsea...*/
       {
-      font-family: 'Cabin', sans-serif;
-      font-size: 20px;
+        font-family: 'Cabin', sans-serif;
+        font-size: 20px;
       }
 
       .input-group-text{ /*puntos*/
@@ -56,11 +55,17 @@
       }
    </style>
 
-    <div class="encabezado"> <h2> Contribución </h2> </div>
+    <div class="encabezado"> <h2> Ganancias </h2> </div>
 
-    <p> 1000 puntos disponibles </p>
+    <p> Su contribución: {{player.Contribucion}} </p>
 
-    {% formfield player.Contribucion label="Debe decidir con cuántos puntos va a contribuir a la cuenta pública:" %}
+    <p> Su inversión en el incentivo: {{player.Inversion}} </p>
+
+    <p> Rentabilidad de la cuenta pública: {{subsession.Rentabilidad}}</p>
+
+    <p> Incentivo recibido: {{player.Incentivo}} </p>
+
+    <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}

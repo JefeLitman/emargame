@@ -7,7 +7,7 @@
 
 {% block content %}
 
-   <style media="screen">
+<style media="screen">
       @import url('https://fonts.googleapis.com/css?family=Cabin');
        img{
            width: 100%;
@@ -27,21 +27,22 @@
        .otree-timer.alert.alert-warning{
         display: none;
       }
-     </style>
+</style>
 
-    {% if tratamiento %}
-        {% if numeroronda == rondastotales %}
-            <img  src = "{% static 'garrote_zanahoria/final_garrote.png' %}"/>
-        {% else %}
-            <img  src = "{% static 'garrote_zanahoria/inicial_zanahoria.png' %}"/>
-        {% endif %}
-    {% else %}
-        {% if numeroronda == rondastotales %}
-                <img  src = "{% static 'garrote_zanahoria/final_zanahorias.png' %}"/>
-        {% else %}
-                <img src="{% static 'garrote_zanahoria/inicial_garrote.png' %}"/>
-        {% endif %}
-    {% endif %}
+<style media="screen">
+    img{
+      width: 100%;
+      height: 80%;
+    }
+    div.boton{
+      position: relative;
+      left: 80%;
+    }
+</style>
+
+<img  src = "{% static 'garrote_zanahoria/gracias.png' %}"/>
+
+<p> </p>
 
     <button>
         Siguiente

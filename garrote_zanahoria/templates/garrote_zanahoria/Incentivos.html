@@ -3,10 +3,10 @@
 {% load static %}
 
 {% block title %}
-
 {% endblock %}
 
 {% block content %}
+
 
     <style media="screen">
       @import url('https://fonts.googleapis.com/css?family=Cabin');
@@ -56,11 +56,15 @@
       }
    </style>
 
-    <div class="encabezado"> <h2> Contribución </h2> </div>
 
-    <p> 1000 puntos disponibles </p>
 
-    {% formfield player.Contribucion label="Debe decidir con cuántos puntos va a contribuir a la cuenta pública:" %}
+    <div class="encabezado"> <h2> Incentivos </h2> </div>
+
+    <p> La contribución de su pareja a la cuenta pública es: {{contri_otro_jugador}} </p>
+
+    <p> 200 puntos disponibles.</p>
+
+    {% formfield player.Inversion label="Debe decidir cuántos puntos invertir en el incentivo:" %}
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}

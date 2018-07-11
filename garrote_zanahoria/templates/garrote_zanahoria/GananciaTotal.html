@@ -3,7 +3,6 @@
 {% load static %}
 
 {% block title %}
-
 {% endblock %}
 
 {% block content %}
@@ -56,25 +55,12 @@
       }
    </style>
 
-    <div class="encabezado"> <h2> Contribución </h2> </div>
 
-    <p> 1000 puntos disponibles </p>
+    <div class="encabezado"> <h2> Ganancias totales </h2> </div>
 
-    {% formfield player.Contribucion label="Debe decidir con cuántos puntos va a contribuir a la cuenta pública:" %}
+    <p> El juego ha terminado. </p>
 
-    {% if tratamiento %}
-        {% if numeroronda >= rondastotales %}
-            <img  class="imagen" src = "{% static 'garrote_zanahoria/garrote_fondo.PNG' %}"/>
-        {% else %}
-            <img  class="imagen" src = "{% static 'mercados_prohibidos/zanahoria_fondo.PNG' %}"/>
-        {% endif %}
-    {% else %}
-        {% if numeroronda >= rondastotales %}
-           <img  class="imagen" src = "{% static 'garrote_zanahoria/zanahoria_fondo.PNG' %}"/>
-        {% else %}
-            <img class="imagen" src = "{% static 'garrote_zanahoria/garrote_fondo.PNG' %}"/>
-        {% endif %}
-    {% endif %}
+    <p> Sus puntos acumulados son:{{player.PagosTotales}}</p>
 
     <button>
           <b>Siguiente</b>

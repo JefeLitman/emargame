@@ -7,7 +7,7 @@ class precalculos(WaitPage):
         #Definiendo las variables de la subsesion
         self.subsession.set_variables_subsesion(self.round_number,self.session.config["Rounds"],self.session.config["MasMenos"])
 
-class bienvenida(Page):
+class presentacion(Page):
     timeout_seconds = 30
     def is_displayed(self):
         return self.round_number == 1
@@ -24,7 +24,7 @@ class tratamientos(Page):
             'tratamiento':self.session.config["MasMenos"]
         }
 
-class contribucion(Page):
+class Contribucion(Page):
     timeout_seconds=60
     form_model = 'player'
     form_fields = ['Contribucion']
@@ -35,7 +35,7 @@ class calculo_contribucion(WaitPage):
             if(p.Contribucion==0):
                 p.set_contribucion_azar()
 
-class incentivo(Page):
+class Incentivos(Page):
     timeout_seconds=60
     form_model = 'player'
     form_fields = ['Inversion']
@@ -65,25 +65,24 @@ class calculos(WaitPage):
             else:
                 self.group.cal_incentivo_corres(garrote="garrote",rentabilidad=self.subsession.Rentabilidad)
 
-class gan_individual(Page):
+class Ganancias(Page):
     timeout_seconds=30
 
-class gan_totales(Page):
+class GananciaTotal(Page):
     timeout_seconds=30
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
 
 page_sequence = [
-    precalculos,
-    bienvenida,
+    presentacion,
     tratamientos,
     espera_grupos,
-    contribucion,
+    Contribucion,
     calculo_contribucion,
     espera_grupos,
-    incentivo,
+    Incentivos,
     espera_grupos,
     calculos,
-    gan_individual,
-    gan_totales
+    Ganancias,
+    GananciaTotal
 ]
