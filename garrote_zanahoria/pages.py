@@ -29,6 +29,13 @@ class Contribucion(Page):
     form_model = 'player'
     form_fields = ['Contribucion']
 
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["MasMenos"]
+        }
+
 class calculo_contribucion(WaitPage):
     def after_all_players_arrive(self):
         for p in self.group.get_players():
@@ -42,7 +49,11 @@ class Incentivos(Page):
 
     def vars_for_template(self):
         otro_jugador = self.player.get_others_in_group()[0]
-        return {'contri_otro_jugador':otro_jugador.Contribucion}
+        return {'contri_otro_jugador':otro_jugador.Contribucion,
+                'numeroronda':self.round_number,
+                'rondastotales':self.session.config["Rounds"]/2 +1,
+                'tratamiento':self.session.config["MasMenos"] }
+
 
 class espera_grupos(WaitPage):
     wait_for_all_groups = True
@@ -68,8 +79,19 @@ class calculos(WaitPage):
 class Ganancias(Page):
     timeout_seconds=30
 
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["MasMenos"]
+        }
+
 class GananciaTotal(Page):
     timeout_seconds=30
+    def is_displayed(self):
+        return self.round_number == self.session.config["Rounds"]
+
+class gracias(Page):
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
 
@@ -84,5 +106,6 @@ page_sequence = [
     espera_grupos,
     calculos,
     Ganancias,
-    GananciaTotal
+    GananciaTotal,
+    gracias
 ]
