@@ -99,7 +99,7 @@ page_sequence = [
     presentacion,
     tratamientos,
     espera_grupos,
-    Contribucion,
+    contribucion,
     calculo_contribucion,
     espera_grupos,
     Incentivos,
