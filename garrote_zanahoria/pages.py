@@ -24,7 +24,7 @@ class tratamientos(Page):
             'tratamiento':self.session.config["MasMenos"]
         }
 
-class Contribucion(Page):
+class contribucion(Page):
     timeout_seconds=60
     form_model = 'player'
     form_fields = ['Contribucion']
