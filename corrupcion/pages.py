@@ -19,6 +19,12 @@ class oferta_contratistas(Page):
     form_fields = ['cuenta_publica','cuenta_privada','soborno']
     def is_displayed(self):
         return self.player.role()=="Contratista"
+    def cuenta_publica_min(self):
+        return c(0)
+    def cuenta_privada_min(self):
+        return c(0)
+    def soborno_min(self):
+        return c(0)
 
 class decision_burocrata(Page):
     form_model = 'group'
@@ -46,6 +52,7 @@ class definir_ganador(WaitPage):
         jugadores=self.group.get_players()
         for i in jugadores:
             i.set_payoff(nivelxcp)
+            i.set_ganancias_totales()
 
 class gan_periodo(Page):
     def vars_for_template(self):
@@ -54,10 +61,6 @@ class gan_periodo(Page):
 class gan_totales(Page):
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
-    def vars_for_template(self):
-        return {
-            'ronda':self.player.set_ganancias_totales(self.session.config["Rounds"])
-        }
 
 page_sequence = [
     bienvenido,

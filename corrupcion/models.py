@@ -15,8 +15,8 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'corrupcion'
     players_per_group = 4
-    num_rounds = 20
-    cdp=c(50000)
+    num_rounds = 10
+    cdp=c(5000)
 
 class Subsession(BaseSubsession):
     def creating_session(self):
@@ -62,7 +62,6 @@ class Player(BasePlayer):
     ganador=models.BooleanField(initial=False)
     soborno=models.CurrencyField(initial=c(0))
     ganancias_totales=models.CurrencyField(initial=c(0))
-    pagos=models.CurrencyField()
 
     def role(self):
         if(self.id_in_group == 1):
@@ -72,14 +71,11 @@ class Player(BasePlayer):
 
     def set_payoff(self,nivelxcp):
         if (self.role()=="Burocrata"):
-            self.pagos=self.cuenta_privada+nivelxcp
+            self.payoff=self.cuenta_privada+nivelxcp
         elif(self.ganador==True):
-            self.pagos = self.cuenta_privada + nivelxcp
+            self.payoff = self.cuenta_privada + nivelxcp
         else:
-            self.pagos = nivelxcp
+            self.payoff = nivelxcp
 
-    def set_ganancias_totales(self,max_rondas):
-        ronda_aleatoria=randint(1,max_rondas)
-        self.ganancias_totales=self.in_round(ronda_aleatoria).pagos
-        self.payoff=self.ganancias_totales
-        return ronda_aleatoria
+    def set_ganancias_totales(self):
+        self.ganancias_totales=sum([p.payoff for p in self.in_all_rounds()])

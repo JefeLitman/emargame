@@ -81,8 +81,8 @@ Juegos EMAR LAB
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = {
-    'participation_fee': 0.00,
-    'real_world_currency_per_point': 0.000,
+    'participation_fee': 0,
+    'real_world_currency_per_point': 1,
     'Rounds':20,
     'ConSin':False,
     'doc':"""
@@ -146,7 +146,7 @@ SESSION_CONFIGS = [
         'display_name': 'Experimento',
         'num_demo_participants':4,
         'app_sequence': ['corrupcion'],
-        'Rounds':2,
+        'Rounds':10,
         'ConSin':1,
         'doc':"""
         Rounds: Número total de periodos que se jugarán. Por defecto en 2.<br/>
