@@ -75,9 +75,9 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     Pagos=models.CurrencyField(initial=c(0))
     TotalPagos=models.CurrencyField(initial=c(0))
-    Contribucion = models.CurrencyField(initial=c(0),min=c(0),max=c(1000))
-    Inversion = models.CurrencyField(initial=c(0),min=c(0),max=c(200))
-    Incentivo = models.CurrencyField(initial=c(0)) 
+    Contribucion = models.CurrencyField(blank=True,min=c(0),max=c(1000))
+    Inversion = models.CurrencyField(blank=True,min=c(0),max=c(200))
+    Incentivo = models.CurrencyField()
 
     def set_pagos(self,garrote,inversion_otro,rentabilidad):
         self.Incentivo=3*inversion_otro

@@ -45,15 +45,16 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     Costo=models.CurrencyField()
     Valor=models.CurrencyField()
-    Precio=models.CurrencyField()
-    MPDA=models.CurrencyField()
-    RRevision=models.IntegerField(initial=0)
-    Revision=models.BooleanField(initial=False)
+    Precio=models.CurrencyField(blank=True)
+    MPDA=models.CurrencyField(blank=True)
+    RRevision=models.IntegerField()
+    Revision=models.BooleanField()
 
     def set_pagos(self,transaccion):
         vendedor = self.get_player_by_id(1)
         comprador = self.get_player_by_id(2)
         if (transaccion == 1): #1 corresponde a que se realizo la transaccion sin revisarlo
+            self.Revision = False
             vendedor.Pagos=self.Precio-self.Costo
             comprador.Pagos=self.Valor-self.Precio
         elif (transaccion == 2):#2 corresponde a que no se realizo la transaccion porque se reviso
@@ -61,6 +62,7 @@ class Group(BaseGroup):
             vendedor.Pagos=self.Costo*(-1)
             comprador.Pagos = c(0)
         else: #Este seria el caso 3 donde no se realizo la transaccion porque no cumplio
+            self.Revision = False
             vendedor.Pagos = c(0)
             comprador.Pagos = c(0)
         vendedor.payoff=vendedor.Pagos

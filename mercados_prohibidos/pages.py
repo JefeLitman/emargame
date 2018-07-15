@@ -120,9 +120,9 @@ class calculos(WaitPage):
 
     def after_all_players_arrive(self):
         #Definiendo aleatoriamente las variables si el jugador no alcanza a llenarlas
-        if(self.group.Precio==0):
+        if(self.group.Precio==None):
             self.group.Precio=randint(self.group.Costo,2001)
-        if(self.group.MPDA==0):
+        if(self.group.MPDA==None):
             self.group.MPDA=randint(0,self.group.Valor+1)
         if(self.session.config["ConSin"]):
             if(self.round_number <= self.session.config["Rounds"]/2):
