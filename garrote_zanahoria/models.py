@@ -32,8 +32,8 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     ContribucionTotal = models.CurrencyField(initial=c(0))
     Rentabilidad= models.CurrencyField(initial=c(0))
-    Reinicio=models.BooleanField(initial=False)
-    TMAS=models.BooleanField(initial=False)
+    Reinicio=models.BooleanField()
+    TMAS=models.BooleanField()
 
     def set_variables_subsesion(self,ronda,rondas_totales,masmenos):
         #Definiendo la variable de reinicio
@@ -91,7 +91,7 @@ class Player(BasePlayer):
          self.TotalPagos = sum([p.Pagos for p in self.in_all_rounds()])
 
     def set_contribucion_azar(self):
-        self.Contribucion=randint(0,1001)
+        self.Contribucion=randint(0,1000)
 
     def set_inversion_azar(self):
-        self.Inversion=randint(0,201)
+        self.Inversion=randint(0,200)

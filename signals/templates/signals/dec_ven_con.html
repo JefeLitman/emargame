@@ -73,32 +73,53 @@
 
 <br/>
 
-    {%formfield group.calidad_real label="Debe decidir la calidad del producto:"%}
+    {%formfield group.Calidad label="Debe decidir la calidad del producto:"%}
 
-    {%formfield group.calidad_ofrecida label="Debe decidir el mensaje sobre la calidad del producto:"%}
+    {%formfield group.Mensaje label="Debe decidir el mensaje sobre la calidad del producto:"%}
 
-    {%formfield group.precio_vendedor label="Debe decidir el precio de venta:"%}
+    {%formfield group.Precio label="Debe decidir el precio de venta:"%}
 
     <p>Si la calidad del producto coincide con el  mensaje, usted puede invertir 500 puntos para asegurar la calidad.
     <br> <small> En caso de que no coincida responda: NO </small> </p><br>
     <p><b>¿Desea invertir 500 puntos para que el comprador esté seguro de la calidad ofrecida?</b></p>
     <div>
         <button type="button" id="boton_si" class="btn btn-primary btn-large">Si</button>
-        <button id="no" name="decision_vendedor" value="False" class="btn btn-primary btn-large">No</button>
+        <button id="no" name="Senal" value="False" class="btn btn-primary btn-large">No</button>
         <div id="warning" class="alert alert-danger" style="visibility: hidden;">
-            <strong>Error!</strong> Porfavor, asegurese que la calidad real y ofrecida sean iguales.
+            <strong>Error!</strong> Porfavor, asegurese que la calidad real y ofrecida sean iguales o el precio de venta sea mayor al costo de produccion.
         </div>
         <div style="visibility: hidden;">
-          <button id="si" name="decision_vendedor" value="True" class="btn btn-primary btn-large">Si</button>
+          <button id="si" name="Senal" value="True" class="btn btn-primary btn-large">Si</button>
         </div>
     </div>
     <script>
         function validar()
         {
-            var calidad = parseInt(document.getElementById("id_calidad_real").value);
-            var mensaje = parseInt(document.getElementById("id_calidad_ofrecida").value);
-            var precio_vendedor = parseInt(document.getElementById("id_precio_vendedor").value);
-            if (calidad == mensaje && precio_vendedor >= 500*calidad)
+            if(document.getElementById("id_Calidad").value == "")
+            {
+                var calidad = 0;
+            }
+            else
+            {
+                var calidad = parseInt(document.getElementById("id_Calidad").value);
+            }
+            if(document.getElementById("id_Mensaje").value == "")
+            {
+                var mensaje = 0;
+            }
+            else
+            {
+                var mensaje = parseInt(document.getElementById("id_Mensaje").value);
+            }
+            if(document.getElementById("id_Precio").value == "")
+            {
+                var precio_vendedor = 0;
+            }
+            else
+            {
+                var precio_vendedor = parseInt(document.getElementById("id_Precio").value);
+            }
+            if (calidad == mensaje && precio_vendedor >= 100*calidad)
             {
                 return true;
             }

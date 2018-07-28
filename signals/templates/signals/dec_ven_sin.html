@@ -73,14 +73,66 @@
 
 <br/>
 
+    {%formfield group.Calidad label="Debe decidir la calidad del producto:"%}
 
+    {%formfield group.Mensaje label="Debe decidir el mensaje sobre la calidad del producto:"%}
 
-    {%formfield group.calidad_real label="Debe decidir la calidad del producto:"%}
+    {%formfield group.Precio label="Debe decidir el precio de venta:"%}
 
-    {%formfield group.calidad_ofrecida label="Debe decidir el mensaje sobre la calidad del producto:"%}
+    <div>
+      <button type="button" id="siguiente" class="btn btn-primary btn-large">Siguiente</button>
+      <div id="warning" class="alert alert-danger" style="visibility: hidden;">
+        <strong>Error!</strong> Porfavor, asegurese que el precio de venta sea mayor al costo de produccion.
+      </div>
+      <div style="visibility: hidden;">
+        <button id="verdadero_siguiente" style="visibility: hidden;"></button>
+      </div>
+    </div>
 
-    {%formfield group.precio_vendedor label="Debe decidir el precio de venta:"%}
-
-    {% next_button %}
+    <script>
+      function validar()
+      {
+          if(document.getElementById("id_Calidad").value == "")
+            {
+                var calidad = 0;
+            }
+            else
+            {
+                var calidad = parseInt(document.getElementById("id_Calidad").value);
+            }
+            if(document.getElementById("id_Precio").value == "")
+            {
+                var precio_vendedor = 0;
+            }
+            else
+            {
+                var precio_vendedor = parseInt(document.getElementById("id_Precio").value);
+            }
+          if (precio_vendedor >= 100*calidad)
+          {
+              return true;
+          }
+          else
+          {
+              return false;
+          }
+      }
+      function mostrar()
+      {
+          document.getElementById("warning").style.visibility="hidden";
+      }
+      function enviar() {
+        if(validar())
+        {
+          document.getElementById("verdadero_siguiente").click();
+        }
+        else
+        {
+          document.getElementById("warning").style.visibility="visible";
+          window.setTimeout(mostrar, 3000);
+        }
+      }
+      document.getElementById("siguiente").onclick=enviar;
+  </script>
 
 {% endblock %}

@@ -23,8 +23,8 @@ class Constants(BaseConstants):
     num_rounds = 20
 
 class Subsession(BaseSubsession):
-    Reinicio=models.BooleanField(initial=False)
-    TSIN=models.BooleanField(initial=False)
+    Reinicio=models.BooleanField()
+    TSIN=models.BooleanField()
     def set_variables_subsesion(self,ronda,rondas_totales,consin):
         #Definiendo la variable de reinicio
         self.Reinicio = ronda > rondas_totales / 2

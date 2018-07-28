@@ -10,10 +10,10 @@
  {% if player.id_in_group == 1 %}
 
 <p> <b>Usted es el vendedor</b>  <br>
-    La calidad del producto es:{{group.calidad_real}} <br>
-    El precio de venta es: {{group.precio_vendedor}} <br/>
+    La calidad del producto es:{{group.Calidad}} <br>
+    El precio de venta es: {{group.Precio}} <br/>
 
-        {% if group.decision_comprador == True %}
+        {% if group.Transaccion == True %}
 
          Se realizó la transacción </p>
 
@@ -23,15 +23,15 @@
 
         {% endif %}
 
-    <p>Su ganancia en este periodo es: {{player.payoff}} </p>
+    <p>Su ganancia en este periodo es: {{player.Pagos}} </p>
 
  {% else %}
 
 <p> <b>Usted es el comprador</b>  <br>
-    La calidad del producto es:{{group.calidad_real}} <br>
-    El precio de venta es: {{group.precio_vendedor}} <br/>
+    La calidad del producto es:{{group.Calidad}} <br>
+    El precio de venta es: {{group.Precio}} <br/>
 
-        {% if group.decision_comprador == True %}
+        {% if group.Transaccion == True %}
 
          Se realizó la transacción </p>
 
@@ -41,7 +41,7 @@
 
         {% endif %}
 
-    <p>Su ganancia en este periodo es: {{player.payoff}} </p>
+    <p>Su ganancia en este periodo es: {{player.Pagos}} </p>
 
     {% endif %}
 

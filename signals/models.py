@@ -2,7 +2,7 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
-
+from random import randint
 
 author = 'Luis Alejandro Palacio García & Ismael Estrada Cañas & Bryan Snehider Díaz'
 
@@ -24,48 +24,101 @@ El mercado de los limones. Revista de Economia Institucional, 19(36), 291–311.
 class Constants(BaseConstants):
     name_in_url = 'signals'
     players_per_group = 2
-    num_rounds = 30
-    valor = [c(500), c(1000), c(1500), c(2000), c(2500)]
-    costo = [c(100), c(200), c(300), c(400), c(500)]
-
+    num_rounds = 20
+    Valores = [c(500), c(1000), c(1500), c(2000), c(2500)]
+    Costos = [c(100), c(200), c(300), c(400), c(500)]
 
 class Subsession(BaseSubsession):
+    Reinicio = models.BooleanField()
+    TSIN = models.BooleanField()
+    def set_variables_subsesion(self, ronda, rondas_totales, consin):
+        # Definiendo la variable de reinicio
+        self.Reinicio = ronda > rondas_totales / 2
+        # Definiendo la variable de TSIN
+        if (consin):
+            if (ronda <= rondas_totales / 2):
+                self.TSIN = False
+            else:
+                self.TSIN = True
+        else:
+            if (ronda <= rondas_totales / 2):
+                self.TSIN = True
+            else:
+                self.TSIN = False
     def creating_session(self):
         self.group_randomly()
 
 
 class Group(BaseGroup):
-    calidad_real=models.IntegerField(initial=1,min=1,max=5)
-    calidad_ofrecida=models.IntegerField(initial=1,min=1,max=5)
-    precio_vendedor=models.CurrencyField(initial=c(0),min=c(0),max=c(2500)) #Valor(precio)
-    decision_comprador=models.BooleanField(initial=False,choices=[
-        [True,'Si'],
-        [False,'No']
-    ],widget=widgets.RadioSelect)
-
-    decision_vendedor = models.BooleanField(initial=False, choices=[
+    Costo=models.CurrencyField()
+    Valor=models.CurrencyField()
+    Calidad=models.IntegerField(blank=True,min=1,max=5)
+    Mensaje=models.IntegerField(blank=True,min=1,max=5)
+    Senal = models.BooleanField(blank=True, choices=[
         [True, 'Si'],
         [False, 'No']
-    ],widget=widgets.RadioSelect)
+    ])
+    Precio=models.CurrencyField(blank=True,min=c(0),max=c(2500))
+    Transaccion=models.BooleanField(blank=True,choices=[
+        [True,'Si'],
+        [False,'No']
+    ])
 
-    def set_payoffs(self):
+    def set_pagos(self):
         vendedor=self.get_player_by_id(1)
         comprador=self.get_player_by_id(2)
-        if(self.decision_comprador): #(si lo compra, el comprador?)
-            comprador.payoff=Constants.valor[self.calidad_real-1]-self.precio_vendedor
-            if(self.decision_vendedor): #(si el vendedor toma la decision de invertir los 500 pts)
-                vendedor.payoff=self.precio_vendedor-Constants.costo[self.calidad_real-1]-c(500)
+        if(self.Transaccion): #(si lo compra, el comprador)
+            comprador.Pagos=Constants.Valores[self.Calidad-1]-self.Precio
+            if(self.Senal): #(si el vendedor toma la decision de invertir los 500 pts)
+                vendedor.Pagos=self.Precio-Constants.Costos[self.Calidad-1]-c(500)
             else:
-                vendedor.payoff = self.precio_vendedor - Constants.costo[self.calidad_real - 1]
+                vendedor.Pagos = self.Precio - Constants.Costos[self.Calidad - 1]
         else:
-            vendedor.payoff=c(0)
-            comprador.payoff=c(0)
+            vendedor.Pagos=c(0)
+            comprador.Pagos=c(0)
+        vendedor.payoff=vendedor.Pagos #En esta parte se igualan los payoffs a pagos
+        comprador.payoff=comprador.Pagos
+        vendedor.set_totalpagos()#En esta parte se hace el calculo de los pagos totales en la ronda
+        comprador.set_totalpagos()
+
+    def set_costo_valor(self):
+        self.Costo=Constants.Costos[self.Calidad-1]
+        self.Valor=Constants.Valores[self.Calidad-1]
+
+    def set_calidad_azar(self):
+        self.Calidad = randint(1, 5)
+
+    def set_mensaje_azar(self):
+        self.Mensaje = randint(1, 5)
+
+    def set_precio_azar(self):
+        self.Precio = randint(Constants.Costos[self.Calidad - 1], 2500)
+
+    def set_senal_azar(self,ronda,rondas_totales,consin):
+        if (consin):
+            if (ronda <= rondas_totales / 2):
+                self.Senal= randint(0,1)
+                if(self.Senal):
+                    self.Mensaje=self.Calidad
+        else:
+            if (ronda > rondas_totales / 2):
+                self.Senal= randint(0,1)
+                if (self.Senal):
+                    self.Mensaje = self.Calidad
+
+    def set_transaccion_azar(self):
+        self.Transaccion= randint(0,1)
 
 class Player(BasePlayer):
-    ganancias_totales=models.CurrencyField(initial=c(0))
+    Pagos=models.CurrencyField(initial=c(0))
+    TotalPagos=models.CurrencyField(initial=c(0))
+    Vendedor=models.BooleanField()
 
-    def role(self):
+    def set_vendedor(self):
         if self.id_in_group == 1:
-            return 'Vendedor'
-        if self.id_in_group == 2:
-            return 'Comprador'
+            self.Vendedor=True
+        else:
+            self.Vendedor=False
+
+    def set_totalpagos(self):
+        self.TotalPagos=sum([p.Pagos for p in self.in_all_rounds()])

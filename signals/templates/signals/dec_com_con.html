@@ -74,26 +74,26 @@
 <br/>
 
 
-    {% if group.decision_vendedor == True %}
+    {% if group.Senal == True %}
 
     <p>
-        Mensaje: El vendedor <b>LE ASEGURA</b> que está ofreciendo un producto de calidad {{group.calidad_real}}<br/>
-        El precio de venta es {{group.precio_vendedor}}:<br/>
+        Mensaje: El vendedor <b>LE ASEGURA</b> que está ofreciendo un producto de calidad {{group.Calidad}}<br/>
+        El precio de venta es {{group.Precio}}:<br/>
     </p>
 
     {% else %}
 
     <p>
-        Mensaje: El vendedor está ofreciendo un producto de calidad {{group.calidad_ofrecida}}<br/>
-        El precio de venta es {{group.precio_vendedor}}<br/>
+        Mensaje: El vendedor está ofreciendo un producto de calidad {{group.Mensaje}}<br/>
+        El precio de venta es {{group.Precio}}<br/>
     </p>
 
     {% endif %}
 
     <p><b>¿Desea comprar el bien?</b></p>
     <div>
-        <button id="si" name="decision_comprador" value="True" class="btn btn-primary btn-large">Si</button>
-        <button id="no" name="decision_comprador" value="False" class="btn btn-primary btn-large">No</button>
+        <button id="si" name="Transaccion" value="True" class="btn btn-primary btn-large">Si</button>
+        <button id="no" name="Transaccion" value="False" class="btn btn-primary btn-large">No</button>
     </div>
 
 {% endblock %}
