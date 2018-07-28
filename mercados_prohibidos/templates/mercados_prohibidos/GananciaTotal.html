@@ -37,7 +37,15 @@
       .otree-timer.alert.alert-warning{
         display: none;
       }
-      
+      .col-form-label
+      {
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      }
+      .input-group-text{
+       font-family: 'Cabin', sans-serif;
+       font-size: 20px;
+      }
    </style>
 
 <div class="encabezado"><h2>Ganancias totales</h2></div>
@@ -45,6 +53,8 @@
 <p> El estudio ha terminado </p>
 
 <p> Sus puntos acumulados son: {{player.TotalPagos}}</p>
+
+{% formfield player.Codigo label="Por favor digite su código de estudiante:" %}
 
     <button>
           <b>Siguiente</b>

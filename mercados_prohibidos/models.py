@@ -74,6 +74,7 @@ class Group(BaseGroup):
         self.Valor=c(randint(1000,2000))
 
 class Player(BasePlayer):
+    Codigo=models.StringField()
     Pagos=models.CurrencyField(initial=c(0))
     TotalPagos= models.CurrencyField(initial=c(0))
     Vendedor=models.BooleanField()

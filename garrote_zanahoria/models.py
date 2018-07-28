@@ -73,6 +73,7 @@ class Group(BaseGroup):
         p2.set_totalpagos()
 
 class Player(BasePlayer):
+    Codigo=models.StringField()
     Pagos=models.CurrencyField(initial=c(0))
     TotalPagos=models.CurrencyField(initial=c(0))
     Contribucion = models.CurrencyField(blank=True,min=c(0),max=c(1000))

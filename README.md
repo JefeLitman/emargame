@@ -47,16 +47,17 @@ Por otro lado los contenidos de la página del EMAR LAB están bajo **Creative C
 |  Conflicto 2x2  |  Si  |  Si  |  No  |  (1) (2)  |
 |  Coordinación y reputación  |  Si  |  Si  |  Si  |  (1) (2)  |
 |  Experimento  |  Si  |  Si  |  Si  |  (2) (4)  |
-|  Garrote y Zanahoria  |  Si  |  Si  |  Si  |  (2) (3) (4) |
+|  Garrote y Zanahoria  |  Si  |  Si  |  Si  |  (2)(3)(4)(5) |
 |  Mercado de los limones  |  Si  |  No  |  No  |  N/A  |
-|  Mercados Prohibidos  |Si  |  Si  |  Si  |  (1)(2)(3)(4)  |
-|  Señales  |  Si  |  Si  |  Si  |  (1) (2)  |
+|  Mercados Prohibidos  |Si  |  Si  |  Si  |  (1)(2)(3)(4)(5)  |
+|  Señales  |  Si  |  Si  |  Si  |  (1)(2)(3)  |
 
 **Mejoras**
 1. Se realizó mejoras gráficas basadas en el modelo ya presentado en z-Tree.
 2. Se agregó la característica de poder definir el orden del tratamiento antes de iniciar el juego y el número de rondas.
 3. Se ajusto el juego al diccionario de variables diseñado.
 4. Se mejoro graficamente el juego con el nuevo modelo grafico.
+5. El juego ahora requiere del codigo del estudiante.
 
 **Desarrollo y diseño**
 - Mayra Alejandra Riascos Diaz - [GitHub](https://github.com/MyDiaz) o dmayra548@gmail.com
