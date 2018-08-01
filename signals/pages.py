@@ -3,7 +3,7 @@ from . import models
 from ._builtin import Page, WaitPage
 from .models import Constants
 
-class bienvenida(Page):
+class presentacion(Page):
     timeout_seconds = 30
     def is_displayed(self):
         return self.round_number == 1
@@ -20,7 +20,7 @@ class tratamientos(Page):
             'tratamiento':self.session.config["ConSin"]
         }
 
-class dec_ven_sin(Page):
+class DecisionVendedorSin(Page):
     timeout_seconds = 60
     form_model = 'group'
     form_fields = ['Calidad','Mensaje','Precio']
@@ -29,8 +29,14 @@ class dec_ven_sin(Page):
             return self.player.Vendedor == True and self.round_number > self.session.config["Rounds"] / 2
         else:
             return self.player.Vendedor == True and self.round_number <= self.session.config["Rounds"] / 2
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
 
-class dec_ven_con(Page):
+class DecisionVendedorCon(Page):
     timeout_seconds = 60
     form_model = 'group'
     form_fields = ['Calidad','Mensaje','Precio','Senal']
@@ -39,8 +45,14 @@ class dec_ven_con(Page):
             return self.player.Vendedor == True and self.round_number <= self.session.config["Rounds"] / 2
         else:
             return self.player.Vendedor == True and self.round_number > self.session.config["Rounds"] / 2
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
 
-class dec_com_sin(Page):
+class DecisionCompradorSin(Page):
     timeout_seconds = 60
     form_model = 'group'
     form_fields = ['Transaccion']
@@ -49,8 +61,14 @@ class dec_com_sin(Page):
             return self.player.Vendedor == False and self.round_number > self.session.config["Rounds"] / 2
         else:
             return self.player.Vendedor == False and self.round_number <= self.session.config["Rounds"] / 2
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
 
-class dec_com_con(Page):
+class DecisionCompradorCon(Page):
     timeout_seconds = 60
     form_model = 'group'
     form_fields = ['Transaccion']
@@ -59,11 +77,24 @@ class dec_com_con(Page):
             return self.player.Vendedor == False and self.round_number <= self.session.config["Rounds"] / 2
         else:
             return self.player.Vendedor == False and self.round_number > self.session.config["Rounds"] / 2
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
 
-class gan_individual(Page):
+class Ganancia(Page):
     timeout_seconds = 30
 
-class gan_totales(Page):
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
+
+class GananciaTotal(Page):
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
 
@@ -96,19 +127,25 @@ class calculos(WaitPage):
         self.group.set_pagos()
         self.group.set_costo_valor()
 
+class gracias(Page):
+    def is_displayed(self):
+        return self.round_number == self.session.config["Rounds"]
+
+
 page_sequence = [
     precalculos,
-    bienvenida,
+    presentacion,
     tratamientos,
     esperagrupos,
-    dec_ven_sin,
-    dec_ven_con,
+    DecisionVendedorSin,
+    DecisionVendedorCon,
     esperagrupos,
     calculos_vendedor,
-    dec_com_sin,
-    dec_com_con,
+    DecisionCompradorSin,
+    DecisionCompradorCon,
     esperagrupos,
     calculos,
-    gan_individual,
-    gan_totales
+    Ganancia,
+    GananciaTotal,
+    gracias
 ]

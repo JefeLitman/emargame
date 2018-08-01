@@ -1,0 +1,112 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+<style media="screen">
+      @import url('https://fonts.googleapis.com/css?family=Cabin');
+
+       button{
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+         float: right;
+       }
+
+       div.encabezado{
+	    color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+      }
+
+      p{
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      }
+
+      .otree-timer.alert.alert-warning{
+        display: none;
+      }
+
+      .col-form-label /*El tecxto del formulario donde dice DEsea...*/
+      {
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      }
+
+      .imagen{
+      display:block;
+      margin:auto;
+      }
+   </style>
+
+<div class="encabezado"> <h2> Ganancias </h2> </div>
+
+ {% if player.id_in_group == 1 %}
+
+    <p> <b>Usted es el vendedor</b> </p>
+    <p> La calidad del producto es:{{group.Calidad}} </p>
+    </p> El precio de venta es: {{group.Precio}} </p>
+
+        {% if group.Transaccion == True %}
+
+         <p> Se realizó la transacción </p>
+
+        {% else %}
+
+         <p> No se realizó la transacción </p>
+
+        {% endif %}
+
+    <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
+
+ {% else %}
+
+    <p> <b>Usted es el comprador</b>  </p>
+    <p> La calidad del producto es:{{group.Calidad}} </p>
+    <p> El precio de venta es: {{group.Precio}} </p>
+
+        {% if group.Transaccion == True %}
+
+         <p> Se realizó la transacción </p>
+
+        {% else %}
+
+         <p> No se realizó la transacción </p>
+
+        {% endif %}
+
+    <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
+
+    {% endif %}
+
+
+    {% if tratamiento %}
+        {% if numeroronda >= rondastotales %}
+            <img  class="imagen" src = "{% static 'signals/incertidumbre_fondo.png' %}"/>
+        {% else %}
+            <img  class="imagen" src = "{% static 'signals/garantia_fondo.png' %}"/>
+        {% endif %}
+    {% else %}
+        {% if numeroronda >= rondastotales %}
+           <img  class="imagen" src = "{% static 'signals/garantia_fondo.png' %}"/>
+        {% else %}
+            <img class="imagen" src = "{% static 'signals/incertidumbre_fondo.png' %}"/>
+        {% endif %}
+    {% endif %}
+
+    <button>
+        Siguiente
+    </button>
+
+{% endblock %}

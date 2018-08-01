@@ -1,0 +1,131 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+<style media="screen">
+      @import url('https://fonts.googleapis.com/css?family=Cabin');
+
+       button{
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+         float: right;
+       }
+
+       div.encabezado{
+	    color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+      }
+
+      p{
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      }
+
+      .otree-timer.alert.alert-warning{
+        display: none;
+      }
+
+      .col-form-label /*El tecxto del formulario donde dice DEsea...*/
+      {
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      }
+
+      .imagen{
+      display:block;
+      margin:auto;
+      }
+      table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 20px;
+      font-family: 'Cabin', sans-serif;
+      }
+
+      th, td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {background-color:#f5f5f5;}
+   </style>
+
+<div class="encabezado"> <h2> Decisiones </h2> </div>
+
+<table>
+  <tr>
+    <td>Calidad</th>
+    <td>1</th>
+    <td>2</th>
+    <td>3</th>
+    <td>4</th>
+    <td>5</th>
+  </tr>
+  <tr>
+    <td>Costo</td>
+    <td>100</td>
+    <td>200</td>
+    <td>300</td>
+    <td>400</td>
+    <td>500</td>
+  </tr>
+  <tr>
+    <td>Valor</td>
+    <td>500</td>
+    <td>1000</td>
+    <td>1500</td>
+    <td>2000</td>
+    <td>2500</td>
+  </tr>
+</table>
+
+<p> <b> Usted es el Comprador </b> </p>
+
+    {% if group.Senal == True %}
+
+    <p> Mensaje: El vendedor <b>LE ASEGURA</b> que está ofreciendo un producto de calidad {{group.Calidad}} </p>
+    <p> El precio de venta es: {{group.Precio}}. </p>
+
+    {% else %}
+
+    <p> Mensaje: El vendedor está ofreciendo un producto de calidad {{group.Mensaje}} </p>
+    <p> El precio de venta es: {{group.Precio}}. </p>
+
+    {% endif %}
+
+    <b>¿Desea comprar el bien?</b>
+
+    <div>
+        <button id="si" name="Transaccion" value="True" class="btn btn-primary btn-large">Si</button>
+        <button id="no" name="Transaccion" value="False" class="btn btn-primary btn-large">No</button>
+    </div>
+
+    {% if tratamiento %}
+        {% if numeroronda >= rondastotales %}
+            <img  class="imagen" src = "{% static 'signals/incertidumbre_fondo.png' %}"/>
+        {% else %}
+            <img  class="imagen" src = "{% static 'signals/garantia_fondo.png' %}"/>
+        {% endif %}
+    {% else %}
+        {% if numeroronda >= rondastotales %}
+           <img  class="imagen" src = "{% static 'signals/garantia_fondo.png' %}"/>
+        {% else %}
+            <img class="imagen" src = "{% static 'signals/incertidumbre_fondo.png' %}"/>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}
