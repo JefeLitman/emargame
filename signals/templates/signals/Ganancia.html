@@ -93,15 +93,15 @@
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
-            <img  class="imagen" src = "{% static 'signals/incertidumbre_fondo.png' %}"/>
+            <img  class="imagen" src = "{% static 'signals/incertidumbre_fondo.PNG' %}"/>
         {% else %}
-            <img  class="imagen" src = "{% static 'signals/garantia_fondo.png' %}"/>
+            <img  class="imagen" src = "{% static 'signals/garantia_fondo.PNG' %}"/>
         {% endif %}
     {% else %}
         {% if numeroronda >= rondastotales %}
-           <img  class="imagen" src = "{% static 'signals/garantia_fondo.png' %}"/>
+           <img  class="imagen" src = "{% static 'signals/garantia_fondo.PNG' %}"/>
         {% else %}
-            <img class="imagen" src = "{% static 'signals/incertidumbre_fondo.png' %}"/>
+            <img class="imagen" src = "{% static 'signals/incertidumbre_fondo.PNG' %}"/>
         {% endif %}
     {% endif %}
 
