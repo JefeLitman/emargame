@@ -11,14 +11,16 @@
       @import url('https://fonts.googleapis.com/css?family=Cabin');
 
        .boton{
-         background-color: #243e92;
-         position: relative;
-         color: white;
-         font-family: 'Cabin', sans-serif;
-         border: none;
-         font-size: 20px;
-         padding: 8px 20px;
-         float: right;
+        background-color: #243e92;
+        border: 1px solid #1a2e6d;
+        color: white;
+        padding: 8px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        float: left;
        }
 
        div.encabezado{
@@ -93,13 +95,18 @@
     <td>2500</td>
   </tr>
 </table>
-
+</br>
 <p> <b> Usted es el comprador </b></p>
 
 <p> Mensaje El vendedor está ofreciendo un producto de calidad {{group.Mensaje}} </p>
 <p> El precio de venta es {{group.Precio}} </p>
 
     <p> <b> ¿Desea comprar el bien? </b> </p>
+
+    <div>
+        <button id="si" name="Transaccion" value="True" class="boton">Si</button>
+        <button id="no" name="Transaccion" value="False" class="boton">No</button>
+    </div>
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
@@ -114,10 +121,5 @@
             <img class="imagen" src = "{% static 'signals/incertidumbre_fondo.PNG' %}"/>
         {% endif %}
     {% endif %}
-
-    <div>
-        <button id="si" name="Transaccion" value="True" class="boton">Si</button>
-        <button id="no" name="Transaccion" value="False" class="boton">No</button>
-    </div>
 
 {% endblock %}

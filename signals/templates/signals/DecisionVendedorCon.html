@@ -10,7 +10,7 @@
 <style media="screen">
       @import url('https://fonts.googleapis.com/css?family=Cabin');
 
-       button{
+       .boton{
          background-color: #243e92;
          position: relative;
          color: white;
@@ -66,7 +66,7 @@
    </style>
 
 <div class="encabezado"> <h2> Decisiones </h2> </div>
-
+</br></br>
 <table>
   <tr>
     <td>Calidad</th>
@@ -93,7 +93,7 @@
     <td>2500</td>
   </tr>
 </table>
-
+</br>
 <p> <b> Usted es el Vendedor </b> </p>
 
 <p> {%formfield group.Calidad label="Debe decidir la calidad del producto:"%} </p>
@@ -108,16 +108,16 @@
 
 <p> <b> ¿Desea invertir 500 puntos para que el comprador esté seguro de la calidad ofrecida? </b> </p>
     <div>
-        <button type="button" id="boton_si" class="btn btn-primary btn-large">Si</button>
-        <button id="no" name="Senal" value="False" class="btn btn-primary btn-large">No</button>
+        <button type="button" id="boton_si" class="boton">Si</button>
+        <button id="no" name="Senal" value="False" class="boton">No</button>
+
         <div id="warning" class="alert alert-danger" style="visibility: hidden;">
             <strong>Error!</strong> Porfavor, asegurese que la calidad real y ofrecida sean iguales o el precio de venta sea mayor al costo de produccion.
         </div>
         <div style="visibility: hidden;">
-          <button id="si" name="Senal" value="True" class="btn btn-primary btn-large">Si</button>
+          <button id="si" name="Senal" value="True" class="boton">Si</button>
         </div>
     </div>
-
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
