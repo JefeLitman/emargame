@@ -10,7 +10,7 @@
 <style media="screen">
       @import url('https://fonts.googleapis.com/css?family=Cabin');
 
-       button{
+       .boton{
          background-color: #243e92;
          position: relative;
          color: white;
@@ -66,7 +66,7 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 <div class="encabezado"> <h2> Decisiones </h2> </div>
-
+</br></br>
 <table>
   <tr>
     <td>Calidad</th>
@@ -100,11 +100,6 @@
 <p> El precio de venta es {{group.Precio}} </p>
 
     <p> <b> ¿Desea comprar el bien? </b> </p>
-    <div>
-        <button id="si" name="Transaccion" value="True" class="btn btn-primary btn-large">Si</button>
-        <button id="no" name="Transaccion" value="False" class="btn btn-primary btn-large">No</button>
-    </div>
-
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
@@ -119,5 +114,10 @@
             <img class="imagen" src = "{% static 'signals/incertidumbre_fondo.PNG' %}"/>
         {% endif %}
     {% endif %}
+
+    <div>
+        <button id="si" name="Transaccion" value="True" class="boton">Si</button>
+        <button id="no" name="Transaccion" value="False" class="boton">No</button>
+    </div>
 
 {% endblock %}

@@ -10,7 +10,7 @@
 <style media="screen">
       @import url('https://fonts.googleapis.com/css?family=Cabin');
 
-       button{
+       button.btn btn-primary btn-large{
          background-color: #243e92;
          position: relative;
          color: white;
@@ -49,7 +49,7 @@
       margin:auto;
       }
 
-            table {
+      table {
       border-collapse: collapse;
       width: 100%;
       font-size: 20px;
@@ -67,7 +67,7 @@
    </style>
 
 <div class="encabezado"> <h2> Decisiones </h2> </div>
-
+</br>
 <table>
   <tr>
     <td>Calidad</th>
@@ -94,7 +94,7 @@
     <td>2500</td>
   </tr>
 </table>
-
+</br></br>
 <p> <b> Usted es el vendedor </b> </p>
 
 <p> {%formfield group.Calidad label="Debe decidir la calidad del producto:"%} </p>
@@ -104,8 +104,6 @@
 <p> {%formfield group.Precio label="Debe decidir el precio de venta:"%} </p>
 
     <div>
-
-      <button type="button" id="siguiente" class="btn btn-primary btn-large">Siguiente</button>
 
       <div id="warning" class="alert alert-danger" style="visibility: hidden;">
         <strong>Error!</strong> Porfavor, asegurese que el precio de venta sea mayor al costo de produccion.
@@ -175,5 +173,7 @@
       }
       document.getElementById("siguiente").onclick=enviar;
   </script>
+
+<button type="button" id="siguiente" class="btn btn-primary btn-large">Siguiente</button>
 
 {% endblock %}
