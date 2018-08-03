@@ -64,10 +64,14 @@
 
       tr:hover {background-color:#f5f5f5;}
 
+    .input-group-text{
+       font-family: 'Cabin', sans-serif;
+       font-size: 20px;
+      }
    </style>
 
 <div class="encabezado"> <h2> Decisiones </h2> </div>
-</br></br>
+
 <table>
   <tr>
     <td>Calidad</th>
@@ -104,7 +108,6 @@
 <p> {%formfield group.Precio label="Debe decidir el precio de venta:"%} </p>
 
     <div>
-
       <div id="warning" class="alert alert-danger" style="visibility: hidden;">
         <strong>Error!</strong> Porfavor, asegurese que el precio de venta sea mayor al costo de produccion.
       </div>
@@ -112,7 +115,6 @@
         <button id="verdadero_siguiente" style="visibility: hidden;"></button>
       </div>
     </div>
-
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
