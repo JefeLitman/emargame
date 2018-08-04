@@ -55,41 +55,46 @@
  {% if player.id_in_group == 1 %}
 
     <p> <b>Usted es el vendedor</b> </p>
+    <p> Su costo de producción es: {{group.precio}} </p>
     <p> La calidad del producto es:{{group.Calidad}} </p>
-    </p> El precio de venta es: {{group.Precio}} </p>
+    </p> Usted decidió que el precio es: {{group.Precio}} </p>
+
+        {% if group.Senal == True %}
+         <p> <b> La calidad está garantizada </b> </p>
+        {% else %}
+        <p> <b> La calidad no está garantizada </b> </p>
+        {% endif %}
 
         {% if group.Transaccion == True %}
-
          <p> Se realizó la transacción </p>
-
         {% else %}
-
          <p> No se realizó la transacción </p>
-
         {% endif %}
 
     <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
 
  {% else %}
 
-    <p> <b>Usted es el comprador</b>  </p>
+    <p> <b>Usted es el comprador</b> </p>
+    <p> El valor que usted le da al producto es:  </p>
     <p> La calidad del producto es:{{group.Calidad}} </p>
-    <p> El precio de venta es: {{group.Precio}} </p>
+    <p> El vendedor decidió que el precio es: {{group.Precio}} </p>
+
+        {% if group.Senal == True %}
+         <p> <b> La calidad está garantizada </b> </p>
+        {% else %}
+        <p> <b> La calidad no está garantizada </b> </p>
+        {% endif %}
 
         {% if group.Transaccion == True %}
-
-         <p> Se realizó la transacción </p>
-
+        <p> Se realizó la transacción </p>
         {% else %}
-
          <p> No se realizó la transacción </p>
-
         {% endif %}
 
     <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
 
     {% endif %}
-
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}

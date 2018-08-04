@@ -113,6 +113,7 @@ class Player(BasePlayer):
     Pagos=models.CurrencyField(initial=c(0))
     TotalPagos=models.CurrencyField(initial=c(0))
     Vendedor=models.BooleanField()
+    Codigo = models.StringField()
 
     def set_vendedor(self):
         if self.id_in_group == 1:

@@ -95,6 +95,8 @@ class Ganancia(Page):
         }
 
 class GananciaTotal(Page):
+    form_model = 'player'
+    form_fields = ["Codigo"]
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
 

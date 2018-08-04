@@ -105,14 +105,15 @@
 
     {% if group.Senal == True %}
 
-    <p> Mensaje: El vendedor <b>LE ASEGURA</b> que está ofreciendo un producto de calidad {{group.Calidad}} </p>
-    <p> El precio de venta es: {{group.Precio}}. </p>
+    <p> Mensaje: El vendedor está ofreciendo un producto de calidad {{group.Calidad}} </p>
+    <p> El precio de venta es {{group.Precio}} puntos </p>
+    <p> <b> La calidad está garantizada </b> </p>
 
     {% else %}
 
     <p> Mensaje: El vendedor está ofreciendo un producto de calidad {{group.Mensaje}} </p>
-    <p> El precio de venta es: {{group.Precio}}. </p>
-
+    <p> El precio de venta es: {{group.Precio}} puntos </p>
+    <p> <b> La calidad no está garantizada </b> </p>
     {% endif %}
 
     <b>¿Desea comprar el bien?</b>
