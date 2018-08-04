@@ -55,7 +55,7 @@
  {% if player.id_in_group == 1 %}
 
     <p> <b>Usted es el vendedor</b> </p>
-    <p> Su costo de producción es: {{group.precio}} </p>
+    <p> Su costo de producción es: {{group.Costo}} </p>
     <p> La calidad del producto es:{{group.Calidad}} </p>
     </p> Usted decidió que el precio es: {{group.Precio}} </p>
 
@@ -76,7 +76,7 @@
  {% else %}
 
     <p> <b>Usted es el comprador</b> </p>
-    <p> El valor que usted le da al producto es:  </p>
+    <p> El valor que usted le da al producto es: {{group.Valor}}  </p>
     <p> La calidad del producto es:{{group.Calidad}} </p>
     <p> El vendedor decidió que el precio es: {{group.Precio}} </p>
 
