@@ -108,11 +108,11 @@
 <p> {%formfield group.Precio label="Precio de venta:"%} </p>
 
     <div>
-      <div id="warning" class="alert alert-danger" style="visibility: hidden;">
+      <div id="warning" class="alert alert-danger" style="display: none;">
         <strong>Error!</strong> Porfavor, asegurese que el precio de venta sea mayor al costo de produccion.
       </div>
-      <div style="visibility: hidden;">
-        <button id="verdadero_siguiente" style="visibility: hidden;"></button>
+      <div style="display: none;">
+        <button id="verdadero_siguiente" style="display: none;"></button>
       </div>
     </div>
 
@@ -131,49 +131,51 @@
     {% endif %}
 
     <script>
-      function validar()
-      {
-          if(document.getElementById("id_Calidad").value == "")
+      window.onload = function(){
+        function validar()
+        {
+            if(document.getElementById("id_Calidad").value == "")
+              {
+                  var calidad = 0;
+              }
+              else
+              {
+                  var calidad = parseInt(document.getElementById("id_Calidad").value);
+              }
+              if(document.getElementById("id_Precio").value == "")
+              {
+                  var precio_vendedor = 0;
+              }
+              else
+              {
+                  var precio_vendedor = parseInt(document.getElementById("id_Precio").value);
+              }
+            if (precio_vendedor >= 100*calidad)
             {
-                var calidad = 0;
+                return true;
             }
             else
             {
-                var calidad = parseInt(document.getElementById("id_Calidad").value);
+                return false;
             }
-            if(document.getElementById("id_Precio").value == "")
-            {
-                var precio_vendedor = 0;
-            }
-            else
-            {
-                var precio_vendedor = parseInt(document.getElementById("id_Precio").value);
-            }
-          if (precio_vendedor >= 100*calidad)
+        }
+        function mostrar()
+        {
+            document.getElementById("warning").style.display="none";
+        }
+        function enviar() {
+          if(validar())
           {
-              return true;
+            document.getElementById("verdadero_siguiente").click();
           }
           else
           {
-              return false;
+            document.getElementById("warning").style.display="block";
+            window.setTimeout(mostrar, 3000);
           }
-      }
-      function mostrar()
-      {
-          document.getElementById("warning").style.visibility="hidden";
-      }
-      function enviar() {
-        if(validar())
-        {
-          document.getElementById("verdadero_siguiente").click();
         }
-        else
-        {
-          document.getElementById("warning").style.visibility="visible";
-          window.setTimeout(mostrar, 3000);
-        }
+        document.getElementById("siguiente").onclick=enviar;
       }
-      document.getElementById("siguiente").onclick=enviar;
   </script>
 
 <button type="button" id="siguiente" class="boton">Siguiente</button>

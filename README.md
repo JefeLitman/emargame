@@ -50,7 +50,7 @@ Por otro lado los contenidos de la página del EMAR LAB están bajo **Creative C
 |  Garrote y Zanahoria  |  Si  |  Si  |  Si  |  (2)(3)(4)(5) |
 |  Mercado de los limones  |  Si  |  No  |  No  |  N/A  |
 |  Mercados Prohibidos  |Si  |  Si  |  Si  |  (1)(2)(3)(4)(5)  |
-|  Señales  |  Si  |  Si  |  Si  |  (1)(2)(3)  |
+|  Señales  |  Si  |  Si  |  Si  |  (1)(2)(3)(4)(5)  |
 
 **Mejoras**
 1. Se realizó mejoras gráficas basadas en el modelo ya presentado en z-Tree.

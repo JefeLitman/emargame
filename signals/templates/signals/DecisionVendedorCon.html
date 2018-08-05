@@ -117,13 +117,14 @@
 
     <div>
         <button type="button" id="boton_si" class="boton">Si</button>
-        <button id="no" name="Senal" value="False" class="boton">No</button>
+        <button type="button" id="boton_no" class="boton">No</button>
 
-        <div id="warning" class="alert alert-danger" style="visibility: hidden;">
+        <div id="warning" class="alert alert-danger" style="display: none;">
             <strong>Error!</strong> Porfavor, asegurese que la calidad real y ofrecida sean iguales o el precio de venta sea mayor al costo de produccion.
         </div>
-        <div style="visibility: hidden;">
+        <div style="display: none;">
           <button id="si" name="Senal" value="True" class="boton">Si</button>
+          <button id="no" name="Senal" value="False" class="boton">No</button>
         </div>
     </div>
 
@@ -141,7 +142,7 @@
         {% endif %}
     {% endif %}
     <script>
-        function validar()
+        function validar_si()
         {
             if(document.getElementById("id_Calidad").value == "")
             {
@@ -178,20 +179,59 @@
         }
         function mostrar()
         {
-            document.getElementById("warning").style.visibility="hidden";
+            document.getElementById("warning").style.display="none";
         }
-        function enviar() {
-          if(validar())
+        function enviar_si() {
+          if(validar_si())
           {
             document.getElementById("si").click();
           }
           else
           {
-            document.getElementById("warning").style.visibility="visible";
+            document.getElementById("warning").style.display="block";
             window.setTimeout(mostrar, 3000);
           }
         }
-        document.getElementById("boton_si").onclick=enviar;
+        function validar_no()
+        {
+            if(document.getElementById("id_Calidad").value == "")
+            {
+                var calidad = 0;
+            }
+            else
+            {
+                var calidad = parseInt(document.getElementById("id_Calidad").value);
+            }
+            if(document.getElementById("id_Precio").value == "")
+            {
+                var precio_vendedor = 0;
+            }
+            else
+            {
+                var precio_vendedor = parseInt(document.getElementById("id_Precio").value);
+            }
+            if (precio_vendedor >= 100*calidad)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        function enviar_no() {
+          if(validar_no())
+          {
+            document.getElementById("no").click();
+          }
+          else
+          {
+            document.getElementById("warning").style.display="block";
+            window.setTimeout(mostrar, 3000);
+          }
+        }
+        document.getElementById("boton_si").onclick=enviar_si;
+        document.getElementById("boton_no").onclick=enviar_no;
     </script>
 
 {% endblock %}
