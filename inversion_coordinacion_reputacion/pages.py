@@ -22,7 +22,7 @@ class tratamiento(Page):
 
 class enviasin(Page):
     form_model = 'player'
-    form_fields = ['inversion']
+    form_fields = ['Inversion']
 
     def is_displayed(self):
         if(self.session.config["ConSin"]):
@@ -32,7 +32,7 @@ class enviasin(Page):
 
 class enviacon(Page):
     form_model = 'player'
-    form_fields = ['inversion']
+    form_fields = ['Inversion']
 
     def is_displayed(self):
         if(self.session.config["ConSin"]):
@@ -42,18 +42,18 @@ class enviacon(Page):
 
     def vars_for_template(self):
         if (self.round_number - 1 != 0):
-            otro_jugador = self.player.get_companero().in_round(self.round_number - 1).calificacion_promedio
+            otro_jugador = self.player.get_others_in_group()[0].in_round(self.round_number - 1).Reputacion
             return {
                 'calificacionpromedio':otro_jugador
             }
         else:
             return {
-                'calificacionpromedio':0
+                'calificacionpromedio':5
             }
 
 class califica(Page):
     form_model =models.Player
-    form_fields = ['calificacion']
+    form_fields = ['Calificacion']
 
     def is_displayed(self):
         if(self.session.config["ConSin"]):
@@ -74,22 +74,31 @@ class gananciasindividuales(Page):
 class esperagrupos(WaitPage):
     wait_for_all_groups = True
 
+class precalculos(WaitPage):
+
+    def after_all_players_arrive(self):
+        #Definiendo las variables de la subsesion
+        self.subsession.set_variables_subsesion(self.round_number,self.session.config["Rounds"],self.session.config["ConSin"])
+
 class calculoganancia(WaitPage):
 
     def after_all_players_arrive(self):
         # Obteniendo los jugadores por grupo
         p1 = self.group.get_player_by_id(1)
         p2 = self.group.get_player_by_id(2)
+        #Definiendo variables azar si no las lleno
+        if (p1.Inversion == None):
+            p1.set_inversion_azar()
+        if (p2.Inversion == None):
+            p2.set_inversion_azar()
         # Calculando la ganancia generada por la inversion de ambos
-        ganancia = self.group.calcular_gananancia(p1.inversion, p2.inversion)
+        ganancia = self.group.calcular_gananancia(p1.Inversion, p2.Inversion)
         # calculando los pagos de cada jugador despues de la inversion
-        p1.set_payoff(ganancia)
-        p2.set_payoff(ganancia)
+        p1.set_pago(ganancia)
+        p2.set_pago(ganancia)
         # Calculo de ganancias totales por ronda
-        p1ganancia = sum([j1.payoff for j1 in p1.in_all_rounds()])
-        p2ganancia = sum([j2.payoff for j2 in p2.in_all_rounds()])
-        p1.ganancia_total = p1ganancia
-        p2.ganancia_total = p2ganancia
+        p1.set_totalpagos()
+        p2.set_totalpagos()
 
 class calculocalificacion(WaitPage):
 
@@ -97,29 +106,23 @@ class calculocalificacion(WaitPage):
         #Obteniendo los jugadores por grupo
         p1=self.group.get_player_by_id(1)
         p2=self.group.get_player_by_id(2)
+        # Definiendo variables azar si no las lleno
+        if (p1.Calificacion == None):
+            p1.set_calificacion_azar(self.round_number,self.session.config["Rounds"],self.session.config["ConSin"])
+        if (p2.Calificacion == None):
+            p2.set_calificacion_azar(self.round_number,self.session.config["Rounds"],self.session.config["ConSin"])
         #Colocando en orden las calificaciones de los jugadores
-        calificacionp1=p2.calificacion
-        p2.calificacion=p1.calificacion
-        p1.calificacion=calificacionp1
+        calificacionp1=p2.Calificacion
+        p2.Calificacion=p1.Calificacion
+        p1.Calificacion=calificacionp1
 
 class calculospromediocalificacion(WaitPage):
     def after_all_players_arrive(self):
-        if(self.session.config["ConSin"]):
-            if (self.round_number <= self.session.config["Rounds"] / 2):
-                # Calculando la calificacion promedio
-                p1 = self.group.get_player_by_id(1)
-                p2 = self.group.get_player_by_id(2)
-                p1.calificacion_promedio = sum([j.calificacion for j in p1.in_rounds(1,self.round_number)]) / (self.round_number)
-                p2.calificacion_promedio = sum([j.calificacion for j in p2.in_rounds(1,self.round_number)]) / (self.round_number)
-        else:
-            if(self.round_number > self.session.config["Rounds"]/2):
-                # Calculando la calificacion promedio
-                p1 = self.group.get_player_by_id(1)
-                p2 = self.group.get_player_by_id(2)
-                p1.calificacion_promedio = sum([j.calificacion for j in p1.in_rounds(self.session.config["Rounds"] / 2 + 1, self.round_number)]) / (self.round_number - self.session.config["Rounds"] / 2)
-                p2.calificacion_promedio = sum([j.calificacion for j in p2.in_rounds(self.session.config["Rounds"] / 2 + 1, self.round_number)]) / (self.round_number - self.session.config["Rounds"] / 2)
+        self.group.get_player_by_id(1).set_reputacion(self.round_number,self.session.config["Rounds"],self.session.config["ConSin"])
+        self.group.get_player_by_id(2).set_reputacion(self.round_number,self.session.config["Rounds"],self.session.config["ConSin"])
 
 page_sequence = [
+    precalculos,
     bienvenida,
     tratamiento,
     esperagrupos,
@@ -128,11 +131,9 @@ page_sequence = [
     esperagrupos,
     calculoganancia,
     gananciasindividuales,
-    esperagrupos,
     califica,
     esperagrupos,
     calculocalificacion,
-    esperagrupos,
     calculospromediocalificacion,
     gananciastotales
 ]

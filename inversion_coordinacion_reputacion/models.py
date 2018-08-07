@@ -2,7 +2,7 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
-
+from random import randint
 
 author = 'Luis Alejandro Palacio García & Laura Milena Prada Medina'
 
@@ -24,35 +24,72 @@ class Constants(BaseConstants):
     name_in_url = 'inversion_coordinacion_reputacion'
     players_per_group = 2
     num_rounds = 30
-
-    pago=c(1000)
+    Dotacion=c(1000)
 
 
 class Subsession(BaseSubsession):
+    Reinicio = models.BooleanField()
+    TSIN = models.BooleanField()
+
+    def set_variables_subsesion(self, ronda, rondas_totales, consin):
+        # Definiendo la variable de reinicio
+        self.Reinicio = ronda > rondas_totales / 2
+        # Definiendo la variable de TSIN
+        if (consin):
+            if (ronda <= rondas_totales / 2):
+                self.TSIN = False
+            else:
+                self.TSIN = True
+        else:
+            if (ronda <= rondas_totales / 2):
+                self.TSIN = True
+            else:
+                self.TSIN = False
+
     def creating_session(self):
         self.group_randomly()
 
 
 class Group(BaseGroup):
+    Rentabilidad=models.CurrencyField()
     def calcular_gananancia(self,p1inversion,p2inversion):
-            ganancia=p1inversion*p2inversion/500
-            return ganancia
+            self.Rentabilidad=p1inversion*p2inversion/500
+            return self.Rentabilidad
 
 
 class Player(BasePlayer):
-    inversion=models.CurrencyField(initial=c(0),min=c(0),max=c(1000))
-    calificacion=models.IntegerField(initial=0, min=1, max=5)
-    calificacion_promedio=models.FloatField(initial=0,min=1,max=5)
-    ganancia_total = models.CurrencyField(initial=c(0))
+    Inversion=models.CurrencyField(blank=True,min=c(0),max=c(1000))
+    Calificacion=models.IntegerField(blank=True, min=1, max=5)
+    Reputacion=models.FloatField()
+    Pagos = models.CurrencyField(initial=c(0))
+    TotalPagos = models.CurrencyField(initial=c(0))
 
-    def set_payoff(self,ganancia):
-        self.payoff=Constants.pago-self.inversion+ganancia
+    def set_inversion_azar(self):
+        self.Inversion=randint(0,1000)
 
-    def get_calificacion(self,nota):
-        return self.calificacion
+    def set_calificacion_azar(self,ronda, rondas_totales, consin):
+        if (consin):
+            if (ronda <= rondas_totales / 2): #Calculo de califiacion azar cuando es de con a sin
+                self.Calificacion = randint(1, 5)
+        else:
+            if (ronda > rondas_totales / 2):
+                self.Calificacion = randint(1, 5)
 
-    def get_ganancias(self):
-        return self.ganancia_total
+    def set_reputacion(self,ronda, rondas_totales, consin):
+        if (consin):
+            if (ronda <= rondas_totales / 2): #Calculo de reputacion cuando es de con a sin
+                self.Reputacion = sum(
+                    [p.Calificacion for p in self.in_rounds(1, ronda)]) / ronda
+        else:
+            if (ronda == rondas_totales / 2): #Calculo de reputacion cuando es de sin a con
+                self.Reputacion = 5
+            elif (ronda > rondas_totales / 2):
+                self.Reputacion = sum([p.Calificacion for p in self.in_rounds(rondas_totales / 2 + 1, ronda)]) / (
+                            ronda - rondas_totales / 2)
 
-    def get_companero(self):
-        return self.get_others_in_group()[0]
+    def set_pago(self,ganancia_grupo):
+        self.Pagos=Constants.Dotacion-self.Inversion+ganancia_grupo
+        self.payoff=self.Pagos
+
+    def set_totalpagos(self):
+        self.TotalPagos=sum([p.Pagos for p in self.in_all_rounds()])

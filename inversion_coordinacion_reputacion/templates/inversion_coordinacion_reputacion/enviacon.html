@@ -7,10 +7,10 @@
 
 {% block content %}
     
-    <p>Su dotacion inicial es de {{Constants.pago}}</p>
+    <p>Su dotacion inicial es de {{Constants.Dotacion}}</p>
     <p>La calificacion promedio del otro participante es: {{calificacionpromedio}}</p>
 
-    {% formfield player.inversion label="Digite los puntos que desea enviar al otro participante:" %}
+    {% formfield player.Inversion label="Digite los puntos que desea enviar al otro participante:" %}
 
     {% next_button %}
 
