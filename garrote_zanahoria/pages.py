@@ -97,6 +97,7 @@ class gracias(Page):
         return self.round_number == self.session.config["Rounds"]
 
 page_sequence = [
+    precalculos,
     presentacion,
     tratamientos,
     espera_grupos,
