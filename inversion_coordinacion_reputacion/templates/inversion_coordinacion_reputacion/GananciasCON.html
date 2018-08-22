@@ -1,0 +1,85 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+<style media="screen">
+      @import url('https://fonts.googleapis.com/css?family=Cabin');
+
+       button{
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+         float: right;
+       }
+
+       div.encabezado{
+	    color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+      }
+
+       p {
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      }
+
+      .otree-timer.alert.alert-warning{
+        display: none;
+      }
+
+      .col-form-label /*El tecxto del formulario donde dice DEsea...*/
+      {
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      }
+
+      .input-group-text{ /*puntos*/
+       font-family: 'Cabin', sans-serif;
+       font-size: 20px;
+      }
+
+       .imagen{
+      display:block;
+      margin:auto;
+      }
+   </style>
+
+    <div class="encabezado"> <h2> Ganancias </h2> </div>
+
+    <p> Usted invirtió:: {{player.}} </p>
+    <p> Su pareja invirtió:: {{player.Inversion}} </p>
+    <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
+    <p> ¿Qué tan satisfecho se siente con la decisión de su pareja? {{player.Reputacion}} </p>
+
+    {% if tratamiento %}
+        {% if numeroronda >= rondastotales %}
+            <img  class="imagen" src = "{% static 'inversion_coordinacion_reputacion/anonimato_fondo.png' %}"/>
+        {% else %}
+            <img  class="imagen" src = "{% static 'inversion_coordinacion_reputacion/reputacion_fondo.PNG' %}"/>
+        {% endif %}
+    {% else %}
+        {% if numeroronda >= rondastotales %}
+           <img  class="imagen" src = "{% static 'inversion_coordinacion_reputacion/reputacion_fondo.PNG' %}"/>
+        {% else %}
+            <img class="imagen" src = "{% static 'inversion_coordinacion_reputacion/anonimato_fondo.png' %}"/>
+        {% endif %}
+    {% endif %}
+
+    <button>
+          <b>Siguiente</b>
+    </button>
+
+{% endblock %}
+
+

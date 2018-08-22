@@ -1,0 +1,47 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+<style media="screen">
+      @import url('https://fonts.googleapis.com/css?family=Cabin');
+       img{
+           width: 100%;
+           height: 80%;
+       }
+       button{
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+         float: right;
+       }
+
+       .otree-timer.alert.alert-warning{
+        display: none;
+      }
+</style>
+
+<style media="screen">
+    img{
+      width: 100%;
+      height: 80%;
+    }
+    div.boton{
+      position: relative;
+      left: 80%;
+    }
+</style>
+
+<img  src = "{% static 'inversion_coordinacion_reputacion/gracias.png' %}"/>
+
+<p> </p>
+
+{% endblock %}

@@ -5,11 +5,13 @@ from .models import Constants
 
 #Declaracion de paginas a usar
 
-class bienvenida(Page):
+class presentacion(Page):
+    timeout_seconds = 30
     def is_displayed(self):
         return self.round_number == 1
 
 class tratamiento(Page):
+    timeout_seconds = 30
     def is_displayed(self):
         return self.round_number == 1 or self.round_number == self.session.config["Rounds"]/2 +1
 
@@ -20,7 +22,8 @@ class tratamiento(Page):
             'tratamiento':self.session.config["ConSin"]
         }
 
-class enviasin(Page):
+class DecisionesSIN(Page):
+    timeout_seconds = 60
     form_model = 'player'
     form_fields = ['Inversion']
 
@@ -29,8 +32,15 @@ class enviasin(Page):
             return self.round_number > self.session.config["Rounds"] / 2
         else:
             return self.round_number <= self.session.config["Rounds"]/2
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
 
-class enviacon(Page):
+class DecisionesCON(Page):
+    timeout_seconds = 60
     form_model = 'player'
     form_fields = ['Inversion']
 
@@ -50,8 +60,14 @@ class enviacon(Page):
             return {
                 'calificacionpromedio':5
             }
+        {
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
 
-class califica(Page):
+class GananciasCON(Page):
+    timeout_seconds = 60
     form_model =models.Player
     form_fields = ['Calificacion']
 
@@ -60,14 +76,35 @@ class califica(Page):
             return self.round_number <= self.session.config["Rounds"] / 2
         else:
             return self.round_number > self.session.config["Rounds"]/2
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
 
-class gananciastotales(Page):
+class GananciasSIN(Page):
+    timeout_seconds = 30
+    form_model =models.Player
+    form_fields = ['Calificacion']
 
     def is_displayed(self):
+        if(self.session.config["ConSin"]):
+            return self.round_number <= self.session.config["Rounds"] / 2
+        else:
+            return self.round_number > self.session.config["Rounds"]/2
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
+class GananciasTotal(Page):
+    timeout_seconds = 30
+    form_model = 'player'
+    form_fields = ["Codigo"]
+    def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
-
-class gananciasindividuales(Page):
-    pass
 
 #Declaracion de paginas de espera
 
@@ -121,19 +158,24 @@ class calculospromediocalificacion(WaitPage):
         self.group.get_player_by_id(1).set_reputacion(self.round_number,self.session.config["Rounds"],self.session.config["ConSin"])
         self.group.get_player_by_id(2).set_reputacion(self.round_number,self.session.config["Rounds"],self.session.config["ConSin"])
 
+class gracias(Page):
+    def is_displayed(self):
+        return self.round_number == self.session.config["Rounds"]
+
 page_sequence = [
     precalculos,
-    bienvenida,
+    presentacion,
     tratamiento,
     esperagrupos,
-    enviasin,
-    enviacon,
+    DecisionesCON,
+    DecisionesSIN,
     esperagrupos,
     calculoganancia,
-    gananciasindividuales,
-    califica,
+    GananciasSIN,
+    GananciasCON
     esperagrupos,
     calculocalificacion,
     calculospromediocalificacion,
-    gananciastotales
+    GananciasTotal,
+    gracias
 ]

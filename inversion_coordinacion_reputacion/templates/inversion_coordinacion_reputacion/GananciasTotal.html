@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+    <p> El juego ha terminado. </p>
+
+    <p> Sus puntos acumulados son: {{player.ganancia_total}} </p>
+
+    <p> Por favor digite su código de estudiante: </p>
+
+    <button>
+          <b>Siguiente</b>
+    </button>
+
+{% endblock %}

@@ -58,6 +58,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    Codigo = models.StringField()
     Inversion=models.CurrencyField(blank=True,min=c(0),max=c(1000))
     Calificacion=models.IntegerField(blank=True, min=1, max=5)
     Reputacion=models.FloatField()
