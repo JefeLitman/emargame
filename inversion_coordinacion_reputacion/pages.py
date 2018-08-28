@@ -54,17 +54,18 @@ class DecisionesCON(Page):
         if (self.round_number - 1 != 0):
             otro_jugador = self.player.get_others_in_group()[0].in_round(self.round_number - 1).Reputacion
             return {
-                'calificacionpromedio':otro_jugador
+                'calificacionpromedio':otro_jugador,
+                'numeroronda': self.round_number,
+                'rondastotales': self.session.config["Rounds"] / 2 + 1,
+                'tratamiento': self.session.config["ConSin"]
             }
         else:
             return {
-                'calificacionpromedio':5
+                'calificacionpromedio':5,
+                'numeroronda':self.round_number,
+                'rondastotales':self.session.config["Rounds"]/2 +1,
+                'tratamiento':self.session.config["ConSin"]
             }
-        {
-            'numeroronda':self.round_number,
-            'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
-        }
 
 class GananciasCON(Page):
     timeout_seconds = 60
