@@ -57,21 +57,21 @@
 
     <div class="encabezado"> <h2> Ganancias </h2> </div>
 
-    <p> Usted invirtió: </p>
+    <p> Usted invirtió: {{player.Inversion}} </p>
 
-    <p> Su pareja invirtió: </p>
+    <p> Su pareja invirtió: {{otro.Inversion}} </p>
 
-    <p> Su ganancia en este periodo es: </p>
+    <p> Su ganancia en este periodo es: {{player.Pagos}}</p>
 
         {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
             <img  class="imagen" src = "{% static 'inversion_coordinacion_reputacion/anonimato_fondo.png' %}"/>
         {% else %}
-            <img  class="imagen" src = "{% static 'inversion_coordinacion_reputacion/reputacion_fondo.PNG' %}"/>
+            <img  class="imagen" src = "{% static 'inversion_coordinacion_reputacion/reputacion_fondo.png' %}"/>
         {% endif %}
     {% else %}
         {% if numeroronda >= rondastotales %}
-           <img  class="imagen" src = "{% static 'inversion_coordinacion_reputacion/reputacion_fondo.PNG' %}"/>
+           <img  class="imagen" src = "{% static 'inversion_coordinacion_reputacion/reputacion_fondo.png' %}"/>
         {% else %}
             <img class="imagen" src = "{% static 'inversion_coordinacion_reputacion/anonimato_fondo.png' %}"/>
         {% endif %}

@@ -77,11 +77,12 @@ class GananciasCON(Page):
             return self.round_number <= self.session.config["Rounds"] / 2
         else:
             return self.round_number > self.session.config["Rounds"]/2
-    def vars_for_template(self):
+    def vars_for_template(self)
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'otro':self.player.get_others_in_group()[0]
         }
 
 class GananciasSIN(Page):
@@ -98,8 +99,10 @@ class GananciasSIN(Page):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'otro': self.player.get_others_in_group()[0]
         }
+
 class GananciasTotal(Page):
     timeout_seconds = 30
     form_model = 'player'
@@ -173,7 +176,7 @@ page_sequence = [
     esperagrupos,
     calculoganancia,
     GananciasSIN,
-    GananciasCON
+    GananciasCON,
     esperagrupos,
     calculocalificacion,
     calculospromediocalificacion,
