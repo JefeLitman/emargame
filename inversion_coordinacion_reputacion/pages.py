@@ -54,14 +54,14 @@ class DecisionesCON(Page):
         if (self.round_number - 1 != 0):
             otro_jugador = self.player.get_others_in_group()[0].in_round(self.round_number - 1).Reputacion
             return {
-                'calificacionpromedio':otro_jugador,
+                'Reputacion':otro_jugador,
                 'numeroronda': self.round_number,
                 'rondastotales': self.session.config["Rounds"] / 2 + 1,
                 'tratamiento': self.session.config["ConSin"]
             }
         else:
             return {
-                'calificacionpromedio':5,
+                'Reputacion':5,
                 'numeroronda':self.round_number,
                 'rondastotales':self.session.config["Rounds"]/2 +1,
                 'tratamiento':self.session.config["ConSin"]
@@ -77,7 +77,7 @@ class GananciasCON(Page):
             return self.round_number <= self.session.config["Rounds"] / 2
         else:
             return self.round_number > self.session.config["Rounds"]/2
-    def vars_for_template(self)
+    def vars_for_template(self):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
@@ -92,9 +92,9 @@ class GananciasSIN(Page):
 
     def is_displayed(self):
         if(self.session.config["ConSin"]):
-            return self.round_number <= self.session.config["Rounds"] / 2
+            return self.round_number > self.session.config["Rounds"] / 2
         else:
-            return self.round_number > self.session.config["Rounds"]/2
+            return self.round_number <= self.session.config["Rounds"]/2
     def vars_for_template(self):
         return{
             'numeroronda':self.round_number,

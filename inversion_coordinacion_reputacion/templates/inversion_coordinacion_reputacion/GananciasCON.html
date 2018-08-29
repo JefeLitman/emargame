@@ -57,10 +57,10 @@
 
     <div class="encabezado"> <h2> Ganancias </h2> </div>
 
-    <p> Usted invirtió:: {{player.Inversion}} </p>
-    <p> Su pareja invirtió:: {{otro.Inversion}} </p>
+    <p> Usted invirtió:{{player.Inversion}} </p>
+    <p> Su pareja invirtió: {{otro.Inversion}} </p>
     <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
-    <p> ¿Qué tan satisfecho se siente con la decisión de su pareja? {{player.Reputacion}} </p>
+    {% formfield player.Calificacion label="¿Qué tan satisfecho se siente con la decisión de su pareja?" %}
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
