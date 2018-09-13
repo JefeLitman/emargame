@@ -62,12 +62,23 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
+<<<<<<< HEAD
     Participante_A = models.BooleanField()
     Azul = models.BooleanField()
     Recibe = models.CurrencyField()
     Envia = models.CurrencyField(blank=True,min=c(0),max=c(1000))
     Pagos = models.CurrencyField(initial=c(0))
     TotalPagos = models.CurrencyField(initial=c(0))
+=======
+    Codigo = models.StringField()
+    genre=models.StringField(
+        choices=[
+            'Inventor',
+            'Inversor',
+        ]
+    )
+    gananciajugador=models.CurrencyField(initial=c(0))
+>>>>>>> 2295efcd6f73dd5f92585aaa6fd97f724d1ac2a3
 
     def set_participantes(self):
         self.Participante_A = randint(0,1)

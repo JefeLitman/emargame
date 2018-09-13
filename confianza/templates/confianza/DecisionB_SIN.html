@@ -55,11 +55,25 @@
       }
    </style>
 
-    <div class="encabezado"> <h2> Ganancias totales </h2> </div>
+    <div class="encabezado"> <h2> Decisiones </h2> </div>
+    <p> Eres el participante B </p>
+    <p> Recibió {{tripled_amount}} puntos. </p>
 
-    <p> El estudio ha terminado.</p>
-    <p> Sus puntos acumulados son: {{player.gananciajugador}} </p>
-    {% formfield player.Codigo label="Por favor digite su código de estudiante:" %}
+    {% formfield group.sent_back_amount label="Debe decidir cuántos puntos enviar al Participante A:" %}
+
+    {% if tratamiento %}
+        {% if numeroronda >= rondastotales %}
+            <img  class="imagen" src = "{% static 'confianza/anonimato_fondo.PNG' %}"/>
+        {% else %}
+            <img  class="imagen" src = "{% static 'confianza/identidad_fondo.PNG' %}"/>
+        {% endif %}
+    {% else %}
+        {% if numeroronda >= rondastotales %}
+           <img  class="imagen" src = "{% static 'confianza/identidad_fondo.PNG' %}"/>
+        {% else %}
+            <img class="imagen" src = "{% static 'confianza/anonimato_fondo.PNG' %}"/>
+        {% endif %}
+    {% endif %}
 
     <button>
           <b>Siguiente</b>
