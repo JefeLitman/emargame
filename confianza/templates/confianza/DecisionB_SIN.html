@@ -57,9 +57,10 @@
 
     <div class="encabezado"> <h2> Decisiones </h2> </div>
     <p> Eres el participante B </p>
-    <p> Recibió {{tripled_amount}} puntos. </p>
+    <p> Eres del color {{rol}} </p>
+    <p> Recibió {{player.Recibe}}. </p>
 
-    {% formfield group.sent_back_amount label="Debe decidir cuántos puntos enviar al Participante A:" %}
+    {% formfield player.Envia label="Debe decidir cuántos puntos enviar al Participante A:" %}
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}

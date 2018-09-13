@@ -33,8 +33,6 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     Reinicio = models.BooleanField()
     TSIN = models.BooleanField()
-    Ganancia_Promedio_Azul=models.CurrencyField(initial=c(0))
-    Ganancia_Promedio_Verde=models.CurrencyField(initial=c(0))
 
     def set_variables_subsesion(self, ronda, rondas_totales, consin):
         self.Reinicio = ronda > rondas_totales / 2
@@ -49,11 +47,23 @@ class Subsession(BaseSubsession):
             else:
                 self.TSIN = False
 
-    def set_ganancias_promedios(self,azules,verdes):
-        if len(azules) != 0:
-            self.Ganancia_Promedio_Azul = sum([p.payoff for p in azules])/len(azules)
-        if len(verdes) != 0:
-            self.Ganancia_Promedio_Verde = sum([p.payoff for p in verdes])/len(verdes)
+    def get_azul_promedio(self):
+        jugadores=self.get_players()
+        ganancia_promedio = 0
+        for p in jugadores:
+            if p.Azul == 1:
+                ganancia_promedio = ganancia_promedio + p.payoff
+        ganancia_promedio = ganancia_promedio / (len(jugadores) / 2)
+        return ganancia_promedio
+
+    def get_verde_promedio(self):
+        jugadores = self.get_players()
+        ganancia_promedio = 0
+        for p in jugadores:
+            if p.Azul == 0:
+                ganancia_promedio = ganancia_promedio + p.payoff
+        ganancia_promedio = ganancia_promedio / (len(jugadores) / 2)
+        return ganancia_promedio
 
     def creating_session(self):
         self.group_randomly()
@@ -62,27 +72,30 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
-<<<<<<< HEAD
     Participante_A = models.BooleanField()
     Azul = models.BooleanField()
     Recibe = models.CurrencyField()
-    Envia = models.CurrencyField(blank=True,min=c(0),max=c(1000))
+    Envia = models.CurrencyField(blank=True,min=c(0))
     Pagos = models.CurrencyField(initial=c(0))
     TotalPagos = models.CurrencyField(initial=c(0))
-=======
     Codigo = models.StringField()
-    genre=models.StringField(
-        choices=[
-            'Inventor',
-            'Inversor',
-        ]
-    )
-    gananciajugador=models.CurrencyField(initial=c(0))
->>>>>>> 2295efcd6f73dd5f92585aaa6fd97f724d1ac2a3
 
-    def set_participantes(self):
-        self.Participante_A = randint(0,1)
-        self.Azul = randint(0,1)
+    def set_participantes(self,es_la_mitad):
+        if es_la_mitad == True:
+            if self.id_in_group == 1:
+                self.Azul = False
+                self.Participante_A=True
+            else:
+                self.Azul = True
+                self.Participante_A = False
+        else:
+            if self.id_in_group == 1:
+                self.Azul = True
+                self.Participante_A = True
+            else:
+                self.Azul = False
+                self.Participante_A = False
+
 
     def role(self):
         if self.Azul == 1:

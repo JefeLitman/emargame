@@ -57,10 +57,11 @@
 
 <div class="encabezado"> <h2> Decisiones </h2> </div>
 <p> Usted es el participante A </p>
-<p> El participante B es: {{genrep2}} </p>
-<p> Tiene {{Constants.endowment}} puntos disponibles. </p>
+<p> Eres del color {{rol}} </p>
+<p> El participante B es: {{color_otro_jugador}} </p>
+<p> Tiene {{Constants.Dotacion}} disponibles. </p>
 
-    {% formfield group.sent_amount label="Debe decidir cuántos puntos enviar al Participante B:" %}
+    {% formfield player.Envia label="Debe decidir cuántos puntos enviar al Participante B:" %}
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}

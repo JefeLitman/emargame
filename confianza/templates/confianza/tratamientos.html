@@ -1,38 +1,54 @@
 {% extends "global/Page.html" %}
 {% load staticfiles otree %}
+{% load static %}
 
 {% block title %}
-    Tipo de tratamiento
 {% endblock %}
 
 {% block content %}
 
+<style media="screen">
+      @import url('https://fonts.googleapis.com/css?family=Cabin');
+       img{
+           width: 100%;
+           height: 80%;
+       }
+       button{
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+         float: right;
+       }
+
+       .otree-timer.alert.alert-warning{
+        display: none;
+      }
+</style>
+
+
     {% if tratamiento %}
         {% if numeroronda == rondastotales %}
-            <h1 align="center">
-                Periodos finales
-            </h1> </br>
-        En los siguientes periodos, en la etapa de decisiones no se podrá observar si se esta interactuando con un Inventor o con Inversor
+        <img  src = "{% static 'confianza/final_anonimato.png' %}"/>
         {% else %}
-            <h1 align="center">
-                Periodos iniciales
-            </h1> </br>
-        En los siguientes periodos, en la etapa de decisiones se podrá observar si se esta interactuando con un Inventor o con Inversor
+        <img  src = "{% static 'confianza/inicial_identidad.png' %}"/>
         {% endif %}
     {% else %}
         {% if numeroronda == rondastotales %}
-            <h1 align="center">
-                Periodos finales
-            </h1> </br>
-        En los siguientes periodos, en la etapa de decisiones se podrá observar si se esta interactuando con un Inventor o con Inversor
+        <img  src = "{% static 'confianza/final_identidad.png' %}"/>
         {% else %}
-            <h1 align="center">
-                Periodos iniciales
-            </h1> </br>
-        En los siguientes periodos, en la etapa de decisiones no se podrá observar si se esta interactuando con un Inventor o con Inversor
+        <img  src = "{% static 'confianza/inicial_anonimato.png' %}"/>
         {% endif %}
     {% endif %}
 
-    {% next_button %}
+    <p> </p>
+
+    <button>
+        Siguiente
+    </button>
+
 
 {% endblock %}
