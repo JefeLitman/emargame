@@ -86,7 +86,7 @@ class GananciasCON(Page):
         }
 
 class GananciasSIN(Page):
-    timeout_seconds = 30
+    timeout_seconds = 60
     form_model =models.Player
     form_fields = ['Calificacion']
 
@@ -104,7 +104,6 @@ class GananciasSIN(Page):
         }
 
 class GananciasTotal(Page):
-    timeout_seconds = 30
     form_model = 'player'
     form_fields = ["Codigo"]
     def is_displayed(self):

@@ -2,7 +2,7 @@
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
-
+from random import randint
 
 author = 'Luis Alejandro Palacio Garcia & Laura Milena Prada Medina'
 
@@ -25,53 +25,69 @@ Games and Economic Behavior, 10, 122–142.
 class Constants(BaseConstants):
     name_in_url = 'trust_game_outlay'
     players_per_group = 2
-    num_rounds=30
-    endowment = c(1000)
-    multiplication_factor = 3
+    num_rounds=20
+    Dotacion = c(1000)
+    Multiplicador = 3
 
 
 class Subsession(BaseSubsession):
-    gananciamujeres=models.CurrencyField(initial=c(0))
-    gananciahombres=models.CurrencyField(initial=c(0))
+    Reinicio = models.BooleanField()
+    TSIN = models.BooleanField()
+    Ganancia_Promedio_Azul=models.CurrencyField(initial=c(0))
+    Ganancia_Promedio_Verde=models.CurrencyField(initial=c(0))
 
-    def set_ganancias(self,mujeres,hombres):
-        if len(mujeres) != 0:
-            self.gananciamujeres = sum([p.payoff for p in mujeres])/len(mujeres)
-        if len(hombres) != 0:
-            self.gananciahombres = sum([p.payoff for p in hombres])/len(hombres)
+    def set_variables_subsesion(self, ronda, rondas_totales, consin):
+        self.Reinicio = ronda > rondas_totales / 2
+        if (consin):
+            if (ronda <= rondas_totales / 2):
+                self.TSIN = False
+            else:
+                self.TSIN = True
+        else:
+            if (ronda <= rondas_totales / 2):
+                self.TSIN = True
+            else:
+                self.TSIN = False
+
+    def set_ganancias_promedios(self,azules,verdes):
+        if len(azules) != 0:
+            self.Ganancia_Promedio_Azul = sum([p.payoff for p in azules])/len(azules)
+        if len(verdes) != 0:
+            self.Ganancia_Promedio_Verde = sum([p.payoff for p in verdes])/len(verdes)
 
     def creating_session(self):
         self.group_randomly()
 
 class Group(BaseGroup):
-    sent_amount = models.CurrencyField(
-        min=c(0),max=c(1000),
-        initial=c(0)
-    )
-    sent_back_amount = models.CurrencyField(
-        initial=c(0)
-    )
-
-    def set_payoffs(self):
-        p1 = self.get_player_by_id(1)
-        p2 = self.get_player_by_id(2)
-        p1.payoff = Constants.endowment - self.sent_amount + self.sent_back_amount
-        p2.payoff = self.sent_amount * Constants.multiplication_factor - self.sent_back_amount
+    pass
 
 class Player(BasePlayer):
-    genre=models.StringField(
-        choices=[
-            'Inventor',
-            'Inversor',
-        ]
-    )
-    gananciajugador=models.CurrencyField(initial=c(0))
+    Participante_A = models.BooleanField()
+    Azul = models.BooleanField()
+    Recibe = models.CurrencyField()
+    Envia = models.CurrencyField(blank=True,min=c(0),max=c(1000))
+    Pagos = models.CurrencyField(initial=c(0))
+    TotalPagos = models.CurrencyField(initial=c(0))
 
-    def get_genre(self):
-        return self.genre
-
-    def set_gananciajugador(self,valor):
-        self.gananciajugador=valor
+    def set_participantes(self):
+        self.Participante_A = randint(0,1)
+        self.Azul = randint(0,1)
 
     def role(self):
-        return self.in_round(1).genre
+        if self.Azul == 1:
+            return 'Azul'
+        else:
+            return 'Verde'
+
+    def set_envia_azar(self):
+        self.Envia = randint(0,1000)
+    
+    def set_pagos(self):
+        if self.Participante_A == 1:
+            self.Pagos = Constants.Dotacion - self.Envia + self.Recibe
+        else:
+            self.Pagos = Constants.Multiplicador*self.Recibe - self.Envia
+        self.payoff = self.Pagos
+
+    def set_totalpagos(self):
+        self.TotalPagos = sum([p.Pagos for p in self.in_all_rounds()])
