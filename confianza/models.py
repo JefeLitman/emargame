@@ -59,6 +59,7 @@ class Group(BaseGroup):
         p2.payoff = self.sent_amount * Constants.multiplication_factor - self.sent_back_amount
 
 class Player(BasePlayer):
+    Codigo = models.StringField()
     genre=models.StringField(
         choices=[
             'Inventor',

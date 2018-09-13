@@ -3,14 +3,16 @@ from . import models
 from ._builtin import Page, WaitPage
 from .models import Constants
 
-class welcome(Page):
+class presentacion(Page):
+    timeout_seconds = 30
     form_model=models.Player
     form_fields=['genre']
 
     def is_displayed(self):
         return self.round_number == 1
 
-class tratamiento(Page):
+class tratamientos(Page):
+    timeout_seconds = 30
     def is_displayed(self):
         return self.round_number == 1 or self.round_number == self.session.config["Rounds"]/2 +1
 
@@ -21,7 +23,8 @@ class tratamiento(Page):
             'tratamiento':self.session.config["ConSin"]
         }
 
-class enviosin(Page):
+class DecisiónA_SIN(Page):
+    timeout_seconds = 60
     form_model = 'group'
     form_fields = ['sent_amount']
 
@@ -31,7 +34,15 @@ class enviosin(Page):
         else:
             return self.player.id_in_group == 1 and self.round_number <= self.session.config["Rounds"]/2
 
-class enviocon(Page):
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
+
+class DecisionA_CON(Page):
+    timeout_seconds = 60
     form_model = 'group'
     form_fields = ['sent_amount']
 
@@ -43,10 +54,14 @@ class enviocon(Page):
 
     def vars_for_template(self):
         return{
-            'genrep2':self.group.get_player_by_id(2).role()
-        }
+            'genrep2':self.group.get_player_by_id(2).role(),
+            'numeroronda': self.round_number,
+            'rondastotales': self.session.config["Rounds"] / 2 + 1,
+            'tratamiento': self.session.config["ConSin"]
+            }
 
-class retornosin(Page):
+class DecisionB_SIN(Page):
+    timeout_seconds = 60
     form_model = 'group'
     form_fields = ['sent_back_amount']
 
@@ -58,7 +73,10 @@ class retornosin(Page):
 
     def vars_for_template(self):
         return {
-            'tripled_amount': self.group.sent_amount*Constants.multiplication_factor
+            'tripled_amount': self.group.sent_amount*Constants.multiplication_factor,
+            'numeroronda': self.round_number,
+            'rondastotales': self.session.config["Rounds"] / 2 + 1,
+            'tratamiento': self.session.config["ConSin"]
         }
 
     def sent_back_amount_min(self):
@@ -67,7 +85,8 @@ class retornosin(Page):
     def sent_back_amount_max(self):
         return self.group.sent_amount*Constants.multiplication_factor
 
-class retornocon(Page):
+class DecisionB_CON(Page):
+    timeout_seconds = 60
     form_model = 'group'
     form_fields = ['sent_back_amount']
 
@@ -80,7 +99,10 @@ class retornocon(Page):
     def vars_for_template(self):
         return {
             'tripled_amount': self.group.sent_amount*Constants.multiplication_factor,
-            'genrep1':self.group.get_player_by_id(1).role()
+            'genrep1':self.group.get_player_by_id(1).role(),
+            'numeroronda': self.round_number,
+            'rondastotales': self.session.config["Rounds"] / 2 + 1,
+            'tratamiento': self.session.config["ConSin"]
         }
 
     def sent_back_amount_min(self):
@@ -89,10 +111,18 @@ class retornocon(Page):
     def sent_back_amount_max(self):
         return self.group.sent_amount * Constants.multiplication_factor
 
-class gananciaindividual(Page):
-    pass
+class Ganancias(Page):
+    timeout_seconds = 30
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
 
-class gananciatotal(Page):
+class GananciaTotal(Page):
+    form_model = 'player'
+    form_fields = ["Codigo"]
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
 
@@ -122,20 +152,24 @@ class calculos_ganancias_promedios(WaitPage):
 class waitforallgroups(WaitPage):
     wait_for_all_groups = True
 
+class gracias(Page):
+    def is_displayed(self):
+        return self.round_number == self.session.config["Rounds"]
 
 page_sequence = [
-    welcome,
-    tratamiento,
+    presentacion,
+    tratamientos,
     waitforallgroups,
-    enviosin,
-    enviocon,
+    DecisiónA_SIN,
+    DecisionA_CON,
     waitforallgroups,
-    retornosin,
-    retornocon,
+    DecisionB_SIN,
+    DecisionB_CON,
     waitforallgroups,
     calculos,
     waitforallgroups,
     calculos_ganancias_promedios,
-    gananciaindividual,
-    gananciatotal,
+    Ganancias,
+    GananciaTotal,
+    gracias
 ]
