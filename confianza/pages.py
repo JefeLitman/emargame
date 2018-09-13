@@ -5,7 +5,8 @@ from .models import Constants
 from random import randint
 
 class presentacion(Page):
-    timeout_seconds = 30
+    form_model = 'player'
+    form_fields = ['Azul']
 
     def is_displayed(self):
         return self.round_number == 1
@@ -35,7 +36,6 @@ class DecisionA_SIN(Page):
 
     def vars_for_template(self):
         return{
-            'rol':self.player.role(),
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
             'tratamiento':self.session.config["ConSin"]
@@ -57,7 +57,6 @@ class DecisionA_CON(Page):
 
     def vars_for_template(self):
         return{
-            'rol': self.player.role(),
             'color_otro_jugador': self.player.get_others_in_group()[0].role(),
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
@@ -80,7 +79,6 @@ class DecisionB_SIN(Page):
 
     def vars_for_template(self):
         return {
-            'rol': self.player.role(),
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
             'tratamiento': self.session.config["ConSin"]
@@ -102,7 +100,6 @@ class DecisionB_CON(Page):
 
     def vars_for_template(self):
         return {
-            'rol': self.player.role(),
             'color_otro_jugador':self.player.get_others_in_group()[0].role(),
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
@@ -152,6 +149,7 @@ class calculo_recibe(WaitPage):
                 if(p.get_others_in_group()[0].Envia == None):
                     p.get_others_in_group()[0].Envia = randint(0,1000)
                 p.Recibe = p.get_others_in_group()[0].Envia
+            p.set_colores(self.session.config["Rounds"])
 
 class calculo_ganancias(WaitPage):
     def after_all_players_arrive(self):

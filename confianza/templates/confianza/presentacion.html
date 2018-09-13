@@ -9,10 +9,7 @@
 
 <style media="screen">
       @import url('https://fonts.googleapis.com/css?family=Cabin');
-       img{
-           width: 100%;
-           height: 80%;
-       }
+
        button{
          background-color: #243e92;
          position: relative;
@@ -24,15 +21,45 @@
          float: right;
        }
 
-       .otree-timer.alert.alert-warning{
+       div.encabezado{
+	    color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+      }
+
+       p {
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      }
+
+      .otree-timer.alert.alert-warning{
         display: none;
       }
-</style>
 
+      .col-form-label /*El tecxto del formulario donde dice DEsea...*/
+      {
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      }
+
+      .input-group-text{ /*puntos*/
+       font-family: 'Cabin', sans-serif;
+       font-size: 20px;
+      }
+
+       .imagen{
+      display:block;
+      margin:auto;
+      }
+   </style>
 
 <img  src = "{% static 'confianza/presentacion.png' %}"/>
 
-<p> </p>
+<div align="center">
+    {% formfield player.Azul label="Debe decidir cuántos puntos enviar al Participante B:" %}
+</div>
 
     <button>
         Siguiente
