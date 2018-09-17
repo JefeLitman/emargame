@@ -67,11 +67,11 @@
     <div class="encabezado"> <h2> Ganancias </h2> </div>
 
     {% if player.Participante_A == 1 %}
-        <p class="color-propio"> Usted es el participante A </p>
+        <p> <b class="color-propio">Usted es el participante A</b> </p>
         <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
 
     {% else %}
-        <p class="color-propio"> Usted es el participante B </p>
+        <p> <b class="color-propio">Usted es el participante B</b> </p>
         <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
     {% endif %}
 
