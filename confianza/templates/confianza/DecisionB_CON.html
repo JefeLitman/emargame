@@ -53,10 +53,28 @@
       display:block;
       margin:auto;
       }
+      .color-otro{
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+        {% if azul_otro_jugador == 1%}
+            color: #243e92;
+        {% else %}
+            color: #8FC534;
+        {% endif %}
+      }
+      .color-propio{
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      {% if player.Azul == 1%}
+            color: #243e92;
+        {% else %}
+            color: #8FC534;
+        {% endif %}
+      }
    </style>
 <div class="encabezado"> <h2> Decisiones </h2> </div>
-<p> Eres el participante B </p>
-<p> El participante A es {{color_otro_jugador}}</p>
+<p class="color-propio"> Usted es el participante B </p>
+<p> El participante A es: <b class="color-otro">{{color_otro_jugador}}</b> </p>
 <p> Recibió {{player.Recibe}}. </p>
 
     {% formfield player.Envia label="Debe decidir cuántos puntos enviar al Participante A:" %}

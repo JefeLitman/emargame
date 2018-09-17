@@ -47,38 +47,24 @@ class Subsession(BaseSubsession):
             else:
                 self.TSIN = False
 
-    def get_azul_promedio(self):
-        jugadores=self.get_players()
-        ganancia_promedio = 0
-        for p in jugadores:
-            if p.Azul == 1:
-                ganancia_promedio = ganancia_promedio + p.payoff
-        ganancia_promedio = ganancia_promedio / (len(jugadores) / 2)
-        return ganancia_promedio
-
-    def get_verde_promedio(self):
-        jugadores = self.get_players()
-        ganancia_promedio = 0
-        for p in jugadores:
-            if p.Azul == 0:
-                ganancia_promedio = ganancia_promedio + p.payoff
-        ganancia_promedio = ganancia_promedio / (len(jugadores) / 2)
-        return ganancia_promedio
-
     def creating_session(self):
-        self.group_randomly(fixed_id_in_group=True)
+        jugadores=self.get_players()
+        for i in range(0,len(jugadores)):
+            if(self.round_number == 1):
+                if(i < len(jugadores)/2):
+                    jugadores[i].Azul = True
+                else:
+                    jugadores[i].Azul = False
+            else:
+                jugadores[i].Azul=jugadores[i].in_round(1).Azul
+        self.group_randomly()
 
 class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
     Participante_A = models.BooleanField()
-    Azul = models.BooleanField(
-        choices=[
-            [True, 'Azul'],
-            [False, 'Verde']
-        ]
-    )
+    Azul = models.BooleanField()
     Recibe = models.CurrencyField()
     Envia = models.CurrencyField(blank=True,min=c(0))
     Pagos = models.CurrencyField(initial=c(0))
@@ -96,10 +82,6 @@ class Player(BasePlayer):
                 self.Participante_A = True
             else:
                 self.Participante_A = False
-
-    def set_colores(self,RondasTotales):
-        for p in self.in_rounds(2,RondasTotales):
-            p.Azul = p.in_round(1).Azul
 
     def role(self):
         if self.Azul == 1:

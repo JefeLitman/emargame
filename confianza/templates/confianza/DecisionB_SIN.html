@@ -53,10 +53,20 @@
       display:block;
       margin:auto;
       }
+      .color-propio{
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      {% if player.Azul == 1%}
+            color: #243e92;
+        {% else %}
+            color: #8FC534;
+        {% endif %}
+      }
    </style>
 
     <div class="encabezado"> <h2> Decisiones </h2> </div>
-    <p> Eres el participante B </p>
+
+    <p class="color-propio"> Eres el participante B </p>
     <p> Recibió {{player.Recibe}}. </p>
 
     {% formfield player.Envia label="Debe decidir cuántos puntos enviar al Participante A:" %}
