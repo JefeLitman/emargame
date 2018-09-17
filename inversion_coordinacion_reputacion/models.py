@@ -68,13 +68,8 @@ class Player(BasePlayer):
     def set_inversion_azar(self):
         self.Inversion=randint(0,1000)
 
-    def set_calificacion_azar(self,ronda, rondas_totales, consin):
-        if (consin):
-            if (ronda <= rondas_totales / 2): #Calculo de califiacion azar cuando es de con a sin
-                self.Calificacion = randint(1, 5)
-        else:
-            if (ronda > rondas_totales / 2):
-                self.Calificacion = randint(1, 5)
+    def set_calificacion_azar(self):
+        self.Calificacion = randint(1, 5)
 
     def set_reputacion(self,ronda, rondas_totales, consin):
         if (consin):
@@ -87,6 +82,7 @@ class Player(BasePlayer):
             elif (ronda > rondas_totales / 2):
                 self.Reputacion = sum([p.Calificacion for p in self.in_rounds(rondas_totales / 2 + 1, ronda)]) / (
                             ronda - rondas_totales / 2)
+        self.Reputacion = round(self.Reputacion,1)
 
     def set_pago(self,ganancia_grupo):
         self.Pagos=Constants.Dotacion-self.Inversion+ganancia_grupo

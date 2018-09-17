@@ -148,9 +148,9 @@ class calculocalificacion(WaitPage):
         p2=self.group.get_player_by_id(2)
         # Definiendo variables azar si no las lleno
         if (p1.Calificacion == None):
-            p1.set_calificacion_azar(self.round_number,self.session.config["Rounds"],self.session.config["ConSin"])
+            p1.set_calificacion_azar()
         if (p2.Calificacion == None):
-            p2.set_calificacion_azar(self.round_number,self.session.config["Rounds"],self.session.config["ConSin"])
+            p2.set_calificacion_azar()
         #Colocando en orden las calificaciones de los jugadores
         calificacionp1=p2.Calificacion
         p2.Calificacion=p1.Calificacion
