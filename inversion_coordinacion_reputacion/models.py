@@ -74,15 +74,14 @@ class Player(BasePlayer):
     def set_reputacion(self,ronda, rondas_totales, consin):
         if (consin):
             if (ronda <= rondas_totales / 2): #Calculo de reputacion cuando es de con a sin
-                self.Reputacion = sum(
-                    [p.Calificacion for p in self.in_rounds(1, ronda)]) / ronda
+                self.Reputacion = round(sum(
+                    [p.Calificacion for p in self.in_rounds(1, ronda)]) / ronda,1)
         else:
             if (ronda == rondas_totales / 2): #Calculo de reputacion cuando es de sin a con
                 self.Reputacion = 5
             elif (ronda > rondas_totales / 2):
-                self.Reputacion = sum([p.Calificacion for p in self.in_rounds(rondas_totales / 2 + 1, ronda)]) / (
-                            ronda - rondas_totales / 2)
-        self.Reputacion = round(self.Reputacion,1)
+                self.Reputacion = round(sum([p.Calificacion for p in self.in_rounds(rondas_totales / 2 + 1, ronda)]) / (
+                            ronda - rondas_totales / 2))
 
     def set_pago(self,ganancia_grupo):
         self.Pagos=Constants.Dotacion-self.Inversion+ganancia_grupo
