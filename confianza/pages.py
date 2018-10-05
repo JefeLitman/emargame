@@ -122,6 +122,8 @@ class Ganancias(Page):
     timeout_seconds = 30
     def vars_for_template(self):
         return{
+            'azules':self.subsession.get_total_azul(),
+            'verdes':self.subsession.get_total_verde(),
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
             'tratamiento':self.session.config["ConSin"]

@@ -59,6 +59,22 @@ class Subsession(BaseSubsession):
                 jugadores[i].Azul=jugadores[i].in_round(1).Azul
         self.group_randomly()
 
+    def get_total_azul(self):
+        jugadores = self.get_players()
+        total_azul = 0
+        for p in jugadores:
+            if p.Azul == 1:
+                total_azul = total_azul + p.payoff
+        return total_azul
+
+    def get_total_verde(self):
+        jugadores = self.get_players()
+        total_verde = 0
+        for p in jugadores:
+            if p.Azul == 0:
+                total_verde = total_verde + p.payoff
+        return total_verde
+
 class Group(BaseGroup):
     pass
 
