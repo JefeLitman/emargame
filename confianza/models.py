@@ -48,16 +48,17 @@ class Subsession(BaseSubsession):
                 self.TSIN = False
 
     def creating_session(self):
-        jugadores=self.get_players()
-        for i in range(0,len(jugadores)):
-            if(self.round_number == 1):
-                if(i < len(jugadores)/2):
-                    jugadores[i].Azul = True
+        if(self.round_number <= self.session.config["Rounds"]):
+            jugadores=self.get_players()
+            for i in range(0,len(jugadores)):
+                if(self.round_number == 1):
+                    if(i < len(jugadores)/2):
+                        jugadores[i].Azul = True
+                    else:
+                        jugadores[i].Azul = False
                 else:
-                    jugadores[i].Azul = False
-            else:
-                jugadores[i].Azul=jugadores[i].in_round(1).Azul
-        self.group_randomly()
+                    jugadores[i].Azul=jugadores[i].in_round(1).Azul
+            self.group_randomly()
 
     def get_total_azul(self):
         jugadores = self.get_players()

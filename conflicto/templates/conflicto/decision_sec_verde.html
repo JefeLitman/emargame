@@ -23,11 +23,11 @@
  <tr>
    <td class="tg-7fgq"><font color="blue">A1</font></td>
    <td class="tg-kt89"><font color="blue">1000</font>,<font color="green">1000</font></td>
-     <td class="tg-kt89"><font color="blue">{{group.x}}</font>,<font color="green">{{group.y}}</font></td>
+     <td class="tg-kt89"><font color="blue">{{group.VariableX}}</font>,<font color="green">{{group.VariableY}}</font></td>
  </tr>
  <tr>
    <td class="tg-7fgq"><font color="blue">A2</font></td>
-     <td class="tg-kt89"><font color="blue">{{group.y}}</font>,<font color="green">{{group.x}}</font></td>
+     <td class="tg-kt89"><font color="blue">{{group.VariableY}}</font>,<font color="green">{{group.VariableX}}</font></td>
    <td class="tg-kt89"><font color="blue">250</font>,<font color="green">250</font></td>
  </tr>
 </table></div> <br>
@@ -36,7 +36,7 @@
     Ahora debes tomar tú decisión.<br>
 
 
-    {% if group.opcion_azul == 0 %}
+    {% if eleccion_otro == 1 %}
 
     El participante Azul eligió: A1 <br>
 
@@ -48,8 +48,8 @@
 
     <p>Yo elijo:</p>
     <div>
-        <button name="opcion_verde" value="0" class="btn btn-primary btn-large">V1</button>
-        <button name="opcion_verde" value="2" class="btn btn-primary btn-large">V2</button>
+        <button name="Eleccion" value="1" class="btn btn-primary btn-large">V1</button>
+        <button name="Eleccion" value="2" class="btn btn-primary btn-large">V2</button>
     </div>
 
 {% endblock %}

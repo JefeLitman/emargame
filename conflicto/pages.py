@@ -4,11 +4,12 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 class bienvenida(Page):
-
+    timeout_seconds = 30
     def is_displayed(self):
         return self.round_number == 1
 
 class tratamiento(Page):
+    timeout_seconds = 30
     def is_displayed(self):
         return self.round_number == 1 or self.round_number == self.session.config["Rounds"] / 2 + 1
 
@@ -16,68 +17,82 @@ class tratamiento(Page):
         return {
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
-            'tratamiento': self.session.config["ConSin"]
+            'tratamiento': self.session.config["SecSim"]
         }
 
 class decision_sim_azul(Page):
-    form_model = models.Group
-    form_fields = ['opcion_azul']
+    timeout_seconds = 60
+    form_model = models.Player
+    form_fields = ['Eleccion']
 
     def is_displayed(self):
         return self.player.role()=='Azul'
 
 class decision_sim_verde(Page):
-    form_model = models.Group
-    form_fields = ['opcion_verde']
+    timeout_seconds = 60
+    form_model = models.Player
+    form_fields = ['Eleccion']
 
     def is_displayed(self):
-        if (self.session.config["ConSin"]):
+        if (self.session.config["SecSim"]):
             return self.player.role() == 'Verde' and self.round_number > self.session.config["Rounds"] / 2
         else:
             return self.player.role() == 'Verde' and self.round_number <= self.session.config["Rounds"] / 2
 
 class decision_sec_verde(Page):
-    form_model = 'group'
-    form_fields = ['opcion_verde']
+    timeout_seconds = 60
+    form_model = models.Player
+    form_fields = ['Eleccion']
 
     def is_displayed(self):
-        if(self.session.config["ConSin"]):
+        if (self.session.config["SecSim"]):
             return self.player.role() == 'Verde' and self.round_number <= self.session.config["Rounds"] / 2
         else:
             return self.player.role() == 'Verde' and self.round_number > self.session.config["Rounds"] / 2
 
+    def vars_for_template(self):
+        return {
+            'eleccion_otro':self.player.get_others_in_group()[0].Eleccion
+        }
+
 class gan_individual(Page):
-    pass
+    timeout_seconds = 30
+    def vars_for_template(self):
+        return {
+            'eleccion_otro':self.player.get_others_in_group()[0].Eleccion
+        }
 
 class gan_totales(Page):
+    form_model = 'player'
+    form_fields = ['Codigo']
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
 
 class esperagrupos(WaitPage):
     wait_for_all_groups = True
 
-class precalculos(WaitPage):
-
+class calculo_eleccion(WaitPage):
     def after_all_players_arrive(self):
-        self.group.set_random_variables()
+        jugador_azul = self.group.get_player_by_id(1)
+        if (jugador_azul.Eleccion == None):
+            jugador_azul.set_eleccion_azar()
 
 class calculos(WaitPage):
-
     def after_all_players_arrive(self):
-        self.group.set_payoffs()
-        p1 = self.group.get_player_by_id(1)
-        p2 = self.group.get_player_by_id(2)
-        p1.ganancias_totales = sum([p.payoff for p in self.group.get_player_by_id(1).in_all_rounds()])
-        p2.ganancias_totales = sum([p.payoff for p in self.group.get_player_by_id(2).in_all_rounds()])
+        jugador_verde = self.group.get_player_by_id(2)
+        if (jugador_verde.Eleccion == None):
+            jugador_verde.set_eleccion_azar()
+        for p in self.group.get_players():
+            p.set_pagos()
+            p.set_totalpagos()
 
 page_sequence = [
     bienvenida,
     tratamiento,
     esperagrupos,
-    precalculos,
     decision_sim_azul,
     decision_sim_verde,
-    esperagrupos,
+    calculo_eleccion,
     decision_sec_verde,
     esperagrupos,
     calculos,

@@ -127,7 +127,13 @@ SESSION_CONFIGS = [
         'name': 'conflicto',
         'display_name': '5. Conflicto 2x2: Negociar como halcón o como paloma.',
         'num_demo_participants': 2,
-        'app_sequence': ['conflicto']
+        'app_sequence': ['conflicto'],
+        'ConSin':None,
+        'SecSim':False,
+        'doc':"""
+        Rounds: Número total de periodos que se jugarán. Por defecto en 20*.<br/>
+        SecSim:  Tomará el valor de 1 cuando los periodos iniciales son tratamiento secuencial y los periodos finales simultaneo. En caso contrario será 0. Por defecto 0 (Sin marcar).
+        """
     },
     {
         'name':'signals',

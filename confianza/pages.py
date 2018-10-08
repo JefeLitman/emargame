@@ -112,12 +112,6 @@ class DecisionB_CON(Page):
     def Envia_max(self):
         return self.player.Recibe*Constants.Multiplicador
 
-class gananciaindividual(Page):
-    timeout_seconds = 30
-
-class gananciatotal(Page):
-    timeout_seconds = 30
-
 class Ganancias(Page):
     timeout_seconds = 30
     def vars_for_template(self):
