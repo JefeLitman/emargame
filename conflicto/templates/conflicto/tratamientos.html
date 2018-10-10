@@ -1,0 +1,52 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+<style media="screen">
+      @import url('https://fonts.googleapis.com/css?family=Cabin');
+       img{
+           width: 100%;
+           height: 80%;
+       }
+       button{
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+         float: right;
+       }
+
+       .otree-timer.alert.alert-warning{
+        display: none;
+      }
+</style>
+
+    {% if tratamiento %}
+        {% if numeroronda == rondastotales %}
+        <img  src = "{% static 'conflicto/final_simultaneo.png' %}"/>
+        {% else %}
+        <img  src = "{% static 'conflicto/inicial_secuencial.png' %}"/>
+        {% endif %}
+    {% else %}
+        {% if numeroronda == rondastotales %}
+        <img  src = "{% static 'conflicto/final_secuencial.png' %}"/>
+        {% else %}
+        <img  src = "{% static 'conflicto/inicial_simultaneo.png' %}"/>
+        {% endif %}
+    {% endif %}
+
+  <p> </p>
+
+    <button>
+        Siguiente
+    </button>
+
+{% endblock %}
