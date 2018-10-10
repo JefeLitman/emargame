@@ -80,11 +80,11 @@
   <tr>
     <td style="color:#243e92";>A1</td>
     <td> <font color="#243e92">1000</font>,<font color="#8FC534">1000</font> </td>
-    <td><font color="#243e92">X</font>,<font color="#8FC534">Y</font></td>
+    <td><font color="#243e92">{{group.VariableX}}</font>,<font color="#8FC534">{{group.VariableY]}</font></td>
   </tr>
   <tr>
     <td  style="color:#243e92";> A2 </td>
-    <td><font color="#243e92">Y</font>,<font color="#8FC534">X</font></td>
+    <td><font color="#243e92">{{group.VariableY}}</font>,<font color="#8FC534">{{group.VariableX}}</font></td>
     <td><font color="#243e92">250</font>,<font color="#8FC534">250</font></td>
   </tr>
 </table>
@@ -103,12 +103,6 @@
 
     {% endif %}
 
-    <p>Yo elijo:</p>
-    <div>
-        <button name="Eleccion" value="1" class="btn btn-primary btn-large">V1</button>
-        <button name="Eleccion" value="2" class="btn btn-primary btn-large">V2</button>
-    </div>
-
  {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
             <img  class="imagen" src = "{% static 'conflicto/simultaneo_fondo.PNG' %}"/>
@@ -122,5 +116,10 @@
             <img class="imagen" src = "{% static 'conflicto/simultaneo_fondo.PNG' %}"/>
         {% endif %}
     {% endif %}
+
+    </br>
+    <button>
+        Siguiente
+    </button>
 
 {% endblock %}

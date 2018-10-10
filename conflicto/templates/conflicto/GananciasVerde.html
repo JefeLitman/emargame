@@ -71,6 +71,24 @@
 
 <div class="encabezado"> <h2> Ganancias </h2> </div>
 
+<table>
+  <tr>
+    <th></th>
+    <th style="color:#8FC534";>V1</th>
+    <th style="color:#8FC534";>V2</th>
+  </tr>
+  <tr>
+    <td style="color:#243e92";>A1</td>
+    <td> <font color="#243e92">1000</font>,<font color="#8FC534">1000</font> </td>
+    <td><font color="#243e92">{{group.VariableX}}</font>,<font color="#8FC534">{{group.VariableY]}</font></td>
+  </tr>
+  <tr>
+    <td  style="color:#243e92";> A2 </td>
+    <td><font color="#243e92">{{group.VariableY}}</font>,<font color="#8FC534">{{group.VariableX}}</font></td>
+    <td><font color="#243e92">250</font>,<font color="#8FC534">250</font></td>
+  </tr>
+</table>
+
     <p> Usted es el participante Verde</p>
 
     {% if player.Eleccion == 1 %}
@@ -94,8 +112,6 @@
     {% endif %}
 
         <p>Su ganancia en este periodo es: {{player.Pagos}} </p>
-
-    {% endif %}
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
