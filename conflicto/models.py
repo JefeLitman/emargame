@@ -2,7 +2,7 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
-from random import randint as azar
+from random import randint
 author = 'Luis Alejandro Palacio García & Ismael Estrada Cañas & Carolina Andrea Estévez Fiallo'
 
 doc = """
@@ -47,8 +47,8 @@ class Subsession(BaseSubsession):
             self.set_variables_subsesion(self.round_number,self.session.config["Rounds"],self.session.config["SecSim"])
             self.group_randomly()
             for g in self.get_groups():
-                g.VariableX=azar(0,500)
-                g.VariableY=azar(500,1500)
+                g.VariableX=randint(0,500)
+                g.VariableY=randint(500,1500)
                 g.get_player_by_id(1).Participante_Azul = True
                 g.get_player_by_id(2).Participante_Azul = False
 
@@ -70,7 +70,7 @@ class Player(BasePlayer):
             return 'Verde'
 
     def set_eleccion_azar(self):
-        self.Eleccion = azar(1,2)
+        self.Eleccion = randint(1,2)
 
     def set_pagos(self):
         if self.Participante_Azul == True:
