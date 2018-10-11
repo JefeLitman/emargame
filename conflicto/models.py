@@ -51,8 +51,12 @@ class Subsession(BaseSubsession):
                 g.get_player_by_id(2).Participante_Azul = False
 
 class Group(BaseGroup):
-    VariableX=models.IntegerField(initial=randint(0,500))
-    VariableY=models.IntegerField(initial=randint(500,1500))
+    VariableX=models.IntegerField()
+    VariableY=models.IntegerField()
+
+    def set_variables_grupo(self):
+        self.VariableX=randint(0,500)
+        self.VariableY=randint(500,1500)
 
 class Player(BasePlayer):
     Eleccion = models.IntegerField(blank=True)
