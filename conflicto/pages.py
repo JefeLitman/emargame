@@ -104,10 +104,6 @@ class GananciasTotal(Page):
 class esperagrupos(WaitPage):
     wait_for_all_groups = True
 
-class precalculos(WaitPage):
-    def after_all_players_arrive(self):
-        self.group.set_variables_grupo()
-
 class calculo_eleccion(WaitPage):
     def after_all_players_arrive(self):
         jugador_azul = self.group.get_player_by_id(1)
@@ -131,7 +127,6 @@ page_sequence = [
     presentacion,
     tratamientos,
     esperagrupos,
-    precalculos,
     DecisionesAzul,
     DecisionesVerde,
     calculo_eleccion,
