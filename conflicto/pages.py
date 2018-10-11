@@ -73,6 +73,8 @@ class DecisionesVerdeSEC(Page):
 
 class GananciasAzul(Page):
     timeout_seconds = 30
+    def is_displayed(self):
+        return self.player.role() == 'Azul'
     def vars_for_template(self):
         return {
             'eleccion_otro':self.player.get_others_in_group()[0].Eleccion,
@@ -83,6 +85,8 @@ class GananciasAzul(Page):
 
 class GananciasVerde(Page):
     timeout_seconds = 30
+    def is_displayed(self):
+        return self.player.role() == 'Verde'
     def vars_for_template(self):
         return {
             'eleccion_otro':self.player.get_others_in_group()[0].Eleccion,
