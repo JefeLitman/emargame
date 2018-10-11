@@ -104,7 +104,7 @@ class GananciasTotal(Page):
 class esperagrupos(WaitPage):
     wait_for_all_groups = True
 
-class precacalculos(WaitPage):
+class precalculos(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_variables_grupo()
 
