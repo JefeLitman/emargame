@@ -97,17 +97,17 @@ class Group(BaseGroup):
     def set_senal_azar(self,ronda,rondas_totales,consin):
         if (consin):
             if (ronda <= rondas_totales / 2):
-                self.Senal= randint(0,1)
+                self.Senal= randint(0,1) == 1
                 if(self.Senal):
                     self.Mensaje=self.Calidad
         else:
             if (ronda > rondas_totales / 2):
-                self.Senal= randint(0,1)
+                self.Senal= randint(0,1) == 1
                 if (self.Senal):
                     self.Mensaje = self.Calidad
 
     def set_transaccion_azar(self):
-        self.Transaccion= randint(0,1)
+        self.Transaccion= randint(0,1) == 1
 
 class Player(BasePlayer):
     Pagos=models.CurrencyField(initial=c(0))
