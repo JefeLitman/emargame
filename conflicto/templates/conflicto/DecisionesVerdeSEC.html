@@ -10,18 +10,15 @@
 <style media="screen">
       @import url('https://fonts.googleapis.com/css?family=Cabin');
 
-       .boton{
-        background-color: #243e92;
-        border: 1px solid #1a2e6d;
-        color: white;
-        padding: 8px 12px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        cursor: pointer;
-        float: left;
-        font-family: 'Cabin', sans-serif;
+       button{
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+         float: right;
        }
 
        div.encabezado{
@@ -32,7 +29,7 @@
         padding: 0.008px 5px;
       }
 
-       p {
+      p,font {
       font-family: 'Cabin', sans-serif;
       font-size: 20px;
       }
@@ -52,7 +49,7 @@
        font-size: 20px;
       }
 
-       .imagen{
+      .imagen{
       display:block;
       margin:auto;
       }
@@ -83,7 +80,7 @@
   <tr>
     <td style="color:#243e92";>A1</td>
     <td> <font color="#243e92">1000</font>,<font color="#8FC534">1000</font> </td>
-    <td><font color="#243e92">{{group.VariableX}}</font>,<font color="#8FC534">{{group.VariableY}}</font></td>
+    <td><font color="#243e92">{{group.VariableX}}</font>,<font color="#8FC534">{{group.VariableY]}</font></td>
   </tr>
   <tr>
     <td  style="color:#243e92";> A2 </td>
@@ -92,24 +89,19 @@
   </tr>
 </table>
 
-<p> Usted es el participante Verde</p>
-<p> Ahora debes tomar tú decisión.</p>
+<font color="#8FC534"> Usted es el Participante Verde </font>
+<p> Ahora debe tomar su decisión.</p>
 
 
     {% if eleccion_otro == 1 %}
 
-    <p> El participante Azul eligió: A1 </p>
+    <p> El <font  color="#243e92"> participante Azul </font> eligió A1 </p>
 
     {% else %}
 
-    <p> El participante Azul eligió: A2 </p>
+    <p> El <font  color="#243e92"> participante Azul </font> eligió A2 </p>
 
     {% endif %}
-
-<p>Yo elijo:</p>
-<button class="boton" name="Eleccion" value="1">V1</button>
-<button class="boton" name="Eleccion" value="2">V2</button>
-</br>
 
  {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
@@ -124,5 +116,10 @@
             <img class="imagen" src = "{% static 'conflicto/simultaneo_fondo.PNG' %}"/>
         {% endif %}
     {% endif %}
+
+    </br>
+    <button>
+        Siguiente
+    </button>
 
 {% endblock %}

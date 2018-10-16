@@ -29,7 +29,7 @@
         padding: 0.008px 5px;
       }
 
-       p {
+       p,font {
       font-family: 'Cabin', sans-serif;
       font-size: 20px;
       }
@@ -80,7 +80,7 @@
   <tr>
     <td style="color:#243e92";>A1</td>
     <td> <font color="#243e92">1000</font>,<font color="#8FC534">1000</font> </td>
-    <td><font color="#243e92">{{group.VariableX}}</font>,<font color="#8FC534">{{group.VariableY}}</font></td>
+    <td><font color="#243e92">{{group.VariableX}}</font>,<font color="#8FC534">{{group.VariableY]}</font></td>
   </tr>
   <tr>
     <td  style="color:#243e92";> A2 </td>
@@ -89,25 +89,25 @@
   </tr>
 </table>
 
-    <p> Usted es el participante Verde</p>
+    <font color="#8FC534"> Usted es el Participante Verde </font>
 
     {% if player.Eleccion == 1 %}
 
-        <p> Usted eligió: V1 </p>
+        <p> Eligió V1 </p>
 
     {% else %}
 
-        <p> Usted eligió: V2 </p>
+        <p> Eligió V2 </p>
 
     {% endif %}
 
     {% if eleccion_otro == 1 %}
 
-        <p> El participante Azul eligió: A1 </p>
+        <p> El <font color="#8FC534"> participante Verde </font> eligió A1 </p>
 
     {% else %}
 
-        <p> El participante Azul eligió: A2 </p>
+        <p> El <font color="#8FC534"> participante Verde </font> eligió A2 </p>
 
     {% endif %}
 
