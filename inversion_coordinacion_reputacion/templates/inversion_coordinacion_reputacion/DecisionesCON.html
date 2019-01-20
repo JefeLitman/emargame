@@ -62,17 +62,17 @@
 
     {% formfield player.Inversion label="Debe decidir cuántos puntos invertir:" %}
 
-        {% if tratamiento %}
+    {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
-            <img  class="imagen" src = "{% static 'inversion_coordinacion_reputacion/anonimato_fondo.png' %}"/>
+            <img  class="imagen" src = "{% static 'inversion_coordinacion_reputacion/anonimato_azul.png' %}"/>
         {% else %}
-            <img  class="imagen" src = "{% static 'inversion_coordinacion_reputacion/reputacion_fondo.png' %}"/>
+            <img  class="imagen" src = "{% static 'inversion_coordinacion_reputacion/reputacion_verde.png' %}"/>
         {% endif %}
     {% else %}
         {% if numeroronda >= rondastotales %}
-           <img  class="imagen" src = "{% static 'inversion_coordinacion_reputacion/reputacion_fondo.png' %}"/>
+           <img  class="imagen" src = "{% static 'inversion_coordinacion_reputacion/reputacion_azul.png' %}"/>
         {% else %}
-            <img class="imagen" src = "{% static 'inversion_coordinacion_reputacion/anonimato_fondo.png' %}"/>
+            <img class="imagen" src = "{% static 'inversion_coordinacion_reputacion/anonimato_verde.png' %}"/>
         {% endif %}
     {% endif %}
 
