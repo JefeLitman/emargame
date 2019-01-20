@@ -69,15 +69,15 @@
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
-            <img  class="imagen" src = "{% static 'mercados_prohibidos/garrote_azul.png' %}"/>
+            <img  class="imagen" src = "{% static 'garrote_zanahoria/garrote_azul.png' %}"/>
         {% else %}
-            <img  class="imagen" src = "{% static 'mercados_prohibidos/zanahoria_verde.png' %}"/>
+            <img  class="imagen" src = "{% static 'garrote_zanahoria/zanahoria_verde.png' %}"/>
         {% endif %}
     {% else %}
         {% if numeroronda >= rondastotales %}
-           <img  class="imagen" src = "{% static 'mercados_prohibidos/zanahoria_azul.png' %}"/>
+           <img  class="imagen" src = "{% static 'garrote_zanahoria/zanahoria_azul.png' %}"/>
         {% else %}
-            <img class="imagen" src = "{% static 'mercados_prohibidos/garrote_verde.png' %}"/>
+            <img class="imagen" src = "{% static 'garrote_zanahoria/garrote_verde.png' %}"/>
         {% endif %}
     {% endif %}
 
