@@ -106,15 +106,15 @@
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
-            <img  class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_fondo.png' %}"/>
+            <img  class="imagen" src = "{% static 'mercados_prohibidos/mercado_azul.png' %}"/>
         {% else %}
-            <img  class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_prohibidito_fondo.png' %}"/>
+            <img  class="imagen" src = "{% static 'mercados_prohibidos/prohibido_verde.png' %}"/>
         {% endif %}
     {% else %}
         {% if numeroronda >= rondastotales %}
-           <img  class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_prohibidito_fondo.png' %}"/>
+           <img  class="imagen" src = "{% static 'mercados_prohibidos/prohibido_azul.png' %}"/>
         {% else %}
-            <img class="imagen" src = "{% static 'mercados_prohibidos/marihuanita_fondo.png' %}"/>
+            <img class="imagen" src = "{% static 'mercados_prohibidos/mercado_verde.png' %}"/>
         {% endif %}
     {% endif %}
 
