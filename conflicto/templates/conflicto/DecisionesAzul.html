@@ -99,17 +99,17 @@
 <button class="boton" name="Eleccion" value="2">A2</button>
 </br>
 
- {% if tratamiento %}
+    {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
-            <img  class="imagen" src = "{% static 'conflicto/simultaneo_fondo.PNG' %}"/>
+            <img  class="imagen" src = "{% static 'conflicto/simultaneo_azul.png' %}"/>
         {% else %}
-            <img  class="imagen" src = "{% static 'conflicto/secuencial_fondo.PNG' %}"/>
+            <img  class="imagen" src = "{% static 'conflicto/secuencial_verde.png' %}"/>
         {% endif %}
     {% else %}
         {% if numeroronda >= rondastotales %}
-           <img  class="imagen" src = "{% static 'conflicto/secuencial_fondo.PNG' %}"/>
+           <img  class="imagen" src = "{% static 'conflicto/secuencial_azul.png' %}"/>
         {% else %}
-            <img class="imagen" src = "{% static 'conflicto/simultaneo_fondo.PNG' %}"/>
+            <img class="imagen" src = "{% static 'conflicto/simultaneo_verde.png' %}"/>
         {% endif %}
     {% endif %}
 
