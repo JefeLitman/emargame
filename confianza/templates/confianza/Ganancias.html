@@ -79,15 +79,15 @@
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
-            <img  class="imagen" src = "{% static 'confianza/anonimato_fondo.PNG' %}"/>
+            <img  class="imagen" src = "{% static 'confianza/anonimato_azul.PNG' %}"/>
         {% else %}
-            <img  class="imagen" src = "{% static 'confianza/identidad_fondo.PNG' %}"/>
+            <img  class="imagen" src = "{% static 'confianza/identidad_verde.PNG' %}"/>
         {% endif %}
     {% else %}
         {% if numeroronda >= rondastotales %}
-           <img  class="imagen" src = "{% static 'confianza/identidad_fondo.PNG' %}"/>
+           <img  class="imagen" src = "{% static 'confianza/identidad_azul.PNG' %}"/>
         {% else %}
-            <img class="imagen" src = "{% static 'confianza/anonimato_fondo.PNG' %}"/>
+            <img class="imagen" src = "{% static 'confianza/anonimato_verde.PNG' %}"/>
         {% endif %}
     {% endif %}
 
