@@ -179,6 +179,7 @@ page_sequence = [
     DecisionB_CON,
     esperagrupos,
     calculo_ganancias,
+    esperagrupos,
     Ganancias,
     GananciaTotal,
     gracias

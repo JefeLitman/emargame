@@ -169,28 +169,33 @@ ROOM_DEFAULTS = {
 
 ROOMS = [
     {
-        'name': 'emar1',
-        'display_name': 'Sala 1 del EMAR LAB',
+        'name': 'mercados',
+        'display_name': 'Sala del juego Mercados Prohibidos',
     },
     {
-        'name': 'emar2',
-        'display_name': 'Sala 2 del EMAR LAB'
+        'name': 'garrote',
+        'display_name': 'Sala del juego Garrote y Zanahoria'
     },
     {
-        'name': 'emar3',
-        'display_name': 'Sala 3 del EMAR LAB'
+        'name': 'inversion',
+        'display_name': 'Sala del juego Inversion: Coordinacion y Reputacion'
     },
     {
-        'name': 'emar4',
-        'display_name': 'Sala 4 del EMAR LAB'
+        'name': 'confianza',
+        'display_name': 'Sala del juego Confianza'
     },
     {
-        'name': 'emar5',
-        'display_name': 'Sala 5 del EMAR LAB'
+        'name': 'conflicto',
+        'display_name': 'Sala del juego Conflicto 2x2'
+    },
+    {
+        'name': 'senales',
+        'display_name': 'Sala del juego Señales'
+    },
+    {
+        'name': 'renta',
+        'display_name': 'Sala del juego Buscadores de Renta'
     }
 ]
-
-#Configuracion del servicio de sentry de oTree (Es gratuito); SENTRY_DSN
-SENTRY_DSN = 'http://63bf6d0246c949bcbdda573922c8ce46:b4cfda43a85943b78a8b2aebd4f3e797@sentry.otree.org/224'
 
 otree.settings.augment_settings(globals())
