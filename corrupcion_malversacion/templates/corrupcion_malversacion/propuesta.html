@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Propuesta
+{% endblock %}
+
+{% block content %}
+
+    {% formfield player.propuesta label='Por favor ingrese su propuesta:' %}
+
+    {% next_button %}
+
+{% endblock %}

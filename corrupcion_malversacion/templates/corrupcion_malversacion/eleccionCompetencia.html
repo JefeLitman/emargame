@@ -1,0 +1,159 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Haz la prueba!
+{% endblock %}
+
+{% block content %}
+
+    {% if aleatorio == 1 %}
+    
+        <p> Complete la secuencia M,T,W,T,F...</p>
+            <input type="radio" name="prueba"  > S,D<br>
+            <input type="radio" name="prueba" id="correcto" > S,S<br>
+            <input type="radio" name="prueba"  > M,T<br>
+            <input type="radio" name="prueba"  > F,T<br>
+    
+    {% elif aleatorio == 2 %}
+    
+        <p> Complete la secuencia 2,3,5,7...</p>
+            <input type="radio" name="prueba" id="correcto"> 9,11 <br>
+            <input type="radio" name="prueba" > 8,9<br>
+            <input type="radio" name="prueba" > 11,13<br>
+            <input type="radio" name="prueba" > 2,3 <br>
+    
+    {% elif aleatorio == 3 %}
+    
+        <p> Complete la secuencia E,F,M,A,M...</p>
+            <input type="radio" name="prueba" > A,M<br>
+            <input type="radio" name="prueba" id="correcto"> J,J<br>
+            <input type="radio" name="prueba" > A,S<br>
+            <input type="radio" name="prueba" > O,N<br>
+    
+    {% elif aleatorio == 4 %}
+    
+        <p> ¿Cuál de las formas marcadas con una letra se parece más a las tres formas no marcadas con letra que aparecen a la izquierda? </p>
+        <img class="imagen" src = "{% static 'malversacion/test_1.png'%}" img> <br> <br>
+            <input type="radio" name="prueba"> <img class="imagen" src = "{% static 'malversacion/test_1_a.png'%}" img> <br>
+            <input type="radio" name="prueba"> <img class="imagen" src = "{% static 'malversacion/test_1_b.png'%}" img> <br>
+            <input type="radio" name="prueba"> <img class="imagen" src = "{% static 'malversacion/test_1_c.png'%}" img> <br>
+            <input type="radio" name="prueba" id="correcto"> <img class="imagen" src = "{% static 'malversacion/test_1_d.png'%}" img> <br>
+    
+    {% elif aleatorio == 5 %}
+    
+        <p> Un número y su consecutivo equivalen a 7</p>
+            <input type="radio" name="prueba" > 6 y 1 <br>
+            <input type="radio" name="prueba" id="correcto"> 3 y 4 <br>
+            <input type="radio" name="prueba" > 5 y 2 <br>
+            <input type="radio" name="prueba" > 7 y 0 <br>
+    
+    {% elif aleatorio == 6 %}
+    
+        <p> ¿Cuál debe ser la cuarta fila de letras que faltan? </p>
+        <img class="imagen" src = "{% static 'malversacion/test_2.PNG'%}" img> <br>
+            <input type="radio" name="prueba" id="correcto"> E C A B D <br>
+            <input type="radio" name="prueba" > C A D B E <br>
+            <input type="radio" name="prueba" > D E A B C <br>
+        
+    {% elif aleatorio == 7 %}
+        
+        <p> Si el hijo de John es el padre de mi hijo, ¿qué parentesco tengo yo con John? </p>
+            <input type="radio" name="prueba" id="correcto"> Su hijo  <br>
+            <input type="radio" name="prueba"> Su abuelo <br>
+            <input type="radio" name="prueba"> Soy su abuelo <br>
+            <input type="radio" name="prueba"> Yo soy John  <br>
+        
+    {% elif aleatorio == 8 %}
+        
+        <p> ¿Qué número debe aparecer en la cabeza del tercer hombre?  </p>
+        <img class="imagen" src = "{% static 'malversacion/test_3.PNG'%}" img> <br>
+            <input type="radio" name="prueba"> 5 <br>
+            <input type="radio" name="prueba" id="correcto"> 3  <br>
+            <input type="radio" name="prueba"> 4 <br>
+        
+    {% elif aleatorio == 9 %}
+        
+            <p> Cada uno de tres hermanos tiene una hermana, ¿cuántos suman todos? </p>
+                <input type="radio" name="prueba"> 3 <br>
+                <input type="radio" name="prueba"> 9 <br>
+                <input type="radio" name="prueba" id="correcto"> 4 <br>
+                <input type="radio" name="prueba"> 9 <br>
+        
+    {% elif aleatorio == 10 %}
+        
+            <p>  Si me encuentro en una maratón y en plena carrera le ganó al segundo, ¿en qué posición llego? </p>
+                <input type="radio" name="prueba"> Primero <br>
+                <input type="radio" name="prueba" id="correcto"> Segundo <br>
+                <input type="radio" name="prueba"> Tercero<br>
+        
+    {% elif aleatorio == 11 %}
+        
+                <p> Si el 2% de "algo" es cuatro ¿Cuál es el valor de ese "algo"? </p>
+                    <input type="radio" name="prueba"> 50 <br>
+                    <input type="radio" name="prueba" id="correcto"> 200 <br>
+                    <input type="radio" name="prueba"> 80 <br>
+                    <input type="radio" name="prueba"> 400 <br>
+        
+    {% elif aleatorio == 12 %}
+        
+                <p> ¿Cuál es la figura que falta? </p>
+                    <img class="imagen" src = "{% static 'malversacion/test_4.PNG'%}" img> </div> <br> <br>
+                    <input type="radio" name="prueba" id="correcto">
+                    <img class="imagen" src = "{% static 'malversacion/test_4a.PNG'%}" img> <br>
+                    <input type="radio" name="prueba">
+                    <img class="imagen" src = "{% static 'malversacion/test_4b.PNG'%}" img> <br>
+                    <input type="radio" name="prueba">
+                    <img class="imagen" src = "{% static 'malversacion/test_4c.PNG'%}" img>
+        
+    {% elif aleatorio == 13 %}
+        
+                <p> Un granjero tiene 10 semillas y por cada semilla consigue cinco frutos que pueden volverse en nuevas semillas o productos para la venta.
+                    ¿Cuántos frutos debe vender para tener siempre la misma cantidad de semillas? </p>
+                    <input type="radio" name="prueba" id="correcto"> 40<br>
+                    <input type="radio" name="prueba"> 50 <br>
+                    <input type="radio" name="prueba"> 10 <br>
+                    <input type="radio" name="prueba"> 20 <br>
+        
+    {% elif aleatorio == 14 %}
+        
+                <p> ¿Cuánto son 3/12 de un año? </p>
+                    <input type="radio" name="prueba"> 8 meses <br>
+                    <input type="radio" name="prueba"> Un mes <br>
+                    <input type="radio" name="prueba"> Un semestre <br>
+                    <input type="radio" name="prueba" id="correcto"> Un trimestre <br>
+        
+    {% elif aleatorio == 15 %}
+        
+                <p> Si  2 * (z + 2) = 8 ¿Cuál es el valor de z? </p>
+                    <input type="radio" name="prueba"> 1 <br>
+                    <input type="radio" name="prueba" id="correcto"> 2 <br>
+                    <input type="radio" name="prueba"> 8 <br>
+                    <input type="radio" name="prueba"> 6 <br>
+        
+    {% endif %}    
+
+    <div style="display:none">
+        <button name="puntaje" value="10" id="boton_correcto"></button>
+        <button name="puntaje" value="0" id="boton_incorrecto"></button>
+    </div>
+
+    <br>
+    <button type="button" class="btn btn-primary btn-large" onclick="siguiente()">Siguiente</button>
+    
+    
+    <script>
+        function siguiente()
+        {
+            if (document.getElementById("correcto").checked)
+            {
+                document.getElementById("boton_correcto").click();
+            }
+            else
+            {
+                document.getElementById("boton_incorrecto").click();
+            }
+        }
+    </script>
+
+{% endblock %}

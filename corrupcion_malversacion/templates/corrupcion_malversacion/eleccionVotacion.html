@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Elección por medio del mecanismo de votación
+{% endblock %}
+{% block content %}
+
+    {% if contador == 1%}
+        <h2 color="#0d0d4c"> Primera vuelta! </h2>
+    {% elif contador == 2 %}
+        <h2 color="#0d0d4c"> Segunda vuelta! </h2>
+    {% else %}
+        <h2 color="#0d0d4c"> Tercera vuelta! </h2>
+    {% endif %}
+
+    <table class="table table-bordered table-hover table-condensed draggable">
+        <tr>
+            <th>Jugador</th>
+            {% for id in id_otros %}
+            <td>{{id}}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>Propuesta</th>
+            {% for propuesta in propuestas %}
+            <td>{{propuesta}}</td>
+            {% endfor %}
+        </tr>
+</table>
+    <p> Decida por cual jugador va a votar </p>
+    <div>
+        {% for id in id_otros %}
+            <button name="voto" value="Jugador {{id}}" class="btn btn-primary btn-large"> Jugador {{id}} </button>
+        {% endfor %}
+    </div>
+
+{% endblock %}

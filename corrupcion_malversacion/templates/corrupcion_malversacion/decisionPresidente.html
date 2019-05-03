@@ -1,0 +1,57 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Usted es presidente!
+{% endblock %}
+
+{% block content %}
+
+    {% formfield group.BolsaPublica label='¿Cuánto dejar en la bolsa pública?' %}
+
+    {% formfield group.CuentaPrivadaPresidente label='¿Con cuánto desea quedarse en su cuenta privada?' %}
+
+    <div>
+        <button type="button" id="siguiente" class="btn btn-primary btn-large">Siguiente</button>
+        <div id="warning" class="alert alert-danger" style="visibility: hidden;">
+            <strong>Error!</strong> Porfavor, asegurese que la suma de los elementos sea 5000.
+        </div>
+        <div style="display: none;">
+          <button id="next" >Si</button>
+        </div>
+    </div>
+
+    <script>
+        function validar()
+        {
+            var cpub = parseInt(document.getElementById("id_BolsaPublica").value);
+            var cpp = parseInt(document.getElementById("id_CuentaPrivadaPresidente").value);
+
+            if (cpub + cpp == 5000)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        function mostrar()
+        {
+            document.getElementById("warning").style.visibility="hidden";
+        }
+        function enviar() {
+          if(validar())
+          {
+            document.getElementById("next").click();
+          }
+          else
+          {
+            document.getElementById("warning").style.visibility="visible";
+            window.setTimeout(mostrar, 3000);
+          }
+        }
+        document.getElementById("siguiente").onclick=enviar;
+    </script>
+
+{% endblock %}

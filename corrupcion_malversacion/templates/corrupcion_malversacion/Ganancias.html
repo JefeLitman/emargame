@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Ganancias
+{% endblock %}
+
+{% block content %}
+
+    <p> El presidente decidió quedarse con {{group.CuentaPrivadaPresidente}} </p> 
+    <p> La rentabilidad de la cuenta pública fue {{rentabilidad}} </p>
+    <p> Tu ganancia en esta ronda fue {{player.cuenta}} </p>
+
+    {% next_button %}
+
+{% endblock %}

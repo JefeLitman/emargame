@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Opinión
+{% endblock %}
+
+{% block content %}
+
+    <p> ¿Usted cree que el presidente va a cumplir sus propuestas? </p>
+    <div>
+            <button name="opinion" value="True" class="btn btn-primary btn-large"> Si </button>
+            <button name="opinion" value="False" class="btn btn-primary btn-large"> No  </button>
+        </div>
+
+{% endblock %}

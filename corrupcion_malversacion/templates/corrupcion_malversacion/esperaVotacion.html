@@ -1,0 +1,7 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block content %}
+{% if hubo_presidente == False %}
+    <script>window.history.go(-1)</script>
+{% endif %}
+{% endblock %}

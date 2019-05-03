@@ -1,0 +1,54 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instrucciones
+{% endblock %}
+
+{% block content %}
+
+<div style= display:none; id="oculto">
+<p id="pregunta1"> Si usted es elegido presidente envia $5000  a la cuenta pública, ¿cuánto va a ser su ganancia total? </p>
+	    <input type="radio" name="prueba"  >$4100<br>
+            <input type="radio" name="prueba" id="correcto" >$4000<br>
+            <input type="radio" name="prueba"  >$4001<br>
+            <input type="radio" name="prueba"  >$5000<br>
+
+<p id="pregunta2"> Si usted es elegido presidente y decide enviar a su cuenta privada $4000 y a la cuenta publica $1000
+entonces su ganancia total, ¿cuánto será? <p>
+	    <input type="radio" name="prueba" id="correcto" >$4200<br>
+            <input type="radio" name="prueba"  >$4100 <br>
+            <input type="radio" name="prueba"  >$4300 <br>
+            <input type="radio" name="prueba"  >$4800 <br>
+</div>
+
+<div id="warning" class="alert alert-danger" style="display: none;">
+            <strong>Error!</strong> ¡Respuesta incorrecta!
+</div>
+
+    <script>
+        function ocultar()
+        {
+            document.getElementById("warning").style.display="none";
+        }
+        function siguiente()
+        {
+            if (document.getElementById("correcto").checked)
+            {
+                document.getElementById("boton_correcto").click();
+            }
+            else
+            {
+                document.getElementById("warning").style.display="block";
+                window.setTimeout(ocultar, 3000);
+            }
+        }
+    </script>
+
+<div style="display:none">
+        <button id="boton_correcto"></button>
+</div>
+
+<button type="button" class="btn btn-primary btn-large" onclick="siguiente()">Siguiente</button>
+
+{% endblock %}
