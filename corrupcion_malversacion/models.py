@@ -5,7 +5,7 @@ from otree.api import (
 from itertools import cycle
 from random import choice
 
-author = 'Sebastian Sequeda & Mayra Riascos & Edgar Rangel'
+author = 'Santiago Sequeda & Mayra Riascos & Edgar Rangel'
 
 doc = """
 Your app description
@@ -15,7 +15,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'malversacion'
     players_per_group = 5
-    num_rounds = 1
+    num_rounds = 10
     dotacion = c(5000)
     multiplicador = 2
 
@@ -121,7 +121,7 @@ class Player(BasePlayer):
     genero = models.StringField(choices=['Femenino','Masculino'])
     edad = models.IntegerField()
     semestre = models.IntegerField()
-    participacion=estudiante = models.BooleanField()
+    participacion = models.BooleanField()
     estudiante = models.BooleanField(choices=[[True, 'Si' ], [False, 'No']])
     carrera= models.StringField()
     universidad= models.StringField()
