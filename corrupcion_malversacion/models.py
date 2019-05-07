@@ -121,7 +121,7 @@ class Player(BasePlayer):
     genero = models.StringField(choices=['Femenino','Masculino'])
     edad = models.IntegerField()
     semestre = models.IntegerField()
-    participacion=estudiante = models.BooleanField()
+    participacion = models.BooleanField()
     estudiante = models.BooleanField(choices=[[True, 'Si' ], [False, 'No']])
     carrera= models.StringField()
     universidad= models.StringField()
