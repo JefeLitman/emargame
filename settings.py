@@ -83,7 +83,7 @@ Juegos EMAR LAB
 SESSION_CONFIG_DEFAULTS = {
     'participation_fee': 0,
     'real_world_currency_per_point': 1,
-    'Rounds':20,
+    'Rounds':10,
     'ConSin':False,
     'doc':"""
     Rounds: Número total de periodos que se jugarán. Por defecto en 20*.<br/>
@@ -148,15 +148,14 @@ SESSION_CONFIGS = [
         'app_sequence': ['buscadores_renta']
     },
     {
-        'name':'corrupcion',
-        'display_name': 'Experimento',
-        'num_demo_participants':4,
-        'app_sequence': ['corrupcion'],
-        'Rounds':10,
-        'ConSin':1,
+        'name':'corrupcion_malversacion',
+        'display_name': 'Juego de la Malversacion',
+        'num_demo_participants':15,
+        'app_sequence': ['corrupcion_malversacion'],
+        'Rounds':1,
+        'ConSin':None,
         'doc':"""
-        Rounds: Número total de periodos que se jugarán. Por defecto en 2.<br/>
-        ConSin: Tomará un valor entre 1 y 4 para los diferentes tipos de tratamiento.
+        Rounds: Número total de periodos que se jugarán (Maximo 10). Por defecto en 1.
         """
     }
 ]
@@ -195,6 +194,10 @@ ROOMS = [
     {
         'name': 'renta',
         'display_name': 'Sala del juego Buscadores de Renta'
+    },
+    {
+        'name': 'malversacion',
+        'display_name': 'Sala del juego de la Malversacion'
     }
 ]
 

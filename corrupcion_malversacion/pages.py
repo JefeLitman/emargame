@@ -21,15 +21,15 @@ class preguntas(Page):
 
 class instruccionesAzar(Page):
     def is_displayed(self):
-        return self.group.id_grupo == 1
+        return self.group.id_grupo == 1 and  self.round_number == 1
 
 class instruccionesCompetencia(Page):
     def is_displayed(self):
-        return self.group.id_grupo == 2
+        return self.group.id_grupo == 2 and  self.round_number == 1
 
 class instruccionesVotacion(Page):
     def is_displayed(self):
-        return self.group.id_grupo == 3
+        return self.group.id_grupo == 3 and  self.round_number == 1
 
 class propuesta(Page):
     form_model = 'player'
@@ -138,7 +138,7 @@ class Ganancias(Page):
 
 class gracias(Page):
     def is_displayed(self):
-        return self.round_number == Constants.num_rounds
+        return self.round_number == self.session.config["Rounds"]
 
 page_sequence = [
     introduccion,
