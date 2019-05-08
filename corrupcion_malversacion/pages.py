@@ -31,6 +31,10 @@ class instruccionesVotacion(Page):
     def is_displayed(self):
         return self.group.id_grupo == 3 and  self.round_number == 1
 
+class consentimiento(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
 class propuesta(Page):
     form_model = 'player'
     form_fields = ['propuesta']
@@ -146,6 +150,7 @@ page_sequence = [
     instruccionesAzar,
     instruccionesCompetencia,
     instruccionesVotacion,
+    consentimiento,
     preguntas,
     propuesta,
     esperaJugadores,

@@ -7,23 +7,23 @@
 
 {% block content %}
 
-<div style= display:none; id="oculto">
+<div>
 <p id="pregunta1"> Si usted es elegido presidente envia $5000  a la cuenta pública, ¿cuánto va a ser su ganancia total? </p>
 	    <input type="radio" name="prueba"  >$4100<br>
-            <input type="radio" name="prueba" id="correcto" >$4000<br>
+            <input type="radio" name="prueba" id="correcto1" >$4000<br>
             <input type="radio" name="prueba"  >$4001<br>
             <input type="radio" name="prueba"  >$5000<br>
 
 <p id="pregunta2"> Si usted es elegido presidente y decide enviar a su cuenta privada $4000 y a la cuenta publica $1000
 entonces su ganancia total, ¿cuánto será? <p>
-	    <input type="radio" name="prueba" id="correcto" >$4200<br>
+	    <input type="radio" name="prueba" id="correcto2" >$4200<br>
             <input type="radio" name="prueba"  >$4100 <br>
             <input type="radio" name="prueba"  >$4300 <br>
             <input type="radio" name="prueba"  >$4800 <br>
 </div>
 
 <div id="warning" class="alert alert-danger" style="display: none;">
-            <strong>Error!</strong> ¡Respuesta incorrecta!
+            <strong>Error!</strong> ¡Respuestas incorrectas!
 </div>
 
     <script>
@@ -33,7 +33,7 @@ entonces su ganancia total, ¿cuánto será? <p>
         }
         function siguiente()
         {
-            if (document.getElementById("correcto").checked)
+            if (document.getElementById("correcto1").checked && document.getElementById("correcto2").checked)
             {
                 document.getElementById("boton_correcto").click();
             }
