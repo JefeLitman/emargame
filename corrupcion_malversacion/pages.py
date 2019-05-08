@@ -8,6 +8,12 @@ class introduccion(Page):
     def is_displayed(self):
         return self.round_number == 1
 
+class consentimiento(Page):
+    form_model = 'player'
+    form_fields = ['consentimiento']
+    def is_displayed(self):
+        return self.round_number == 1
+
 class formulario(Page):
     form_model = 'player'
     form_fields = ['nombre', 'celular', 'correo', 'genero', 'edad','semestre', 'participacion','estudiante','carrera','universidad','consentimiento','profesion']
@@ -30,10 +36,6 @@ class instruccionesCompetencia(Page):
 class instruccionesVotacion(Page):
     def is_displayed(self):
         return self.group.id_grupo == 3 and  self.round_number == 1
-
-class consentimiento(Page):
-    def is_displayed(self):
-        return self.round_number == 1
 
 class propuesta(Page):
     form_model = 'player'
@@ -146,11 +148,11 @@ class gracias(Page):
 
 page_sequence = [
     introduccion,
-    formulario,
+    consentimiento,
+    #formulario,
     instruccionesAzar,
     instruccionesCompetencia,
     instruccionesVotacion,
-    consentimiento,
     preguntas,
     propuesta,
     esperaJugadores,
