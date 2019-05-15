@@ -91,9 +91,15 @@ class eleccionVotacion(Page):
     form_fields = ['voto']
 
     def vars_for_template(self):
+        id_otros=[]
+        propuestas = []
+        for j in self.player.get_others_in_group():
+            if j.propuesta != None:
+                id_otros.append(j.id_in_group)
+                propuestas.append(j.propuesta)
         return {
-            'id_otros':[j.id_in_group for j in self.player.get_others_in_group()],
-            'propuestas':[j.propuesta for j in self.player.get_others_in_group()],
+            'id_otros':id_otros,
+            'propuestas':propuestas,
             'contador' : self.group.contador
         }
     def is_displayed(self):
@@ -134,16 +140,15 @@ class opinionJugadores(Page):
 
 class calcularganancias(WaitPage):
     def after_all_players_arrive(self):
-        flag = True
-        for jugador in self.group.get_players():
-            if (jugador.consentimiento ==False):
-                flag = False
-        if(flag):
-            self.group.calcularGananciasJugadores()
+        self.group.calcularGananciasJugadores()
 
 class Ganancias(Page):
     def vars_for_template(self):
-        return {'rentabilidad':(self.group.BolsaPublica * Constants.multiplicador)/len(self.group.get_players())}
+        longitud = 0
+        for j in self.group.get_players():
+            if (j.propuesta != None):
+                longitud = longitud + 1
+        return {'rentabilidad':(self.group.BolsaPublica * Constants.multiplicador)/longitud}
     def is_displayed(self):
         return self.player.consentimiento == True
 

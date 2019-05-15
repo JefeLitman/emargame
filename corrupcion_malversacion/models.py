@@ -96,7 +96,11 @@ class Group(BaseGroup):
         self.set_presidente(presidente)
 
     def calcularGananciasJugadores(self):
-        rentabilidad = (self.BolsaPublica * Constants.multiplicador)/len(self.get_players())
+        longitud = 0
+        for j in self.get_players():
+            if (j.propuesta != None):
+                longitud = longitud + 1
+        rentabilidad = (self.BolsaPublica * Constants.multiplicador)/longitud
         for j in self.get_players():
             if j.es_presidente == True:
                 j.cuenta = rentabilidad + self.CuentaPrivadaPresidente
