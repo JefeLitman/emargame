@@ -34,7 +34,6 @@ class Group(BaseGroup):
     Ej: 'id_jugador_xid_jugador_y' o '231...' """)
     BolsaPublica = models.CurrencyField(min=0,max=5000)
     CuentaPrivadaPresidente = models.CurrencyField(min=0,max=5000)
-    aleatorio = models.IntegerField()
     contador = models.IntegerField()
 
     def inicializar_orden_llegada(self):
@@ -65,8 +64,7 @@ class Group(BaseGroup):
 
     def agregar_jugador(self, jugador):
         extra = self.contador_jugadores()
-        if jugador.puntaje == 10:
-            jugador.puntaje = jugador.puntaje + extra
+        jugador.puntaje = jugador.puntaje + extra
         self.orden_llegada = self.orden_llegada + str(jugador.id_in_group)
 
     def set_presidente_votacion(self):

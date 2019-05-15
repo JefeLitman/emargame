@@ -54,7 +54,6 @@ class propuesta_votacion(Page):
 class esperaJugadores(WaitPage):
     def after_all_players_arrive(self):
         self.group.inicializar_orden_llegada()
-        self.group.aleatorio = randint(1,15)
         self.group.contador = 1
 
 class eleccionAzar(WaitPage):
@@ -71,7 +70,7 @@ class eleccionCompetencia(Page):
         return self.group.id_grupo==2 and self.player.consentimiento == True
     def vars_for_template(self):
         return {
-            'aleatorio': self.group.aleatorio
+            'ronda': self.round_number
         }
 
 class termino_prueba(Page):
