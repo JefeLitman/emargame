@@ -32,8 +32,8 @@ class Group(BaseGroup):
     orden_llegada = models.StringField(doc="""Sera un array de letras que contendra el orden de 
     llegada de los jugadores en las diferentes rondas:
     Ej: 'id_jugador_xid_jugador_y' o '231...' """)
-    BolsaPublica = models.CurrencyField(min=0,max=5000)
-    CuentaPrivadaPresidente = models.CurrencyField(min=0,max=5000)
+    BolsaPublica = models.CurrencyField(min=0,max=Constants.dotacion)
+    CuentaPrivadaPresidente = models.CurrencyField(min=0,max=Constants.dotacion)
     contador = models.IntegerField()
 
     def inicializar_orden_llegada(self):
