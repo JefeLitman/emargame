@@ -112,7 +112,7 @@ class Player(BasePlayer):
     voto = models.StringField()
     opinion = models.BooleanField(choices=[[True, 'Si' ], [False, 'No']])
     nombre= models.StringField()
-    celular= models.StringField()
+    celular= models.IntegerField()
     correo= models.StringField()
     genero = models.StringField(choices=['Femenino','Masculino'])
     edad = models.IntegerField()
