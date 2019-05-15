@@ -16,26 +16,26 @@ class consentimiento(Page):
 
 class formulario(Page):
     form_model = 'player'
-    form_fields = ['nombre', 'celular', 'correo', 'genero', 'edad','semestre', 'participacion','estudiante','carrera','universidad','consentimiento','profesion']
+    form_fields = ['nombre', 'celular', 'correo', 'genero', 'edad','semestre', 'participacion','estudiante','carrera','universidad','profesion']
 
     def is_displayed(self):
-        return self.round_number == 1
+        return self.round_number == 1 and  self.player.consentimiento == True
 
 class preguntas(Page):
     def is_displayed(self):
-        return self.round_number == 1
+        return self.round_number == 1 and  self.player.consentimiento == True
 
 class instruccionesAzar(Page):
     def is_displayed(self):
-        return self.group.id_grupo == 1 and  self.round_number == 1
+        return self.group.id_grupo == 1 and  self.round_number == 1 and  self.player.consentimiento == True
 
 class instruccionesCompetencia(Page):
     def is_displayed(self):
-        return self.group.id_grupo == 2 and  self.round_number == 1
+        return self.group.id_grupo == 2 and  self.round_number == 1 and  self.player.consentimiento == True
 
 class instruccionesVotacion(Page):
     def is_displayed(self):
-        return self.group.id_grupo == 3 and  self.round_number == 1
+        return self.group.id_grupo == 3 and  self.round_number == 1 and  self.player.consentimiento == True
 
 class propuesta(Page):
     form_model = 'player'
@@ -46,7 +46,7 @@ class propuesta_votacion(Page):
     form_fields = ['propuesta']
 
     def is_displayed(self):
-        return self.group.id_grupo == 3 and self.group.set_presidente_votacion() == False
+        return self.group.id_grupo == 3 and self.group.set_presidente_votacion() == False and  self.player.consentimiento == True
 
 class esperaJugadores(WaitPage):
     def after_all_players_arrive(self):
@@ -65,7 +65,7 @@ class eleccionCompetencia(Page):
     form_model = 'player'
     form_fields = ['puntaje']
     def is_displayed(self):
-        return self.group.id_grupo==2
+        return self.group.id_grupo==2 and self.player.consentimiento == True
     def vars_for_template(self):
         return {
             'aleatorio': self.group.aleatorio
@@ -74,7 +74,7 @@ class eleccionCompetencia(Page):
 class termino_prueba(Page):
     timeout_seconds = 1
     def is_displayed(self):
-        return self.group.id_grupo == 2
+        return self.group.id_grupo == 2 and self.player.consentimiento == True
     def before_next_page(self):
         self.group.agregar_jugador(self.player)
 
@@ -98,7 +98,7 @@ class eleccionVotacion(Page):
             'contador' : self.group.contador
         }
     def is_displayed(self):
-        return self.group.id_grupo == 3 and self.group.set_presidente_votacion() == False
+        return self.group.id_grupo == 3 and self.group.set_presidente_votacion() == False and  self.player.consentimiento == True
 
 
 class esperaTodosVoten(WaitPage):
@@ -111,28 +111,28 @@ class esperaTodosPropongan(WaitPage):
     def after_all_players_arrive(self):
         pass
     def is_displayed(self):
-        return self.group.id_grupo == 3
+        return self.group.id_grupo == 3 and  self.player.consentimiento == True
 
 class eleccionVotacionAzar(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_presidente_votacion_azar()
 
     def is_displayed(self):
-        return self.group.id_grupo == 3 and self.group.set_presidente_votacion() == False
+        return self.group.id_grupo == 3 and self.group.set_presidente_votacion() == False and  self.player.consentimiento == True
 
 class decisionPresidente(Page):
     form_model = 'group'
     form_fields = ['BolsaPublica', 'CuentaPrivadaPresidente']
 
     def is_displayed(self):
-        return  self.player.es_presidente == True
+        return  self.player.es_presidente == True and  self.player.consentimiento == True
 
 class opinionJugadores(Page):
     form_model = 'player'
     form_fields = ['opinion']
 
     def is_displayed(self):
-        return  self.player.es_presidente == False 
+        return  self.player.es_presidente == False and  self.player.consentimiento == True
 
 class calcularganancias(WaitPage):
     def after_all_players_arrive(self):
@@ -141,15 +141,17 @@ class calcularganancias(WaitPage):
 class Ganancias(Page):
     def vars_for_template(self):
         return {'rentabilidad':(self.group.BolsaPublica * Constants.multiplicador)/len(self.group.get_players())}
+    def is_displayed(self):
+        return self.player.consentimiento == True
 
 class gracias(Page):
     def is_displayed(self):
-        return self.round_number == self.session.config["Rounds"]
+        return self.round_number == self.session.config["Rounds"] or self.player.consentimiento == False
 
 page_sequence = [
     introduccion,
     consentimiento,
-    #formulario,
+    formulario,
     instruccionesAzar,
     instruccionesCompetencia,
     instruccionesVotacion,

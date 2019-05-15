@@ -47,6 +47,7 @@ provista y que acepta recibir información y participar en los estudios realizad
 
 <p> {% formfield player.consentimiento label='Autorización de consentimiento informado' %} </p>
 
-    {% next_button %}
+    <button class="btn btn-default" name="consentimiento" value="True">Si autorizo</button>
+    <button class="btn btn-default" name="consentimiento" value="False">No autorizo</button>
 
 {% endblock %}

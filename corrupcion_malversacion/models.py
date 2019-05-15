@@ -11,12 +11,11 @@ doc = """
 Your app description
 """
 
-
 class Constants(BaseConstants):
     name_in_url = 'malversacion'
     players_per_group = 5
     num_rounds = 10
-    dotacion = c(5000)
+    dotacion = c(3000)
     multiplicador = 2
 
 class Subsession(BaseSubsession):
@@ -24,7 +23,6 @@ class Subsession(BaseSubsession):
         tipos_grupo = cycle([1,2,3])
         for grupo in self.get_groups():
             grupo.id_grupo = next(tipos_grupo)
-
 
 class Group(BaseGroup):
     id_grupo = models.IntegerField(doc="""Identificador del tipo de grupo de los integrantes.
