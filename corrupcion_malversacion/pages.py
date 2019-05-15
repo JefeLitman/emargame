@@ -41,6 +41,9 @@ class propuesta(Page):
     form_model = 'player'
     form_fields = ['propuesta']
 
+    def is_displayed(self):
+        return self.player.consentimiento == True
+
 class propuesta_votacion(Page):
     form_model = 'player'
     form_fields = ['propuesta']
