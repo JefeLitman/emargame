@@ -90,9 +90,6 @@ class eleccionVotacion(Page):
     form_model = 'player'
     form_fields = ['voto']
 
-    ##def voto_choices(self):
-        #choices=['Jugador '+str(p.id_in_group) for p in self.player.get_others_in_group()]
-        #return choices
     def vars_for_template(self):
         return {
             'id_otros':[j.id_in_group for j in self.player.get_others_in_group()],
@@ -101,7 +98,6 @@ class eleccionVotacion(Page):
         }
     def is_displayed(self):
         return self.group.id_grupo == 3 and self.group.set_presidente_votacion() == False and  self.player.consentimiento == True
-
 
 class esperaTodosVoten(WaitPage):
     def after_all_players_arrive(self):
@@ -113,14 +109,14 @@ class esperaTodosPropongan(WaitPage):
     def after_all_players_arrive(self):
         pass
     def is_displayed(self):
-        return self.group.id_grupo == 3 and  self.player.consentimiento == True
+        return self.group.id_grupo == 3
 
 class eleccionVotacionAzar(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_presidente_votacion_azar()
 
     def is_displayed(self):
-        return self.group.id_grupo == 3 and self.group.set_presidente_votacion() == False and  self.player.consentimiento == True
+        return self.group.id_grupo == 3 and self.group.set_presidente_votacion() == False
 
 class decisionPresidente(Page):
     form_model = 'group'
@@ -138,7 +134,12 @@ class opinionJugadores(Page):
 
 class calcularganancias(WaitPage):
     def after_all_players_arrive(self):
-        self.group.calcularGananciasJugadores()
+        flag = True
+        for jugador in self.group.get_players():
+            if (jugador.consentimiento ==False):
+                flag = False
+        if(flag):
+            self.group.calcularGananciasJugadores()
 
 class Ganancias(Page):
     def vars_for_template(self):
