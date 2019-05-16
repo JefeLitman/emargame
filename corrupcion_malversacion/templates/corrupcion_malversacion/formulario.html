@@ -9,7 +9,12 @@
 
     <p> {% formfield player.nombre label='Nombre:' %} </p>
     <p> {% formfield player.celular label='Celular:' %} </p>
-    <email> {% formfield player.correo label='Correo:' %} </email>
+    <p><div class="form-group required">
+            <label class="col-form-label" for="id_correo">Correo:</label>
+            <div class="controls  field-correo">
+                <input type="email" name="correo" required id="id_correo" class="form-control" />
+            </div>
+    </div></p>
     <p> {% formfield player.genero label='Género:' %} </p>
     <p> {% formfield player.edad label='Edad:' %} </p>
     <p> {% formfield player.semestre label='Semestre:' %} </p>
