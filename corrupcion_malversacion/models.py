@@ -46,18 +46,27 @@ class Group(BaseGroup):
                 contador = contador - 1
         return contador
 
+    def get_jugadores_aceptaron(self):
+        jugadores = []
+        for j in self.get_players():
+            if (j.consentimiento):
+                jugadores.append(j)
+        return jugadores
+
     def set_presidente(self,presidente):
         presidente.es_presidente = True
         for otros in presidente.get_others_in_group():
             otros.es_presidente = False
 
     def set_Presidente_Azar(self):
-        presidente = choice(self.get_players())
+        jugadores = self.get_jugadores_aceptaron()
+        presidente = choice(jugadores)
         self.set_presidente(presidente)
 
     def set_presidente_competencia(self):
-        puntajes = [j.puntaje for j in self.get_players()]
-        for jugador in self.get_players():
+        jugadores = self.get_jugadores_aceptaron()
+        puntajes = [j.puntaje for j in jugadores]
+        for jugador in jugadores:
             if (jugador.puntaje == max(puntajes)):
                 presidente = jugador
         self.set_presidente(presidente)
@@ -68,7 +77,7 @@ class Group(BaseGroup):
         self.orden_llegada = self.orden_llegada + str(jugador.id_in_group)
 
     def set_presidente_votacion(self):
-        jugadores=self.get_players()
+        jugadores = self.get_jugadores_aceptaron()
         votos = [p.voto for p in jugadores]
         contador = 0
         for i in jugadores:
@@ -84,7 +93,7 @@ class Group(BaseGroup):
             return True
 
     def set_presidente_votacion_azar(self):
-        jugadores = self.get_players()
+        jugadores = self.get_jugadores_aceptaron()
         votos = [p.voto for p in jugadores]
         numero_votos = [votos.count('Jugador ' + str(j.id_in_group)) for j in jugadores]
         posibles_presidentes =[]
@@ -96,12 +105,9 @@ class Group(BaseGroup):
         self.set_presidente(presidente)
 
     def calcularGananciasJugadores(self):
-        longitud = 0
-        for j in self.get_players():
-            if (j.propuesta != None):
-                longitud = longitud + 1
-        rentabilidad = (self.BolsaPublica * Constants.multiplicador)/longitud
-        for j in self.get_players():
+        jugadores = self.get_jugadores_aceptaron()
+        rentabilidad = (self.BolsaPublica * Constants.multiplicador)/len(jugadores)
+        for j in jugadores:
             if j.es_presidente == True:
                 j.cuenta = rentabilidad + self.CuentaPrivadaPresidente
             else:
