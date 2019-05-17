@@ -49,7 +49,7 @@ class Group(BaseGroup):
     def get_jugadores_aceptaron(self):
         jugadores = []
         for j in self.get_players():
-            if (j.consentimiento):
+            if (j.in_round(1).consentimiento):
                 jugadores.append(j)
         return jugadores
 
