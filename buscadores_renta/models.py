@@ -57,6 +57,7 @@ class Player(BasePlayer):
     valor_producto=models.IntegerField(initial=0)
     ganancias_totales=models.CurrencyField(initial=c(0))
     gano=models.BooleanField(initial=False)
+    Codigo = models.StringField()
 
     def calcular_valor_producto(self):
         self.valor_producto=randint(1000,5000)

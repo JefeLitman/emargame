@@ -3,7 +3,7 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class bienvenida(Page):
+class presentacion(Page):
     def is_displayed(self):
         return self.round_number == 1
 
@@ -18,17 +18,17 @@ class tratamientos(Page):
             'tratamiento':self.session.config["ConSin"]
         }
 
-class subasta(Page):
+class decision(Page):
     form_model = 'player'
     form_fields = ['da_invertir']
 
-    def is_displayed(self):
+    """def is_displayed(self):
         if(self.session.config["ConSin"]):
             return self.round_number > self.session.config["Rounds"]/2
         else:
-            return self.round_number <= self.session.config["Rounds"]/2
+            return self.round_number <= self.session.config["Rounds"]/2"""
 
-class loteria(Page):
+"""class loteria(Page):
     form_model = 'player'
     form_fields = ['da_invertir']
 
@@ -36,12 +36,12 @@ class loteria(Page):
         if (self.session.config["ConSin"]):
             return self.round_number <= self.session.config["Rounds"] / 2
         else:
-            return self.round_number > self.session.config["Rounds"] / 2
+            return self.round_number > self.session.config["Rounds"] / 2"""
 
-class ganancias_individuales(Page):
+class Ganancias(Page):
     pass
 
-class ganancias_totales(Page):
+class GananciasTotal(Page):
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
 
@@ -69,15 +69,19 @@ class precalculos(WaitPage):
     def after_all_players_arrive(self):
         self.subsession.calcular_valores_productos()
 
+class gracias(Page):
+    def is_displayed(self):
+        return self.round_number == self.session.config["Rounds"]
+
 page_sequence = [
     precalculos,
-    bienvenida,
+    presentacion,
     tratamientos,
     espera_grupos,
-    subasta,
-    loteria,
+    decision,
     espera_grupos,
     calculos,
-    ganancias_individuales,
-    ganancias_totales
+    Ganancias,
+    GananciasTotal,
+    gracias
 ]

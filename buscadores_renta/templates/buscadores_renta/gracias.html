@@ -29,24 +29,19 @@
       }
 </style>
 
-    {% if tratamiento %}
-        {% if numeroronda == rondastotales %}
-        <img  src = "{% static 'confianza/final_loteria.png' %}"/>
-        {% else %}
-        <img  src = "{% static 'confianza/inicial_subasta.png' %}"/>
-        {% endif %}
-    {% else %}
-        {% if numeroronda == rondastotales %}
-        <img  src = "{% static 'confianza/final_subasta.png' %}"/>
-        {% else %}
-        <img  src = "{% static 'confianza/inicial_loteria.png' %}"/>
-        {% endif %}
-    {% endif %}
+<style media="screen">
+    img{
+      width: 100%;
+      height: 80%;
+    }
+    div.boton{
+      position: relative;
+      left: 80%;
+    }
+</style>
 
-    <p> </p>
+<img  src = "{% static 'buscadores_renta/gracias.png' %}"/>
 
-    <button>
-        <p> Siguiente </p>
-    </button>
+<p> </p>
 
 {% endblock %}

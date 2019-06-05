@@ -9,10 +9,7 @@
 
 <style media="screen">
       @import url('https://fonts.googleapis.com/css?family=Cabin');
-       img{
-           width: 100%;
-           height: 80%;
-       }
+
        button{
          background-color: #243e92;
          position: relative;
@@ -24,10 +21,50 @@
          float: right;
        }
 
-       .otree-timer.alert.alert-warning{
+       div.encabezado{
+	    color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+      }
+
+       p {
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      }
+
+      .otree-timer.alert.alert-warning{
         display: none;
       }
-</style>
+
+      .col-form-label /*El tecxto del formulario donde dice DEsea...*/
+      {
+      font-family: 'Cabin', sans-serif;
+      font-size: 20px;
+      }
+
+      .input-group-text{ /*puntos*/
+       font-family: 'Cabin', sans-serif;
+       font-size: 20px;
+      }
+
+       .imagen{
+      display:block;
+      margin:auto;
+      }
+   </style>
+
+    <div class="encabezado"> <h2> Ganancias </h2> </div>
+
+    {% if {{player.gano}} %}
+        <p> Ha ganado. </p>
+    {% else %}
+        <p> No ha ganado. </p>
+
+    <p> Usted decidió pujar: {{player.da_invertir}} </p>
+    <p> Sus puntos acumulados son: {{player.TotalPagos}} </p>
+    <p> Sus ganancias en este periodo es:  </p>
 
     {% if tratamiento %}
         {% if numeroronda == rondastotales %}
@@ -43,10 +80,8 @@
         {% endif %}
     {% endif %}
 
-    <p> </p>
-
     <button>
-        <p> Siguiente </p>
+          <b>Siguiente</b>
     </button>
 
 {% endblock %}
