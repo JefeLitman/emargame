@@ -42,54 +42,59 @@ class Subsession(BaseSubsession):
             else:
                 self.Subasta = False
 
-    def seleccionar_ganador_subasta(self):
-        jugadores=self.get_players()
-        inversion_jugadores=[]
-        for i in range(len(jugadores)):
-            inversion_jugadores.append(jugadores[i].da_invertir+random())
-        for i in range(len(inversion_jugadores)):
-            if inversion_jugadores[i] == max(inversion_jugadores):
-                jugadores[i].gano=True
+    def seleccionar_ganador(self):
+        jugadores = self.get_players()
+        Sorteos = [jugador.Sorteo for jugador in jugadores]
+        for jugador in jugadores:
+            if jugador.Sorteo == max(Sorteos):
+                jugador.Ganador = True
+            else:
+                jugador.Ganador = False
 
-    def seleccionar_ganador_loteria(self):
+    def inicializar_jugadores(self):
         jugadores=self.get_players()
-        inversionistas=[]
-        for i in range(len(jugadores)):
-            if jugadores[i].da_invertir != c(0):
-                inversionistas.append(jugadores[i])
-        inversionistas[randint(0,len(inversionistas))].gano=True
+        for jugador in jugadores:
+            jugador.calcular_premio()
+            jugador.calcular_random()
 
-    def calcular_valores_productos(self):
-        jugadores=self.get_players()
-        for i in jugadores:
-            i.calcular_valor_producto()
+    def calcular_sorteos(self):
+        jugadores = self.get_players()
+        for jugador in jugadores:
+            if jugador.Puja == None:
+                jugador.Puja = randint(0,Constants.Dotacion)
+            jugador.calcular_valor_sorteo(self.Subasta)
 
 class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
-    Puja=models.CurrencyField(min=c(0),max=Constants.Dotacion)
-    Random = models.IntegerField()
-    V = models.CurrencyField()
-    Sorteo = models.IntegerField()
-    MaxSorteo = models.IntegerField()
+    Puja=models.CurrencyField(min=c(0),max=Constants.Dotacion,blank=True)
+    Random = models.FloatField()
+    Premio = models.CurrencyField()
+    Sorteo = models.FloatField()
     Ganador=models.BooleanField()
     Pagos = models.CurrencyField()
     TotalPagos = models.CurrencyField()
     Codigo = models.StringField()
 
-    def calcular_valor_sorteo(self,):
-        pass
+    def calcular_random(self):
+        self.Random = random()
 
-    def calcular_valor_producto(self):
-        self.V=randint(1000,5000)
+    def calcular_valor_sorteo(self,Subasta):
+        if(Subasta):
+            self.Sorteo = float(self.Puja) + self.Random
+        else:
+            self.Sorteo = float(self.Puja) * self.Random
+
+    def calcular_premio(self):
+        self.Premio=randint(1000,5000)
 
     def calcular_ganancias_totales(self):
         self.TotalPagos=sum([p.Pagos for p in self.in_all_rounds()])
 
     def calcular_ganancia_ronda(self):
         if self.Ganador:
-            self.Pagos=Constants.Dotacion - self.Puja + self.V
+            self.Pagos=Constants.Dotacion - self.Puja + self.Premio
         else:
             self.Pagos = Constants.Dotacion - self.Puja
         self.payoff = self.Pagos

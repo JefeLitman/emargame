@@ -2,12 +2,13 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
-
 class presentacion(Page):
+    timeout_seconds = 30
     def is_displayed(self):
         return self.round_number == 1
 
 class tratamientos(Page):
+    timeout_seconds = 30
     def is_displayed(self):
         return self.round_number == 1 or self.round_number == self.session.config["Rounds"]/2 +1
 
@@ -19,14 +20,16 @@ class tratamientos(Page):
         }
 
 class decision(Page):
+    timeout_seconds = 60
     form_model = 'player'
-    form_fields = ['da_invertir']
+    form_fields = ['Puja']
 
-    """def is_displayed(self):
-        if(self.session.config["ConSin"]):
-            return self.round_number > self.session.config["Rounds"]/2
-        else:
-            return self.round_number <= self.session.config["Rounds"]/2"""
+    def vars_for_template(self):
+        return{
+            'numeroronda':self.round_number,
+            'rondastotales':self.session.config["Rounds"]/2 +1,
+            'tratamiento':self.session.config["ConSin"]
+        }
 
 """class loteria(Page):
     form_model = 'player'
@@ -39,9 +42,17 @@ class decision(Page):
             return self.round_number > self.session.config["Rounds"] / 2"""
 
 class Ganancias(Page):
-    pass
+    timeout_seconds = 30
+    def vars_for_template(self):
+        return {
+            'numeroronda': self.round_number,
+            'rondastotales': self.session.config["Rounds"] / 2 + 1,
+            'tratamiento': self.session.config["ConSin"]
+        }
 
-class GananciasTotal(Page):
+class GananciasTotales(Page):
+    form_model = 'player'
+    form_fields = ['Codigo']
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
 
@@ -50,16 +61,8 @@ class espera_grupos(WaitPage):
 
 class calculos(WaitPage):
     def after_all_players_arrive(self):
-        if (self.session.config["ConSin"]):
-            if(self.round_number<= self.session.config["Rounds"]):
-                self.subsession.seleccionar_ganador_loteria()
-            else:
-                self.subsession.seleccionar_ganador_subasta()
-        else:
-            if (self.round_number <= self.session.config["Rounds"]):
-                self.subsession.seleccionar_ganador_subasta()
-            else:
-                self.subsession.seleccionar_ganador_loteria()
+        self.subsession.calcular_sorteos()
+        self.subsession.seleccionar_ganador()
         jugadores=self.subsession.get_players()
         for i in jugadores:
             i.calcular_ganancia_ronda()
@@ -67,7 +70,9 @@ class calculos(WaitPage):
 
 class precalculos(WaitPage):
     def after_all_players_arrive(self):
-        self.subsession.calcular_valores_productos()
+        self.subsession.set_variables_subsesion(self.round_number, self.session.config["Rounds"],
+                                                self.session.config["LotSub"])
+        self.subsession.inicializar_jugadores()
 
 class gracias(Page):
     def is_displayed(self):
@@ -82,6 +87,6 @@ page_sequence = [
     espera_grupos,
     calculos,
     Ganancias,
-    GananciasTotal,
+    GananciasTotales,
     gracias
 ]

@@ -31,15 +31,15 @@
 
     {% if tratamiento %}
         {% if numeroronda == rondastotales %}
-        <img  src = "{% static 'confianza/final_loteria.png' %}"/>
+        <img  src = "{% static 'buscadores_renta/final_loteria.png' %}"/>
         {% else %}
-        <img  src = "{% static 'confianza/inicial_subasta.png' %}"/>
+        <img  src = "{% static 'buscadores_renta/inicial_subasta.png' %}"/>
         {% endif %}
     {% else %}
         {% if numeroronda == rondastotales %}
-        <img  src = "{% static 'confianza/final_subasta.png' %}"/>
+        <img  src = "{% static 'buscadores_renta/final_subasta.png' %}"/>
         {% else %}
-        <img  src = "{% static 'confianza/inicial_loteria.png' %}"/>
+        <img  src = "{% static 'buscadores_renta/inicial_loteria.png' %}"/>
         {% endif %}
     {% endif %}
 

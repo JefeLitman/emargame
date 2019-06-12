@@ -56,21 +56,21 @@
 
 <div class="encabezado"> <h2> Decisión </h2> </div>
 
-<p> Su valoración del producto es: {{player.valor_producto}} </p>
+<p> Su valoración del producto es: {{player.Premio}} </p>
 
-<p> {% formfield player.da_invertir label="Debe decidir el cuanto quiere pujar:" %} </p>
+<p> {% formfield player.Puja label="Debe decidir el cuanto quiere pujar:" %} </p>
 
 {% if tratamiento %}
         {% if numeroronda == rondastotales %}
-        <img  src = "{% static 'confianza/final_loteria.png' %}"/>
+        <img  src = "{% static 'buscadores_renta/final_loteria.png' %}"/>
         {% else %}
-        <img  src = "{% static 'confianza/inicial_subasta.png' %}"/>
+        <img  src = "{% static 'buscadores_renta/inicial_subasta.png' %}"/>
         {% endif %}
     {% else %}
         {% if numeroronda == rondastotales %}
-        <img  src = "{% static 'confianza/final_subasta.png' %}"/>
+        <img  src = "{% static 'buscadores_renta/final_subasta.png' %}"/>
         {% else %}
-        <img  src = "{% static 'confianza/inicial_loteria.png' %}"/>
+        <img  src = "{% static 'buscadores_renta/inicial_loteria.png' %}"/>
         {% endif %}
     {% endif %}
 

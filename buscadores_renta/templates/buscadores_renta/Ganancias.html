@@ -57,26 +57,27 @@
 
     <div class="encabezado"> <h2> Ganancias </h2> </div>
 
-    {% if {{player.gano}} %}
+    {% if player.Ganador %}
         <p> Ha ganado. </p>
     {% else %}
         <p> No ha ganado. </p>
+    {% endif %}
 
-    <p> Usted decidió pujar: {{player.da_invertir}} </p>
+    <p> Usted decidió pujar: {{player.Puja}} </p>
+    <p> Sus ganancias en este periodo son:  {{player.Pagos}}</p>
     <p> Sus puntos acumulados son: {{player.TotalPagos}} </p>
-    <p> Sus ganancias en este periodo es:  </p>
 
     {% if tratamiento %}
         {% if numeroronda == rondastotales %}
-        <img  src = "{% static 'confianza/final_loteria.png' %}"/>
+        <img  src = "{% static 'buscadores_renta/final_loteria.png' %}"/>
         {% else %}
-        <img  src = "{% static 'confianza/inicial_subasta.png' %}"/>
+        <img  src = "{% static 'buscadores_renta/inicial_subasta.png' %}"/>
         {% endif %}
     {% else %}
         {% if numeroronda == rondastotales %}
-        <img  src = "{% static 'confianza/final_subasta.png' %}"/>
+        <img  src = "{% static 'buscadores_renta/final_subasta.png' %}"/>
         {% else %}
-        <img  src = "{% static 'confianza/inicial_loteria.png' %}"/>
+        <img  src = "{% static 'buscadores_renta/inicial_loteria.png' %}"/>
         {% endif %}
     {% endif %}
 
