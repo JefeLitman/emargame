@@ -138,6 +138,13 @@ class opinionJugadores(Page):
     def is_displayed(self):
         return  self.player.es_presidente == False and  self.player.in_round(1).consentimiento == True
 
+    def vars_for_template(self):
+        jugadores = self.group.get_players()
+        for jugador in jugadores:
+            if(jugador.es_presidente):
+                presidente = jugador
+        return {'propuesta':presidente.propuesta}
+
 class calcularganancias(WaitPage):
     def after_all_players_arrive(self):
         self.group.calcularGananciasJugadores()

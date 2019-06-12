@@ -6,7 +6,12 @@
 {% endblock %}
 
 {% block content %}
-
+    <table class="table table-bordered table-hover table-condensed draggable">
+        <tr>
+            <th>Propuesta Presidente</th>
+            <td>{{propuesta}}</td>
+        </tr>
+    </table>
     <p> ¿Usted cree que el presidente va a cumplir sus propuestas? </p>
     <div>
             <button name="opinion" value="True" class="btn btn-primary btn-large"> Si </button>
