@@ -145,7 +145,13 @@ SESSION_CONFIGS = [
         'name':'buscadores_renta',
         'display_name': '7. Buscadores de rentas: Competencia y pérdidas de eficiencia.',
         'num_demo_participants':2,
-        'app_sequence': ['buscadores_renta']
+        'app_sequence': ['buscadores_renta'],
+        'ConSin':None,
+        'LotSub':False,
+        'doc':"""
+        Rounds: Número total de periodos que se jugarán. Por defecto en 20*.<br/>
+        LotSub:  Tomará el valor de 1 cuando los periodos iniciales son tratamiento loteria y los periodos finales subasta. En caso contrario será 0. Por defecto 0 (Sin marcar).
+        """
     },
     {
         'name':'corrupcion_malversacion',

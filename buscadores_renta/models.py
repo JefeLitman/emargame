@@ -22,10 +22,25 @@ of non-market allocations. Journal of Economic Perspectives, 13(3), 217–226.
 class Constants(BaseConstants):
     name_in_url = 'buscadores_renta'
     players_per_group = None
-    num_rounds = 30
-    dotacion=c(500)
+    num_rounds = 20
+    Dotacion=c(500)
 
 class Subsession(BaseSubsession):
+    Reinicio = models.BooleanField()
+    Subasta = models.BooleanField()
+
+    def set_variables_subsesion(self, ronda, rondas_totales, consin):
+        self.Reinicio = ronda > rondas_totales / 2
+        if (consin):
+            if (ronda <= rondas_totales / 2):
+                self.Subasta = False
+            else:
+                self.Subasta = True
+        else:
+            if (ronda <= rondas_totales / 2):
+                self.Subasta = True
+            else:
+                self.Subasta = False
 
     def seleccionar_ganador_subasta(self):
         jugadores=self.get_players()
@@ -53,19 +68,28 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
-    da_invertir=models.CurrencyField(initial=c(0),min=c(0),max=c(500))
-    valor_producto=models.IntegerField(initial=0)
-    ganancias_totales=models.CurrencyField(initial=c(0))
-    gano=models.BooleanField(initial=False)
+    Puja=models.CurrencyField(min=c(0),max=Constants.Dotacion)
+    Random = models.IntegerField()
+    V = models.CurrencyField()
+    Sorteo = models.IntegerField()
+    MaxSorteo = models.IntegerField()
+    Ganador=models.BooleanField()
+    Pagos = models.CurrencyField()
+    TotalPagos = models.CurrencyField()
+    Codigo = models.StringField()
+
+    def calcular_valor_sorteo(self,):
+        pass
 
     def calcular_valor_producto(self):
-        self.valor_producto=randint(1000,5000)
+        self.V=randint(1000,5000)
 
     def calcular_ganancias_totales(self):
-        self.ganancias_totales=sum([p.c_privada for p in self.in_all_rounds()])
+        self.TotalPagos=sum([p.Pagos for p in self.in_all_rounds()])
 
     def calcular_ganancia_ronda(self):
-        if self.gano:
-            self.payoff=Constants.dotacion-self.da_invertir+self.valor_producto
+        if self.Ganador:
+            self.Pagos=Constants.Dotacion - self.Puja + self.V
         else:
-            self.payoff = Constants.dotacion - self.da_invertir
+            self.Pagos = Constants.Dotacion - self.Puja
+        self.payoff = self.Pagos
