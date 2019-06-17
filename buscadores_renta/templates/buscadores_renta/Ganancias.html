@@ -68,21 +68,21 @@
     <p> Sus puntos acumulados son: {{player.TotalPagos}} </p>
 
     {% if tratamiento %}
-        {% if numeroronda == rondastotales %}
-        <img  src = "{% static 'buscadores_renta/final_loteria.png' %}"/>
+        {% if subasta %}
+        <img class="imagen" src = "{% static 'buscadores_renta/subasta_azul.png' %}"/>
         {% else %}
-        <img  src = "{% static 'buscadores_renta/inicial_subasta.png' %}"/>
+        <img class="imagen" src = "{% static 'buscadores_renta/loteria_verde.png' %}"/>
         {% endif %}
     {% else %}
-        {% if numeroronda == rondastotales %}
-        <img  src = "{% static 'buscadores_renta/final_subasta.png' %}"/>
+        {% if subasta %}
+        <img class="imagen" src = "{% static 'buscadores_renta/subasta_verde.png' %}"/>
         {% else %}
-        <img  src = "{% static 'buscadores_renta/inicial_loteria.png' %}"/>
+        <img class="imagen" src = "{% static 'buscadores_renta/loteria_azul.png' %}"/>
         {% endif %}
     {% endif %}
 
     <button>
-          <b>Siguiente</b>
+          Siguiente
     </button>
 
 {% endblock %}

@@ -58,24 +58,24 @@
 
 <p> Su valoración del producto es: {{player.Premio}} </p>
 
-<p> {% formfield player.Puja label="Debe decidir el cuanto quiere pujar:" %} </p>
+<p> {% formfield player.Puja label="Debe decidir cuánto quiere pujar:" %} </p>
 
-{% if tratamiento %}
-        {% if numeroronda == rondastotales %}
-        <img  src = "{% static 'buscadores_renta/final_loteria.png' %}"/>
+    {% if tratamiento %}
+        {% if subasta %}
+        <img  class="imagen" src = "{% static 'buscadores_renta/subasta_azul.png' %}"/>
         {% else %}
-        <img  src = "{% static 'buscadores_renta/inicial_subasta.png' %}"/>
+        <img  class="imagen" src = "{% static 'buscadores_renta/loteria_verde.png' %}"/>
         {% endif %}
     {% else %}
-        {% if numeroronda == rondastotales %}
-        <img  src = "{% static 'buscadores_renta/final_subasta.png' %}"/>
+        {% if subasta %}
+        <img  class="imagen" src = "{% static 'buscadores_renta/subasta_verde.png' %}"/>
         {% else %}
-        <img  src = "{% static 'buscadores_renta/inicial_loteria.png' %}"/>
+        <img  class="imagen" src = "{% static 'buscadores_renta/loteria_azul.png' %}"/>
         {% endif %}
     {% endif %}
 
 <button>
-        <p> Siguiente </p>
+    Siguiente
 </button>
 
 {% endblock %}

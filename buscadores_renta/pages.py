@@ -14,9 +14,8 @@ class tratamientos(Page):
 
     def vars_for_template(self):
         return{
-            'numeroronda':self.round_number,
-            'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'subasta': self.subsession.Subasta,
+            'tratamiento': self.session.config["LotSub"]
         }
 
 class decision(Page):
@@ -25,10 +24,9 @@ class decision(Page):
     form_fields = ['Puja']
 
     def vars_for_template(self):
-        return{
-            'numeroronda':self.round_number,
-            'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+        return {
+            'subasta': self.subsession.Subasta,
+            'tratamiento': self.session.config["LotSub"]
         }
 
 """class loteria(Page):
@@ -45,9 +43,8 @@ class Ganancias(Page):
     timeout_seconds = 30
     def vars_for_template(self):
         return {
-            'numeroronda': self.round_number,
-            'rondastotales': self.session.config["Rounds"] / 2 + 1,
-            'tratamiento': self.session.config["ConSin"]
+            'subasta': self.subsession.Subasta,
+            'tratamiento': self.session.config["LotSub"]
         }
 
 class GananciasTotales(Page):
