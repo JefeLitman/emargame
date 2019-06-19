@@ -107,13 +107,13 @@ class esperagrupos(WaitPage):
 class calculo_eleccion(WaitPage):
     def after_all_players_arrive(self):
         jugador_azul = self.group.get_player_by_id(1)
-        if (jugador_azul.Eleccion == None):
+        if (jugador_azul.Eleccion not in range(1,2 + 1)):
             jugador_azul.set_eleccion_azar()
 
 class calculos(WaitPage):
     def after_all_players_arrive(self):
         jugador_verde = self.group.get_player_by_id(2)
-        if (jugador_verde.Eleccion == None):
+        if (jugador_verde.Eleccion not in range(1,2 + 1)):
             jugador_verde.set_eleccion_azar()
         for p in self.group.get_players():
             p.set_pagos()

@@ -52,13 +52,13 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     Costo=models.CurrencyField()
     Valor=models.CurrencyField()
-    Calidad=models.IntegerField(blank=True,min=1,max=5)
-    Mensaje=models.IntegerField(blank=True,min=1,max=5)
+    Calidad=models.IntegerField(blank=True,min=1,max=len(Constants.Valores))
+    Mensaje=models.IntegerField(blank=True,min=1,max=len(Constants.Valores))
     Senal = models.BooleanField(blank=True, choices=[
         [True, 'Si'],
         [False, 'No']
     ])
-    Precio=models.CurrencyField(blank=True,min=c(0),max=c(2500))
+    Precio=models.CurrencyField(blank=True,min=Constants.Costos[0],max=Constants.Valores[-1])
     Transaccion=models.BooleanField(blank=True,choices=[
         [True,'Si'],
         [False,'No']
@@ -70,6 +70,8 @@ class Group(BaseGroup):
         if(self.Transaccion): #(si lo compra, el comprador)
             comprador.Pagos=Constants.Valores[self.Calidad-1]-self.Precio
             if(self.Senal): #(si el vendedor toma la decision de invertir los 500 pts)
+                if(self.Mensaje != self.Calidad):
+                    self.Mensaje = self.Calidad
                 vendedor.Pagos=self.Precio-Constants.Costos[self.Calidad-1]-c(500)
             else:
                 vendedor.Pagos = self.Precio - Constants.Costos[self.Calidad - 1]
@@ -92,26 +94,30 @@ class Group(BaseGroup):
         self.Mensaje = randint(1, 5)
 
     def set_precio_azar(self):
-        self.Precio = randint(Constants.Costos[self.Calidad - 1], 2500)
+        self.Precio = randint(Constants.Costos[self.Calidad - 1], Constants.Valores[-1])
 
     def set_senal_azar(self,ronda,rondas_totales,consin):
         if (consin):
             if (ronda <= rondas_totales / 2):
-                self.Senal= randint(0,1) == 1
+                self.Senal= randint(0,1)
                 if(self.Senal):
                     self.Mensaje=self.Calidad
+            else:
+                self.Senal = 0
         else:
             if (ronda > rondas_totales / 2):
-                self.Senal= randint(0,1) == 1
+                self.Senal= randint(0,1)
                 if (self.Senal):
                     self.Mensaje = self.Calidad
+            else:
+                self.Senal = 0
 
     def set_transaccion_azar(self):
-        self.Transaccion= randint(0,1) == 1
+        self.Transaccion = randint(0,1)
 
 class Player(BasePlayer):
-    Pagos=models.CurrencyField(initial=c(0))
-    TotalPagos=models.CurrencyField(initial=c(0))
+    Pagos=models.CurrencyField()
+    TotalPagos=models.CurrencyField()
     Vendedor=models.BooleanField()
     Codigo = models.StringField()
 

@@ -145,8 +145,8 @@ class calculo_recibe(WaitPage):
         # Definiendo el Recibe del participante B
         for p in self.group.get_players():
             if p.Participante_A == 0:
-                if(p.get_others_in_group()[0].Envia == None):
-                    p.get_others_in_group()[0].Envia = randint(0,1000)
+                if(p.get_others_in_group()[0].Envia not in range(0, int(Constants.Dotacion) + 1)):
+                    p.get_others_in_group()[0].Envia = randint(0,Constants.Dotacion)
                 p.Recibe = p.get_others_in_group()[0].Envia
 
 class calculo_ganancias(WaitPage):
@@ -154,7 +154,7 @@ class calculo_ganancias(WaitPage):
         #Definiendo el Recibe del participante A
         for p in self.group.get_players():
             if p.Participante_A == 1:
-                if (p.get_others_in_group()[0].Envia == None):
+                if (p.get_others_in_group()[0].Envia not in range(0, int(p.get_others_in_group()[0].Recibe)*Constants.Multiplicador + 1)):
                     p.get_others_in_group()[0].Envia = randint(0, p.get_others_in_group()[0].Recibe*Constants.Multiplicador)
                 p.Recibe = p.get_others_in_group()[0].Envia
             #Calculando las ganancias de los jugadores

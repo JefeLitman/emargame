@@ -113,18 +113,18 @@ class precalculos(WaitPage):
 
 class calculos_vendedor(WaitPage):
     def after_all_players_arrive(self):
-        if (self.group.Calidad == None):
+        if (self.group.Calidad not in range(1,len(Constants.Valores) + 1)):
             self.group.set_calidad_azar()
-        if (self.group.Mensaje == None):
+        if (self.group.Mensaje not in range(1,len(Constants.Valores) + 1)):
             self.group.set_mensaje_azar()
-        if (self.group.Precio == None):
+        if (self.group.Precio not in range(int(Constants.Costos[0]),int(Constants.Valores[-1]) + 1)):
             self.group.set_precio_azar()
-        if (self.group.Senal == None):
+        if (self.group.Senal not in range(0,1 +1)):
             self.group.set_senal_azar(self.round_number,self.session.config["Rounds"],self.session.config["ConSin"])
 
 class calculos(WaitPage):
     def after_all_players_arrive(self):
-        if (self.group.Transaccion == None):
+        if (self.group.Transaccion not in range(0,1 +1)):
             self.group.set_transaccion_azar()
         self.group.set_pagos()
         self.group.set_costo_valor()

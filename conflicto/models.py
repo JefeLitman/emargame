@@ -59,8 +59,8 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     Eleccion = models.IntegerField(blank=True)
     Participante_Azul = models.BooleanField()
-    Pagos=models.CurrencyField(initial=c(0))
-    TotalPagos = models.CurrencyField(initial=c(0))
+    Pagos=models.CurrencyField()
+    TotalPagos = models.CurrencyField()
     Codigo = models.StringField()
 
     def role(self):

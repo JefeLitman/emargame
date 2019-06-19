@@ -127,9 +127,9 @@ class calculoganancia(WaitPage):
         p1 = self.group.get_player_by_id(1)
         p2 = self.group.get_player_by_id(2)
         #Definiendo variables azar si no las lleno
-        if (p1.Inversion == None):
+        if (p1.Inversion not in range(0, int(Constants.Dotacion) + 1)):
             p1.set_inversion_azar()
-        if (p2.Inversion == None):
+        if (p2.Inversion not in range(0, int(Constants.Dotacion) + 1)):
             p2.set_inversion_azar()
         # Calculando la ganancia generada por la inversion de ambos
         ganancia = self.group.calcular_gananancia(p1.Inversion, p2.Inversion)
@@ -147,9 +147,9 @@ class calculocalificacion(WaitPage):
         p1=self.group.get_player_by_id(1)
         p2=self.group.get_player_by_id(2)
         # Definiendo variables azar si no las lleno
-        if (p1.Calificacion == None):
+        if (p1.Calificacion not in range(1,5 + 1)):
             p1.set_calificacion_azar()
-        if (p2.Calificacion == None):
+        if (p2.Calificacion not in range(1,5 + 1)):
             p2.set_calificacion_azar()
         #Colocando en orden las calificaciones de los jugadores
         calificacionp1=p2.Calificacion

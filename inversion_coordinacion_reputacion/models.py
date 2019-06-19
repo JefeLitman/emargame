@@ -23,7 +23,7 @@ Quarterly Journal of Economics, 107(2), 739–771.
 class Constants(BaseConstants):
     name_in_url = 'inversion_coordinacion_reputacion'
     players_per_group = 2
-    num_rounds = 30
+    num_rounds = 20
     Dotacion=c(1000)
 
 
@@ -59,14 +59,14 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     Codigo = models.StringField()
-    Inversion=models.CurrencyField(blank=True,min=c(0),max=c(1000))
+    Inversion=models.CurrencyField(blank=True,min=c(0),max=Constants.Dotacion)
     Calificacion=models.IntegerField(blank=True, min=1, max=5)
     Reputacion=models.FloatField()
-    Pagos = models.CurrencyField(initial=c(0))
-    TotalPagos = models.CurrencyField(initial=c(0))
+    Pagos = models.CurrencyField()
+    TotalPagos = models.CurrencyField()
 
     def set_inversion_azar(self):
-        self.Inversion=randint(0,1000)
+        self.Inversion=randint(0,Constants.Dotacion)
 
     def set_calificacion_azar(self):
         self.Calificacion = randint(1, 5)

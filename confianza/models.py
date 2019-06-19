@@ -84,8 +84,8 @@ class Player(BasePlayer):
     Azul = models.BooleanField()
     Recibe = models.CurrencyField()
     Envia = models.CurrencyField(blank=True,min=c(0))
-    Pagos = models.CurrencyField(initial=c(0))
-    TotalPagos = models.CurrencyField(initial=c(0))
+    Pagos = models.CurrencyField()
+    TotalPagos = models.CurrencyField()
     Codigo = models.StringField()
 
     def set_participantes(self,es_la_mitad):

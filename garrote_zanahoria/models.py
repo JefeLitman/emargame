@@ -30,8 +30,8 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    ContribucionTotal = models.CurrencyField(initial=c(0))
-    Rentabilidad= models.CurrencyField(initial=c(0))
+    ContribucionTotal = models.CurrencyField()
+    Rentabilidad= models.CurrencyField()
     Reinicio=models.BooleanField()
     TMAS=models.BooleanField()
 
@@ -74,8 +74,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     Codigo=models.StringField()
-    Pagos=models.CurrencyField(initial=c(0))
-    TotalPagos=models.CurrencyField(initial=c(0))
+    Pagos=models.CurrencyField()
+    TotalPagos=models.CurrencyField()
     Contribucion = models.CurrencyField(blank=True,min=c(0),max=c(1000))
     Inversion = models.CurrencyField(blank=True,min=c(0),max=c(200))
     Incentivo = models.CurrencyField()

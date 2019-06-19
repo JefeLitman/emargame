@@ -60,7 +60,7 @@ class Subsession(BaseSubsession):
     def calcular_sorteos(self):
         jugadores = self.get_players()
         for jugador in jugadores:
-            if jugador.Puja == None:
+            if jugador.Puja not in range(0,int(Constants.Dotacion) + 1):
                 jugador.Puja = randint(0,Constants.Dotacion)
             jugador.calcular_valor_sorteo(self.Subasta)
 

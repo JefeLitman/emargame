@@ -29,16 +29,6 @@ class decision(Page):
             'tratamiento': self.session.config["LotSub"]
         }
 
-"""class loteria(Page):
-    form_model = 'player'
-    form_fields = ['da_invertir']
-
-    def is_displayed(self):
-        if (self.session.config["ConSin"]):
-            return self.round_number <= self.session.config["Rounds"] / 2
-        else:
-            return self.round_number > self.session.config["Rounds"] / 2"""
-
 class Ganancias(Page):
     timeout_seconds = 30
     def vars_for_template(self):

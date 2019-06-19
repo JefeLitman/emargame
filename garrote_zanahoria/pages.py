@@ -39,7 +39,7 @@ class contribucion(Page):
 class calculo_contribucion(WaitPage):
     def after_all_players_arrive(self):
         for p in self.group.get_players():
-            if(p.Contribucion==None):
+            if(p.Contribucion not in range(0,1000 + 1)):
                 p.set_contribucion_azar()
 
 class Incentivos(Page):
@@ -61,7 +61,7 @@ class espera_grupos(WaitPage):
 class calculos(WaitPage):
     def after_all_players_arrive(self):
         for p in self.group.get_players():
-            if(p.Inversion==None):
+            if(p.Inversion not in range(0,200 + 1)):
                 p.set_inversion_azar()
         self.subsession.set_contribuciontotal()
         self.subsession.set_rentabilidad()
