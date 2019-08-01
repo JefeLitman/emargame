@@ -15,8 +15,8 @@
 
     <p> Por favor indicar en una escala de 1 a 5 la evaluación:</p>
 
-    <p> Casa a favor:  {% formfield subsession.I4AF %} </p>
-    <p> Casa en contra: {% formfield subsession.I4EC %}  </p>
+    {% formfield player.I4AF label="Casa a favor:"  %}
+    {% formfield player.I4EC label="Casa en contra:" %}
 
     {% next_button %}
 

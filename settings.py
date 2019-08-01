@@ -94,6 +94,16 @@ SESSION_CONFIG_DEFAULTS = {
 # oTree's default settings. Use with caution.
 SESSION_CONFIGS = [
     {
+        'name':'debates',
+        'display_name': 'Evaluacion del Debate',
+        'num_demo_participants':1,
+        'app_sequence': ['debates'],
+        'Rounds':None,
+        'ConSin':None,
+        'doc':"""
+        """
+    },
+    {
         'name':'mercados_prohibidos',
         'display_name':'1. Mercados Prohibidos: Regulación y disuasión.',
         'num_demo_participants':2,
@@ -152,17 +162,6 @@ SESSION_CONFIGS = [
         Rounds: Número total de periodos que se jugarán. Por defecto en 20*.<br/>
         LotSub:  Tomará el valor de 1 cuando los periodos iniciales son tratamiento loteria y los periodos finales subasta. En caso contrario será 0. Por defecto 0 (Sin marcar).
         """
-    },
-    {
-        'name':'corrupcion_malversacion',
-        'display_name': 'Juego de la Malversacion',
-        'num_demo_participants':15,
-        'app_sequence': ['corrupcion_malversacion'],
-        'Rounds':1,
-        'ConSin':None,
-        'doc':"""
-        Rounds: Número total de periodos que se jugarán (Maximo 10). Por defecto en 1.
-        """
     }
 ]
 
@@ -173,6 +172,10 @@ ROOM_DEFAULTS = {
 }
 
 ROOMS = [
+{
+        'name': 'debate',
+        'display_name': 'Sala de evaluación  del debate',
+    },
     {
         'name': 'mercados',
         'display_name': 'Sala del juego Mercados Prohibidos',
@@ -200,10 +203,6 @@ ROOMS = [
     {
         'name': 'renta',
         'display_name': 'Sala del juego Buscadores de Renta'
-    },
-    {
-        'name': 'malversacion',
-        'display_name': 'Sala del juego de la Malversacion'
     }
 ]
 
