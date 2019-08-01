@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Escucha
+{% endblock %}
+
+{% block content %}
+
+    <h2> Indicador 4: Vocabulario utilizado y tono de voz. </h2>
+
+    <p> <b> Insuficiente (1)</b>: No hablan claramente. No utilizan un a terminología adecuada para su nivel académico. Nunca o casi nunca emplean un tono y volumen de voz adecuados.</p>
+
+    <p> <b> Excelente (5)</b>: Siempre utilizan vocabulario preciso, correcto y adecuado para su nivel académico. Hablan claramente. El volumen de voz es siempre suficiente y adecuado a cada momento.</p>
+
+    <p> Casa a favor:  {% formfield subsession.I5AF  %} </p>
+
+    <p> Casa en contra:  {% formfield subsession.I5EC %} </p>
+
+    {% next_button %}
+
+{% endblock %}

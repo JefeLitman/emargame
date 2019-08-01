@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Presentación
+{% endblock %}
+
+{% block content %}
+
+    <p> Para determinar el ganador del debate, todos los estudiantes deben calificar las intervenciones.
+    Se calculará el promedio de las puntuaciones en 5 criterios de evaluación.
+    Por favor indicar en una escala de 1 a 5 la evaluación para cada equipo, en cada uno de los indicadores.
+    El puntaje va desde 1 (insuficiente) hasta cinco (excelente). </p>
+
+    {% next_button %}
+
+{% endblock %}

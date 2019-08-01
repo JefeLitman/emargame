@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Coherencia
+{% endblock %}
+
+{% block content %}
+
+    <h2> Indicador 3: Coherencia y fluidez de las ideas. </h2>
+
+    <p> <b> Insuficiente (1):</b> Falta de coherencia y de fluidez en la explicación de las ideas.
+        Cambian, no mantienen sus ideas, no muestran seguridad en las mismas. <p>
+
+    <p> <b> Excelente (5):</b> Muestran coherencia y fluidez entre las ideas planteadas.
+    No cambian de opinión ni modifican sus ideas durante todo el debate.</p>
+
+    <p> Por favor indicar en una escala de 1 a 5 la evaluación:</p>
+    <p> Casa a favor: {% formfield subsession.I3AF %} </p>
+    <p> Casa en contra: {% formfield subsession.I3EC %} </p>
+
+    {% next_button %}
+
+{% endblock %}

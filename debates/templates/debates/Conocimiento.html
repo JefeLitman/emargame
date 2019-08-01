@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Conocimiento
+{% endblock %}
+
+{% block content %}
+
+   <h2> Indicador 2: Conocimiento y argumentación </h2>
+
+    <p> <b> Insuficiente (1) </b>: Falta de conocimiento y dominio del tema tratado.
+        No plantean una tesis ni seleccionan los argumentos que la sustentan.</p>
+
+    <p> <b> Excelente (5)</b>: Argumentan, justifican todas las ideas y son capaces de contestar a los
+        argumentos planteados por los compañeros. Plantean una tesis y elaboran los argumentos que la sustentan.
+        El discurso pone en diálogo argumentos propios y ajenos. </p>
+
+    <p> Por favor indicar en una escala de 1 a 5 la evaluación:</p>
+    <p> Casa a favor:  {% formfield subsession.I2AF  %} </p>
+    <p> Casa en contra: {% formfield subsession.I2EC %} </p>
+
+    {% next_button %}
+
+{% endblock %}

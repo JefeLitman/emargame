@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Equipo
+{% endblock %}
+
+{% block content %}
+
+    <b> Indicador 1: Trabajo en equipo. </b>
+
+    <p> <b> Insuficiente (1)</b>: Cada orador presenta argumentos de forma aislada y sin una estrategia de equipo clara.
+        No se ve la división de tareas y la complementariedad entre oradores.</p>
+
+    <p>  <b> Excelente (5)</b>: El primer orador plantea las ideas generales sobre las cuales se sustenta el debate.
+        El segundo orador elaborara los argumentos que respalden la tesis propuesta.
+        El tercer orador concluye el debate sintetizando las ideas y argumentos. </p>
+
+    <p> Por favor indicar en una escala de 1 a 5 la evaluación:</p>
+
+    <p> Casa a favor:  {% formfield subsession.I1AF %} </p>
+    <p> Casa en contra: {% formfield subsession.I1EC%} </p>
+
+    {% next_button %}
+
+{% endblock %}

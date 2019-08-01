@@ -1,0 +1,42 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Resultados
+{% endblock %}
+
+{% block content %}
+
+    <b> Indicador 1: Trabajo en equipo </b>
+
+    Puntaje casa a favor: {% subsession.promI1AF %}
+
+    Puntaje casa en contra: {% subsession.promI1EC %}
+
+    <b> Indicador 2: Conocimiento y comprensión del tema </b>
+
+    Puntaje casa a favor: {% subsession.promI2AF %}
+
+    Puntaje casa en contra: {% subsession.promI2EC %}
+
+    <b> Indicador 3: Coherencia y fluidez de las ideas </b>
+
+    Puntaje casa a favor: {% subsession.promI3AF %}
+
+    Puntaje casa en contra: {% subsession.promI3EC %}
+
+    <b> Indicador 4: Vocabulario utilizado y tono de voz. </b>
+
+    Puntaje casa a favor: {% subsession.promI4AF %}
+
+    Puntaje casa en contra: {% subsession.promI4EC %}
+
+    <b> Indicador 5: Capacidad de escuchar a los compañeros. <b>
+
+    Puntaje casa a favor: {% subsession.promI5AF %}
+
+    Puntaje casa en contra: {% subsession.promI5EC %}
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Resultados
+{% endblock %}
+
+{% block content %}
+
+    <p> Promedio casa a favor: {{CasaAFavor}} </p>
+
+    <p> Promedio casa en contra: {{CasaEnContra}} </p>
+
+    {% next_button %}
+
+{% endblock %}
