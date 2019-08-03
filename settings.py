@@ -21,6 +21,7 @@ if(environ.get('OTREE_ADMIN_PASSWORD')==None):
     environ.__setitem__('OTREE_ADMIN_PASSWORD','123456')
 else:
     ADMIN_USERNAME = 'EmarLab'
+
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 # don't share this with anybody.
@@ -162,6 +163,17 @@ SESSION_CONFIGS = [
         Rounds: Número total de periodos que se jugarán. Por defecto en 20*.<br/>
         LotSub:  Tomará el valor de 1 cuando los periodos iniciales son tratamiento loteria y los periodos finales subasta. En caso contrario será 0. Por defecto 0 (Sin marcar).
         """
+    },
+    {
+        'name':'corrupcion_malversacion',
+        'display_name': 'Juego de la Malversacion',
+        'num_demo_participants':15,
+        'app_sequence': ['corrupcion_malversacion'],
+        'Rounds':1,
+        'ConSin':None,
+        'doc':"""
+        Rounds: Número total de periodos que se jugarán (Maximo 10). Por defecto en 1.
+        """
     }
 ]
 
@@ -203,6 +215,10 @@ ROOMS = [
     {
         'name': 'renta',
         'display_name': 'Sala del juego Buscadores de Renta'
+    },
+    {
+        'name': 'malversacion',
+        'display_name': 'Sala del juego de la Malversacion'
     }
 ]
 
