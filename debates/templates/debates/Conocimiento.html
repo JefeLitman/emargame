@@ -17,8 +17,8 @@
         El discurso pone en diálogo argumentos propios y ajenos. </p>
 
     <p> Por favor indicar en una escala de 1 a 5 la evaluación:</p>
-    <p> Casa a favor:  {% formfield subsession.I2AF  %} </p>
-    <p> Casa en contra: {% formfield subsession.I2EC %} </p>
+    {% formfield player.I2AF label="Casa a favor:"  %}
+    {% formfield player.I2EC label="Casa en contra:" %}
 
     {% next_button %}
 

@@ -4,10 +4,10 @@ from otree.api import (
 )
 
 
-author = 'Your name here'
+author = 'Luis Alejandro Palacio García & Bryan Snehider Díaz'
 
 doc = """
-Your app description
+Hace falta generar la documentacion de la rubrica
 """
 
 
@@ -33,7 +33,7 @@ class Subsession(BaseSubsession):
     #Respuestas de la casa A FAVOR
 
     def calculopromIAF(self):
-        rta1, rta2, rta3, rta4, rta5 = 0
+        rta1, rta2, rta3, rta4, rta5 = 0, 0, 0, 0, 0
         for i in self.get_players():
             rta1 = rta1 + i.I1AF
             rta2 = rta2 + i.I2AF
@@ -43,11 +43,11 @@ class Subsession(BaseSubsession):
 
         rtasAF = []
         l = len(self.get_players())
-        self.promI1AF = self.rta1/l
-        self.promI2AF = self.rta2/l
-        self.promI3AF = self.rta3/l
-        self.promI4AF = self.rta4/l
-        self.promI5AF = self.rta5/l
+        self.promI1AF = rta1/l
+        self.promI2AF = rta2/l
+        self.promI3AF = rta3/l
+        self.promI4AF = rta4/l
+        self.promI5AF = rta5/l
 
         rtasAF.append(self.promI1AF)
         rtasAF.append(self.promI2AF)
@@ -59,7 +59,7 @@ class Subsession(BaseSubsession):
 
     # Respuestas de la casa ENCONTRA
     def calculopromIEC(self):
-        rta1, rta2, rta3, rta4, rta5 = 0
+        rta1, rta2, rta3, rta4, rta5 = 0, 0, 0, 0, 0
         for i in self.get_players():
             rta1 = rta1 + i.I1EC
             rta2 = rta2 + i.I2EC
@@ -69,11 +69,11 @@ class Subsession(BaseSubsession):
 
         rtasEC = []
         l = len(self.get_players())
-        self.promI1EC = self.rta1/l
-        self.promI2EC = self.rta2/l
-        self.promI3EC = self.rta3/l
-        self.promI4EC = self.rta4/l
-        self.promI5EC = self.rta5/l
+        self.promI1EC = rta1/l
+        self.promI2EC = rta2/l
+        self.promI3EC = rta3/l
+        self.promI4EC = rta4/l
+        self.promI5EC = rta5/l
 
         rtasEC.append(self.promI1EC)
         rtasEC.append(self.promI2EC)

@@ -7,15 +7,14 @@
 
 {% block content %}
 
-    <h2> Indicador 4: Vocabulario utilizado y tono de voz. </h2>
+    <h2> Indicador 5: Capacidad de escuchar a los compañeros. </h2>
 
-    <p> <b> Insuficiente (1)</b>: No hablan claramente. No utilizan un a terminología adecuada para su nivel académico. Nunca o casi nunca emplean un tono y volumen de voz adecuados.</p>
+    <p> <b> Insuficiente (1)</b>: No escuchan atentamente a sus compañeros. No respetan turno u opiniones.</p>
 
-    <p> <b> Excelente (5)</b>: Siempre utilizan vocabulario preciso, correcto y adecuado para su nivel académico. Hablan claramente. El volumen de voz es siempre suficiente y adecuado a cada momento.</p>
+    <p> <b> Excelente (5)</b>: Siempre escuchan atentamente y son capaces de analizar los argumentos de los demás. Son respetuosos ante la opinión de los demás y ante el turno de palabra.</p>
 
-    <p> Casa a favor:  {% formfield subsession.I5AF  %} </p>
-
-    <p> Casa en contra:  {% formfield subsession.I5EC %} </p>
+    {% formfield player.I5AF label="Casa a favor:"  %}
+    {% formfield player.I5EC label="Casa en contra:" %}
 
     {% next_button %}
 

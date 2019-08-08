@@ -21,6 +21,7 @@ if(environ.get('OTREE_ADMIN_PASSWORD')==None):
     environ.__setitem__('OTREE_ADMIN_PASSWORD','123456')
 else:
     ADMIN_USERNAME = 'EmarLab'
+
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 # don't share this with anybody.
@@ -93,6 +94,16 @@ SESSION_CONFIG_DEFAULTS = {
 # anything you put after the below line will override
 # oTree's default settings. Use with caution.
 SESSION_CONFIGS = [
+    {
+        'name':'debates',
+        'display_name': 'Evaluacion del Debate',
+        'num_demo_participants':1,
+        'app_sequence': ['debates'],
+        'Rounds':None,
+        'ConSin':None,
+        'doc':"""
+        """
+    },
     {
         'name':'mercados_prohibidos',
         'display_name':'1. Mercados Prohibidos: Regulación y disuasión.',
@@ -173,6 +184,10 @@ ROOM_DEFAULTS = {
 }
 
 ROOMS = [
+{
+        'name': 'debate',
+        'display_name': 'Sala de evaluación  del debate',
+    },
     {
         'name': 'mercados',
         'display_name': 'Sala del juego Mercados Prohibidos',
