@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Decisiones SIN
+{% endblock %}
+
+{% block content %}
+
+    <p> Distribución preferencias votantes: (Ordenados mayor a menor) </p>
+
+    Azul: {{player.Voto_Azul}}, Rojo: {{player.Voto_Rojo}}, Verde: {{player.Voto_Verde}}
+
+    <b> Orden de preferencia: </b>
+
+    <table>
+      <tr>
+        <th>{{preferencia_uno}}</th>
+        <th>{{preferencia_dos}}</th>
+        <th>{{preferencia_tres}}</th>
+      </tr>
+      <tr>
+        <td>(Más preferido)</td>
+        <td></td>
+        <td>(Menos preferido)</td>
+      </tr>
+    </table>
+
+    <p> Haga clic para hacer su elección: </p>
+
+    <button class="boton" name="Voto_Azul" value="True"> Azul </button>
+    <button class="boton" name="Voto_Rojo" value="True"> Rojo </button>
+    <button class="boton" name="Voto_Azul" value="True"> Verde </button>
+    <button class="boton" name="VotoNo" value="True"> No votar </button>
+
+{% endblock %}

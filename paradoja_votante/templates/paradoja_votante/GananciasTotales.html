@@ -1,0 +1,16 @@
+% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Ganancias totales
+{% endblock %}
+
+{% block content %}
+
+    <p> El juego ha terminado. </p>
+
+    <p> Sus puntos acumulados son: {{player.TotalPagos}} </p>
+
+    {% formfield player.Codigo label="Por favor digite su código de estudiante:" %}
+
+{% next_button %}

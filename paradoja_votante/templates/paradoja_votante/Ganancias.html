@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Ganancias
+{% endblock %}
+
+{% block content %}
+
+    <p> Su elección fue </p>
+
+    <p> El partido candidato es: {{Subsession.Ganador}} </p>
+
+    <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
+
+{% endblock %}
+
+{% next_button %}
