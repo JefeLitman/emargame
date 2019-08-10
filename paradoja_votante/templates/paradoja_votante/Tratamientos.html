@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Presentación
+{% endblock %}
+
+{% block content %}
+
+    {% if tratamiento %}
+        {% if numeroronda == rondastotales %}
+            <b> Votación </b>
+            <p>
+                Observará sus preferencias sobre los candidatos, ordenados desde el que más le gusta hasta el que menos. Cada participante puede tener preferencias diferentes, este orden será asignado al azar. Los electores votan simultáneamente por un candidato o pueden decidir no votar.
+            </p>
+        {% else %}
+            <b> Encuesta </b>
+            <p>
+                Todos los participantes observarán la distribución de las preferencias antes de tomar su decisión. Es decir, el porcentaje de electores que prefiere el candidato Azul, el porcentaje que prefiere el candidato Rojo y el porcentaje que prefiere el candidato Verde.
+            </p>
+        {% endif %}
+    {% else %}
+        {% if numeroronda == rondastotales %}
+            <b> Encuesta </b>
+            <p>
+                Todos los participantes observarán la distribución de las preferencias antes de tomar su decisión. Es decir, el porcentaje de electores que prefiere el candidato Azul, el porcentaje que prefiere el candidato Rojo y el porcentaje que prefiere el candidato Verde.
+            </p>
+        {% else %}
+            <b> Votación </b>
+            <p>
+               Observará sus preferencias sobre los candidatos, ordenados desde el que más le gusta hasta el que menos. Cada participante puede tener preferencias diferentes, este orden será asignado al azar. Los electores votan simultáneamente por un candidato o pueden decidir no votar.
+            </p>
+        {% endif %}
+    {% endif %}
+
+    {% next_button %}
+
+{% endblock %}

@@ -7,12 +7,23 @@
 
 {% block content %}
 
-    <p> Su elección fue </p>
+    <p> Su elección fue
 
-    <p> El partido candidato es: {{Subsession.Ganador}} </p>
+    {% if player.Voto_Azul == True %}
+        el partido Azul </p>
+    {% elif player.Voto_Rojo == True %}
+        el partido Rojo </p>
+    {% elif player.Voto_Verde == True %}
+        el partido Verde </p>
+    {% else %}
+        no votar </p>
+    {% endif %}
+
+    <p> El partido ganador es: {{Subsession.Ganador}} </p>
 
     <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
 
+{% next_button %}
+
 {% endblock %}
 
-{% next_button %}

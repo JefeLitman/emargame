@@ -1,4 +1,4 @@
- from otree.api import (
+from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
@@ -71,6 +71,18 @@ class Subsession(BaseSubsession):
         self.N_Verdes = contV/l
         self.N_Rojos = contR/l
 
+        distribucion_preferencias = {'Azul':self.N_Azules, 'Verde': self.N_Verdes, 'Rojos': self.N_Rojos}
+        Valores = list(distribucion_preferencias.values())
+        Valores.sort(reverse=True)
+        Llaves = list(distribucion_preferencias.keys())
+        orden_candidatos = []
+        for v in Valores:
+            for l in Llaves:
+                if v == distribucion_preferencias.get(l):
+                    orden_candidatos.append(l)
+        preferencias = [orden_candidatos,Valores]
+        return preferencias
+
     def set_ganador(self):
         contA, contR, contV,contVN = 0, 0, 0,0
         for j in self.get_players():
@@ -82,10 +94,14 @@ class Subsession(BaseSubsession):
                 contV = contV + 1
             else:
                 contVN = contVN+1
-        votos = {"Azul":contA,"Verdes":contV,"Rojos":contR,"No votaron": contVN}
-        #faltaaaaa
-
-        self.Ganador = votos.get(max(votos.values()))
+        Votos = {"Azul":contA,"Verdes":contV,"Rojos":contR,"No votaron": contVN}
+        Valores = list(Votos.values())
+        Valores.sort()
+        Llaves = list(Votos.keys())
+        for v in Valores:
+            for l in Llaves:
+                if v == Votos.get(l):
+                    self.Ganador = l
 
 class Group(BaseGroup):
     pass
@@ -110,7 +126,7 @@ class Player(BasePlayer):
         self.Pagos = self.Preferencia_ganador * Constants.Multiplicador - Constants.Costo * c(self.VotoNo)
         self.payoff = self.Pagos
 
-    def set_orden_preferencias(self):
+    def get_orden_preferencias(self):
         Candidatos = {'Azul':self.P_Azul ,'Rojo':self.P_Rojo,'Verde':self.P_Verde}
         Valores = list(Candidatos.values())
         Valores.sort(reverse=True)

@@ -7,9 +7,10 @@
 
 {% block content %}
 
-    <p> Distribución preferencias votantes: (Ordenados mayor a menor) </p>
+    <b> Distribución preferencias votantes</b>: (Ordenados mayor a menor)
 
-    Azul: {{player.Voto_Azul}}, Rojo: {{player.Voto_Rojo}}, Verde: {{player.Voto_Verde}}
+    <p> {{mayor_preferencia_partido}}:{{mayor_preferencia_numero}}, {{2da_preferencia_partido}}:{{2da_preferencia_numero}},
+    {{menor_preferencia_partido}}:{{menor_preferencia_numero}} </p>
 
     <b> Orden de preferencia: </b>
 
