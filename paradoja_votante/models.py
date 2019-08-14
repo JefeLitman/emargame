@@ -96,7 +96,7 @@ class Subsession(BaseSubsession):
                 contV = contV + 1
             else:
                 contVN = contVN+1
-        Votos = {"Azul":contA + random(),"Verde":contV + random(),"Rojo":contR + random(),"No votaron": contVN + random()}
+        Votos = {"Azul":contA + random(),"Verde":contV + random(),"Rojo":contR + random()}
         Valores = list(Votos.values())
         Valores.sort()
         Llaves = list(Votos.keys())
