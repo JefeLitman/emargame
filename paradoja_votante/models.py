@@ -3,6 +3,7 @@ from otree.api import (
     Currency as c, currency_range
 )
 from random import randint
+from random import random
 
 
 author = 'Luis Alejandro Palacio García & Ferley Rincon'
@@ -61,7 +62,7 @@ class Subsession(BaseSubsession):
         contA, contR, contV,contNo = 0, 0, 0, 0
         l = len(self.get_players())
         for j in self.get_players():
-            if j.P_AZul == 3:
+            if j.P_Azul == 3:
                 contA = contA + 1
             elif j.P_Rojo == 3:
                 contR = contR + 1
@@ -71,6 +72,7 @@ class Subsession(BaseSubsession):
         self.N_Verdes = contV/l
         self.N_Rojos = contR/l
 
+    def get_distribucion_preferencias(self):
         distribucion_preferencias = {'Azul':self.N_Azules, 'Verde': self.N_Verdes, 'Rojos': self.N_Rojos}
         Valores = list(distribucion_preferencias.values())
         Valores.sort(reverse=True)
@@ -94,7 +96,7 @@ class Subsession(BaseSubsession):
                 contV = contV + 1
             else:
                 contVN = contVN+1
-        Votos = {"Azul":contA,"Verdes":contV,"Rojos":contR,"No votaron": contVN}
+        Votos = {"Azul":contA + random(),"Verde":contV + random(),"Rojo":contR + random(),"No votaron": contVN + random()}
         Valores = list(Votos.values())
         Valores.sort()
         Llaves = list(Votos.keys())
@@ -103,28 +105,32 @@ class Subsession(BaseSubsession):
                 if v == Votos.get(l):
                     self.Ganador = l
 
+
 class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
-    Codigo = models.StringField(min=1, max=3)
+    Codigo = models.StringField()
 
     P_Azul = models.IntegerField(min=1, max=3)
     P_Rojo = models.IntegerField(min=1, max=3)
     P_Verde = models.IntegerField(min=1, max=3)
 
-    Voto_Azul = models.BooleanField()
-    Voto_Rojo = models.BooleanField()
-    Voto_Verde = models.BooleanField()
-    VotoNo = models.BooleanField()
+    Voto_Azul = models.BooleanField(blank=True)
+    Voto_Rojo = models.BooleanField(blank=True)
+    Voto_Verde = models.BooleanField(blank=True)
+    VotoNo = models.BooleanField(blank=True)
 
     Pagos = models.CurrencyField(min=0, max=1500)
     TotalPagos = models.CurrencyField()
-    Preferencia_ganador = 0 #faltaaaaaa
+    Preferencia_ganador = models.IntegerField(min=1, max=3)
 
     def setPagos(self):
-        self.Pagos = self.Preferencia_ganador * Constants.Multiplicador - Constants.Costo * c(self.VotoNo)
+        self.Pagos = self.Preferencia_ganador * Constants.Multiplicador - Constants.Costo * c(not self.VotoNo)
         self.payoff = self.Pagos
+
+    def setTotalPagos(self):
+        self.TotalPagos = sum([p.Pagos for p in self.in_all_rounds()])
 
     def get_orden_preferencias(self):
         Candidatos = {'Azul':self.P_Azul ,'Rojo':self.P_Rojo,'Verde':self.P_Verde}
@@ -138,6 +144,36 @@ class Player(BasePlayer):
                     orden_candidatos.append(l)
         return orden_candidatos
 
+    def set_preferencia_ganador(self, ganador):
+        Candidatos = {'Azul':self.P_Azul ,'Rojo':self.P_Rojo,'Verde':self.P_Verde}
+        self.Preferencia_ganador = Candidatos.get(ganador)
+
+    def set_votacion_aleatorio(self):
+        votos = [self.Voto_Azul,self.Voto_Rojo,self.P_Verde,self.VotoNo]
+        if True in votos:
+            self.set_false()
+        else:
+            posicion_true = randint(0, len(votos) - 1)
+            votos[posicion_true] = True
+            if posicion_true == 0:
+                self.Voto_Azul = True
+            elif posicion_true == 1:
+                self.Voto_Rojo = True
+            elif posicion_true == 2:
+                self.P_Verde = True
+            else:
+                self.VotoNo = True
+            self.set_false()
+
+    def set_false(self):
+        if self.Voto_Azul == None:
+            self.Voto_Azul = False
+        if self.Voto_Rojo == None:
+            self.Voto_Rojo = False
+        if self.P_Verde == None:
+            self.P_Verde = False
+        if self.VotoNo == None:
+            self.VotoNo = False
 
 
 

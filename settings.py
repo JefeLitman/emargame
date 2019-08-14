@@ -87,7 +87,7 @@ SESSION_CONFIG_DEFAULTS = {
     'Rounds':10,
     'ConSin':False,
     'doc':"""
-    Rounds: Número total de periodos que se jugarán. Por defecto en 20*.<br/>
+    Rounds: Número total de periodos que se jugarán. Por defecto en 10 y maximo 20.<br/>
     ConSin: Tomará el valor de 1 cuando los periodos iniciales son tratamiento con revisión y los periodos finales sin revisión. En caso contrario será 0. Por defecto 0 (Sin marcar).
     """
 }
@@ -118,7 +118,7 @@ SESSION_CONFIGS = [
         'ConSin':None,
         'MasMenos':False,
         'doc':"""
-        Rounds: Número total de periodos que se jugarán. Por defecto en 20*.<br/>
+        Rounds: Número total de periodos que se jugarán. Por defecto en 10 y maximo 20.<br/>
         MasMenos: Tomará el valor de 1 cuando los periodos iniciales son tratamiento zanahoria y los periodos finales garrote. En caso contrario será 0. Por defecto 0 (Sin marcar).
         """
     },
@@ -142,7 +142,7 @@ SESSION_CONFIGS = [
         'ConSin':None,
         'SecSim':False,
         'doc':"""
-        Rounds: Número total de periodos que se jugarán. Por defecto en 20*.<br/>
+        Rounds: Número total de periodos que se jugarán. Por defecto en 10 y maximo 20.<br/>
         SecSim:  Tomará el valor de 1 cuando los periodos iniciales son tratamiento secuencial y los periodos finales simultaneo. En caso contrario será 0. Por defecto 0 (Sin marcar).
         """
     },
@@ -160,9 +160,15 @@ SESSION_CONFIGS = [
         'ConSin':None,
         'LotSub':False,
         'doc':"""
-        Rounds: Número total de periodos que se jugarán. Por defecto en 20*.<br/>
+        Rounds: Número total de periodos que se jugarán. Por defecto en 10 y maximo 20.<br/>
         LotSub:  Tomará el valor de 1 cuando los periodos iniciales son tratamiento loteria y los periodos finales subasta. En caso contrario será 0. Por defecto 0 (Sin marcar).
         """
+    },
+    {
+        'name':'paradoja_votante',
+        'display_name': '8. Paradoja del votante: Voto pivote y abstención.',
+        'num_demo_participants':2,
+        'app_sequence': ['paradoja_votante']
     },
     {
         'name':'corrupcion_malversacion',
@@ -215,6 +221,10 @@ ROOMS = [
     {
         'name': 'renta',
         'display_name': 'Sala del juego Buscadores de Renta'
+    },
+    {
+        'name': 'votante',
+        'display_name': 'Sala del juego Paradoja del Votante'
     },
     {
         'name': 'malversacion',

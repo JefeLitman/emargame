@@ -19,11 +19,11 @@ class Tratamientos(Page):
         return {
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
-            'tratamiento': self.session.config["MasMenos"]
+            'tratamiento': self.session.config["ConSin"]
         }
 
-
 class DecisionesSIN(Page):
+    timeout_seconds = 60
     form_model = 'player'
     form_fields = ['Voto_Azul','Voto_Rojo','Voto_Verde','VotoNo']
 
@@ -34,6 +34,12 @@ class DecisionesSIN(Page):
             'preferencia_tres': self.player.get_orden_preferencias()[2] #menos
         }
 
+    def is_displayed(self):
+        if (self.session.config["ConSin"]):
+            return self.round_number > self.session.config["Rounds"] / 2
+        else:
+            return self.round_number <= self.session.config["Rounds"] / 2
+
 
 class DecisionesCON(Page):
     timeout_seconds = 60
@@ -42,27 +48,44 @@ class DecisionesCON(Page):
 
     def vars_for_template(self):
         return {
-            'mayor_preferencia_partido': self.subsession.set_n_jugadores[0][0], #mas
-            '2da_preferencia_partido': self.subsession.set_n_jugadores[0][1],
-            'menor_preferencia_partido': self.subsession.set_n_jugadores[0][2],#menos
-            'mayor_preferencia_numero': self.subsession.set_n_jugadores[1][0],
-            '2da_preferencia_numero':self.subsession.set_n_jugadores[1][1],
-            'menor_preferencia_numero': self.subsession.set_n_jugadores[1][2],
+            'mayor_preferencia_partido': self.subsession.get_distribucion_preferencias()[0][0], #mas
+            '2da_preferencia_partido': self.subsession.get_distribucion_preferencias()[0][1],
+            'menor_preferencia_partido': self.subsession.get_distribucion_preferencias()[0][2],#menos
+            'mayor_preferencia_numero': self.subsession.get_distribucion_preferencias()[1][0],
+            '2da_preferencia_numero':self.subsession.get_distribucion_preferencias()[1][1],
+            'menor_preferencia_numero': self.subsession.get_distribucion_preferencias()[1][2],
             'preferencia_uno': self.player.get_orden_preferencias()[0],
             'preferencia_dos': self.player.get_orden_preferencias()[1],
             'preferencia_tres': self.player.get_orden_preferencias()[2]
         }
 
+    def is_displayed(self):
+        if (self.session.config["ConSin"]):
+            return self.round_number <= self.session.config["Rounds"] / 2
+        else:
+            return self.round_number > self.session.config["Rounds"] / 2
+
+class EsperaJugadores(WaitPage):
+    wait_for_all_groups = True
+
+class Calculos(WaitPage):
+    def after_all_players_arrive(self):
+        for jugador in self.subsession.get_players():
+            jugador.set_votacion_aleatorio()
+        self.subsession.set_ganador()
+        for jugador in self.subsession.get_players():
+            jugador.set_preferencia_ganador(self.subsession.Ganador)
+            jugador.setPagos()
+            jugador.setTotalPagos()
 
 class Ganancias(Page):
     timeout_seconds=30
 
-
 class  GananciasTotales(Page):
-    timeout_seconds = 30
     form_model = 'player'
     form_fields = ['Codigo']
-
+    def is_displayed(self):
+        return self.round_number == self.session.config["Rounds"]
 
 class Gracias(Page):
     def is_displayed(self):
@@ -71,8 +94,11 @@ class Gracias(Page):
 page_sequence = [
     Presentacion,
     Tratamientos,
+    EsperaJugadores,
     DecisionesSIN,
     DecisionesCON,
+    EsperaJugadores,
+    Calculos,
     Ganancias,
     GananciasTotales,
     Gracias
