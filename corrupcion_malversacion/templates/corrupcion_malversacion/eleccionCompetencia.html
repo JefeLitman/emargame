@@ -87,18 +87,19 @@
     
     {% elif ronda == 4 %}
     
-        <p> ¿Cuál de las formas marcadas con una letra se parece más a las tres formas no marcadas con letra que aparecen a la izquierda? </p>
-        <img class="imagen" src = "{% static 'malversacion/test_1.png'%}" img> <br> <br>
-            <input type="radio" name="prueba"> <img class="imagen" src = "{% static 'malversacion/test_1_a.png'%}" img> <br>
-            <input type="radio" name="prueba"> <img class="imagen" src = "{% static 'malversacion/test_1_b.png'%}" img> <br>
-            <input type="radio" name="prueba"> <img class="imagen" src = "{% static 'malversacion/test_1_c.png'%}" img> <br>
-            <input type="radio" name="prueba" id="correcto"> <img class="imagen" src = "{% static 'malversacion/test_1_d.png'%}" img> <br>
+        <p> Una madre y un padre tienen 6 hijos varones y cada hijo varón tiene una hermana. ¿Cuántas personas componen la familia? </p>
 
-        <p>  ¿Cuál es el valor que sigue en la siguiente serie numérica: 100, 85, 70, 55, 40..?</p>
-                    <input type="radio" name="prueba1" > 35 <br>
-                    <input type="radio" name="prueba1" > 30 <br>
-                    <input type="radio" name="prueba1" id="correcto1"> 25 <br>
-                    <input type="radio" name="prueba1" > 20 <br>
+            <input type="radio" name="prueba"> 6 <br>
+            <input type="radio" name="prueba"> 10 <br>
+            <input type="radio" name="prueba"> 7 <br>
+            <input type="radio" name="prueba" id="correcto"> 9
+
+        <p> Tres amigos jugaron al ajedrez. En total jugaron tres partidas. ¿Cuántas partidas jugó cada uno? </p>
+
+                    <input type="radio" name="prueba1" > 3 <br>
+                    <input type="radio" name="prueba1" > 9 <br>
+                    <input type="radio" name="prueba1" id="correcto1"> 2 <br>
+                    <input type="radio" name="prueba1" > 6 <br>
 
         <p> ¿Cuál es el valor que sigue en la siguiente serie numérica: -10, -8, -4, 4, 20...? </p>
                     <input type="radio" name="prueba2" > 24 <br>
@@ -138,31 +139,30 @@
     
     {% elif ronda == 6 %}
     
-        <p> ¿Cuál debe ser la cuarta fila de letras que faltan? </p>
-        <img class="imagen" src = "{% static 'malversacion/test_2.PNG'%}" img> <br>
-            <input type="radio" name="prueba" id="correcto"> E C A B D <br>
-            <input type="radio" name="prueba" > C A D B E <br>
-            <input type="radio" name="prueba" > D E A B C <br>
+        <p>  Un caracol decidió subir a una pared de 20 m de altura.
+            Durante cada día tenía tiempo de subir 5 m; pero mientras dormía por la noche, bajaba 4 m.¿Al cabo de cuántos días llegará a la cima de la pared? </p>
 
-                <p> ¿Cuál es el valor que sigue en la siguiente serie numérica: 1, 2, 3, 5, 8..? </p>
-                    <input type="radio" name="prueba1"  > 11 <br>
-                    <input type="radio" name="prueba1" id="correcto1" > 13 <br>
-                    <input type="radio" name="prueba1" > 18 <br>
-                    <input type="radio" name="prueba1" > 15 <br>
+            <input type="radio" name="prueba" id="correcto"> 16 <br>
+            <input type="radio" name="prueba" > 14 <br>
+            <input type="radio" name="prueba" > 15 <br>
 
-                <p> ¿Cuál es la figura que falta? </p>
-                    <img class="imagen" src = "{% static 'malversacion/test_4.PNG'%}" img> </div> <br> <br>
-                    <input type="radio" name="prueba2" id="correcto2">
-                    <img class="imagen" src = "{% static 'malversacion/test_4a.PNG'%}" img> <br>
-                    <input type="radio" name="prueba2">
-                    <img class="imagen" src = "{% static 'malversacion/test_4b.PNG'%}" img> <br>
-                    <input type="radio" name="prueba2">
-                    <img class="imagen" src = "{% static 'malversacion/test_4c.PNG'%}" img>
+        <p> ¿Cuál es el valor que sigue en la siguiente serie numérica: 1, 2, 3, 5, 8..? </p>
+            <input type="radio" name="prueba1"  > 11 <br>
+            <input type="radio" name="prueba1" id="correcto1" > 13 <br>
+            <input type="radio" name="prueba1" > 18 <br>
+            <input type="radio" name="prueba1" > 15 <br>
 
-                <p> El cristal oscuro es más limpio que el cristal grueso,el cristal grueso es menos sucio que el cristal nuevo,¿Quién es el menos sucio?</p>
-                    <input type="radio" name="prueba3" id="correcto3">  Cristal oscuro  <br>
-                    <input type="radio" name="prueba3" > Cristal grueso <br>
-                    <input type="radio" name="prueba3" > Cristal nuevo <br>
+        <p> En un estante hay un diccionario de tres tomos, ordenados. Cada tomo contiene 200 páginas. Una polilla hambrienta se come desde la primera hoja del tomo
+            I hasta la última del tomo III (No cuentan las tapas)..¿Cuántas hojas se comió la polilla? </p>
+
+               <input type="radio" name="prueba2" id="correcto2"> 300 <br>
+               <input type="radio" name="prueba2"> 250 <br>
+               <input type="radio" name="prueba2"> 100
+
+        <p> El cristal oscuro es más limpio que el cristal grueso,el cristal grueso es menos sucio que el cristal nuevo,¿Quién es el menos sucio?</p>
+             <input type="radio" name="prueba3" id="correcto3">  Cristal oscuro  <br>
+             <input type="radio" name="prueba3" > Cristal grueso <br>
+             <input type="radio" name="prueba3" > Cristal nuevo <br>
         
     {% elif ronda == 7 %}
         
@@ -172,30 +172,29 @@
             <input type="radio" name="prueba"> Soy su abuelo <br>
             <input type="radio" name="prueba"> Yo soy John  <br>
 
-                <p>  ¿Cuál es el valor que sigue en la siguiente serie numérica: 1, 6, 10, 13, 15...?  </p>
-                    <input type="radio" name="prueba1" id="correcto1"> 16 <br>
-                    <input type="radio" name="prueba1" > 17 <br>
-                    <input type="radio" name="prueba1"> 18 <br>
-                    <input type="radio" name="prueba1"> 19 <br>
+        <p>  ¿Cuál es el valor que sigue en la siguiente serie numérica: 1, 6, 10, 13, 15...?  </p>
+            <input type="radio" name="prueba1" id="correcto1"> 16 <br>
+            <input type="radio" name="prueba1" > 17 <br>
+            <input type="radio" name="prueba1"> 18 <br>
+            <input type="radio" name="prueba1"> 19 <br>
 
-                <p> - 23 + 65 =</p>
-                    <input type="radio" name="prueba2" id="correcto2" >  88 <br>
-                    <input type="radio" name="prueba2" > 76 <br>
-                    <input type="radio" name="prueba2" > 86 <br>
-                    <input type="radio" name="prueba2" > 78 <br>
+        <p> - 23 + 65 =</p>
+            <input type="radio" name="prueba2" id="correcto2" >  88 <br>
+            <input type="radio" name="prueba2" > 76 <br>
+            <input type="radio" name="prueba2" > 86 <br>
+            <input type="radio" name="prueba2" > 78 <br>
 
-                <p> El whisky es más sano que el agua,el café es más nocivo que el agua,¿Quién es el menos sano? </p>
-                    <input type="radio" name="prueba3" >  Whisky <br>
-                    <input type="radio" name="prueba3" id="correcto3">  Café <br>
-                    <input type="radio" name="prueba3" > Agua <br>
+        <p> El whisky es más sano que el agua,el café es más nocivo que el agua,¿Quién es el menos sano? </p>
+            <input type="radio" name="prueba3" >  Whisky <br>
+            <input type="radio" name="prueba3" id="correcto3">  Café <br>
+            <input type="radio" name="prueba3" > Agua <br>
         
     {% elif ronda == 8 %}
         
-        <p> ¿Qué número debe aparecer en la cabeza del tercer hombre?  </p>
-        <img class="imagen" src = "{% static 'malversacion/test_3.PNG'%}" img> <br>
-            <input type="radio" name="prueba"> 5 <br>
-            <input type="radio" name="prueba" id="correcto"> 3  <br>
-            <input type="radio" name="prueba"> 4 <br>
+        <p> Un comerciante compró un artículo por $7.000 , lo vendió por $8.000, lo volvió a comprar por $9.000 y lo vendió finalmente por $10.000 ¿Cuánto beneficio sacó? </p>
+            <input type="radio" name="prueba"> 1 <br>
+            <input type="radio" name="prueba" id="correcto"> 0  <br>
+            <input type="radio" name="prueba"> 2 <br>
 
                 <p> ¿Cuánto son 3/12 de un año? </p>
                     <input type="radio" name="prueba1"> 8 meses <br>
