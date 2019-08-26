@@ -166,7 +166,6 @@ class gracias(Page):
 page_sequence = [
     introduccion,
     consentimiento,
-    formulario,
     instruccionesAzar,
     instruccionesCompetencia,
     instruccionesVotacion,
