@@ -7,7 +7,64 @@
 
 {% block content %}
 
-    <h2> Indicador 4: Vocabulario utilizado y tono de voz. </h2>
+     <style>
+
+          @import url('https://fonts.googleapis.com/css?family=Cabin');
+
+         .estrellas {
+          width: 250px;
+          margin: 0 auto;
+          height: 40px;
+          font-size: 40px;
+        }
+
+          label {
+            font-size: 40px;
+            color: grey;
+          }
+
+          input[type="radio"] {
+            display: none;
+          }
+
+        .clasificacion {
+          direction: rtl;
+          unicode-bidi: bidi-override;
+        }
+
+        label:hover,
+        label:hover ~ label {
+          color: orange;
+        }
+
+        input[type="radio"]:checked ~ label {
+          color: orange;
+        }
+
+    .otree-title{
+	    color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+      }
+
+    button.sig {
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+       }
+
+       p,b{font-family: 'Cabin', sans-serif;
+      font-size: 20px;}
+
+    </style>
+
+    <b> Indicador 4: Vocabulario utilizado y tono de voz. </b>
 
     <p> <b> Insuficiente (1)</b> : No hablan claramente. No utilizan una terminología adecuada para su nivel académico. Nunca o casi nunca emplean un tono y volumen de voz adecuados.
 
@@ -15,9 +72,30 @@
 
     <p> Por favor indicar en una escala de 1 a 5 la evaluación:</p>
 
-    {% formfield player.I4AF label="Casa a favor:"  %}
-    {% formfield player.I4EC label="Casa en contra:" %}
+    <p> Casa a favor:</p>
 
-    {% next_button %}
+    <form class="estrellas">
+        <p class="clasificacion">
+            <input id="radio1cf" type="radio" name="I4AF" value="5"> <label for="radio1cf">★</label>
+            <input id="radio2cf" type="radio" name="I4AF" value="4"> <label for="radio2cf">★</label>
+            <input id="radio3cf" type="radio" name="I4AF" value="3"> <label for="radio3cf">★</label>
+            <input id="radio4cf" type="radio" name="I4AF" value="2"> <label for="radio4cf">★</label>
+            <input id="radio5cf" type="radio" name="I4AF" value="1"> <label for="radio5cf">★</label>
+        </p>
+
+    <p> Casa en contra:</p>
+
+        <p class="clasificacion">
+            <input id="radio1ce" type="radio" name="I4EC" value="5"> <label for="radio1ce">★</label>
+            <input id="radio2ce" type="radio" name="I4EC" value="4"> <label for="radio2ce">★</label>
+            <input id="radio3ce" type="radio" name="I4EC" value="3"> <label for="radio3ce">★</label>
+            <input id="radio4ce" type="radio" name="I4EC" value="2"> <label for="radio4ce">★</label>
+            <input id="radio5ce" type="radio" name="I4EC" value="1"> <label for="radio5ce">★</label>
+        </p>
+    </form>
+
+    <button class="sig">
+          <b>Siguiente</b>
+    </button>
 
 {% endblock %}

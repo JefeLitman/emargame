@@ -7,27 +7,27 @@ class Presentacion(Page):
     pass
 
 class Equipo(Page):
-    #Tambien ponemos? timeout_seconds = 60
+    #timeout_seconds = 5
     form_model = 'player'
     form_fields = ['I1AF','I1EC']
 
 class Conocimiento(Page):
-    #Tambien ponemos? timeout_seconds = 60
+    #timeout_seconds = 5
     form_model = 'player'
     form_fields = ['I2AF','I2EC']
 
 class Coherencia(Page):
-    #Tambien ponemos? timeout_seconds = 60
+    #timeout_seconds = 5
     form_model = 'player'
     form_fields = ['I3AF','I3EC']
 
 class Vocabulario(Page):
-    #Tambien ponemos? timeout_seconds = 60
+    #timeout_seconds = 5
     form_model = 'player'
     form_fields = ['I4AF','I4EC']
 
 class Escucha(Page):
-    #Tambien ponemos? timeout_seconds = 60
+    #timeout_seconds = 5
     form_model = 'player'
     form_fields = ['I5AF','I5EC']
 

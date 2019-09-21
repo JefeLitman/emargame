@@ -7,10 +7,36 @@
 
 {% block content %}
 
+    <style>
+        .otree-title{
+	    color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+      }
+
+    button.sig {
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+       }
+
+       p,b{font-family: 'Cabin', sans-serif;
+      font-size: 20px;}
+
+    </style>
+
     <p> Promedio casa a favor: {{CasaAFavor}} </p>
 
     <p> Promedio casa en contra: {{CasaEnContra}} </p>
 
-    {% next_button %}
+    <button class="sig">
+          <b>Siguiente</b>
+    </button>
 
 {% endblock %}

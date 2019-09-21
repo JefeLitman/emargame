@@ -7,11 +7,36 @@
 
 {% block content %}
 
+<style>
+    .otree-title{
+	    color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+      }
+
+      button.sig {
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+       }
+
+       p,b{font-family: 'Cabin', sans-serif;
+      font-size: 20px;}
+</style>
+
     <p> Para determinar el ganador del debate, todos los estudiantes deben calificar las intervenciones.
     Se calculará el promedio de las puntuaciones en 5 criterios de evaluación.
     Por favor indicar en una escala de 1 a 5 la evaluación para cada equipo, en cada uno de los indicadores.
     El puntaje va desde 1 (insuficiente) hasta cinco (excelente). </p>
 
-    {% next_button %}
+    <button class="sig">
+          <b>Siguiente</b>
+    </button>
 
 {% endblock %}

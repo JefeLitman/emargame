@@ -7,7 +7,65 @@
 
 {% block content %}
 
-    <b> Indicador 1: Trabajo en equipo. </b>
+
+    <style>
+
+          @import url('https://fonts.googleapis.com/css?family=Cabin');
+
+         .estrellas {
+          width: 250px;
+          margin: 0 auto;
+          height: 40px;
+          font-size: 40px;
+        }
+
+          label {
+            font-size: 40px;
+            color: grey;
+          }
+
+          input[type="radio"] {
+            display: none;
+          }
+
+        .clasificacion {
+          direction: rtl;
+          unicode-bidi: bidi-override;
+        }
+
+        label:hover,
+        label:hover ~ label {
+          color: orange;
+        }
+
+        input[type="radio"]:checked ~ label {
+          color: orange;
+        }
+
+    .otree-title{
+	    color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+      }
+
+    button.sig {
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+       }
+
+       p,b{font-family: 'Cabin', sans-serif;
+      font-size: 20px;}
+
+    </style>
+
+    <b> Indicador 1: Trabajo en equipo. </b> </br> </br>
 
     <p> <b> Insuficiente (1)</b>: Cada orador presenta argumentos de forma aislada y sin una estrategia de equipo clara.
         No se ve la división de tareas y la complementariedad entre oradores.</p>
@@ -18,9 +76,31 @@
 
     <p> Por favor indicar en una escala de 1 a 5 la evaluación:</p>
 
-    {% formfield player.I1AF label="Casa a favor:"  %}
-    {% formfield player.I1EC label="Casa en contra:" %}
+    <p> Casa a favor:</p>
 
-    {% next_button %}
+    <form class="estrellas">
+        <p class="clasificacion">
+            <input id="id_I1AF_1" type="radio" name="I1AF" value="5"> <label for="id_I1AF_1">★</label>
+            <input id="id_I1AF_2" type="radio" name="I1AF" value="4"> <label for="id_I1AF_2">★</label>
+            <input id="id_I1AF_3" type="radio" name="I1AF" value="3"> <label for="id_I1AF_3">★</label>
+            <input id="id_I1AF_4" type="radio" name="I1AF" value="2"> <label for="id_I1AF_4">★</label>
+            <input id="id_I1AF_5" type="radio" name="I1AF" value="1"> <label for="id_I1AF_5">★</label>
+        </p>
+
+    <p> Casa en contra:</p>
+
+        <p class="clasificacion">
+            <input id="id_I1EC_1" type="radio" name="I1EC" value="5"> <label for="id_I1EC_1">★</label>
+            <input id="id_I1EC_2" type="radio" name="I1EC" value="4"> <label for="id_I1EC_2">★</label>
+            <input id="id_I1EC_3" type="radio" name="I1EC" value="3"> <label for="id_I1EC_3">★</label>
+            <input id="id_I1EC_4" type="radio" name="I1EC" value="2"> <label for="id_I1EC_4">★</label>
+            <input id="id_I1EC_5" type="radio" name="I1EC" value="1"> <label for="id_I1EC_5">★</label>
+        </p>
+    </form>
+
+
+    <button class="sig">
+          <b>Siguiente</b>
+    </button>
 
 {% endblock %}

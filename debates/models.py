@@ -95,14 +95,14 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    I1AF = models.IntegerField(min=1,max=5)
-    I2AF = models.IntegerField(min=1,max=5)
-    I3AF = models.IntegerField(min=1,max=5)
-    I4AF = models.IntegerField(min=1,max=5)
-    I5AF = models.IntegerField(min=1,max=5)
+    I1AF = models.IntegerField()
+    I2AF = models.IntegerField()
+    I3AF = models.IntegerField()
+    I4AF = models.IntegerField()
+    I5AF = models.IntegerField()
 
-    I1EC = models.IntegerField(min=1,max=5)
-    I2EC = models.IntegerField(min=1,max=5)
-    I3EC = models.IntegerField(min=1,max=5)
-    I4EC = models.IntegerField(min=1,max=5)
-    I5EC = models.IntegerField(min=1,max=5)
+    I1EC = models.IntegerField()
+    I2EC = models.IntegerField()
+    I3EC = models.IntegerField()
+    I4EC = models.IntegerField()
+    I5EC = models.IntegerField()
