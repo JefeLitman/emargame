@@ -7,12 +7,36 @@
 
 {% block content %}
 
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Cabin');
+     p{ font-family: 'Cabin', sans-serif; }
+
+     .otree-title{
+        color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+     }
+
+     .otree-btn-next{
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 22px;
+         padding: 8px 20px;
+         float: right;
+    }
+    </style>
+
     <p> El juego ha terminado. </p>
 
     <p> Sus puntos acumulados son: {{player.TotalPagos}} </p>
 
     {% formfield player.Codigo label="Por favor digite su código de estudiante:" %}
 
-{% next_button %}
+    {% next_button %}
 
 {% endblock %}

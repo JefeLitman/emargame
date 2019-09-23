@@ -1,5 +1,6 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
+{% load staticfiles otree %}
 
 {% block title %}
     Decisiones SIN
@@ -7,26 +8,76 @@
 
 {% block content %}
 
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Cabin');
+    .otree-title{
+        color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+     }
+
+     table{
+        text-align: center;
+        font-family: 'Cabin', sans-serif;
+     }
+
+     p{
+     font-family: 'Cabin', sans-serif;
+     }
+
+     button{
+         color: white;
+         font-family: 'Cabin', sans-serif;
+     }
+
+     img{
+        display:block;
+        margin:auto;
+     }
+    </style>
+
+    <div class="container">
     <p> Orden de preferencia: </p>
 
-    <table>
-      <tr>
-        <th>{{preferencia_uno}}</th>
-        <th>{{preferencia_dos}}</th>
-        <th>{{preferencia_tres}}</th>
-      </tr>
+    <table  class="table">
+     <thead>
+          <tr>
+            <th> {{preferencia_uno}}</th>
+            <th>{{preferencia_dos}}</th>
+            <th>{{preferencia_tres}}</th>
+          </tr>
+      </thead>
+      <tbody>
       <tr>
         <td>(Más preferido)</td>
         <td></td>
         <td>(Menos preferido)</td>
       </tr>
+      </tbody>
     </table>
 
     <p> Haga clic para hacer su elección: </p>
 
-    <button class="boton" name="Voto_Azul" value="True"> Azul </button>
-    <button class="boton" name="Voto_Rojo" value="True"> Rojo </button>
-    <button class="boton" name="Voto_Verde" value="True"> Verde </button>
-    <button class="boton" name="VotoNo" value="True"> No votar </button>
+    <button  class="btn btn-primary" name="Voto_Azul" value="True"> Azul </button>
+    <button class="btn btn-danger" name="Voto_Rojo" value="True"> Rojo </button>
+    <button class="btn btn-success" name="Voto_Verde" value="True"> Verde </button>
+    <button class="btn btn-secondary" name="VotoNo" value="True"> No votar </button>
 
+    {% if tratamiento %}
+        {% if numeroronda >= rondastotales %}
+            <img  class="imagen" src = "{% static 'paradoja_votante/encuesta_azul.png' %}"/>
+        {% else %}
+            <img  class="imagen" src = "{% static 'paradoja_votante/votacion_verde.png' %}"/>
+        {% endif %}
+    {% else %}
+        {% if numeroronda >= rondastotales %}
+           <img  class="imagen" src = "{% static 'paradoja_votante/votacion_azul.png' %}"/>
+        {% else %}
+            <img class="imagen" src = "{% static 'paradoja_votante/encuesta_verde.png' %}"/>
+        {% endif %}
+    {% endif %}
+
+    </div>
 {% endblock %}

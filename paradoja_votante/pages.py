@@ -4,13 +4,13 @@ from .models import Constants
 
 
 class Presentacion(Page):
-    timeout_seconds = 30
+    #timeout_seconds = 30
     def is_displayed(self):
         return self.round_number == 1
 
 
 class Tratamientos(Page):
-    timeout_seconds = 30
+    #timeout_seconds = 30
 
     def is_displayed(self):
         return self.round_number == 1 or self.round_number == self.session.config["Rounds"] / 2 + 1
@@ -23,7 +23,7 @@ class Tratamientos(Page):
         }
 
 class DecisionesSIN(Page):
-    timeout_seconds = 60
+    #timeout_seconds = 60
     form_model = 'player'
     form_fields = ['Voto_Azul','Voto_Rojo','Voto_Verde','VotoNo']
 
@@ -31,7 +31,10 @@ class DecisionesSIN(Page):
         return {
             'preferencia_uno': self.player.get_orden_preferencias()[0], #mas
             'preferencia_dos': self.player.get_orden_preferencias()[1],
-            'preferencia_tres': self.player.get_orden_preferencias()[2] #menos
+            'preferencia_tres': self.player.get_orden_preferencias()[2], #menos
+            'numeroronda': self.round_number,
+            'rondastotales': self.session.config["Rounds"] / 2 + 1,
+            'tratamiento': self.session.config["ConSin"]
         }
 
     def is_displayed(self):
@@ -42,7 +45,7 @@ class DecisionesSIN(Page):
 
 
 class DecisionesCON(Page):
-    timeout_seconds = 60
+    #timeout_seconds = 60
     form_model = 'player'
     form_fields = ['Voto_Azul','Voto_Rojo','Voto_Verde','VotoNo']
 
@@ -56,7 +59,10 @@ class DecisionesCON(Page):
             'menor_preferencia_numero': self.subsession.get_distribucion_preferencias()[1][2],
             'preferencia_uno': self.player.get_orden_preferencias()[0],
             'preferencia_dos': self.player.get_orden_preferencias()[1],
-            'preferencia_tres': self.player.get_orden_preferencias()[2]
+            'preferencia_tres': self.player.get_orden_preferencias()[2],
+            'numeroronda': self.round_number,
+            'rondastotales': self.session.config["Rounds"] / 2 + 1,
+            'tratamiento': self.session.config["ConSin"]
         }
 
     def is_displayed(self):
@@ -79,9 +85,15 @@ class Calculos(WaitPage):
             jugador.setTotalPagos()
 
 class Ganancias(Page):
-    timeout_seconds=30
+    #timeout_seconds=30
+    def vars_for_template(self):
+        return {
+            'numeroronda': self.round_number,
+            'rondastotales': self.session.config["Rounds"] / 2 + 1,
+            'tratamiento': self.session.config["ConSin"]
+        }
 
-class  GananciasTotales(Page):
+class GananciasTotales(Page):
     form_model = 'player'
     form_fields = ['Codigo']
     def is_displayed(self):

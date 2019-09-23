@@ -1,12 +1,78 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
+{% load staticfiles otree %}
 
 {% block title %}
-    Presentación
 {% endblock %}
 
 {% block content %}
 
-    {% next_button %}
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Cabin');
+
+    h1,h3 {
+        text-align: center;
+        color: white;
+        margin-top: 70px;
+        font-family: 'Cabin', sans-serif;
+    }
+
+    .col-3{
+        padding-left: 0px;
+    }
+
+    .texto{
+        margin-top: 55px;
+        color: white;
+        font-family: 'Cabin', sans-serif;
+    }
+
+    .col-12{
+        margin-top: 10px;
+        font-family: 'Cabin', sans-serif;
+        height: 60px;
+    }
+
+    .col-9, .col-sm-3{
+        background-color:rgb(36,62,146);
+        font-family: 'Cabin', sans-serif;
+    }
+
+    .img{
+        margin-left: 55px;
+    }
+
+    .otree-btn-next{
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+         float: right;
+       }
+
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col-3"><img src = "{% static 'paradoja_votante/logo-emar-lab.jpg' %}"/></div>
+    <div class="col-9"> <h1> Paradoja del votante </h1>	<h3> Voto pivote y abstención </h3> </div>
+  </div>
+  <div class="row">
+    <div class="col-12"> <h5> ¿Por qué un elector se toma el trabajo de acudir a las urnas si es casi seguro que su candidato ganará con o sin su voto? </h5> </br> </div>
+  </div>
+  <div class="row">
+      <div class="col-sm-3" > <img  class="img" src = "{% static 'paradoja_votante/votacion.png' %}"/> </div>
+      <div class="col-sm-3" > <h2 class="texto"> Votación </h2> </div>
+      <div class="col-sm-3" > <img class="img" src = "{% static 'paradoja_votante/encuesta.png' %}"/> </div>
+      <div class="col-sm-3" > <h2 class="texto" > Inspección </h2> </div>
+  </div>
+</div>
+
+</br>
+
+{% next_button %}
 
 {% endblock %}

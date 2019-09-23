@@ -2,8 +2,49 @@
 {% load otree static %}
 
 {% block title %}
-    Gracias!!!
 {% endblock %}
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Cabin');
+
+    h1{
+        text-align: center;
+        color: white;
+        margin-top: 70px;
+        font-family: 'Cabin', sans-serif;
+    }
+
+    .col-3{
+        padding-left: 0px;
+    }
+
+    .col-9{
+        background-color:rgb(36,62,146);
+        font-family: 'Cabin', sans-serif;
+    }
+
+    .img{
+        margin-left: 55px;
+    }
+
+    .otree-btn-next{
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+         float: right;
+       }
+
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col-3"><img src = "{% static 'paradoja_votante/logo-emar-lab.jpg' %}"/></div>
+    <div class="col-9"> <h1> Gracias </h1>	 </div>
+  </div>
+</div>
 
 {% block content %}
 

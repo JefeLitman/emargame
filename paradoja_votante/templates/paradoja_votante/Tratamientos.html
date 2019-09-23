@@ -1,35 +1,75 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
+{% load staticfiles otree %}
 
 {% block title %}
-    Presentación
 {% endblock %}
 
 {% block content %}
 
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Cabin');
+    .otree-btn-next{
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+         float: right;
+    }
+
+    div.encabezado{
+	    color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+      }
+
+     p, h3{
+        font-family: 'Cabin', sans-serif;
+     }
+
+     img{
+        display:block;
+        margin:auto;
+     }
+
+</style>
+
     {% if tratamiento %}
         {% if numeroronda == rondastotales %}
-            <b> Votación </b>
+            <div class="encabezado"> <h2> Periodos finales </h2> </div>
+            <h3> Votación </h3>
             <p>
                 Observará sus preferencias sobre los candidatos, ordenados desde el que más le gusta hasta el que menos. Cada participante puede tener preferencias diferentes, este orden será asignado al azar. Los electores votan simultáneamente por un candidato o pueden decidir no votar.
             </p>
+            <img  class="img" src = "{% static 'paradoja_votante/encuesta_azul.png' %}"/>
         {% else %}
-            <b> Encuesta </b>
+            <div class="encabezado"> <h2> Periodos iniciales </h2> </div>
+            <h3> Encuesta </h3>
             <p>
                 Todos los participantes observarán la distribución de las preferencias antes de tomar su decisión. Es decir, el porcentaje de electores que prefiere el candidato Azul, el porcentaje que prefiere el candidato Rojo y el porcentaje que prefiere el candidato Verde.
             </p>
+            <img  class="img" src = "{% static 'paradoja_votante/votacion_verde.png' %}"/>
         {% endif %}
     {% else %}
         {% if numeroronda == rondastotales %}
-            <b> Encuesta </b>
+            <div class="encabezado"> <h2> Periodos finales </h2> </div>
+            <h3> Encuesta </h3>
             <p>
                 Todos los participantes observarán la distribución de las preferencias antes de tomar su decisión. Es decir, el porcentaje de electores que prefiere el candidato Azul, el porcentaje que prefiere el candidato Rojo y el porcentaje que prefiere el candidato Verde.
             </p>
+            <img  class="img" src = "{% static 'paradoja_votante/votacion_azul.png' %}"/>
         {% else %}
-            <b> Votación </b>
+            <div class="encabezado"> <h2> Periodos iniciales </h2> </div>
+            <h3> Votación </h3>
             <p>
                Observará sus preferencias sobre los candidatos, ordenados desde el que más le gusta hasta el que menos. Cada participante puede tener preferencias diferentes, este orden será asignado al azar. Los electores votan simultáneamente por un candidato o pueden decidir no votar.
             </p>
+            <img  class="img" src = "{% static 'paradoja_votante/encuesta_verde.png' %}"/>
         {% endif %}
     {% endif %}
 
