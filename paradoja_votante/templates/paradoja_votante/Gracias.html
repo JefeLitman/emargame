@@ -4,13 +4,15 @@
 {% block title %}
 {% endblock %}
 
+{% block content %}
+
 <style>
     @import url('https://fonts.googleapis.com/css?family=Cabin');
 
     h1{
         text-align: center;
         color: white;
-        margin-top: 70px;
+        margin-top: 125px;
         font-family: 'Cabin', sans-serif;
     }
 
@@ -39,13 +41,12 @@
        }
 
 </style>
+
 <div class="container">
   <div class="row">
     <div class="col-3"><img src = "{% static 'paradoja_votante/logo-emar-lab.jpg' %}"/></div>
-    <div class="col-9"> <h1> Gracias </h1>	 </div>
+    <div class="col-9"> <h1> ¡Gracias! </h1>	 </div>
   </div>
 </div>
-
-{% block content %}
 
 {% endblock %}

@@ -23,7 +23,7 @@
         font-family: 'Cabin', sans-serif;
      }
 
-     p{
+     p,ul,b, span{
      font-family: 'Cabin', sans-serif;
      }
 
@@ -38,12 +38,17 @@
      }
     </style>
 
-    <div class="container">
+    <br class="container">
 
-    <b> Distribución preferencias votantes</b>: (Ordenados mayor a menor)
+    <b> Distribución preferencias votantes</b> <span> : (Ordenados mayor a menor) </span>
 
-    <p> {{mayor_preferencia_partido}}:{{mayor_preferencia_numero}}, {{2da_preferencia_partido}}:{{2da_preferencia_numero}},
-    {{menor_preferencia_partido}}:{{menor_preferencia_numero}} </p>
+     <ul class="list-group">
+      <li class="list-group-item"> {{mayor_preferencia_partido}} : {{mayor_preferencia_numero}} </li>
+      <li class="list-group-item"> {{2da_preferencia_partido}} : {{2da_preferencia_numero}} </li>
+      <li class="list-group-item"> {{menor_preferencia_partido}} : {{menor_preferencia_numero}}</li>
+     </ul>
+
+    </br>
 
     <b> Orden de preferencia: </b>
 
@@ -73,15 +78,15 @@
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}
-            <img  class="imagen" src = "{% static 'paradoja_votante/encuesta_azul.png' %}"/>
+            <img  class="img" src = "{% static 'paradoja_votante/votacion_azul.png' %}"/>
         {% else %}
-            <img  class="imagen" src = "{% static 'paradoja_votante/votacion_verde.png' %}"/>
+            <img  class="img" src = "{% static 'paradoja_votante/encuesta_verde.png' %}"/>
         {% endif %}
     {% else %}
         {% if numeroronda >= rondastotales %}
-           <img  class="imagen" src = "{% static 'paradoja_votante/votacion_azul.png' %}"/>
+           <img  class="img" src = "{% static 'paradoja_votante/encuesta_azul.png' %}"/>
         {% else %}
-            <img class="imagen" src = "{% static 'paradoja_votante/encuesta_verde.png' %}"/>
+            <img  class="img" src = "{% static 'paradoja_votante/votacion_verde.png' %}"/>
         {% endif %}
     {% endif %}
     </div>
