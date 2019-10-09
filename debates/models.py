@@ -84,8 +84,8 @@ class Subsession(BaseSubsession):
         return rtasEC
 
     def calcularCasaGanadora(self):
-        promAF = sum(self.calculopromIAF())/len(self.calculopromIAF())
-        promEC = sum(self.calculopromIEC())/len(self.calculopromIEC())
+        promAF = "{0:.2f}".format(sum(self.calculopromIAF())/len(self.calculopromIAF()))
+        promEC = "{0:.2f}".format(sum(self.calculopromIEC())/len(self.calculopromIEC()))
 
         return [promAF, promEC]
 
