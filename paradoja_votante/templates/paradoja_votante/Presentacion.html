@@ -17,32 +17,27 @@
         font-family: 'Cabin', sans-serif;
     }
 
-    .col-3{
-        padding-left: 0px;
+    .vertical-middle{
+        vertical-align: middle;
     }
 
     .texto{
-        margin-top: 55px;
         color: white;
         font-family: 'Cabin', sans-serif;
+        margin-top: 55px;
     }
 
-    .col-12{
-        margin-top: 10px;
+    .col-sm-12{
         font-family: 'Cabin', sans-serif;
-        height: 60px;
     }
 
-    .col-9, .col-sm-3{
+    .col-sm-9, .imgs{
         background-color:rgb(36,62,146);
         font-family: 'Cabin', sans-serif;
     }
 
-    .img{
-        margin-left: 55px;
-    }
 
-    .otree-btn-next{
+      .otree-btn-next{
          background-color: #243e92;
          position: relative;
          color: white;
@@ -57,17 +52,17 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-3"><img src = "{% static 'paradoja_votante/logo-emar-lab.jpg' %}"/></div>
-    <div class="col-9"> <h1> Paradoja del votante </h1>	<h3> Voto pivote y abstención </h3> </div>
+    <div class="col-sm-3"><img class="img-fluid rounded mx-auto d-block" src = "{% static 'paradoja_votante/logo-emar-lab.jpg' %}"/></div>
+    <div class="col-sm-9">  <h1 class="text-center"> Paradoja del votante </h1>  <h3 class="text-center" > Voto pivote y abstención </h3> </div>
   </div>
   <div class="row">
-    <div class="col-12"> <h5> ¿Por qué un elector se toma el trabajo de acudir a las urnas si es casi seguro que su candidato ganará con o sin su voto? </h5> </br> </div>
+    <div class="col-sm-12"> <h5> ¿Por qué un elector se toma el trabajo de acudir a las urnas si es casi seguro que su candidato ganará con o sin su voto? </h5> </br> </div>
   </div>
   <div class="row">
-      <div class="col-sm-3" > <img  class="img" src = "{% static 'paradoja_votante/votacion.png' %}"/> </div>
-      <div class="col-sm-3" > <h2 class="texto"> Votación </h2> </div>
-      <div class="col-sm-3" > <img class="img" src = "{% static 'paradoja_votante/encuesta.png' %}"/> </div>
-      <div class="col-sm-3" > <h2 class="texto" > Encuesta </h2> </div>
+      <div class="col-sm-3 imgs" > <img class="img-fluid rounded mx-auto d-block" src = "{% static 'paradoja_votante/votacion.png' %}"/> </div>
+      <div class="col-sm-3 imgs" > <h2 class="texto text-center"> Votación </h2> </div>
+      <div class="col-sm-3 imgs" > <img class="img-fluid rounded mx-auto d-block" src = "{% static 'paradoja_votante/encuesta.png' %}"/> </div>
+      <div class="col-sm-3 imgs" > <h2 class="texto text-center" > Encuesta </h2> </div>
   </div>
 </div>
 
