@@ -43,11 +43,11 @@ class Subsession(BaseSubsession):
 
         rtasAF = []
         l = len(self.get_players())
-        self.promI1AF = rta1/l
-        self.promI2AF = rta2/l
-        self.promI3AF = rta3/l
-        self.promI4AF = rta4/l
-        self.promI5AF = rta5/l
+        self.promI1AF = float("{0:.2f}".format(rta1/l))
+        self.promI2AF = float("{0:.2f}".format(rta2/l))
+        self.promI3AF = float("{0:.2f}".format(rta3/l))
+        self.promI4AF = float("{0:.2f}".format(rta4/l))
+        self.promI5AF = float("{0:.2f}".format(rta5/l))
 
         rtasAF.append(self.promI1AF)
         rtasAF.append(self.promI2AF)
@@ -69,11 +69,11 @@ class Subsession(BaseSubsession):
 
         rtasEC = []
         l = len(self.get_players())
-        self.promI1EC = rta1/l
-        self.promI2EC = rta2/l
-        self.promI3EC = rta3/l
-        self.promI4EC = rta4/l
-        self.promI5EC = rta5/l
+        self.promI1EC = float("{0:.2f}".format(rta1/l))
+        self.promI2EC = float("{0:.2f}".format(rta2/l))
+        self.promI3EC = float("{0:.2f}".format(rta3/l))
+        self.promI4EC = float("{0:.2f}".format(rta4/l))
+        self.promI5EC = float("{0:.2f}".format(rta5/l))
 
         rtasEC.append(self.promI1EC)
         rtasEC.append(self.promI2EC)

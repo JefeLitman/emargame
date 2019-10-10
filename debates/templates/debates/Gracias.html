@@ -1,34 +1,47 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree %}
-{% load static %}
+{% load otree static %}
 
 {% block title %}
 {% endblock %}
 
 {% block content %}
 
-<style media="screen">
-      @import url('https://fonts.googleapis.com/css?family=Cabin');
-       img{
-           width: 100%;
-           height: 80%;
-       }
-       button{
-         background-color: #243e92;
-         position: relative;
-         color: white;
-         font-family: 'Cabin', sans-serif;
-         border: none;
-         font-size: 20px;
-         padding: 8px 20px;
-         float: right;
-       }
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Cabin');
 
-       .otree-timer.alert.alert-warning{
-        display: none;
-      }
+    h1{
+        text-align: center;
+        color: white;
+        font-family: 'Cabin', sans-serif;
+        margin-top: 135px;
+    }
+
+    .otree-btn-next{
+       background-color: #243e92;
+       position: relative;
+       color: white;
+       font-family: 'Cabin', sans-serif;
+       border: none;
+       font-size: 20px;
+       padding: 8px 20px;
+       float: right;
+     }
+
+    .contenedor{
+        height: 300px;
+        background-color:rgb(36,62,146);
+    }
+
 </style>
 
-<img  src = "{% static 'debates/gracias.png' %}"/>
+<div class="container contenedor">
+    <div class="row">
+
+        <div class="col-sm"> <h1> ¡Gracias! </h1> </div>
+
+    </div>
+
+
+</div>
 
 {% endblock %}
