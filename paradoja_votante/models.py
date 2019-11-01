@@ -59,6 +59,7 @@ class Subsession(BaseSubsession):
             j.P_Verde = Preferencias[0]
 
     def set_n_jugadores(self):
+        """obtener la distribución de cada partido"""
         contA, contR, contV,contNo = 0, 0, 0, 0
         l = len(self.get_players())
         for j in self.get_players():
@@ -68,12 +69,12 @@ class Subsession(BaseSubsession):
                 contR = contR + 1
             else:
                 contV = contV + 1
-        self.N_Azules = contA/l
-        self.N_Verdes = contV/l
-        self.N_Rojos = contR/l
+        self.N_Azules = 100*float("{0:.2f}".format(contA/l))
+        self.N_Verdes = 100*float("{0:.2f}".format(contV/l))
+        self.N_Rojos = 100*float("{0:.2f}".format(contR/l))
 
     def get_distribucion_preferencias(self):
-        distribucion_preferencias = {'Azul':self.N_Azules, 'Verde': self.N_Verdes, 'Rojos': self.N_Rojos}
+        distribucion_preferencias = {'Azul':self.N_Azules, 'Verde': self.N_Verdes, 'Rojo': self.N_Rojos}
         Valores = list(distribucion_preferencias.values())
         Valores.sort(reverse=True)
         Llaves = list(distribucion_preferencias.keys())
@@ -149,7 +150,7 @@ class Player(BasePlayer):
         self.Preferencia_ganador = Candidatos.get(ganador)
 
     def set_votacion_aleatorio(self):
-        votos = [self.Voto_Azul,self.Voto_Rojo,self.P_Verde,self.VotoNo]
+        votos = [self.Voto_Azul,self.Voto_Rojo,self.Voto_Verde,self.VotoNo]
         if True in votos:
             self.set_false()
         else:
@@ -170,8 +171,8 @@ class Player(BasePlayer):
             self.Voto_Azul = False
         if self.Voto_Rojo == None:
             self.Voto_Rojo = False
-        if self.P_Verde == None:
-            self.P_Verde = False
+        if self.Voto_Verde == None:
+            self.Voto_Verde = False
         if self.VotoNo == None:
             self.VotoNo = False
 

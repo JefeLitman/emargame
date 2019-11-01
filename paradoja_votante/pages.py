@@ -54,9 +54,9 @@ class DecisionesCON(Page):
             'mayor_preferencia_partido': self.subsession.get_distribucion_preferencias()[0][0], #mas
             '2da_preferencia_partido': self.subsession.get_distribucion_preferencias()[0][1],
             'menor_preferencia_partido': self.subsession.get_distribucion_preferencias()[0][2],#menos
-            'mayor_preferencia_numero': self.subsession.get_distribucion_preferencias()[1][0],
-            '2da_preferencia_numero':self.subsession.get_distribucion_preferencias()[1][1],
-            'menor_preferencia_numero': self.subsession.get_distribucion_preferencias()[1][2],
+            'mayor_preferencia_numero': str(self.subsession.get_distribucion_preferencias()[1][0])+"%" ,
+            '2da_preferencia_numero':str(self.subsession.get_distribucion_preferencias()[1][1])+"%",
+            'menor_preferencia_numero': str(self.subsession.get_distribucion_preferencias()[1][2])+"%",
             'preferencia_uno': self.player.get_orden_preferencias()[0],
             'preferencia_dos': self.player.get_orden_preferencias()[1],
             'preferencia_tres': self.player.get_orden_preferencias()[2],
