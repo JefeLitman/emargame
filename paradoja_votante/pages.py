@@ -34,7 +34,8 @@ class DecisionesSIN(Page):
             'preferencia_tres': self.player.get_orden_preferencias()[2], #menos
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
-            'tratamiento': self.session.config["ConSin"]
+            'tratamiento': self.session.config["ConSin"],
+            'identificacion':  self.participant.label
         }
 
     def is_displayed(self):
@@ -62,7 +63,8 @@ class DecisionesCON(Page):
             'preferencia_tres': self.player.get_orden_preferencias()[2],
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
-            'tratamiento': self.session.config["ConSin"]
+            'tratamiento': self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
     def is_displayed(self):
@@ -83,14 +85,17 @@ class Calculos(WaitPage):
             jugador.set_preferencia_ganador(self.subsession.Ganador)
             jugador.setPagos()
             jugador.setTotalPagos()
+        self.subsession.setNotas()
 
 class Ganancias(Page):
     #timeout_seconds=30
     def vars_for_template(self):
         return {
+            'gananciaAcumulada': self.player.TotalPagos,
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
-            'tratamiento': self.session.config["ConSin"]
+            'tratamiento': self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
 class GananciasTotales(Page):
@@ -98,6 +103,10 @@ class GananciasTotales(Page):
     form_fields = ['Codigo']
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
+    def vars_for_template(self):
+        return {
+            'identificacion': self.participant.label
+        }
 
 class Gracias(Page):
     def is_displayed(self):

@@ -40,6 +40,8 @@
 
     <br class="container">
 
+    <p> Su identicación es: {{identificacion}} </p>
+
     <b> Distribución preferencias votantes</b> <span> : (Ordenados mayor a menor) </span>
 
      <ul class="list-group">
@@ -75,6 +77,8 @@
     <button class="btn btn-danger" name="Voto_Rojo" value="True"> Rojo </button>
     <button class="btn btn-success" name="Voto_Verde" value="True"> Verde </button>
     <button class="btn btn-secondary" name="VotoNo" value="True"> No votar </button>
+
+    </br>
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}

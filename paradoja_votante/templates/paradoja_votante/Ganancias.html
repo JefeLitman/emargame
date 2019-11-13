@@ -37,6 +37,23 @@
 
 </style>
 
+    <table  class="table">
+     <thead>
+          <tr>
+            <th> {{preferencia_uno}}</th>
+            <th>{{preferencia_dos}}</th>
+            <th>{{preferencia_tres}}</th>
+          </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>(Más preferido)</td>
+        <td></td>
+        <td>(Menos preferido)</td>
+      </tr>
+      </tbody>
+    </table>
+
     <p> Su elección fue
 
     {% if player.Voto_Azul == True %}
@@ -52,6 +69,8 @@
     <p> El partido ganador es: {{subsession.Ganador}} </p>
 
     <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
+
+    <p> Su ganancia acumulada hasta el momento es: {{gananciaAcumulada}} </p>
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}

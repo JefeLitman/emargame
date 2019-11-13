@@ -4,6 +4,7 @@ from otree.api import (
 )
 from random import randint
 from random import random
+from sklearn.preprocessing import MinMaxScaler
 
 
 author = 'Luis Alejandro Palacio García & Ferley Rincon'
@@ -106,6 +107,26 @@ class Subsession(BaseSubsession):
                 if v == Votos.get(l):
                     self.Ganador = l
 
+    def getPagosTotalesJugadores(self):
+        jugadores = self.get_players()
+        PagosTotalesJugadores = []
+        for j in jugadores:
+            PagosTotalesJugadores.append([j.TotalPagos])
+        return PagosTotalesJugadores
+
+    def getPuntajesCalificaciones(self):
+        Puntajes = self.getPagosTotalesJugadores()
+        scaler = MinMaxScaler(feature_range=(30, 50))
+        Calificaciones = scaler.fit_transform(Puntajes)
+
+        return Calificaciones
+
+    def setNotas(self):
+        jugadores = self.get_players()
+        calificaciones = self.getPuntajesCalificaciones()
+        for j in range(len(jugadores)):
+            jugadores[j].Calificacion = calificaciones[j]
+
 
 class Group(BaseGroup):
     pass
@@ -126,11 +147,14 @@ class Player(BasePlayer):
     TotalPagos = models.CurrencyField()
     Preferencia_ganador = models.IntegerField(min=1, max=3)
 
+    Calificacion = models.FloatField()
+
     def setPagos(self):
         self.Pagos = self.Preferencia_ganador * Constants.Multiplicador - Constants.Costo * c(not self.VotoNo)
         self.payoff = self.Pagos
 
     def setTotalPagos(self):
+        #La suma de todos los pagos en todas las rondas
         self.TotalPagos = sum([p.Pagos for p in self.in_all_rounds()])
 
     def get_orden_preferencias(self):
