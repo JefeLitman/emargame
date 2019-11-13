@@ -116,7 +116,7 @@ class Subsession(BaseSubsession):
 
     def getPuntajesCalificaciones(self):
         Puntajes = self.getPagosTotalesJugadores()
-        scaler = MinMaxScaler(feature_range=(30, 50))
+        scaler = MinMaxScaler(feature_range=(3.0, 5.0))
         Calificaciones = scaler.fit_transform(Puntajes)
 
         return Calificaciones
