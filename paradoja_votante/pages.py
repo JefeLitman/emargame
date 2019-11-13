@@ -95,7 +95,10 @@ class Ganancias(Page):
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
             'tratamiento': self.session.config["ConSin"],
-            'identificacion': self.participant.label
+            'identificacion': self.participant.label,
+            'preferencia_uno': self.player.get_orden_preferencias()[0],  # mas
+            'preferencia_dos': self.player.get_orden_preferencias()[1],
+            'preferencia_tres': self.player.get_orden_preferencias()[2]  # menos
         }
 
 class GananciasTotales(Page):
