@@ -39,7 +39,8 @@ class DecisionVendedor(Page):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
 class DecisionComprador(Page):
@@ -60,7 +61,8 @@ class DecisionComprador(Page):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
 class SINGanancia(Page):
@@ -75,7 +77,8 @@ class SINGanancia(Page):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
 class CONGanancia(Page):
@@ -90,7 +93,8 @@ class CONGanancia(Page):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
 class GananciaTotal(Page):
@@ -98,6 +102,11 @@ class GananciaTotal(Page):
     form_fields = ["Codigo"]
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
+
+    def vars_for_template(self):
+        return {
+            'identificacion': self.participant.label
+        }
 
 class gracias(Page):
     def is_displayed(self):
@@ -155,6 +164,7 @@ class calculos(WaitPage):
                     self.group.set_pagos(3)
         self.group.get_player_by_id(1).set_totalpagos()
         self.group.get_player_by_id(2).set_totalpagos()
+        self.subsession.setNotas()
 
 page_sequence = [
     presentacion,
