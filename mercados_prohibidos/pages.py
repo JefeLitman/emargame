@@ -78,6 +78,7 @@ class SINGanancia(Page):
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
             'tratamiento':self.session.config["ConSin"],
+            'gananciaAcumulada': self.player.TotalPagos,
             'identificacion': self.participant.label
         }
 
@@ -94,6 +95,7 @@ class CONGanancia(Page):
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
             'tratamiento':self.session.config["ConSin"],
+            'gananciaAcumulada': self.player.TotalPagos,
             'identificacion': self.participant.label
         }
 
