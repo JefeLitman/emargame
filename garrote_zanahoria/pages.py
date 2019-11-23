@@ -33,7 +33,8 @@ class contribucion(Page):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["MasMenos"]
+            'tratamiento':self.session.config["MasMenos"],
+            'identificacion': self.participant.label
         }
 
 class calculo_contribucion(WaitPage):
@@ -52,7 +53,9 @@ class Incentivos(Page):
         return {'contri_otro_jugador':otro_jugador.Contribucion,
                 'numeroronda':self.round_number,
                 'rondastotales':self.session.config["Rounds"]/2 +1,
-                'tratamiento':self.session.config["MasMenos"] }
+                'tratamiento':self.session.config["MasMenos"],
+                'identificacion':  self.participant.label
+                }
 
 
 class espera_grupos(WaitPage):
@@ -75,6 +78,7 @@ class calculos(WaitPage):
                 self.group.cal_incentivo_corres(garrote="zanahoria",rentabilidad=self.subsession.Rentabilidad)
             else:
                 self.group.cal_incentivo_corres(garrote="garrote",rentabilidad=self.subsession.Rentabilidad)
+        self.subsession.setNotas()
 
 class Ganancias(Page):
     timeout_seconds=30
@@ -83,7 +87,9 @@ class Ganancias(Page):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["MasMenos"]
+            'tratamiento':self.session.config["MasMenos"],
+            'gananciaAcumulada': self.player.TotalPagos,
+            'identificacion': self.participant.label
         }
 
 class GananciaTotal(Page):
@@ -91,6 +97,9 @@ class GananciaTotal(Page):
     form_fields = ["Codigo"]
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
+    def vars_for_template(self): return  {
+        'identificacion': self.participant.label
+    }
 
 class gracias(Page):
     def is_displayed(self):

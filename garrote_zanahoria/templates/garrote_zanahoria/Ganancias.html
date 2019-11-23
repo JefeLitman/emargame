@@ -57,6 +57,8 @@
 
     <div class="encabezado"> <h2> Ganancias </h2> </div>
 
+    <p> Su identicación es: {{identificacion}} </p>
+
     <p> Su contribución: {{player.Contribucion}} </p>
 
     <p> Su inversión en el incentivo: {{player.Inversion}} </p>
@@ -66,6 +68,11 @@
     <p> Incentivo recibido: {{player.Incentivo}} </p>
 
     <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
+
+    <p> Su ganancia acumulada hasta el momento es: {{gananciaAcumulada}} </p>
+
+    <p> Su calificación es: {{player.Calificacion}} </p> </br>
+
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}

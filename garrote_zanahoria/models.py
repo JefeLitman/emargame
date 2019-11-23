@@ -3,6 +3,7 @@ from otree.api import (
     Currency as c, currency_range
 )
 from random import randint
+from sklearn.preprocessing import MinMaxScaler
 
 author = 'Luis Alejandro Palacio García & Ferley Rincon'
 
@@ -62,6 +63,26 @@ class Subsession(BaseSubsession):
         players = self.get_players()
         self.ContribucionTotal=sum([p.Contribucion for p in players])
 
+    def getPagosTotalesJugadores(self):
+        jugadores = self.get_players()
+        PagosTotalesJugadores = []
+        for j in jugadores:
+            PagosTotalesJugadores.append([j.TotalPagos])
+        return PagosTotalesJugadores
+
+    def getPuntajesCalificaciones(self):
+        Puntajes = self.getPagosTotalesJugadores()
+        scaler = MinMaxScaler(feature_range=(3.0, 5.0))
+        Calificaciones = scaler.fit_transform(Puntajes)
+
+        return Calificaciones
+
+    def setNotas(self):
+        jugadores = self.get_players()
+        calificaciones = self.getPuntajesCalificaciones()
+        for j in range(len(jugadores)):
+            jugadores[j].Calificacion = calificaciones[j]
+
 
 class Group(BaseGroup):
     def cal_incentivo_corres(self,garrote,rentabilidad):
@@ -79,6 +100,7 @@ class Player(BasePlayer):
     Contribucion = models.CurrencyField(blank=True,min=c(0),max=c(1000))
     Inversion = models.CurrencyField(blank=True,min=c(0),max=c(200))
     Incentivo = models.CurrencyField()
+    Calificacion = models.FloatField()
 
     def set_pagos(self,garrote,inversion_otro,rentabilidad):
         self.Incentivo=3*inversion_otro
@@ -96,3 +118,7 @@ class Player(BasePlayer):
 
     def set_inversion_azar(self):
         self.Inversion=randint(0,200)
+
+    def setTotalPagos(self):
+        # La suma de todos los pagos en todas las rondas
+        self.TotalPagos = sum([p.Pagos for p in self.in_all_rounds()])
