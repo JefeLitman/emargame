@@ -3,6 +3,7 @@ from otree.api import (
     Currency as c, currency_range
 )
 from random import randint,random
+from sklearn.preprocessing import MinMaxScaler
 
 author = 'Luis Alejandro Palacio García & Bryan Snehider Díaz & Álvaro Javier Vargas Villamizar'
 
@@ -64,6 +65,26 @@ class Subsession(BaseSubsession):
                 jugador.Puja = randint(0,Constants.Dotacion)
             jugador.calcular_valor_sorteo(self.Subasta)
 
+    def getPagosTotalesJugadores(self):
+        jugadores = self.get_players()
+        PagosTotalesJugadores = []
+        for j in jugadores:
+            PagosTotalesJugadores.append([j.TotalPagos])
+        return PagosTotalesJugadores
+
+    def getPuntajesCalificaciones(self):
+        Puntajes = self.getPagosTotalesJugadores()
+        scaler = MinMaxScaler(feature_range=(3.0, 5.0))
+        Calificaciones = scaler.fit_transform(Puntajes)
+
+        return Calificaciones
+
+    def setNotas(self):
+        jugadores = self.get_players()
+        calificaciones = self.getPuntajesCalificaciones()
+        for j in range(len(jugadores)):
+            jugadores[j].Calificacion = calificaciones[j]
+
 class Group(BaseGroup):
     pass
 
@@ -76,6 +97,7 @@ class Player(BasePlayer):
     Pagos = models.CurrencyField()
     TotalPagos = models.CurrencyField()
     Codigo = models.StringField()
+    Calificacion = models.FloatField()
 
     def calcular_random(self):
         self.Random = random()

@@ -26,7 +26,8 @@ class decision(Page):
     def vars_for_template(self):
         return {
             'subasta': self.subsession.Subasta,
-            'tratamiento': self.session.config["LotSub"]
+            'tratamiento': self.session.config["LotSub"],
+            'identificacion': self.participant.label
         }
 
 class Ganancias(Page):
@@ -34,7 +35,8 @@ class Ganancias(Page):
     def vars_for_template(self):
         return {
             'subasta': self.subsession.Subasta,
-            'tratamiento': self.session.config["LotSub"]
+            'tratamiento': self.session.config["LotSub"],
+            'identificacion': self.participant.label
         }
 
 class GananciasTotales(Page):
@@ -42,6 +44,8 @@ class GananciasTotales(Page):
     form_fields = ['Codigo']
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
+    def vars_for_template(self): return {
+        'identificacion':  self.participant.label}
 
 class espera_grupos(WaitPage):
     wait_for_all_groups = True
@@ -54,6 +58,7 @@ class calculos(WaitPage):
         for i in jugadores:
             i.calcular_ganancia_ronda()
             i.calcular_ganancias_totales()
+        self.subsession.setNotas()
 
 class precalculos(WaitPage):
     def after_all_players_arrive(self):
