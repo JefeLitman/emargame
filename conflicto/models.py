@@ -3,6 +3,8 @@ from otree.api import (
     Currency as c, currency_range
 )
 from random import randint
+from sklearn.preprocessing import MinMaxScaler
+
 author = 'Luis Alejandro Palacio García & Ismael Estrada Cañas & Carolina Andrea Estévez Fiallo'
 
 doc = """
@@ -52,6 +54,26 @@ class Subsession(BaseSubsession):
                 g.get_player_by_id(1).Participante_Azul = True
                 g.get_player_by_id(2).Participante_Azul = False
 
+    def getPagosTotalesJugadores(self):
+        jugadores = self.get_players()
+        PagosTotalesJugadores = []
+        for j in jugadores:
+            PagosTotalesJugadores.append([j.TotalPagos])
+        return PagosTotalesJugadores
+
+    def getPuntajesCalificaciones(self):
+        Puntajes = self.getPagosTotalesJugadores()
+        scaler = MinMaxScaler(feature_range=(3.0, 5.0))
+        Calificaciones = scaler.fit_transform(Puntajes)
+
+        return Calificaciones
+
+    def setNotas(self):
+        jugadores = self.get_players()
+        calificaciones = self.getPuntajesCalificaciones()
+        for j in range(len(jugadores)):
+          jugadores[j].Calificacion = calificaciones[j]
+
 class Group(BaseGroup):
     VariableX=models.IntegerField()
     VariableY=models.IntegerField()
@@ -62,6 +84,7 @@ class Player(BasePlayer):
     Pagos=models.CurrencyField()
     TotalPagos = models.CurrencyField()
     Codigo = models.StringField()
+    Calificacion = models.FloatField()
 
     def role(self):
         if self.Participante_Azul == True:

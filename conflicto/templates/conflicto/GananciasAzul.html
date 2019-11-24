@@ -70,6 +70,7 @@
 </style>
 
 <div class="encabezado"> <h2> Ganancias </h2> </div>
+<p> Su identicación es: {{identificacion}} </p>
 
 <table>
   <tr>
@@ -112,6 +113,8 @@
     {% endif %}
 
     <p>Su ganancia en este periodo es: {{player.payoff}} </p>
+    <p> Su ganancia acumulada hasta el momento es: {{gananciaAcumulada}} </p>
+    <p> Su calificación es: {{player.Calificacion}} </p> </br>
 
     {% if tratamiento %}
         {% if numeroronda >= rondastotales %}

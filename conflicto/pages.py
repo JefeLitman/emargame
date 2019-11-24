@@ -31,7 +31,8 @@ class DecisionesAzul(Page):
         return {
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
-            'tratamiento': self.session.config["SecSim"]
+            'tratamiento': self.session.config["SecSim"],
+            'identificacion': self.participant.label
         }
 
 class DecisionesVerde(Page):
@@ -48,7 +49,8 @@ class DecisionesVerde(Page):
         return {
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
-            'tratamiento': self.session.config["SecSim"]
+            'tratamiento': self.session.config["SecSim"],
+            'identificacion': self.participant.label
         }
 
 class DecisionesVerdeSEC(Page):
@@ -67,7 +69,8 @@ class DecisionesVerdeSEC(Page):
             'eleccion_otro':self.player.get_others_in_group()[0].Eleccion,
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
-            'tratamiento': self.session.config["SecSim"]
+            'tratamiento': self.session.config["SecSim"],
+            'identificacion': self.participant.label
             }
 
 
@@ -80,7 +83,9 @@ class GananciasAzul(Page):
             'eleccion_otro':self.player.get_others_in_group()[0].Eleccion,
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
-            'tratamiento': self.session.config["SecSim"]
+            'tratamiento': self.session.config["SecSim"],
+            'identificacion': self.participant.label,
+            'gananciaAcumulada': self.player.TotalPagos
         }
 
 class GananciasVerde(Page):
@@ -92,7 +97,9 @@ class GananciasVerde(Page):
             'eleccion_otro':self.player.get_others_in_group()[0].Eleccion,
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
-            'tratamiento': self.session.config["SecSim"]
+            'tratamiento': self.session.config["SecSim"],
+            'identificacion': self.participant.label,
+            'gananciaAcumulada': self.player.TotalPagos
         }
 
 class GananciasTotal(Page):
@@ -100,6 +107,9 @@ class GananciasTotal(Page):
     form_fields = ['Codigo']
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
+    def vars_for_template(self): return {
+        'identificacion': self.participant.label
+    }
 
 class esperagrupos(WaitPage):
     wait_for_all_groups = True
@@ -118,6 +128,7 @@ class calculos(WaitPage):
         for p in self.group.get_players():
             p.set_pagos()
             p.set_totalpagos()
+        self.subsession.setNotas()
 
 class gracias(Page):
     def is_displayed(self):
