@@ -3,6 +3,7 @@ from otree.api import (
     Currency as c, currency_range
 )
 from random import randint
+from sklearn.preprocessing import MinMaxScaler
 
 author = 'Luis Alejandro Palacio García & Laura Milena Prada Medina'
 
@@ -49,6 +50,26 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         self.group_randomly()
 
+    def getPagosTotalesJugadores(self):
+        jugadores = self.get_players()
+        PagosTotalesJugadores = []
+        for j in jugadores:
+            PagosTotalesJugadores.append([j.TotalPagos])
+        return PagosTotalesJugadores
+
+    def getPuntajesCalificaciones(self):
+        Puntajes = self.getPagosTotalesJugadores()
+        scaler = MinMaxScaler(feature_range=(3.0, 5.0))
+        Calificaciones = scaler.fit_transform(Puntajes)
+
+        return Calificaciones
+
+    def setNotas(self):
+        jugadores = self.get_players()
+        calificaciones = self.getPuntajesCalificaciones()
+        for j in range(len(jugadores)):
+            jugadores[j].Calificacion = calificaciones[j]
+
 
 class Group(BaseGroup):
     Rentabilidad=models.CurrencyField()
@@ -64,6 +85,7 @@ class Player(BasePlayer):
     Reputacion=models.FloatField()
     Pagos = models.CurrencyField()
     TotalPagos = models.CurrencyField()
+    Calificacion = models.FloatField()
 
     def set_inversion_azar(self):
         self.Inversion=randint(0,Constants.Dotacion)

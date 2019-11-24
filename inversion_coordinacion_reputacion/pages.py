@@ -36,7 +36,8 @@ class DecisionesSIN(Page):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
 class DecisionesCON(Page):
@@ -57,14 +58,16 @@ class DecisionesCON(Page):
                 'Reputacion':otro_jugador,
                 'numeroronda': self.round_number,
                 'rondastotales': self.session.config["Rounds"] / 2 + 1,
-                'tratamiento': self.session.config["ConSin"]
+                'tratamiento': self.session.config["ConSin"],
+                'identificacion': self.participant.label
             }
         else:
             return {
                 'Reputacion':5,
                 'numeroronda':self.round_number,
                 'rondastotales':self.session.config["Rounds"]/2 +1,
-                'tratamiento':self.session.config["ConSin"]
+                'tratamiento':self.session.config["ConSin"],
+                'identificacion': self.participant.label
             }
 
 class GananciasCON(Page):
@@ -82,7 +85,9 @@ class GananciasCON(Page):
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
             'tratamiento':self.session.config["ConSin"],
-            'otro':self.player.get_others_in_group()[0]
+            'otro':self.player.get_others_in_group()[0],
+            'gananciaAcumulada': self.player.TotalPagos,
+            'identificacion': self.participant.label
         }
 
 class GananciasSIN(Page):
@@ -100,7 +105,9 @@ class GananciasSIN(Page):
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
             'tratamiento':self.session.config["ConSin"],
-            'otro': self.player.get_others_in_group()[0]
+            'otro': self.player.get_others_in_group()[0],
+            'gananciaAcumulada': self.player.TotalPagos,
+            'identificacion': self.participant.label
         }
 
 class GananciasTotal(Page):
@@ -108,6 +115,10 @@ class GananciasTotal(Page):
     form_fields = ["Codigo"]
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
+    def vars_for_template(self):
+        return {
+            'identificacion': self.participant.label
+    }
 
 #Declaracion de paginas de espera
 
@@ -139,6 +150,7 @@ class calculoganancia(WaitPage):
         # Calculo de ganancias totales por ronda
         p1.set_totalpagos()
         p2.set_totalpagos()
+        self.subsession.setNotas()
 
 class calculocalificacion(WaitPage):
 
