@@ -33,7 +33,8 @@ class DecisionVendedorSin(Page):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
 class DecisionVendedorCon(Page):
@@ -49,7 +50,8 @@ class DecisionVendedorCon(Page):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
 class DecisionCompradorSin(Page):
@@ -65,7 +67,8 @@ class DecisionCompradorSin(Page):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
 class DecisionCompradorCon(Page):
@@ -81,7 +84,8 @@ class DecisionCompradorCon(Page):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
 class Ganancia(Page):
@@ -91,7 +95,9 @@ class Ganancia(Page):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'identificacion': self.participant.label,
+            'gananciaAcumulada': self.player.TotalPagos
         }
 
 class GananciaTotal(Page):
@@ -99,6 +105,10 @@ class GananciaTotal(Page):
     form_fields = ["Codigo"]
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
+
+    def vars_for_template(self): return {
+        'identificacion': self.participant.label
+    }
 
 class esperagrupos(WaitPage):
     wait_for_all_groups = True
@@ -128,6 +138,7 @@ class calculos(WaitPage):
             self.group.set_transaccion_azar()
         self.group.set_pagos()
         self.group.set_costo_valor()
+        self.subsession.setNotas()
 
 class gracias(Page):
     def is_displayed(self):

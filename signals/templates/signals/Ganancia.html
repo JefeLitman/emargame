@@ -51,6 +51,7 @@
    </style>
 
 <div class="encabezado"> <h2> Ganancias </h2> </div>
+<p> Su identicación es: {{identificacion}} </p>
 
  {% if player.id_in_group == 1 %}
 
@@ -60,18 +61,21 @@
     <p> Usted decidió que el precio es: {{group.Precio}} </p>
 
         {% if group.Senal == True %}
-         <p> <b> La calidad está garantizada </b> </p>
+            <p> <b> La calidad está garantizada </b> </p>
         {% else %}
-        <p> <b> La calidad no está garantizada </b> </p>
+            <p> <b> La calidad no está garantizada </b> </p>
         {% endif %}
 
         {% if group.Transaccion == True %}
-         <p> Se realizó la transacción </p>
+            <p> Se realizó la transacción </p>
         {% else %}
-         <p> No se realizó la transacción </p>
+            <p> No se realizó la transacción </p>
         {% endif %}
 
-    <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
+        <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
+        <p> Su ganancia acumulada hasta el momento es: {{gananciaAcumulada}} </p>
+        <p> Su calificación es: {{player.Calificacion}} </p>
+
 
  {% else %}
 
@@ -92,7 +96,10 @@
          <p> No se realizó la transacción </p>
         {% endif %}
 
-    <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
+        <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
+        <p> Su ganancia acumulada hasta el momento es: {{gananciaAcumulada}} </p>
+        <p> Su calificación es: {{player.Calificacion}} </p>
+
 
     {% endif %}
 
