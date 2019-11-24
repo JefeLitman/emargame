@@ -118,7 +118,3 @@ class Player(BasePlayer):
 
     def set_inversion_azar(self):
         self.Inversion=randint(0,200)
-
-    def setTotalPagos(self):
-        # La suma de todos los pagos en todas las rondas
-        self.TotalPagos = sum([p.Pagos for p in self.in_all_rounds()])
