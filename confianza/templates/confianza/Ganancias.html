@@ -65,10 +65,14 @@
    </style>
 
     <div class="encabezado"> <h2> Ganancias </h2> </div>
+    <p> Su identicación es: {{identificacion}} </p>
 
     {% if player.Participante_A == 1 %}
         <p> <b class="color-propio">Usted es el participante A</b> </p>
         <p> Su ganancia en este periodo es: {{player.Pagos}} </p>
+        <p> Su ganancia acumulada hasta el momento es: {{gananciaAcumulada}} </p>
+        <p> Su calificación es: {{player.Calificacion}} </p>
+
 
     {% else %}
         <p> <b class="color-propio">Usted es el participante B</b> </p>

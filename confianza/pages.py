@@ -37,7 +37,8 @@ class DecisionA_SIN(Page):
         return{
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
     def Envia_max(self):
@@ -60,7 +61,8 @@ class DecisionA_CON(Page):
             'azul_otro_jugador':self.player.get_others_in_group()[0].Azul,
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
     def Envia_max(self):
@@ -82,7 +84,8 @@ class DecisionB_SIN(Page):
             'recibe_multiplicado': self.player.Recibe * 3,
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
-            'tratamiento': self.session.config["ConSin"]
+            'tratamiento': self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
     def Envia_max(self):
@@ -106,7 +109,8 @@ class DecisionB_CON(Page):
             'recibe_multiplicado':self.player.Recibe*3,
             'numeroronda': self.round_number,
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
-            'tratamiento': self.session.config["ConSin"]
+            'tratamiento': self.session.config["ConSin"],
+            'identificacion': self.participant.label
         }
 
     def Envia_max(self):
@@ -120,7 +124,9 @@ class Ganancias(Page):
             'verdes':self.subsession.get_total_verde(),
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
-            'tratamiento':self.session.config["ConSin"]
+            'tratamiento':self.session.config["ConSin"],
+            'identificacion': self.participant.label,
+            'gananciaAcumulada': self.player.TotalPagos
         }
 
 class GananciaTotal(Page):
@@ -128,6 +134,10 @@ class GananciaTotal(Page):
     form_fields = ["Codigo"]
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
+    def vars_for_template(self): return {
+        'identificacion': self.participant.label,
+        'gananciaAcumulada': self.player.TotalPagos
+    }
 
 class esperagrupos(WaitPage):
     wait_for_all_groups = True
@@ -161,6 +171,7 @@ class calculo_ganancias(WaitPage):
             p.set_pagos()
             #Calculando las ganancias totales de los jugadores
             p.set_totalpagos()
+        self.subsession.setNotas()
 
 class gracias(Page):
     def is_displayed(self):
