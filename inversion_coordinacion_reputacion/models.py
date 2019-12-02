@@ -68,7 +68,7 @@ class Subsession(BaseSubsession):
         jugadores = self.get_players()
         calificaciones = self.getPuntajesCalificaciones()
         for j in range(len(jugadores)):
-            jugadores[j].Calificacion = calificaciones[j]
+            jugadores[j].nota = calificaciones[j]
 
 
 class Group(BaseGroup):
@@ -85,7 +85,7 @@ class Player(BasePlayer):
     Reputacion=models.FloatField()
     Pagos = models.CurrencyField()
     TotalPagos = models.CurrencyField()
-    Calificacion = models.FloatField()
+    nota = models.FloatField()
 
     def set_inversion_azar(self):
         self.Inversion=randint(0,Constants.Dotacion)

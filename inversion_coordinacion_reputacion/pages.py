@@ -87,7 +87,8 @@ class GananciasCON(Page):
             'tratamiento':self.session.config["ConSin"],
             'otro':self.player.get_others_in_group()[0],
             'gananciaAcumulada': self.player.TotalPagos,
-            'identificacion': self.participant.label
+            'identificacion': self.participant.label,
+            'nota': "{0:.1f}".format(self.player.nota)
         }
 
 class GananciasSIN(Page):
@@ -107,7 +108,8 @@ class GananciasSIN(Page):
             'tratamiento':self.session.config["ConSin"],
             'otro': self.player.get_others_in_group()[0],
             'gananciaAcumulada': self.player.TotalPagos,
-            'identificacion': self.participant.label
+            'identificacion': self.participant.label,
+            'nota': "{0:.1f}".format(self.player.nota)
         }
 
 class GananciasTotal(Page):
@@ -117,7 +119,8 @@ class GananciasTotal(Page):
         return self.round_number == self.session.config["Rounds"]
     def vars_for_template(self):
         return {
-            'identificacion': self.participant.label
+            'identificacion': self.participant.label,
+            'nota': "{0:.1f}".format(self.player.nota)
     }
 
 #Declaracion de paginas de espera
