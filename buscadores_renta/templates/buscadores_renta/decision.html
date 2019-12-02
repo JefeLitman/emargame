@@ -1,81 +1,69 @@
-{% extends "global/Page.html" %}
-{% load staticfiles otree %}
-
-{% block title %}
-{% endblock %}
-
-{% block content %}
+{% extends "global/Page.html" %} {% load staticfiles otree %} {% block title %} {% endblock %} {% block content %}
 
 <style media="screen">
-      @import url('https://fonts.googleapis.com/css?family=Cabin');
-
-       button{
-         background-color: #243e92;
-         position: relative;
-         color: white;
-         font-family: 'Cabin', sans-serif;
-         border: none;
-         font-size: 20px;
-         padding: 8px 20px;
-         float: right;
-       }
-
-       div.encabezado{
-	    color: white;
-        background-color:#243e92;
+    @import url('https://fonts.googleapis.com/css?family=Cabin');
+    button {
+        background-color: #243e92;
+        position: relative;
+        color: white;
+        font-family: 'Cabin', sans-serif;
+        border: none;
+        font-size: 20px;
+        padding: 8px 20px;
+        float: right;
+    }
+    
+    div.encabezado {
+        color: white;
+        background-color: #243e92;
         font-family: 'Cabin', sans-serif;
         text-align: center;
         padding: 0.008px 5px;
-      }
-
-       p {
-      font-family: 'Cabin', sans-serif;
-      font-size: 20px;
-      }
-
-      .otree-timer.alert.alert-warning{
+    }
+    
+    p {
+        font-family: 'Cabin', sans-serif;
+        font-size: 20px;
+    }
+    
+    .otree-timer.alert.alert-warning {
         display: none;
-      }
+    }
+    
+    .col-form-label
+    /*El tecxto del formulario donde dice DEsea...*/
+    
+    {
+        font-family: 'Cabin', sans-serif;
+        font-size: 20px;
+    }
+    
+    .input-group-text {
+        /*puntos*/
+        font-family: 'Cabin', sans-serif;
+        font-size: 20px;
+    }
+    
+    .imagen {
+        display: block;
+        margin: auto;
+    }
+</style>
 
-      .col-form-label /*El tecxto del formulario donde dice DEsea...*/
-      {
-      font-family: 'Cabin', sans-serif;
-      font-size: 20px;
-      }
-
-      .input-group-text{ /*puntos*/
-       font-family: 'Cabin', sans-serif;
-       font-size: 20px;
-      }
-
-       .imagen{
-      display:block;
-      margin:auto;
-      }
-   </style>
-
-<div class="encabezado"> <h2> Decisión </h2> </div>
+<div class="encabezado">
+    <h2> Decisión </h2>
+</div>
 <p> Su identicación es: {{identificacion}} </p>
 <p> Su valoración del producto es: {{player.Premio}} </p>
 
 <p> {% formfield player.Puja label="Debe decidir cuánto quiere pujar:" %} </p>
 
-    {% if tratamiento %}
-        {% if subasta %}
-        <img  class="imagen" src = "{% static 'buscadores_renta/subasta_azul.png' %}"/>
-        {% else %}
-        <img  class="imagen" src = "{% static 'buscadores_renta/loteria_verde.png' %}"/>
-        {% endif %}
-    {% else %}
-        {% if subasta %}
-        <img  class="imagen" src = "{% static 'buscadores_renta/subasta_verde.png' %}"/>
-        {% else %}
-        <img  class="imagen" src = "{% static 'buscadores_renta/loteria_azul.png' %}"/>
-        {% endif %}
-    {% endif %}
+{% if tratamiento %} {% if subasta %}
+<img class="imagen" src="{% static 'buscadores_renta/subasta_azul.png' %}" /> {% else %}
+<img class="imagen" src="{% static 'buscadores_renta/loteria_verde.png' %}" /> {% endif %} {% else %} {% if subasta %}
+<img class="imagen" src="{% static 'buscadores_renta/subasta_verde.png' %}" /> {% else %}
+<img class="imagen" src="{% static 'buscadores_renta/loteria_azul.png' %}" /> {% endif %} {% endif %}
 
 <button>
     Siguiente
-</button>
-
-{% endblock %}
+</button> {% endblock %}

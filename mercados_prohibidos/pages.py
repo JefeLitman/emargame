@@ -79,7 +79,8 @@ class SINGanancia(Page):
             'rondastotales':self.session.config["Rounds"]/2 +1,
             'tratamiento':self.session.config["ConSin"],
             'gananciaAcumulada': self.player.TotalPagos,
-            'identificacion': self.participant.label
+            'identificacion': self.participant.label,
+            'calificacion': "{0:.1f}".format(self.player.Calificacion)
         }
 
 class CONGanancia(Page):
@@ -96,7 +97,8 @@ class CONGanancia(Page):
             'rondastotales':self.session.config["Rounds"]/2 +1,
             'tratamiento':self.session.config["ConSin"],
             'gananciaAcumulada': self.player.TotalPagos,
-            'identificacion': self.participant.label
+            'identificacion': self.participant.label,
+            'calificacion': "{0:.1f}".format(self.player.Calificacion)
         }
 
 class GananciaTotal(Page):
@@ -107,7 +109,8 @@ class GananciaTotal(Page):
 
     def vars_for_template(self):
         return {
-            'identificacion': self.participant.label
+            'identificacion': self.participant.label,
+            'calificacion': "{0:.1f}".format(self.player.Calificacion)
         }
 
 class gracias(Page):
