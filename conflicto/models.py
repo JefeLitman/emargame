@@ -72,7 +72,7 @@ class Subsession(BaseSubsession):
         jugadores = self.get_players()
         calificaciones = self.getPuntajesCalificaciones()
         for j in range(len(jugadores)):
-          jugadores[j].Calificacion = calificaciones[j]
+          jugadores[j].nota = calificaciones[j]
 
 class Group(BaseGroup):
     VariableX=models.IntegerField()
@@ -84,7 +84,7 @@ class Player(BasePlayer):
     Pagos=models.CurrencyField()
     TotalPagos = models.CurrencyField()
     Codigo = models.StringField()
-    Calificacion = models.FloatField()
+    nota = models.FloatField()
 
     def role(self):
         if self.Participante_Azul == True:

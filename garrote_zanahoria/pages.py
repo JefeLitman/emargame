@@ -89,7 +89,8 @@ class Ganancias(Page):
             'rondastotales':self.session.config["Rounds"]/2 +1,
             'tratamiento':self.session.config["MasMenos"],
             'gananciaAcumulada': self.player.TotalPagos,
-            'identificacion': self.participant.label
+            'identificacion': self.participant.label,
+            'nota': "{0:.1f}".format(self.player.nota)
         }
 
 class GananciaTotal(Page):
@@ -98,7 +99,8 @@ class GananciaTotal(Page):
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
     def vars_for_template(self): return  {
-        'identificacion': self.participant.label
+        'identificacion': self.participant.label,
+        'nota': "{0:.1f}".format(self.player.nota)
     }
 
 class gracias(Page):

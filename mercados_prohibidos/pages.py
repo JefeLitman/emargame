@@ -80,7 +80,7 @@ class SINGanancia(Page):
             'tratamiento':self.session.config["ConSin"],
             'gananciaAcumulada': self.player.TotalPagos,
             'identificacion': self.participant.label,
-            'calificacion': "{0:.1f}".format(self.player.Calificacion)
+            'nota': "{0:.1f}".format(self.player.nota)
         }
 
 class CONGanancia(Page):
@@ -98,7 +98,7 @@ class CONGanancia(Page):
             'tratamiento':self.session.config["ConSin"],
             'gananciaAcumulada': self.player.TotalPagos,
             'identificacion': self.participant.label,
-            'calificacion': "{0:.1f}".format(self.player.Calificacion)
+            'nota': "{0:.1f}".format(self.player.nota)
         }
 
 class GananciaTotal(Page):
@@ -110,7 +110,7 @@ class GananciaTotal(Page):
     def vars_for_template(self):
         return {
             'identificacion': self.participant.label,
-            'calificacion': "{0:.1f}".format(self.player.Calificacion)
+            'nota': "{0:.1f}".format(self.player.nota)
         }
 
 class gracias(Page):

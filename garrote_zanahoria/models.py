@@ -81,7 +81,7 @@ class Subsession(BaseSubsession):
         jugadores = self.get_players()
         calificaciones = self.getPuntajesCalificaciones()
         for j in range(len(jugadores)):
-            jugadores[j].Calificacion = calificaciones[j]
+            jugadores[j].nota = calificaciones[j]
 
 
 class Group(BaseGroup):
@@ -100,7 +100,7 @@ class Player(BasePlayer):
     Contribucion = models.CurrencyField(blank=True,min=c(0),max=c(1000))
     Inversion = models.CurrencyField(blank=True,min=c(0),max=c(200))
     Incentivo = models.CurrencyField()
-    Calificacion = models.FloatField()
+    nota = models.FloatField()
 
     def set_pagos(self,garrote,inversion_otro,rentabilidad):
         self.Incentivo=3*inversion_otro

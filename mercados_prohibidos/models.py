@@ -61,7 +61,7 @@ class Subsession(BaseSubsession):
         jugadores = self.get_players()
         calificaciones = self.getPuntajesCalificaciones()
         for j in range(len(jugadores)):
-            jugadores[j].Calificacion = calificaciones[j]
+            jugadores[j].nota = calificaciones[j]
 
 
 
@@ -101,7 +101,7 @@ class Player(BasePlayer):
     Pagos=models.CurrencyField(initial=c(0))
     TotalPagos= models.CurrencyField(initial=c(0))
     Vendedor=models.BooleanField()
-    Calificacion = models.FloatField()
+    nota = models.FloatField()
 
     def set_vendedor(self):
         if self.id_in_group == 1:

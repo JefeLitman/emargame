@@ -85,7 +85,8 @@ class GananciasAzul(Page):
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
             'tratamiento': self.session.config["SecSim"],
             'identificacion': self.participant.label,
-            'gananciaAcumulada': self.player.TotalPagos
+            'gananciaAcumulada': self.player.TotalPagos,
+            'nota': "{0:.1f}".format(self.player.nota)
         }
 
 class GananciasVerde(Page):
@@ -99,7 +100,8 @@ class GananciasVerde(Page):
             'rondastotales': self.session.config["Rounds"] / 2 + 1,
             'tratamiento': self.session.config["SecSim"],
             'identificacion': self.participant.label,
-            'gananciaAcumulada': self.player.TotalPagos
+            'gananciaAcumulada': self.player.TotalPagos,
+            'nota': "{0:.1f}".format(self.player.nota)
         }
 
 class GananciasTotal(Page):
@@ -108,7 +110,8 @@ class GananciasTotal(Page):
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
     def vars_for_template(self): return {
-        'identificacion': self.participant.label
+        'identificacion': self.participant.label,
+        'nota': "{0:.1f}".format(self.player.nota)
     }
 
 class esperagrupos(WaitPage):
