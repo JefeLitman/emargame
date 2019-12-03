@@ -126,7 +126,8 @@ class Ganancias(Page):
             'rondastotales':self.session.config["Rounds"]/2 +1,
             'tratamiento':self.session.config["ConSin"],
             'identificacion': self.participant.label,
-            'gananciaAcumulada': self.player.TotalPagos
+            'gananciaAcumulada': self.player.TotalPagos,
+            'nota': "{0:.1f}".format(self.player.nota)
         }
 
 class GananciaTotal(Page):
@@ -136,7 +137,8 @@ class GananciaTotal(Page):
         return self.round_number == self.session.config["Rounds"]
     def vars_for_template(self): return {
         'identificacion': self.participant.label,
-        'gananciaAcumulada': self.player.TotalPagos
+        'gananciaAcumulada': self.player.TotalPagos,
+        'nota': "{0:.1f}".format(self.player.nota)
     }
 
 class esperagrupos(WaitPage):

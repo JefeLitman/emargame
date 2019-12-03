@@ -56,7 +56,7 @@
    </style>
 
     <div class="encabezado"> <h2> Ganancias </h2> </div>
-    <p> Su identicación es: {{identificacion}} </p>
+    <p> ID: {{identificacion}} </p>
 
     {% if player.Ganador %}
         <p> Ha ganado. </p>
@@ -67,7 +67,7 @@
     <p> Usted decidió pujar: {{player.Puja}} </p>
     <p> Sus ganancias en este periodo son:  {{player.Pagos}}</p>
     <p> Sus puntos acumulados son: {{player.TotalPagos}} </p>
-    <p> Su calificación es: {{player.Calificacion}} </p>
+    <p> Su nota es: {{nota}} </p> </br>
 
     {% if tratamiento %}
         {% if subasta %}

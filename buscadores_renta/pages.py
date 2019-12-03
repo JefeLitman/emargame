@@ -36,7 +36,8 @@ class Ganancias(Page):
         return {
             'subasta': self.subsession.Subasta,
             'tratamiento': self.session.config["LotSub"],
-            'identificacion': self.participant.label
+            'identificacion': self.participant.label,
+            'nota': "{0:.1f}".format(self.player.nota)
         }
 
 class GananciasTotales(Page):
@@ -45,7 +46,9 @@ class GananciasTotales(Page):
     def is_displayed(self):
         return self.round_number == self.session.config["Rounds"]
     def vars_for_template(self): return {
-        'identificacion':  self.participant.label}
+        'identificacion':  self.participant.label,
+        'nota': "{0:.1f}".format(self.player.nota)
+    }
 
 class espera_grupos(WaitPage):
     wait_for_all_groups = True
