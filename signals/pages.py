@@ -85,8 +85,7 @@ class DecisionCompradorCon(Page):
             'numeroronda':self.round_number,
             'rondastotales':self.session.config["Rounds"]/2 +1,
             'tratamiento':self.session.config["ConSin"],
-            'identificacion': self.participant.label,
-            'nota': "{0:.1f}".format(self.player.nota)
+            'identificacion': self.participant.label
         }
 
 class Ganancia(Page):
