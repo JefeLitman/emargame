@@ -1,0 +1,48 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instrucciones
+{% endblock %}
+
+{% block content %}
+
+     <style>
+
+     @import url('https://fonts.googleapis.com/css?family=Cabin');
+    .otree-title{
+	    color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+      }
+
+    button.sig {
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+       }
+
+       p,b{font-family: 'Cabin', sans-serif;
+      font-size: 20px;}
+
+    </style>
+
+    <p>Para determinar el ganador del debate, todos los estudiantes deben calificar las intervenciones de las cuatro casas:
+        1) Alta de gobierno, 2) Alta de oposición, 3) Baja de gobierno, y 4) Baja de oposición.
+
+    Por favor indicar en una escala de 1 a 5 la evaluación para cada casa, en cada uno de los indicadores.
+        El puntaje va desde 1 (insuficiente) hasta cinco (excelente).
+        Se calculará el promedio de las puntuaciones en tres criterios de evaluación que se describen a continuación.</p>
+
+
+    <button class="sig">
+          <b>Siguiente</b>
+    </button>
+
+{% endblock %}

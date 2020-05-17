@@ -1,0 +1,47 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Cabin');
+
+    h1{
+        text-align: center;
+        color: white;
+        font-family: 'Cabin', sans-serif;
+        margin-top: 135px;
+    }
+
+    .otree-btn-next{
+       background-color: #243e92;
+       position: relative;
+       color: white;
+       font-family: 'Cabin', sans-serif;
+       border: none;
+       font-size: 20px;
+       padding: 8px 20px;
+       float: right;
+     }
+
+    .contenedor{
+        height: 300px;
+        background-color:rgb(36,62,146);
+    }
+
+</style>
+
+<div class="container contenedor">
+    <div class="row">
+
+        <div class="col-sm"> <h1> ¡Gracias! </h1> </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

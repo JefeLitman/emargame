@@ -1,0 +1,49 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Resultados
+{% endblock %}
+
+{% block content %}
+
+    <style>
+        .otree-title{
+	    color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+      }
+
+    button.sig {
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+       }
+
+       p,b{font-family: 'Cabin', sans-serif;
+      font-size: 20px;}
+
+    </style>
+    <p><b>Resultados Debate General</b></p>
+
+    <p>El cumplimiento de las reglas y el formato del debate: {{ subsession.promI1G }}</p>
+
+    <p>Análisis del contexto y discusión a profundidad del tema: {{ subsession.promI2G }}</p>
+
+    <p>Reflexión de las dimensiones éticas aplicadas al dilema: {{ subsession.promI3G }}</p>
+
+    <p>Reflexión sobre ventajas y limitaciones del razonamiento utilitarista: {{ subsession.promI4G }}</p>
+
+    <p>Promedio general: {{ DebateGeneral }}</p>
+
+    <button class="sig">
+          <b>Siguiente</b>
+    </button>
+
+{% endblock %}

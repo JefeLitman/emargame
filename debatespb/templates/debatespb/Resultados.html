@@ -1,0 +1,88 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Resultados
+{% endblock %}
+
+{% block content %}
+
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Cabin');
+    .otree-title{
+	    color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+      }
+
+    table{
+        text-align: center;
+        font-family: 'Cabin', sans-serif;
+        }
+
+    p,ul,b, span{
+     font-family: 'Cabin', sans-serif;
+     }
+
+    button.sig {
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+       }
+
+       p,b{font-family: 'Cabin', sans-serif;
+      font-size: 20px;}
+
+    </style>
+    <p><b>Resultados por equipos</b></p>
+    <table id="resultadosequipos" class="table">
+        <tr>
+            <th><b>Indicador</b></th>
+            <th>Alta de gobierno</th>
+            <th>Alta de oposición</th>
+            <th>Baja de gobierno</th>
+            <th>Baja de oposición</th>
+        </tr>
+        <tr>
+            <th><b>Conocimientos</b></th>
+            <th>{{ subsession.promI1AG }}</th>
+            <th>{{ subsession.promI1AO }}</th>
+            <th>{{ subsession.promI1BG }}</th>
+            <th>{{ subsession.promI1BO }}</th>
+        </tr>
+        <tr>
+            <th><b>Argumentación</b></th>
+            <th>{{ subsession.promI2AG }}</th>
+            <th>{{ subsession.promI2AO }}</th>
+            <th>{{ subsession.promI2BG }}</th>
+            <th>{{ subsession.promI2BO }}</th>
+        </tr>
+        <tr>
+            <td><b>Discusión</b></td>
+            <th>{{ subsession.promI3AG }}</th>
+            <th>{{ subsession.promI3AO }}</th>
+            <th>{{ subsession.promI3BG }}</th>
+            <th>{{ subsession.promI3BO }}</th>
+        </tr>
+        <tr>
+            <th><b>Promedio</b></th>
+            <th>{{ PromAG }}</th>
+            <th>{{ PromAO }}</th>
+            <th>{{ PromBG }}</th>
+            <th>{{ PromBO }}</th>
+        </tr>
+    </table>
+
+
+    <button class="sig">
+          <b>Siguiente</b>
+    </button>
+
+{% endblock %}

@@ -180,6 +180,16 @@ SESSION_CONFIGS = [
         'doc':"""
         Rounds: Número total de periodos que se jugarán (Maximo 10). Por defecto en 1.
         """
+    },
+    {
+        'name':'debatespb',
+        'display_name': 'Evaluación Debate Parlamento Británico',
+        'num_demo_participants':1,
+        'app_sequence': ['debatespb'],
+        'Rounds':None,
+        'ConSin':None,
+        'doc':"""
+        """
     }
 ]
 
@@ -229,6 +239,10 @@ ROOMS = [
     {
         'name': 'malversacion',
         'display_name': 'Sala del juego de la Malversacion'
+    },
+    {
+        'name': 'debatepb',
+        'display_name': 'Sala de evaluación Debate Parlamento Británico',
     }
 ]
 

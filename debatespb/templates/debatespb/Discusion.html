@@ -1,0 +1,124 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Discusion
+{% endblock %}
+
+{% block content %}
+
+    <style>
+
+          @import url('https://fonts.googleapis.com/css?family=Cabin');
+
+         .estrellas {
+          width: 250px;
+          margin: 0 auto;
+          height: 40px;
+          font-size: 40px;
+        }
+
+          label {
+            font-size: 40px;
+            color: grey;
+          }
+
+          input[type="radio"] {
+            display: none;
+          }
+
+        .clasificacion {
+          direction: rtl;
+          unicode-bidi: bidi-override;
+        }
+
+        label:hover,
+        label:hover ~ label {
+          color: orange;
+        }
+
+        input[type="radio"]:checked ~ label {
+          color: orange;
+        }
+
+    .otree-title{
+	    color: white;
+        background-color:#243e92;
+        font-family: 'Cabin', sans-serif;
+        text-align: center;
+        padding: 0.008px 5px;
+      }
+
+    button.sig {
+         background-color: #243e92;
+         position: relative;
+         color: white;
+         font-family: 'Cabin', sans-serif;
+         border: none;
+         font-size: 20px;
+         padding: 8px 20px;
+       }
+
+       p,b{font-family: 'Cabin', sans-serif;
+      font-size: 20px;}
+
+    </style>
+
+    <b> Indicador 3: Discusión y refutaciones </b> </br> </br>
+
+    <p> <b> Insuficiente (1) </b>: No escucha atentamente a sus compañeros ni concede puntos de información.
+        Su discurso no conecta con los argumentos expuestos por otras casas.</p>
+
+    <p> <b> Excelente (5)</b>: Existe una confrontación de ideas, pues escuchan atentamente y son capaces de analizar los argumentos de los demás.
+        Elaboran refutaciones efectivas y conceden puntos de información.</p>
+
+    <p> Por favor indicar en una escala de 1 a 5 la evaluación:</p>
+
+    <p> Cámara alta de gobierno:</p>
+
+    <form class="estrellas">
+        <p class="clasificacion">
+            <input id="id_I3AG_1" type="radio" name="I3AG" value="5"> <label for="id_I3AG_1">★</label>
+            <input id="id_I3AG_2" type="radio" name="I3AG" value="4"> <label for="id_I3AG_2">★</label>
+            <input id="id_I3AG_3" type="radio" name="I3AG" value="3"> <label for="id_I3AG_3">★</label>
+            <input id="id_I3AG_4" type="radio" name="I3AG" value="2"> <label for="id_I3AG_4">★</label>
+            <input id="id_I3AG_5" type="radio" name="I3AG" value="1"> <label for="id_I3AG_5">★</label>
+        </p>
+
+    <p> Cámara alta de oposición:</p>
+
+        <p class="clasificacion">
+            <input id="id_I3AO_1" type="radio" name="I3AO" value="5"> <label for="id_I3AO_1">★</label>
+            <input id="id_I3AO_2" type="radio" name="I3AO" value="4"> <label for="id_I3AO_2">★</label>
+            <input id="id_I3AO_3" type="radio" name="I3AO" value="3"> <label for="id_I3AO_3">★</label>
+            <input id="id_I3AO_4" type="radio" name="I3AO" value="2"> <label for="id_I3AO_4">★</label>
+            <input id="id_I3AO_5" type="radio" name="I3AO" value="1"> <label for="id_I3AO_5">★</label>
+        </p>
+
+   <p> Cámara baja de gobierno:</p>
+
+        <p class="clasificacion">
+            <input id="id_I3BG_1" type="radio" name="I3BG" value="5"> <label for="id_I3BG_1">★</label>
+            <input id="id_I3BG_2" type="radio" name="I3BG" value="4"> <label for="id_I3BG_2">★</label>
+            <input id="id_I3BG_3" type="radio" name="I3BG" value="3"> <label for="id_I3BG_3">★</label>
+            <input id="id_I3BG_4" type="radio" name="I3BG" value="2"> <label for="id_I3BG_4">★</label>
+            <input id="id_I3BG_5" type="radio" name="I3BG" value="1"> <label for="id_I3BG_5">★</label>
+        </p>
+
+    <p> Cámara baja de oposición:</p>
+
+        <p class="clasificacion">
+            <input id="id_I3BO_1" type="radio" name="I3BO" value="5"> <label for="id_I3BO_1">★</label>
+            <input id="id_I3BO_2" type="radio" name="I3BO" value="4"> <label for="id_I3BO_2">★</label>
+            <input id="id_I3BO_3" type="radio" name="I3BO" value="3"> <label for="id_I3BO_3">★</label>
+            <input id="id_I3BO_4" type="radio" name="I3BO" value="2"> <label for="id_I3BO_4">★</label>
+            <input id="id_I3BO_5" type="radio" name="I3BO" value="1"> <label for="id_I3BO_5">★</label>
+        </p>
+    </form>
+
+
+    <button class="sig">
+          <b>Siguiente</b>
+    </button>
+
+{% endblock %}
