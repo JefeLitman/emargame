@@ -1,0 +1,46 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Digite su resultado
+{% endblock %}
+
+{% block content %}
+    <style>
+        .rotateIn{
+            -webkit-animation-name: rotateIn;
+            animation-name: rotateIn;
+        }
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+        @keyframes rotateIn {
+            0% {
+                transform-origin: center;
+                -webkit-transform: rotate(-200deg);
+                transform: rotate(-200deg);
+                opacity: 0;
+            }
+            0%, 100% {
+                -webkit-transform-origin: center;
+            }
+            100% {
+                transform-origin: center;
+                -webkit-transform: none;
+                transform: none;
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <img src="{% static image_path %}" class="animated rotateIn">
+
+    {% formfield player.numero_ingresado label='Digite su resultado' %}
+
+    {% next_button %}
+
+{% endblock %}
