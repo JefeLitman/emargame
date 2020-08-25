@@ -16,4 +16,7 @@ class resultado(Page):
             "image_path": 'Lying_Game/dados/{}.png'.format(self.player.numero_real)
         }
 
+    def before_next_page(self):
+        self.player.set_payoff()
+
 page_sequence = [instrucciones, resultado]

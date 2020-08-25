@@ -1,0 +1,42 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Pequeña encuesta
+{% endblock %}
+
+{% block content %}
+    <p>
+        Felicitaciones por completar cada una de las rondas anteriores. Ahora, necesitaremos que respondas algunas preguntas para culminar de manera satisfactoria tu participación en el juego.
+    </p>
+    {% formfield player.codigo label='ID' %}
+    {% formfield player.carrera label='¿Qué carrera estudias?' %}
+    {% formfield player.semestre label='¿Qué semestre cursas?' %}
+    {% formfield player.pga label='¿Cuál es tu PGA? (Promedio general acumulado)' %}
+    {% formfield player.edad label='¿Cuál es tu edad?' %}
+    {% formfield player.sexo label='¿Cuál es tu sexo?' %}
+    {% formfield player.estrato label='Estrato socioeconómico:' %}
+    {% formfield player.religion label='En una escala de 1 a 10, señala que tan religioso te consideras. Siendo 1 poco religioso y 10 muy religioso.' %}
+    {% formfield player.elecciones label='¿Has participado en las últimas elecciones?' %}
+    {% formfield player.publico label='¿Te gustaría trabajar en el Sector Público después de tu graduación?' %}
+    {% formfield player.privado label='¿Te gustaría trabajar en el Sector Privado después de tu graduación?' %}
+    {% formfield player.familiar label='¿Tienes algún familiar que trabaje en el Sector Público?' %}
+    {% formfield player.exito label='¿Consideras que se necesitan contactos importantes para conseguir éxito en la vida laboral?' %}
+    <p>En una escala (1-10), señala cuál es tu interés y/o preferencia para desempeñarte laboralmente en las siguientes entidades cuando termines su pregrado. Siendo 1 poco probable y 10 muy probable.</p>
+    {% formfield player.Multinacional label='1) Multinacional' %}
+    {% formfield player.negocio label='2) Tu propio negocio' %}
+    {% formfield player.empleado label='3) Empleado PYME' %}
+    {% formfield player.consultoria label='4) Consultoría' %}
+    {% formfield player.sectorfinanciero label='5) Sector Financiero' %}
+    {% formfield player.glocal label='6) Gobierno Local' %}
+    {% formfield player.organizacion label='7) Organización sin ánimo de lucro' %}
+    {% formfield player.gnacional label='8) Gobierno Nacional' %}
+    {% formfield player.gdepartamental label='9) Gobierno Departamental' %}
+    <p>En una escala (1-10), señala cuál es tu posición con los siguientes casos. Siendo 1 totalmente desacuerdo y 10 totalmente de acuerdo.</p>
+    {% formfield player.copia label='1) Mario un estudiante de Ingeniería de Sistemas, siempre ha tenido problemas con Álgebra Lineal, el semestre está apunto de terminar y tiene que pasar el último examen para no perder la asignatura. En un descuido del profesor, decide hacer copia sin que nadie lo note' %}
+    {% formfield player.beca label='2) María Alejandra, se ha postulado para la beca de sus sueños en el exterior. Ella sabe que tiene un buen perfil por su excelencia académica. Sin embargo, se da cuenta de que los estudiantes que tienen sisben en niveles bajos, tienen una mayor probabilidad de ganar la beca. Así que, decide falsificar su sisben' %}
+    {% formfield player.celular label='3) Juanita decide salir de fiesta con sus amigas por el fin de semestre. Tomó demasiado alcohol y dejó algunas pertenencias en la barra de la discoteca. Al día siguiente, se da cuenta de lo sucedido y que ha perdido su celular. Manuel el bartender quién se percató de la situación, decide quedarse con todas las pertenencias de Juanita' %}
+
+    {% next_button %}
+
+{% endblock %}

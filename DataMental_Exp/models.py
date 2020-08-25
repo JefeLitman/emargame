@@ -37,3 +37,5 @@ class Player(BasePlayer):
     numero_ingresado = models.IntegerField(min=1, max=6)
     numero_real = models.IntegerField(min=1, max=6)
 
+    def set_payoff(self):
+        self.payoff = self.numero_ingresado

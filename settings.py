@@ -99,10 +99,10 @@ SESSION_CONFIGS = [
         """
     },
     {
-        'name':'Lying_Game_Session',
+        'name':'DataMental_Exp_Session',
         'display_name': 'Juego de la Mentira',
         'num_demo_participants':1,
-        'app_sequence': ['Lying_Game','Lying_Survey'],
+        'app_sequence': ['DataMental_Exp','DataMental_Sur'],
         'doc':"""
         """
     }
@@ -170,7 +170,7 @@ ROOMS = [
         'display_name': 'Sala de evaluación Debate Parlamento Británico',
     },
     {
-        'name': 'Lying_Game_Session',
+        'name': 'datamental',
         'display_name': 'Juego de la Mentira',
     }
 ]
