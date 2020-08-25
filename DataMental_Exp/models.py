@@ -18,7 +18,7 @@ Your app description
 
 
 class Constants(BaseConstants):
-    name_in_url = 'Lying_Game'
+    name_in_url = 'DataMental_Exp'
     players_per_group = None
     num_rounds = 40
 

@@ -18,7 +18,7 @@ Your app description
 
 
 class Constants(BaseConstants):
-    name_in_url = 'Lying_Survey'
+    name_in_url = 'DataMental_Sur'
     players_per_group = None
     num_rounds = 1
 
