@@ -1,0 +1,13 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Puntaje total
+{% endblock %}
+
+{% block content %}
+    <p>El puntaje total que hiciste durante todo el juego fue de <b>{{total_payoff}}</b></p>
+    
+    {% next_button %}
+    
+{% endblock %}

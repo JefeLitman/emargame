@@ -39,3 +39,6 @@ class Player(BasePlayer):
 
     def set_payoff(self):
         self.payoff = self.numero_ingresado
+
+    def total_payoffs(self):
+        return sum([p.payoff for p in self.in_all_rounds()])

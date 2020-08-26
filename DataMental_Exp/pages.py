@@ -19,4 +19,12 @@ class resultado(Page):
     def before_next_page(self):
         self.player.set_payoff()
 
-page_sequence = [instrucciones, resultado]
+class total_pago(Page):
+    def vars_for_template(self):
+        return {
+            "total_payoff": self.player.total_payoffs()
+        }
+    def is_displayed(self):
+        return self.round_number == 40
+
+page_sequence = [instrucciones, resultado, total_pago]
