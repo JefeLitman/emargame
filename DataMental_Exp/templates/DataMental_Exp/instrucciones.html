@@ -6,8 +6,14 @@
 {% endblock %}
 
 {% block content %}
-    <p>Aqui van las instrucciones del juego</p>
-    
-    {% next_button %}
+    <div class="row">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="{% static 'Lying_Game/instrucciones_exp.mp4' %}"></iframe>
+        </div>
+    </div>
+
+    <div class="row mt-4 justify-content-center">
+        {% next_button %}
+    </div>
     
 {% endblock %}
