@@ -103,7 +103,10 @@ SESSION_CONFIGS = [
         'display_name': 'Juego de la Mentira',
         'num_demo_participants':1,
         'app_sequence': ['DataMental_Exp','DataMental_Sur'],
+        'Rounds':None,
+        'ConSin':None,
         'doc':"""
+        Sala: Número de sala en la que estaran los participantes, por defecto en 1.
         """
     }
 
@@ -170,8 +173,16 @@ ROOMS = [
         'display_name': 'Sala de evaluación Debate Parlamento Británico',
     },
     {
-        'name': 'datamental',
-        'display_name': 'Juego de la Mentira',
+        'name': 'datamental_1',
+        'display_name': 'Juego de la Mentira 1',
+    },
+    {
+        'name': 'datamental_2',
+        'display_name': 'Juego de la Mentira 2',
+    },
+    {
+        'name': 'datamental_3',
+        'display_name': 'Juego de la Mentira 3',
     }
 ]
 

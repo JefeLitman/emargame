@@ -13,7 +13,8 @@ class resultado(Page):
 
     def vars_for_template(self):
         return {
-            "image_path": 'Lying_Game/dados/{}.png'.format(self.player.numero_real)
+            "image_path": 'Lying_Game/dados/{}.png'.format(self.player.numero_real),
+            "ronda":self.round_number
         }
 
     def before_next_page(self):

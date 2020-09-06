@@ -3,7 +3,7 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Digite su resultado
+    Ronda {{ronda}}
 {% endblock %}
 
 {% block content %}
@@ -36,11 +36,14 @@
             }
         }
     </style>
-
-    <img src="{% static image_path %}" class="animated rotateIn">
-
-    {% formfield player.numero_ingresado label='Digite su resultado' %}
-
-    {% next_button %}
-
+    <div class="row">
+        <img src="{% static image_path %}" class="img-fluid animated rotateIn">
+    </div>
+    <div class="row">
+        {% formfield player.numero_ingresado label='Digite su resultado' %}
+    </div>
+    <div class="row">
+        {% next_button %}
+    </div>
+    
 {% endblock %}
